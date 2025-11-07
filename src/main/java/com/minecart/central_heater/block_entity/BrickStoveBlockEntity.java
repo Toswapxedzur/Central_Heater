@@ -1,47 +1,45 @@
 package com.minecart.central_heater.block_entity;
 
 import com.minecart.central_heater.AllRegistry;
+import com.minecart.central_heater.block.BrickStoveBlock;
 import com.minecart.central_heater.block.StoneStoveBlock;
-import com.minecart.central_heater.util.StackableItemStackHandler;
+import com.minecart.central_heater.util.FireState;
+import net.minecraft.client.renderer.blockentity.CampfireRenderer;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
-
+public class BrickStoveBlockEntity extends AbstractStoveBlockEntity{
     public int litTime;
+    public FireState litState;
+    public FireState litStateValidator;
 
     public int[] cookingProgress;
     public int[] cookingTotalTime;
     public NonNullList<ItemStack> recordValidator;
 
-    public final int fuelConsumption = 3;
+    public final int fuelRate = 3;
     public static final int coolRate = 2;
-    public static final int processSpeed = 450;
+    public static final int processSpeed = 600;
 
-    public StoneStoveBlockEntity(BlockPos pos, BlockState blockState){
-        super(AllRegistry.Stone_stove_be.get(), pos, blockState, 4,
-                stack -> stack.getBurnTime(RecipeType.SMELTING) != 0, 4);
+    public BrickStoveBlockEntity(BlockPos pos, BlockState blockState) {
+        super(AllRegistry.brick_stove_be.get(), pos, blockState, 2, stack -> stack.getBurnTime(RecipeType.SMELTING) != 0, 4);
+        litState = FireState.NONE;
         litTime = 0;
+        litStateValidator = FireState.NONE;
         cookingProgress = new int[itemCapacity];
         cookingTotalTime = new int[itemCapacity];
         recordValidator = NonNullList.withSize(itemCapacity, ItemStack.EMPTY);
@@ -50,7 +48,9 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        this.litState = FireState.getFireState(tag.getBoolean("litState"));
         this.litTime = tag.getInt("LitTime");
+        this.litStateValidator = FireState.getFireState(tag.getBoolean("litStateValidator"));
         this.cookingProgress = tag.getIntArray("cookingProgress");
         this.cookingTotalTime = tag.getIntArray("cookingTotalTime");
         ContainerHelper.loadAllItems(tag.getCompound("validator"), recordValidator, registries);
@@ -59,7 +59,9 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
+        tag.putBoolean("litState", this.litState.getBooleanState());
         tag.putInt("LitTime", this.litTime);
+        tag.putBoolean("litStateValidator", this.litStateValidator.getBooleanState());
         tag.putIntArray("cookingProgress", this.cookingProgress);
         tag.putIntArray("cookingTotalTime", this.cookingTotalTime);
         CompoundTag validatorTag = new CompoundTag();
@@ -69,10 +71,10 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("container.stone_stove");
+        return Component.translatable("container.brick_stove");
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, StoneStoveBlockEntity entity) {
+    public static void serverTick(Level level, BlockPos pos, BlockState state, BrickStoveBlockEntity entity){
         entity.updateFuel();
 
         for (int i = 0; i < entity.itemCapacity; i++) {
@@ -92,16 +94,17 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
 
         for (int i = 0; i < entity.itemCapacity; i++) {
             if (entity.cookingTotalTime[i] != 0 && entity.cookingProgress[i] >= entity.cookingTotalTime[i] && !entity.items.getStackInSlot(i).isEmpty()) {
-                RecipeHolder<SmeltingRecipe> recipeHolder = level.getRecipeManager().getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(entity.items.getStackInSlot(i)), level).orElse(null);
+                RecipeHolder<CampfireCookingRecipe> recipeHolder = level.getRecipeManager().getRecipeFor(RecipeType.CAMPFIRE_COOKING, new SingleRecipeInput(entity.items.getStackInSlot(i)), level).orElse(null);
                 if (entity.burn(i, recipeHolder, level.registryAccess())) {
                     entity.cookingProgress[i] = 0;
                 }
             }
         }
 
-        if(state.getValue(StoneStoveBlock.LIT) != entity.isLit()){
+        if(state.getValue(BrickStoveBlock.LIT) != entity.isLit()){
             entity.update();
         }
+
     }
 
     public void dropContent() {
@@ -117,18 +120,43 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
         burnOneFuel();
     }
 
+    public void updateFuel(){
+        if(!this.litState.equals(FireState.NONE)){
+            if(this.litTime<=fuelRate)
+                burnOneFuel();
+        }
+        this.litTime -= fuelRate;
+        if(litTime<=0){
+            this.litState = FireState.NONE;
+            this.litTime = 0;
+        }
+    }
+
     public void burnOneFuel(){
         ItemStack stack = fuels.extractItem(true);
         if(stack.isEmpty() || stack.getBurnTime(RecipeType.SMELTING) == 0)
             return;
         stack = fuels.extractItem(false);
+        this.litState = FireState.LIT;
         this.litTime += stack.getBurnTime(RecipeType.SMELTING);
         if (stack.hasCraftingRemainingItem()) {
             fuels.insertItem(stack.getCraftingRemainingItem(), false);
         }
     }
 
-    public boolean burn(int slot, @Nullable RecipeHolder<? extends AbstractCookingRecipe> recipe, RegistryAccess access){
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        saveAdditional(tag, registries);
+        return tag;
+    }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public boolean burn(int slot, @Nullable RecipeHolder<CampfireCookingRecipe> recipe, RegistryAccess access){
         if(recipe!=null){
             ItemStack stack = items.getStackInSlot(slot);
             ItemStack stack1 = recipe.value().assemble(new SingleRecipeInput(stack), access).copy();
@@ -139,34 +167,25 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
         return false;
     }
 
-    @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        CompoundTag tag = super.getUpdateTag(registries);
-        saveAdditional(tag, registries);
-        return tag;
-    }
+    public boolean isLit() { return this.litState.equals(FireState.LIT); }
 
     @Override
-    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    public void updateFuel(){
-        if(this.litTime<0){
-            this.litTime = 0;
-        }else if(this.litTime<=fuelConsumption){
-            this.burnOneFuel();
-        }
-        this.litTime-=fuelConsumption;
-    }
-
-    public boolean isLit() { return this.litTime > 0; }
-
-    public void update(){
+    public void update() {
         BlockState state = this.getBlockState();
-        state = state.setValue(BlockStateProperties.LIT, Boolean.valueOf(this.isLit()));
+        state = state.setValue(BrickStoveBlock.LIT, Boolean.valueOf(isLit()));
         setChanged(this.level, this.getBlockPos(), state);
         this.level.setBlock(this.getBlockPos(), state, 3);
         getLevel().sendBlockUpdated(getBlockPos(), state, state, Block.UPDATE_CLIENTS);
     }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+        return false;
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+        return false;
+    }
+
 }

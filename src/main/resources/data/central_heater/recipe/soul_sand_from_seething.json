@@ -6,5 +6,7 @@
   "ingredient": {
     "item": "minecraft:sand"
   },
-  "result": "minecraft:soul_sand"
+  "result":{
+    "id": "minecraft:soul_sand"
+  }
 }
