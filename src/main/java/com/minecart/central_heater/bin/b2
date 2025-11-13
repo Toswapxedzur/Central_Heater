@@ -1,7 +1,6 @@
-package com.minecart.central_heater.block_entity;
+package com.minecart.central_heater.bin;
 
 import com.minecart.central_heater.AllRegistry;
-import com.minecart.central_heater.block.BlastOverheaterBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
@@ -13,7 +12,6 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -26,10 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
-import oshi.annotation.concurrent.Immutable;
-
-import java.util.Map;
-import java.util.Optional;
 
 public class BlastOverheaterBlockEntity extends BlockEntity{
 
