@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:cobble"
+    },
+    {
+      "item": "central_heater:cobble"
+    },
+    {
+      "item": "central_heater:cobble"
+    },
+    {
+      "item": "central_heater:cobble"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobblestone"
+  }
+}

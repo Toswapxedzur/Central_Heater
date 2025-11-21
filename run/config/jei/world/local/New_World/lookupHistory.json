@@ -1,0 +1,17 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"central_heater:mud_brick_tile_stair"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:mud_brick_tile_slab"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:mud_brick_tile"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:stone_brick_tile_stair"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:mud_brick"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:stone_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:nether_brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:deepslate_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:mud_brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:red_nether_brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"minecraft:soul_campfire"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"minecraft:sand"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"minecraft:furnace"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

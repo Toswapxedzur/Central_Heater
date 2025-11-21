@@ -1,0 +1,14 @@
+{
+  "type": "central_heater:seething",
+  "category": "misc",
+  "cookingtime": 1000,
+  "experience": 1.0,
+  "group": "misc",
+  "ingredient": {
+    "item": "minecraft:coal_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "central_heater:diamond_shard"
+  }
+}
