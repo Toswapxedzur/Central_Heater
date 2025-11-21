@@ -10,10 +10,17 @@
   "block.central_heater.stone_brick_tile_stair": "Stone Brick Tile Stairs",
   "block.central_heater.stone_brick_tile_slab": "Stone Brick Tile Slab",
   "block.central_heater.stone_brick_tile_wall": "Stone Brick Tile Wall",
+
   "block.central_heater.deepslate_brick_tile": "Deepslate Brick Tile",
   "block.central_heater.deepslate_brick_tile_stair": "Deepslate Brick Tile Stairs",
   "block.central_heater.deepslate_brick_tile_slab": "Deepslate Brick Tile Slab",
   "block.central_heater.deepslate_brick_tile_wall": "Deepslate Brick Tile Wall",
+
+  "block.central_heater.mud_brick_tile": "Mud Brick Tile",
+  "block.central_heater.mud_brick_tile_stair": "Mud Brick Tile Stairs",
+  "block.central_heater.mud_brick_tile_slab": "Mud Brick Tile Slab",
+  "block.central_heater.mud_brick_tile_wall": "Mud Brick Tile Wall",
+
   "block.central_heater.gold_bars": "Gold Bars",
 
   "item.central_heater.cobble": "Cobble",

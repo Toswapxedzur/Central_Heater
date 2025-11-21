@@ -5,8 +5,9 @@ import com.minecart.central_heater.block_entity_renderer.BurnableCampfireBlockEn
 import com.minecart.central_heater.block_entity_renderer.GoldenStoveBlockEntityRenderer;
 import com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer;
 import com.minecart.central_heater.util.AllUtil;
-import com.minecart.central_heater.util.FuelMap;
+import com.minecart.central_heater.nether_fuel.FuelMapHook;
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -43,7 +44,6 @@ public class Central_heater {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        FuelMap.initializeSoulFuelMap();
     }
 
     @SubscribeEvent
@@ -63,5 +63,9 @@ public class Central_heater {
             event.registerBlockEntityRenderer(AllRegistry.brick_stove_be.get(), BrickStoveBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(AllRegistry.burnable_campfire.get(), BurnableCampfireBlockEntityRenderer::new);
         }
+    }
+
+    public static ResourceLocation modLoc(String path){
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }

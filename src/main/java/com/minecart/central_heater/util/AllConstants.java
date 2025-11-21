@@ -3,10 +3,8 @@ package com.minecart.central_heater.util;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Arrays;
-
 public class AllConstants {
-    public static final EnumProperty<SoulFireState> LIT_SOUL = EnumProperty.create("lit_soul", SoulFireState.class);
+    public static final EnumProperty<NetherFireState> LIT_SOUL = EnumProperty.create("lit_soul", NetherFireState.class);
 
     public static final Vec3[] topInvLoc1 = new Vec3[]{
             new Vec3(0.5, 1.12, 0.5)};

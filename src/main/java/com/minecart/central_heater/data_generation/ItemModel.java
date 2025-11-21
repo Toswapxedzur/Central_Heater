@@ -38,6 +38,9 @@ public class ItemModel extends ItemModelProvider {
         withExistingParent("deepslate_brick_tile_stair", modLoc("block/deepslate_brick_tile_stair"));
         withExistingParent("deepslate_brick_tile_slab", modLoc("block/deepslate_brick_tile_slab"));
         wallInventory("deepslate_brick_tile_wall", modLoc("block/deepslate_brick_tile"));
+        withExistingParent("mud_brick_tile_stair", modLoc("block/mud_brick_tile_stair"));
+        withExistingParent("mud_brick_tile_slab", modLoc("block/mud_brick_tile_slab"));
+        wallInventory("mud_brick_tile_wall", modLoc("block/mud_brick_tile"));
         basicItem(AllRegistry.cobble.get());
         basicItem(AllRegistry.deepslate_cobble.get());
         basicItem(AllRegistry.stone_brick.get());

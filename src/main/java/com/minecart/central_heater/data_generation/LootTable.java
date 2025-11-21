@@ -20,6 +20,7 @@ public class LootTable extends BlockLootSubProvider {
     public void generate() {
         dropSelf(AllRegistry.stone_brick_tile.get());
         dropSelf(AllRegistry.deepslate_brick_tile.get());
+        dropSelf(AllRegistry.mud_brick_tile.get());
         dropSelf(AllRegistry.stone_stove.get());
         dropSelf(AllRegistry.red_nether_brick_stove.get());
         dropSelf(AllRegistry.brick_stove.get());
@@ -33,6 +34,9 @@ public class LootTable extends BlockLootSubProvider {
         dropSelf(AllRegistry.deepslate_brick_tile_stair.get());
         add(AllRegistry.deepslate_brick_tile_slab.get(), block -> createSlabItemTable(AllRegistry.deepslate_brick_tile_slab.get()));
         dropSelf(AllRegistry.deepslate_brick_tile_wall.get());
+        dropSelf(AllRegistry.mud_brick_tile_stair.get());
+        add(AllRegistry.mud_brick_tile_slab.get(), block -> createSlabItemTable(AllRegistry.mud_brick_tile_slab.get()));
+        dropSelf(AllRegistry.mud_brick_tile_wall.get());
         dropSelf(AllRegistry.gold_bars.get());
     }
 

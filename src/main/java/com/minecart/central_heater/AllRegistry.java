@@ -6,9 +6,7 @@ import com.minecart.central_heater.block.StoneStoveBlock;
 import com.minecart.central_heater.block_entity.*;
 import com.minecart.central_heater.item.BrickItem;
 import com.minecart.central_heater.recipe.SeethingRecipe;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -65,6 +63,13 @@ public class AllRegistry {
     public static DeferredBlock<SlabBlock> deepslate_brick_tile_slab = registerBlockWithItem("deepslate_brick_tile_slab", ()->new SlabBlock(BlockBehaviour.Properties.ofFullCopy(deepslate_brick_tile.get())));
     public static DeferredBlock<WallBlock> deepslate_brick_tile_wall = registerBlockWithItem("deepslate_brick_tile_wall", ()->new WallBlock(BlockBehaviour.Properties.ofFullCopy(deepslate_brick_tile.get())));
 
+    public static DeferredBlock<Block> mud_brick_tile = registerBlockWithItem("mud_brick_tile", ()->new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY)
+            .instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(2F, 4F).sound(SoundType.MUD_BRICKS)));
+
+    public static DeferredBlock<StairBlock> mud_brick_tile_stair = registerBlockWithItem("mud_brick_tile_stair", ()->new StairBlock(mud_brick_tile.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(mud_brick_tile.get())));
+    public static DeferredBlock<SlabBlock> mud_brick_tile_slab = registerBlockWithItem("mud_brick_tile_slab", ()->new SlabBlock(BlockBehaviour.Properties.ofFullCopy(mud_brick_tile.get())));
+    public static DeferredBlock<WallBlock> mud_brick_tile_wall = registerBlockWithItem("mud_brick_tile_wall", ()->new WallBlock(BlockBehaviour.Properties.ofFullCopy(mud_brick_tile.get())));
+
     public static DeferredBlock<Block> gold_bars = registerBlockWithItem("gold_bars", ()->new IronBarsBlock(
             BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(10.0F, 5.0F).sound(SoundType.METAL).noOcclusion()));
 
@@ -98,7 +103,7 @@ public class AllRegistry {
 
 
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<SeethingRecipe>> Seething_ser = RECIPE_SERIALIZERS.register("seething", ()->new SimpleCookingSerializer<>(SeethingRecipe::new, 200));
-    public static DeferredHolder<RecipeType<?>, RecipeType<SeethingRecipe>> Seething = RECIPE_TYPES.register("seething", ()->new RecipeType<SeethingRecipe>(){
+    public static DeferredHolder<RecipeType<?>, RecipeType<SeethingRecipe>> SEETHING = RECIPE_TYPES.register("seething", ()->new RecipeType<SeethingRecipe>(){
         public String toString(){ return "seething"; }});
 
     public static void register(IEventBus modEventbus){

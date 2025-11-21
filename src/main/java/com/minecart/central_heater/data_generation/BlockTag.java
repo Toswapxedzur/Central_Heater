@@ -21,19 +21,18 @@ public class BlockTag extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.brick_stove.get(), AllRegistry.mud_brick_stove.get(), AllRegistry.stone_stove.get()
-                , AllRegistry.deepslate_stove.get(), AllRegistry.nether_brick_stove.get(), AllRegistry.red_nether_brick_stove.get());
-
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.stone_brick_tile.get(), AllRegistry.stone_brick_tile_stair.get(), AllRegistry.stone_brick_tile_slab.get(),
-                 AllRegistry.stone_brick_tile_wall.get(), AllRegistry.deepslate_brick_tile.get(), AllRegistry.deepslate_brick_tile_stair.get(), AllRegistry.deepslate_brick_tile_slab.get(),
-                 AllRegistry.gold_bars.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.brick_stove.get(), AllRegistry.mud_brick_stove.get(), AllRegistry.stone_stove.get(),
+                AllRegistry.deepslate_stove.get(), AllRegistry.nether_brick_stove.get(), AllRegistry.red_nether_brick_stove.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.stone_brick_tile.get(), AllRegistry.stone_brick_tile_stair.get(), AllRegistry.stone_brick_tile_slab.get(), AllRegistry.stone_brick_tile_wall.get(),
+                AllRegistry.deepslate_brick_tile.get(), AllRegistry.deepslate_brick_tile_stair.get(), AllRegistry.deepslate_brick_tile_slab.get(), AllRegistry.deepslate_brick_tile_wall.get(),
+                AllRegistry.mud_brick_tile.get(), AllRegistry.mud_brick_tile_stair.get(), AllRegistry.mud_brick_tile_slab.get(), AllRegistry.mud_brick_tile_wall.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.gold_bars.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL).add(AllRegistry.nether_brick_stove.get(), AllRegistry.red_nether_brick_stove.get());
-
         tag(BlockTags.NEEDS_STONE_TOOL).add(AllRegistry.gold_bars.get());
 
-        tag(BlockTags.STAIRS).add(AllRegistry.stone_brick_tile_stair.value(), AllRegistry.deepslate_brick_tile_stair.get());
-        tag(BlockTags.SLABS).add(AllRegistry.stone_brick_tile_slab.value(), AllRegistry.deepslate_brick_tile_slab.get());
-        tag(BlockTags.WALLS).add(AllRegistry.stone_brick_tile_wall.value(), AllRegistry.deepslate_brick_tile_wall.get());
+        tag(BlockTags.STAIRS).add(AllRegistry.stone_brick_tile_stair.value(), AllRegistry.deepslate_brick_tile_stair.get(), AllRegistry.mud_brick_tile_stair.get());
+        tag(BlockTags.SLABS).add(AllRegistry.stone_brick_tile_slab.value(), AllRegistry.deepslate_brick_tile_slab.get(), AllRegistry.mud_brick_tile_slab.get());
+        tag(BlockTags.WALLS).add(AllRegistry.stone_brick_tile_wall.value(), AllRegistry.deepslate_brick_tile_wall.get(), AllRegistry.mud_brick_tile_wall.get());
     }
 }
