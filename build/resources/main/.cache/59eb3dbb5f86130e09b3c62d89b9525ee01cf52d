@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-13T18:08:40.539816	Loot Tables
+// 1.21.1	2025-11-18T18:26:42.000795	Loot Tables
 83fc1c70c9777673a2d3b2f9f3d6f1242fdffdf7 data/central_heater/loot_table/blocks/brick_stove.json
 5b7176d687aa14d7847b3f6ec007eeaf509534c6 data/central_heater/loot_table/blocks/deepslate_brick_tile.json
 bd2a76d58e5975ab4f90f46d2b2e7ef6bbd2ce8f data/central_heater/loot_table/blocks/deepslate_brick_tile_slab.json
@@ -7,6 +7,10 @@ bd2a76d58e5975ab4f90f46d2b2e7ef6bbd2ce8f data/central_heater/loot_table/blocks/d
 d73b761ddfcf8ba26150f4c5c204b7a87635cc4b data/central_heater/loot_table/blocks/deepslate_stove.json
 af5c719dedfbae5b99477b1c94cf315727564a0e data/central_heater/loot_table/blocks/gold_bars.json
 c4a1fea2c4a61c82e0a0dbadfa4a2b5e4c5f7c23 data/central_heater/loot_table/blocks/mud_brick_stove.json
+084addebf8362d9f80bfe4aaef946812cca422e3 data/central_heater/loot_table/blocks/mud_brick_tile.json
+d037d6ac1a0c40f73f01609fa1dc070ae8cbda04 data/central_heater/loot_table/blocks/mud_brick_tile_slab.json
+f2b928cfa8f85aa0e28bc4cf45e375ba4f629ced data/central_heater/loot_table/blocks/mud_brick_tile_stair.json
+b0bb2ea3076553db211c2a9aa16a11622549afe5 data/central_heater/loot_table/blocks/mud_brick_tile_wall.json
 171beb17b2fac6c3401a964e109443e541149649 data/central_heater/loot_table/blocks/nether_brick_stove.json
 cabea7ebb9846bb8009539468f589ad2630131f0 data/central_heater/loot_table/blocks/red_nether_brick_stove.json
 a785d16ef8a42cf009a326205346b0c9708afb09 data/central_heater/loot_table/blocks/stone_brick_tile.json

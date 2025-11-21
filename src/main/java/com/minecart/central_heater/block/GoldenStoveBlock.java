@@ -1,10 +1,9 @@
 package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllRegistry;
-import com.minecart.central_heater.block_entity.BrickStoveBlockEntity;
 import com.minecart.central_heater.block_entity.GoldenStoveBlockEntity;
 import com.minecart.central_heater.util.AllConstants;
-import com.minecart.central_heater.util.SoulFireState;
+import com.minecart.central_heater.util.NetherFireState;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -43,7 +42,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class GoldenStoveBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final EnumProperty<SoulFireState> LIT_SOUL = AllConstants.LIT_SOUL;
+    public static final EnumProperty<NetherFireState> LIT_SOUL = AllConstants.LIT_SOUL;
 
     public static final VoxelShape SHAPE = box(0,0,0,16,16,16);
 
@@ -55,7 +54,7 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             else if(lit.getValue(AllConstants.LIT_SOUL).getState() == 1){ return 13; }
             else{ return 0; }
         }));
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(LIT_SOUL, SoulFireState.NONE));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(LIT_SOUL, NetherFireState.NONE));
     }
 
     @Override
@@ -153,7 +152,7 @@ public class GoldenStoveBlock extends BaseEntityBlock {
 
     @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
-        return !state.getValue(AllConstants.LIT_SOUL).equals(SoulFireState.NONE);
+        return !state.getValue(AllConstants.LIT_SOUL).equals(NetherFireState.NONE);
     }
 
     @Override
@@ -167,10 +166,10 @@ public class GoldenStoveBlock extends BaseEntityBlock {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (state.getValue(AllConstants.LIT_SOUL).equals(SoulFireState.BURN) && entity instanceof LivingEntity) {
+        if (state.getValue(AllConstants.LIT_SOUL).equals(NetherFireState.BURN) && entity instanceof LivingEntity) {
             entity.hurt(level.damageSources().campfire(), (float)2.0f);
         }
-        if (state.getValue(AllConstants.LIT_SOUL).equals(SoulFireState.SOUL) && entity instanceof LivingEntity livingEntity) {
+        if (state.getValue(AllConstants.LIT_SOUL).equals(NetherFireState.SOUL) && entity instanceof LivingEntity livingEntity) {
             livingEntity.hurt(level.damageSources().campfire(), (float)4.0f);
             livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20));
         }
@@ -183,7 +182,7 @@ public class GoldenStoveBlock extends BaseEntityBlock {
         double d1 = (double)pos.getY() + 0.75;
         double d2 = (double)pos.getZ() + 0.5;
 
-        if (!state.getValue(AllConstants.LIT_SOUL).equals(SoulFireState.NONE)) {
+        if (!state.getValue(AllConstants.LIT_SOUL).equals(NetherFireState.NONE)) {
             if (random.nextInt(10) == 0) {
                 level.playLocalSound(d0, d1, d2, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS,
                         0.5F + random.nextFloat(), random.nextFloat() * 0.8F + 1F, false);
@@ -226,7 +225,7 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             }
         }
 
-        if(state.getValue(AllConstants.LIT_SOUL).equals(SoulFireState.SOUL)){
+        if(state.getValue(AllConstants.LIT_SOUL).equals(NetherFireState.SOUL)){
             for(int i=0;i<random.nextIntBetweenInclusive(0,2);i++){
                 level.addParticle(ParticleTypes.SOUL_FIRE_FLAME,
                         d0 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),

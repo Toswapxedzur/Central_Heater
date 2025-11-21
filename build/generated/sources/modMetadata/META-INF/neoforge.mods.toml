@@ -9,7 +9,7 @@ modLoader = "javafml" #mandatory
 loaderVersion = "[4,)" #mandatory
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license = "All Rights Reserved"
+license = "IDK"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
@@ -19,7 +19,7 @@ modId = "central_heater" #mandatory
 # The version number of the mod
 version = "1.0-SNAPSHOT" #mandatory
 # A display name for the mod
-displayName = "central_heater" #mandatory
+displayName = "Central Heater" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforge.net/docs/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
@@ -29,10 +29,13 @@ displayName = "central_heater" #mandatory
 # A text field displayed in the mod UI
 #credits="" #optional
 # A text field displayed in the mod UI
-authors = "" #optional
+authors = "Toswapxedzur" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description = ''''''
+description = '''A simple decoration/utility mod'''
+
+logoFile = "icon.png"
+logoBlur = false
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 [[mixins]]

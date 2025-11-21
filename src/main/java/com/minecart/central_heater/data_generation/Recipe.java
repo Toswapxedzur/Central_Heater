@@ -6,15 +6,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 
 import java.util.List;
@@ -43,13 +39,7 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
         emptyRecipe(recipeOutput, "minecraft:stone_brick_walls_from_stone_stonecutting");
 
         //add recipe from stone cutter
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.stone_brick_tile_stair, AllRegistry.stone_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.stone_brick_tile_slab, AllRegistry.stone_brick_tile, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.stone_brick_tile_wall, AllRegistry.stone_brick_tile);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, AllRegistry.stone_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.deepslate_brick_tile_stair, AllRegistry.deepslate_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.deepslate_brick_tile_slab, AllRegistry.deepslate_brick_tile, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, AllRegistry.deepslate_brick_tile_wall, AllRegistry.deepslate_brick_tile);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILES, AllRegistry.deepslate_brick_tile);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_STAIRS, AllRegistry.deepslate_brick_tile);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_SLAB, AllRegistry.deepslate_brick_tile, 2);
@@ -58,6 +48,7 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
         //deal with tile bricks recipes in crafting
         tileBrickRecipe(recipeOutput, AllRegistry.stone_brick_tile.asItem(), AllRegistry.stone_brick.asItem());
         tileBrickRecipe(recipeOutput, AllRegistry.deepslate_brick_tile.asItem(), AllRegistry.deepslate_brick.asItem());
+        tileBrickRecipe(recipeOutput, AllRegistry.mud_brick_tile.asItem(), AllRegistry.mud_brick.asItem());
         tileBrickRecipe(recipeOutput, Items.NETHER_BRICKS, Items.NETHER_BRICK);
         tileBrickRecipe(recipeOutput, Items.RED_NETHER_BRICKS, AllRegistry.red_nether_brick.asItem());
         tileBrickRecipe(recipeOutput, Items.BRICKS, Items.BRICK);
@@ -68,21 +59,23 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
         brickRecipe(recipeOutput, Items.MUD_BRICKS, AllRegistry.mud_brick.asItem());
 
         //other special blocks
-        stairSlabWallCraftingRecipe(recipeOutput, AllRegistry.stone_brick_tile.asItem(), AllRegistry.stone_brick_tile_stair.asItem(),
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.stone_brick_tile.asItem(), AllRegistry.stone_brick_tile_stair.asItem(),
                 AllRegistry.stone_brick_tile_slab.asItem(), AllRegistry.stone_brick_tile_wall.asItem());
-        stairSlabWallCraftingRecipe(recipeOutput, AllRegistry.deepslate_brick_tile.asItem(), AllRegistry.deepslate_brick_tile_stair.asItem(),
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.deepslate_brick_tile.asItem(), AllRegistry.deepslate_brick_tile_stair.asItem(),
                 AllRegistry.deepslate_brick_tile_slab.asItem(), AllRegistry.deepslate_brick_tile_wall.asItem());
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.mud_brick_tile.asItem(), AllRegistry.mud_brick_tile_stair.asItem(),
+                AllRegistry.mud_brick_tile_slab.asItem(), AllRegistry.mud_brick_tile_wall.asItem());
 
         //other things
-        oreBlasting(recipeOutput, List.of(AllRegistry.mud_brick), RecipeCategory.MISC, Items.PACKED_MUD, 0.1f, 200, "brick");
+        oreBlasting(recipeOutput, List.of(Items.PACKED_MUD), RecipeCategory.MISC, AllRegistry.mud_brick, 0.1f, 200, "brick");
 
         oreSeething(recipeOutput, List.of(Items.COAL_BLOCK), RecipeCategory.MISC, AllRegistry.diamond_shard, 1f, 1000, "misc");
         oreSeething(recipeOutput, List.of(Items.SAND), RecipeCategory.MISC, Items.SOUL_SAND, 1f, 400, "misc");
         oreSeething(recipeOutput, List.of(Items.DIRT), RecipeCategory.MISC, Items.SOUL_SOIL, 1f, 300, "misc");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.diamond_shard, 9).requires(Items.DIAMOND)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.diamond_shard, 4).requires(Items.DIAMOND)
                 .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).group("misc").save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(AllRegistry.diamond_shard, 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(AllRegistry.diamond_shard, 4)
                 .unlockedBy(getHasName(AllRegistry.diamond_shard), has(AllRegistry.diamond_shard)).group("misc").save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.stone_brick)
@@ -103,7 +96,7 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
         stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.nether_brick_stove, Items.NETHER_BRICK, Items.GOLD_INGOT, AllRegistry.gold_bars);
         stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.red_nether_brick_stove, AllRegistry.red_nether_brick, Items.GOLD_INGOT, AllRegistry.gold_bars);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllRegistry.gold_bars).pattern("###").pattern("###").define('#', Items.GOLD_INGOT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllRegistry.gold_bars, 16).pattern("###").pattern("###").define('#', Items.GOLD_INGOT)
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT)).group("misc").save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.cobble, 4).requires(Items.COBBLESTONE)
@@ -155,7 +148,10 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
                 .showNotification(true).save(output);
     }
 
-    protected static void stairSlabWallCraftingRecipe(RecipeOutput output, Item ingredient, Item stair, Item slab, Item wall){
+    protected static void stairSlabWallCraftingStoneCuttingRecipe(RecipeOutput output, Item ingredient, Item stair, Item slab, Item wall){
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, stair, ingredient);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, slab, ingredient, 2);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, wall, ingredient);
         stairBuilder(stair, Ingredient.of(ingredient)).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.of(ingredient)).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, wall, Ingredient.of(ingredient)).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);

@@ -1,145 +1,163 @@
-[13Nov2025 21:40:17.697] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.211, --assetIndex, 17, --assetsDir, /Users/fengyue.john.zhu/.gradle/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.211, --fml.neoFormVersion, 20240808.144430]
-[13Nov2025 21:40:17.698] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 21.0.8+12-LTS-250
-[13Nov2025 21:40:17.699] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.8 by Oracle Corporation; OS Mac OS X arch aarch64 version 15.6.1
-[13Nov2025 21:40:17.756] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
-[13Nov2025 21:40:17.919] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
-[13Nov2025 21:40:17.966] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.5
-[13Nov2025 21:40:17.977] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.4
-[13Nov2025 21:40:17.986] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.3
-[13Nov2025 21:40:17.996] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.2
-[13Nov2025 21:40:18.006] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.1
-[13Nov2025 21:40:18.023] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.1 got version 4.1
-[13Nov2025 21:40:18.210] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/Users/fengyue.john.zhu/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23132!/ Service=ModLauncher Env=CLIENT
-[13Nov2025 21:40:18.312] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: Apple M1 Pro GL version 4.1 Metal - 89.4, Apple
-[13Nov2025 21:40:18.364] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
-[13Nov2025 21:40:18.365] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+[22Nov2025 07:36:49.838] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.211, --assetIndex, 17, --assetsDir, /Users/fengyue.john.zhu/.gradle/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.211, --fml.neoFormVersion, 20240808.144430]
+[22Nov2025 07:36:49.841] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 21.0.8+12-LTS-250
+[22Nov2025 07:36:49.842] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.8 by Oracle Corporation; OS Mac OS X arch aarch64 version 15.6.1
+[22Nov2025 07:36:49.900] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[22Nov2025 07:36:50.891] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[22Nov2025 07:36:50.944] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.5
+[22Nov2025 07:36:50.954] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.4
+[22Nov2025 07:36:50.959] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.3
+[22Nov2025 07:36:50.966] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.2
+[22Nov2025 07:36:50.972] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.1
+[22Nov2025 07:36:50.988] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.1 got version 4.1
+[22Nov2025 07:36:51.253] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/Users/fengyue.john.zhu/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23132!/ Service=ModLauncher Env=CLIENT
+[22Nov2025 07:36:51.416] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 2 dependencies adding them to mods collection
+[22Nov2025 07:36:51.417] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
      Mod List:
 		Name Version (Mod Id)
 
-		central_heater 1.0-SNAPSHOT (central_heater)
+		Central Heater 1.0-SNAPSHOT (central_heater)
+		Just Enough Items 19.25.0.325 (jei)
 		Minecraft 1.21.1 (minecraft)
 		NeoForge 21.1.211 (neoforge)
-[13Nov2025 21:40:18.697] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
-[13Nov2025 21:40:18.701] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.211, --gameDir, ., --assetsDir, /Users/fengyue.john.zhu/.gradle/caches/neoformruntime/assets, --assetIndex, 17]
-[13Nov2025 21:40:19.496] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 149 milliseconds
-[13Nov2025 21:40:21.097] [pool-7-thread-1/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
-[13Nov2025 21:40:24.266] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[13Nov2025 21:40:24.267] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[13Nov2025 21:40:24.268] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[13Nov2025 21:40:24.269] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[13Nov2025 21:40:24.269] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[13Nov2025 21:40:24.336] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/Users/fengyue.john.zhu/Documents/central_heater/build/moddev/artifacts/neoforge-21.1.211.jar%23184!/assets/.mcassetsroot' uses unexpected schema
-[13Nov2025 21:40:24.336] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/Users/fengyue.john.zhu/Documents/central_heater/build/moddev/artifacts/neoforge-21.1.211.jar%23184!/data/.mcassetsroot' uses unexpected schema
-[13Nov2025 21:40:24.347] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[13Nov2025 21:40:24.352] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[13Nov2025 21:40:24.391] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
-[13Nov2025 21:40:24.882] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.211, for MC 1.21.1
-[13Nov2025 21:40:25.377] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: [central_heater]
-[13Nov2025 21:40:25.534] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/central_heater, mod/neoforge
-[13Nov2025 21:40:25.594] [Worker-Main-1/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
-[13Nov2025 21:40:25.652] [Worker-Main-6/ERROR] [net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader/]: Image central_heater:block/blast_overheater_front_on size 20,24 is not multiple of frame size 20,20
-[13Nov2025 21:40:25.704] [Worker-Main-8/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
-[13Nov2025 21:40:25.717] [Worker-Main-7/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture central_heater:block/blast_overheater_side with size 20x12 limits mip level from 4 to 2
-[13Nov2025 21:40:26.450] [Worker-Main-5/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=south,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:40:26.451] [Worker-Main-5/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=north,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:40:26.451] [Worker-Main-5/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=east,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:40:26.451] [Worker-Main-5/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=west,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:40:26.616] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[13Nov2025 21:40:26.616] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[13Nov2025 21:40:26.717] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device MacBook Pro Speakers
-[13Nov2025 21:40:26.719] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[13Nov2025 21:40:26.806] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[13Nov2025 21:40:26.815] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[13Nov2025 21:40:26.816] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[13Nov2025 21:40:26.817] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[13Nov2025 21:40:26.817] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[13Nov2025 21:40:26.821] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[13Nov2025 21:40:26.822] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[13Nov2025 21:40:26.822] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[13Nov2025 21:40:26.822] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[13Nov2025 21:40:26.903] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[13Nov2025 21:40:26.904] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[13Nov2025 21:40:26.904] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[13Nov2025 21:40:26.904] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[13Nov2025 21:40:26.905] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[13Nov2025 21:40:26.939] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[13Nov2025 21:40:27.006] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
-[13Nov2025 21:41:02.535] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1328 recipes
-[13Nov2025 21:41:02.650] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1450 advancements
-[13Nov2025 21:41:03.017] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21.1
-[13Nov2025 21:41:03.018] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[13Nov2025 21:41:03.829] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[13Nov2025 21:41:03.970] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Nov2025 21:41:04.016] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
-[13Nov2025 21:41:04.027] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 187 ms
-[13Nov2025 21:41:04.060] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
-[13Nov2025 21:41:04.060] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[13Nov2025 21:41:04.389] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:906255ab] logged in with entity id 23 at (23.3524044410006, 74.0, 124.77200125143278)
-[13Nov2025 21:41:04.413] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[13Nov2025 21:41:04.499] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:soul_sand_from_seething_sand
-[13Nov2025 21:41:04.499] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:diamond_shard_from_seething_coal_block
-[13Nov2025 21:41:04.500] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:soul_soil_from_seething_dirt
-[13Nov2025 21:41:04.566] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 65 advancements
-[13Nov2025 21:41:06.871] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Nov2025 21:41:06.881] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Nov2025 21:41:06.908] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Nov2025 21:41:06.908] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Nov2025 21:41:18.506] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/central_heater, mod/neoforge
-[13Nov2025 21:41:18.509] [Worker-Main-2/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
-[13Nov2025 21:41:18.549] [Worker-Main-9/ERROR] [net.minecraft.client.renderer.texture.atlas.SpriteResourceLoader/]: Image central_heater:block/blast_overheater_front_on size 20,24 is not multiple of frame size 20,20
-[13Nov2025 21:41:18.580] [Worker-Main-6/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
-[13Nov2025 21:41:18.611] [Worker-Main-1/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture central_heater:block/blast_overheater_side with size 20x12 limits mip level from 4 to 2
-[13Nov2025 21:41:19.123] [Worker-Main-9/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=south,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:41:19.123] [Worker-Main-9/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=north,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:41:19.123] [Worker-Main-9/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=east,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:41:19.123] [Worker-Main-9/WARN] [net.minecraft.client.resources.model.ModelManager/]: Missing textures in model central_heater:stone_stove#facing=west,lit=true:
-    minecraft:textures/atlas/blocks.png:central_heater:block/stone_tile
-[13Nov2025 21:41:19.200] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[13Nov2025 21:41:19.200] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[13Nov2025 21:41:19.322] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device MacBook Pro Speakers
-[13Nov2025 21:41:19.322] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[13Nov2025 21:41:19.371] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[13Nov2025 21:41:19.379] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
-[13Nov2025 21:41:19.379] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[13Nov2025 21:41:19.380] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[13Nov2025 21:41:19.381] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
-[13Nov2025 21:41:19.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
-[13Nov2025 21:41:19.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[13Nov2025 21:41:19.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[13Nov2025 21:41:19.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[13Nov2025 21:41:19.396] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
-[13Nov2025 21:41:19.396] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
-[13Nov2025 21:41:19.397] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[13Nov2025 21:41:19.397] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
-[13Nov2025 21:41:19.397] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
-[13Nov2025 21:41:19.431] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[13Nov2025 21:41:19.484] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
-[13Nov2025 21:42:06.767] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Nov2025 21:42:06.773] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Nov2025 21:42:06.780] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Nov2025 21:42:06.783] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Nov2025 21:47:32.017] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Nov2025 21:47:32.022] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Nov2025 21:47:32.028] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Nov2025 21:47:32.030] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Nov2025 21:47:32.622] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: 连接中断
-[13Nov2025 21:47:32.622] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev退出了游戏
-[13Nov2025 21:47:32.626] [Server thread/INFO] [net.minecraft.server.network.ServerCommonPacketListenerImpl/]: Stopping singleplayer server as player logged out
-[13Nov2025 21:47:32.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[13Nov2025 21:47:32.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[13Nov2025 21:47:32.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[13Nov2025 21:47:32.761] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Nov2025 21:47:32.821] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Nov2025 21:47:32.827] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Nov2025 21:47:32.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
-[13Nov2025 21:47:32.833] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[13Nov2025 21:47:32.833] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[13Nov2025 21:47:32.833] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[13Nov2025 21:47:33.318] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[22Nov2025 07:36:51.607] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: Apple M1 Pro GL version 4.1 Metal - 89.4, Apple
+[22Nov2025 07:36:51.832] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[22Nov2025 07:36:51.837] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.211, --gameDir, ., --assetsDir, /Users/fengyue.john.zhu/.gradle/caches/neoformruntime/assets, --assetIndex, 17]
+[22Nov2025 07:36:52.626] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 155 milliseconds
+[22Nov2025 07:36:53.030] [pool-8-thread-1/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[22Nov2025 07:36:56.256] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[22Nov2025 07:36:56.256] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[22Nov2025 07:36:56.258] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[22Nov2025 07:36:56.258] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[22Nov2025 07:36:56.259] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[22Nov2025 07:36:56.320] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/Users/fengyue.john.zhu/Documents/central_heater/build/moddev/artifacts/neoforge-21.1.211.jar%23184!/assets/.mcassetsroot' uses unexpected schema
+[22Nov2025 07:36:56.320] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/Users/fengyue.john.zhu/Documents/central_heater/build/moddev/artifacts/neoforge-21.1.211.jar%23184!/data/.mcassetsroot' uses unexpected schema
+[22Nov2025 07:36:56.331] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[22Nov2025 07:36:56.336] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[22Nov2025 07:36:56.374] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.3+5
+[22Nov2025 07:36:56.659] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.211, for MC 1.21.1
+[22Nov2025 07:36:56.686] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[22Nov2025 07:36:56.687] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 986.7 microseconds
+[22Nov2025 07:36:57.332] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: [central_heater]
+[22Nov2025 07:36:57.510] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/central_heater, mod/neoforge, mod/jei
+[22Nov2025 07:36:57.583] [Worker-Main-4/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
+[22Nov2025 07:36:57.692] [Worker-Main-5/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
+[22Nov2025 07:36:58.685] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[22Nov2025 07:36:58.686] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[22Nov2025 07:36:58.789] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device MacBook Pro Speakers
+[22Nov2025 07:36:58.790] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[22Nov2025 07:36:58.853] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[22Nov2025 07:36:58.862] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[22Nov2025 07:36:58.863] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[22Nov2025 07:36:58.863] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[22Nov2025 07:36:58.864] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[22Nov2025 07:36:58.868] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[22Nov2025 07:36:58.868] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[22Nov2025 07:36:58.868] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[22Nov2025 07:36:58.869] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[22Nov2025 07:36:58.946] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[22Nov2025 07:36:58.947] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[22Nov2025 07:36:58.947] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[22Nov2025 07:36:58.947] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[22Nov2025 07:36:58.947] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[22Nov2025 07:36:58.987] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[22Nov2025 07:36:59.056] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
+[22Nov2025 07:36:59.056] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 jei:textures/atlas/gui.png-atlas
+[22Nov2025 07:37:05.180] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Deleting level New World
+[22Nov2025 07:37:05.182] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Attempt 1...
+[22Nov2025 07:37:05.642] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1335 recipes
+[22Nov2025 07:37:05.751] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1457 advancements
+[22Nov2025 07:37:09.036] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.21.1
+[22Nov2025 07:37:09.036] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[22Nov2025 07:37:11.489] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[22Nov2025 07:37:11.508] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[22Nov2025 07:37:12.008] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[22Nov2025 07:37:12.492] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 18%
+[22Nov2025 07:37:13.001] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[22Nov2025 07:37:13.415] [Server thread/INFO] [net.neoforged.neoforge.server.permission.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[22Nov2025 07:37:13.430] [progressListener/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 1940 ms
+[22Nov2025 07:37:13.432] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[22Nov2025 07:37:13.432] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[22Nov2025 07:37:13.790] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:42cc985c] logged in with entity id 31 at (-2.5, 64.0, 6.5)
+[22Nov2025 07:37:13.817] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[22Nov2025 07:37:13.902] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:soul_sand_from_seething_sand
+[22Nov2025 07:37:13.902] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:diamond_shard_from_seething_coal_block
+[22Nov2025 07:37:13.902] [Render thread/WARN] [net.minecraft.client.ClientRecipeBook/]: Unknown recipe category: central_heater:seething/minecraft:soul_soil_from_seething_dirt
+[22Nov2025 07:37:13.914] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI...
+[22Nov2025 07:37:13.927] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes...
+[22Nov2025 07:37:13.931] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering item subtypes took 3.426 milliseconds
+[22Nov2025 07:37:13.931] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes...
+[22Nov2025 07:37:13.932] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering fluid subtypes took 741.3 microseconds
+[22Nov2025 07:37:13.932] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients...
+[22Nov2025 07:37:13.993] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering ingredients: jei:minecraft took 60.01 milliseconds
+[22Nov2025 07:37:13.993] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering ingredients took 60.45 milliseconds
+[22Nov2025 07:37:13.993] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering extra ingredients...
+[22Nov2025 07:37:13.993] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering extra ingredients took 317.8 microseconds
+[22Nov2025 07:37:13.994] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering search ingredient aliases...
+[22Nov2025 07:37:13.995] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering search ingredient aliases took 813.2 microseconds
+[22Nov2025 07:37:14.001] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Mod Info...
+[22Nov2025 07:37:14.002] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Mod Info took 352.2 microseconds
+[22Nov2025 07:37:14.010] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories...
+[22Nov2025 07:37:14.019] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering categories took 9.025 milliseconds
+[22Nov2025 07:37:14.019] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions...
+[22Nov2025 07:37:14.021] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering vanilla category extensions took 1.281 milliseconds
+[22Nov2025 07:37:14.021] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts...
+[22Nov2025 07:37:14.022] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipe catalysts took 690.4 microseconds
+[22Nov2025 07:37:14.022] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry...
+[22Nov2025 07:37:14.036] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building recipe registry took 13.76 milliseconds
+[22Nov2025 07:37:14.037] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins...
+[22Nov2025 07:37:14.037] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering advanced plugins took 419.0 microseconds
+[22Nov2025 07:37:14.037] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes...
+[22Nov2025 07:37:14.265] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: jei:minecraft took 227.1 milliseconds
+[22Nov2025 07:37:14.289] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering recipes: jei:internal took 22.60 milliseconds
+[22Nov2025 07:37:14.289] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes took 251.9 milliseconds
+[22Nov2025 07:37:14.293] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers...
+[22Nov2025 07:37:14.295] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering recipes transfer handlers took 2.352 milliseconds
+[22Nov2025 07:37:14.303] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime...
+[22Nov2025 07:37:14.306] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers...
+[22Nov2025 07:37:14.309] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering gui handlers took 3.315 milliseconds
+[22Nov2025 07:37:14.311] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime...
+[22Nov2025 07:37:14.312] [Render thread/INFO] [mezz.jei.gui.startup.JeiGuiStarter/]: Starting JEI GUI
+[22Nov2025 07:37:14.312] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list...
+[22Nov2025 07:37:14.325] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient list took 13.00 milliseconds
+[22Nov2025 07:37:14.325] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter...
+[22Nov2025 07:37:14.339] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Adding 1714 ingredients
+[22Nov2025 07:37:14.466] [Render thread/INFO] [mezz.jei.gui.ingredients.IngredientFilter/]: Added 1714 ingredients
+[22Nov2025 07:37:14.466] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building ingredient filter took 141.3 milliseconds
+[22Nov2025 07:37:14.495] [Render thread/INFO] [mezz.jei.library.load.PluginCallerTimerRunnable/]: Registering Runtime: jei:neoforge_gui took 184.5 milliseconds
+[22Nov2025 07:37:14.496] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Registering Runtime took 185.0 milliseconds
+[22Nov2025 07:37:14.496] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Building runtime took 192.7 milliseconds
+[22Nov2025 07:37:14.496] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime...
+[22Nov2025 07:37:14.501] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime took 5.258 milliseconds
+[22Nov2025 07:37:14.501] [Render thread/INFO] [mezz.jei.core.util.LoggedTimer/]: Starting JEI took 587.3 milliseconds
+[22Nov2025 07:37:14.509] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 2 advancements
+[22Nov2025 07:37:22.034] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 3 advancements
+[22Nov2025 07:37:48.678] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 6 advancements
+[22Nov2025 07:37:52.937] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev has made the advancement [Hot Stuff]
+[22Nov2025 07:37:52.949] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Dev has made the advancement [Hot Stuff]
+[22Nov2025 07:37:52.982] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 13 advancements
+[22Nov2025 07:38:20.725] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 16 advancements
+[22Nov2025 07:39:38.823] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev has made the advancement [Acquire Hardware]
+[22Nov2025 07:39:38.833] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Dev has made the advancement [Acquire Hardware]
+[22Nov2025 07:39:38.882] [Render thread/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 44 advancements
+[22Nov2025 07:39:57.766] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[22Nov2025 07:39:57.789] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[22Nov2025 07:39:57.802] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[22Nov2025 07:39:57.804] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[22Nov2025 07:39:58.308] [Render thread/INFO] [mezz.jei.library.startup.JeiStarter/]: Stopping JEI
+[22Nov2025 07:39:58.308] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime Unavailable...
+[22Nov2025 07:39:58.308] [Render thread/INFO] [mezz.jei.neoforge.plugins.neoforge.NeoForgeGuiPlugin/]: Stopping JEI GUI
+[22Nov2025 07:39:58.310] [Render thread/INFO] [mezz.jei.library.load.PluginCaller/]: Sending Runtime Unavailable took 2.132 milliseconds
+[22Nov2025 07:39:58.375] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[22Nov2025 07:39:58.375] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[22Nov2025 07:39:58.378] [Server thread/INFO] [net.minecraft.server.network.ServerCommonPacketListenerImpl/]: Stopping singleplayer server as player logged out
+[22Nov2025 07:39:58.417] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[22Nov2025 07:39:58.417] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[22Nov2025 07:39:58.418] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[22Nov2025 07:39:59.069] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[22Nov2025 07:39:59.143] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[22Nov2025 07:39:59.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[22Nov2025 07:39:59.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[22Nov2025 07:39:59.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[22Nov2025 07:39:59.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[22Nov2025 07:39:59.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[22Nov2025 07:39:59.692] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

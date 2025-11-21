@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-12T23:22:44.187562	Item Models: central_heater
+// 1.21.1	2025-11-18T18:26:41.998836	Item Models: central_heater
 a81b2d54c7d1f8c2af9f902784018133f2f023e3 assets/central_heater/models/item/blast_overheater.json
 a3d56fb3007aa95a21dcd2216a8b2d2c5b32d7fd assets/central_heater/models/item/brick_stove.json
 addb8f67a4649087f771e24602ecfab726229a7d assets/central_heater/models/item/cobble.json
@@ -12,6 +12,9 @@ b18de5cb82fdf86507e4a5d0da543ba60c1f21cf assets/central_heater/models/item/diamo
 4ebdaac3cc479f6656db48fa434f227a03cdd882 assets/central_heater/models/item/gold_bars.json
 0339d1c68d5dea8834c2697b11a2107e0b8ec418 assets/central_heater/models/item/mud_brick.json
 50afdb24bc0632e9561073e2521536b86ada19a8 assets/central_heater/models/item/mud_brick_stove.json
+03b25991f7173447b85eeb542f7dfbc178276f4e assets/central_heater/models/item/mud_brick_tile_slab.json
+54cbd8970cf8fd12f843b4bd6b03238102a638a4 assets/central_heater/models/item/mud_brick_tile_stair.json
+f1fc26c49013dac3569572c19820c6d5a0be1032 assets/central_heater/models/item/mud_brick_tile_wall.json
 129c4dd15c57091c720e201413ac6e63cca393a5 assets/central_heater/models/item/nether_brick_stove.json
 2948eaa09f9a29b5e05e244c1962eb52e4477caa assets/central_heater/models/item/red_nether_brick.json
 28dedc837b396f4614a30e4b48f98caff153a167 assets/central_heater/models/item/red_nether_brick_stove.json

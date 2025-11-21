@@ -4,9 +4,9 @@
 Time: 2025-10-31 11:59:52
 Description: Packet handling error
 
-java.lang.IllegalArgumentException: No enum constant com.minecart.central_heater.util.SoulFireState.none
+java.lang.IllegalArgumentException: No enum constant com.minecart.central_heater.util.NetherFireState.none
 	at java.base/java.lang.Enum.valueOf(Enum.java:293) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.SoulFireState.valueOf(SoulFireState.java:5) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.NetherFireState.valueOf(SoulFireState.java:5) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.loadAdditional(GoldenStoveBlockEntity.java:63) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.loadWithComponents(BlockEntity.java:83) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.common.extensions.IBlockEntityExtension.onDataPacket(IBlockEntityExtension.java:38) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
@@ -50,7 +50,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 Thread: Render thread
 Stacktrace:
 	at java.base/java.lang.Enum.valueOf(Enum.java:293) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.SoulFireState.valueOf(SoulFireState.java:5) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.NetherFireState.valueOf(SoulFireState.java:5) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.loadAdditional(GoldenStoveBlockEntity.java:63) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.loadWithComponents(BlockEntity.java:83) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.common.extensions.IBlockEntityExtension.onDataPacket(IBlockEntityExtension.java:38) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}

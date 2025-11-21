@@ -38,13 +38,13 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
                 return isFuelValid.test(stack);
             }
             @Override
-            protected void onContentsChanged(int slot) { update(); }
+            protected void onContentsChanged(int slot) { updateBlockEntity(); }
         };
         this.fuelSlot = IntStream.range(0, fuelCapacity).toArray();
         this.itemCapacity = itemCapacity;
         this.items = new StackableItemStackHandler(itemCapacity, 1){
             @Override
-            protected void onContentsChanged(int slot) { update(); }
+            protected void onContentsChanged(int slot) { updateBlockEntity(); }
         };
         this.itemSlot = IntStream.range(fuelCapacity, fuelCapacity + itemCapacity).toArray();
     }
@@ -63,7 +63,7 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
         tag.put("fuels", fuels.serializeNBT(registries));
     }
 
-    public abstract void update();
+    public abstract void updateBlockEntity();
 
 
 

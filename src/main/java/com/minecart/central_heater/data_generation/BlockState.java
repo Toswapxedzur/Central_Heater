@@ -15,6 +15,7 @@ public class BlockState extends BlockStateProvider {
     protected void registerStatesAndModels() {
         simpleBlockWithItem(AllRegistry.stone_brick_tile.get(), cubeAll(AllRegistry.stone_brick_tile.get()));
         simpleBlockWithItem(AllRegistry.deepslate_brick_tile.get(), cubeAll(AllRegistry.deepslate_brick_tile.get()));
+        simpleBlockWithItem(AllRegistry.mud_brick_tile.get(), cubeAll(AllRegistry.mud_brick_tile.get()));
 
         stairsBlock(AllRegistry.stone_brick_tile_stair.get(), blockTexture(AllRegistry.stone_brick_tile.get()));
         slabBlock(AllRegistry.stone_brick_tile_slab.get(), blockTexture(AllRegistry.stone_brick_tile.get()), blockTexture(AllRegistry.stone_brick_tile.get()));
@@ -23,5 +24,9 @@ public class BlockState extends BlockStateProvider {
         stairsBlock(AllRegistry.deepslate_brick_tile_stair.get(), blockTexture(AllRegistry.deepslate_brick_tile.get()));
         slabBlock(AllRegistry.deepslate_brick_tile_slab.get(), blockTexture(AllRegistry.deepslate_brick_tile.get()), blockTexture(AllRegistry.deepslate_brick_tile.get()));
         wallBlock(AllRegistry.deepslate_brick_tile_wall.get(), blockTexture(AllRegistry.deepslate_brick_tile.get()));
+
+        stairsBlock(AllRegistry.mud_brick_tile_stair.get(), blockTexture(AllRegistry.mud_brick_tile.get()));
+        slabBlock(AllRegistry.mud_brick_tile_slab.get(), blockTexture(AllRegistry.mud_brick_tile.get()), blockTexture(AllRegistry.mud_brick_tile.get()));
+        wallBlock(AllRegistry.mud_brick_tile_wall.get(), blockTexture(AllRegistry.mud_brick_tile.get()));
     }
 }

@@ -1,0 +1,10 @@
+{
+  "values": {
+    "minecraft:soul_sand": {
+      "value": 200
+    },
+    "minecraft:soul_soil": {
+      "value": 200
+    }
+  }
+}

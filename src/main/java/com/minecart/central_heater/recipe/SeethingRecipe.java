@@ -8,7 +8,7 @@ public class SeethingRecipe extends AbstractCookingRecipe{
 //    RecipeSerializer<SeethingRecipe> SEETHING_RECIPE = RecipeSerializer.register("seething", new SimpleCookingSerializer<>(SeethingRecipe::new, 400));
 
     public SeethingRecipe(String group, CookingBookCategory category, Ingredient ingredient, ItemStack result, float experience, int cookingTime) {
-        super(AllRegistry.Seething.get(), group, category, ingredient, result, experience, cookingTime);
+        super(AllRegistry.SEETHING.get(), group, category, ingredient, result, experience, cookingTime);
     }
 
     @Override
