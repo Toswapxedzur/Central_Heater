@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "central_heater:block/deepslate_brick_tile",
+    "side": "central_heater:block/deepslate_brick_tile",
+    "top": "central_heater:block/deepslate_brick_tile"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "central_heater:seething",
+  "category": "blocks",
+  "cookingtime": 300,
+  "experience": 1.0,
+  "group": "misc",
+  "ingredient": {
+    "item": "minecraft:dirt"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:soul_soil"
+  }
+}

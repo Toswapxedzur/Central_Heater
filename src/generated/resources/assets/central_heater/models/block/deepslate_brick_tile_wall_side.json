@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "central_heater:block/deepslate_brick_tile"
+  }
+}
