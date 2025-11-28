@@ -1,11 +1,10 @@
 package com.minecart.central_heater;
 
-import com.minecart.central_heater.block_entity_renderer.BrickStoveBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.pot.BrickPotBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.stove.BrickStoveBlockEntityRenderer;
 import com.minecart.central_heater.block_entity_renderer.BurnableCampfireBlockEntityRenderer;
-import com.minecart.central_heater.block_entity_renderer.GoldenStoveBlockEntityRenderer;
-import com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer;
-import com.minecart.central_heater.util.AllUtil;
-import com.minecart.central_heater.nether_fuel.FuelMapHook;
+import com.minecart.central_heater.block_entity_renderer.stove.GoldenStoveBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
@@ -36,9 +35,15 @@ public class Central_heater {
 
         NeoForge.EVENT_BUS.register(this);
 
-        AllRegistry.register(modEventBus);
+        CreativeTab.register(modEventBus);
 
-        modEventBus.addListener(AllUtil::addCreative);
+        AllBlockItem.register(modEventBus);
+
+        AllBlockEntity.register(modEventBus);
+
+        AllRecipe.register(modEventBus);
+
+        modEventBus.addListener(CreativeTab::addCreative);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -58,10 +63,11 @@ public class Central_heater {
 
         @SubscribeEvent
         public static void onRegisterBlockEntityRenderer(EntityRenderersEvent.RegisterRenderers event){
-            event.registerBlockEntityRenderer(AllRegistry.stone_stove_be.get(), StoneStoveBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllRegistry.red_nether_brick_stove_be.get(), GoldenStoveBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllRegistry.brick_stove_be.get(), BrickStoveBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllRegistry.burnable_campfire.get(), BurnableCampfireBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.brick_pot_be.get(), BrickPotBlockEntityRenderer::new);
         }
     }
 

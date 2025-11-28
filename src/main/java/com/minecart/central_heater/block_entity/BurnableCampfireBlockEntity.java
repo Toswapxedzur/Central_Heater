@@ -31,7 +31,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
     public int campfireLitTime;
     public final StackableItemStackHandler fuels = new StackableItemStackHandler(fuel_slots, 1){
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
+        public boolean isItemValid(ItemStack stack) {
             return stack.getBurnTime(RecipeType.SMELTING) > 0;
         }
     };
@@ -84,7 +84,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
     }
 
     public NonNullList<ItemStack> getFuels(){
-        return this.fuels.getStacks();
+        return this.fuels.get();
     }
 
     public void consumeFuel(int amount){
@@ -172,7 +172,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
 
     @Override
     public void clearContent() {
-        this.fuels.getStacks().clear();
+        this.fuels.get().clear();
         super.clearContent();
     }
 }

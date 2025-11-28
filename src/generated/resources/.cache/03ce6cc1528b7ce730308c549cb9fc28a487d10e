@@ -1,5 +1,9 @@
-// 1.21.1	2025-11-18T18:26:41.998836	Item Models: central_heater
-a81b2d54c7d1f8c2af9f902784018133f2f023e3 assets/central_heater/models/item/blast_overheater.json
+// 1.21.1	2025-11-28T11:15:43.147755	Item Models: central_heater
+61cb4d2070798ca3ff3b16ee425b1c6ca6e457d5 assets/central_heater/models/item/blackstone_brick.json
+4661cd3701cfdc0fb8b0c31d10bb1f46f8945b13 assets/central_heater/models/item/blackstone_brick_tile_slab.json
+49c370937ef6015696cccf921401dbe5c96c6644 assets/central_heater/models/item/blackstone_brick_tile_stair.json
+c92f744f7d65d277aa1890ae19ccdad7e33ae380 assets/central_heater/models/item/blackstone_brick_tile_wall.json
+a21789cc8a7691ce5bf7b7651454fcf224ae1664 assets/central_heater/models/item/blackstone_stove.json
 a3d56fb3007aa95a21dcd2216a8b2d2c5b32d7fd assets/central_heater/models/item/brick_stove.json
 addb8f67a4649087f771e24602ecfab726229a7d assets/central_heater/models/item/cobble.json
 aefc44477afad8a42ba9777bc3839f73393ad6cd assets/central_heater/models/item/deepslate_brick.json

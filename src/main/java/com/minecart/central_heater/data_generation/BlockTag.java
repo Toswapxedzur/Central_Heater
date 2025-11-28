@@ -1,11 +1,10 @@
 package com.minecart.central_heater.data_generation;
 
-import com.minecart.central_heater.AllRegistry;
+import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.Central_heater;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -21,18 +20,18 @@ public class BlockTag extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.brick_stove.get(), AllRegistry.mud_brick_stove.get(), AllRegistry.stone_stove.get(),
-                AllRegistry.deepslate_stove.get(), AllRegistry.nether_brick_stove.get(), AllRegistry.red_nether_brick_stove.get());
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.stone_brick_tile.get(), AllRegistry.stone_brick_tile_stair.get(), AllRegistry.stone_brick_tile_slab.get(), AllRegistry.stone_brick_tile_wall.get(),
-                AllRegistry.deepslate_brick_tile.get(), AllRegistry.deepslate_brick_tile_stair.get(), AllRegistry.deepslate_brick_tile_slab.get(), AllRegistry.deepslate_brick_tile_wall.get(),
-                AllRegistry.mud_brick_tile.get(), AllRegistry.mud_brick_tile_stair.get(), AllRegistry.mud_brick_tile_slab.get(), AllRegistry.mud_brick_tile_wall.get());
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllRegistry.gold_bars.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.brick_stove.get(), AllBlockItem.mud_brick_stove.get(), AllBlockItem.stone_stove.get(),
+                AllBlockItem.deepslate_stove.get(), AllBlockItem.nether_brick_stove.get(), AllBlockItem.red_nether_brick_stove.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.stone_brick_tile.get(), AllBlockItem.stone_brick_tile_stair.get(), AllBlockItem.stone_brick_tile_slab.get(), AllBlockItem.stone_brick_tile_wall.get(),
+                AllBlockItem.deepslate_brick_tile.get(), AllBlockItem.deepslate_brick_tile_stair.get(), AllBlockItem.deepslate_brick_tile_slab.get(), AllBlockItem.deepslate_brick_tile_wall.get(),
+                AllBlockItem.mud_brick_tile.get(), AllBlockItem.mud_brick_tile_stair.get(), AllBlockItem.mud_brick_tile_slab.get(), AllBlockItem.mud_brick_tile_wall.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.gold_bars.get());
 
-        tag(BlockTags.NEEDS_STONE_TOOL).add(AllRegistry.nether_brick_stove.get(), AllRegistry.red_nether_brick_stove.get());
-        tag(BlockTags.NEEDS_STONE_TOOL).add(AllRegistry.gold_bars.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(AllBlockItem.nether_brick_stove.get(), AllBlockItem.red_nether_brick_stove.get());
+        tag(BlockTags.NEEDS_STONE_TOOL).add(AllBlockItem.gold_bars.get());
 
-        tag(BlockTags.STAIRS).add(AllRegistry.stone_brick_tile_stair.value(), AllRegistry.deepslate_brick_tile_stair.get(), AllRegistry.mud_brick_tile_stair.get());
-        tag(BlockTags.SLABS).add(AllRegistry.stone_brick_tile_slab.value(), AllRegistry.deepslate_brick_tile_slab.get(), AllRegistry.mud_brick_tile_slab.get());
-        tag(BlockTags.WALLS).add(AllRegistry.stone_brick_tile_wall.value(), AllRegistry.deepslate_brick_tile_wall.get(), AllRegistry.mud_brick_tile_wall.get());
+        tag(BlockTags.STAIRS).add(AllBlockItem.stone_brick_tile_stair.value(), AllBlockItem.deepslate_brick_tile_stair.get(), AllBlockItem.mud_brick_tile_stair.get());
+        tag(BlockTags.SLABS).add(AllBlockItem.stone_brick_tile_slab.value(), AllBlockItem.deepslate_brick_tile_slab.get(), AllBlockItem.mud_brick_tile_slab.get());
+        tag(BlockTags.WALLS).add(AllBlockItem.stone_brick_tile_wall.value(), AllBlockItem.deepslate_brick_tile_wall.get(), AllBlockItem.mud_brick_tile_wall.get());
     }
 }

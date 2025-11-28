@@ -1,0 +1,3 @@
+        withExistingParent("blackstone_brick_tile_stair", modLoc("block/blackstone_brick_tile_stair"));
+        withExistingParent("blackstone_brick_tile_slab", modLoc("block/blackstone_brick_tile_slab"));
+        wallInventory("blackstone_brick_tile_wall", modLoc("block/blackstone_brick_tile"));

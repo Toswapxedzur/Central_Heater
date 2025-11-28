@@ -1,10 +1,9 @@
 package com.minecart.central_heater.data_generation;
 
-import com.minecart.central_heater.AllRegistry;
+import com.minecart.central_heater.AllBlockItem;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 
@@ -17,7 +16,7 @@ public class ItemTag extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(Tags.Items.BRICKS).add(AllRegistry.mud_brick.asItem(), AllRegistry.stone_brick.asItem(), AllRegistry.deepslate_brick.asItem(), AllRegistry.red_nether_brick.asItem());
-        tag(Tags.Items.NUGGETS).add(AllRegistry.diamond_shard.asItem());
+        tag(Tags.Items.BRICKS).add(AllBlockItem.mud_brick.asItem(), AllBlockItem.stone_brick.asItem(), AllBlockItem.deepslate_brick.asItem(), AllBlockItem.red_nether_brick.asItem());
+        tag(Tags.Items.NUGGETS).add(AllBlockItem.diamond_shard.asItem());
     }
 }

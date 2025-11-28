@@ -1,11 +1,9 @@
 package com.minecart.central_heater.block_entity_renderer;
 
 import com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity;
-import com.minecart.central_heater.util.AllUtil;
+import com.minecart.central_heater.util.ItemUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -16,7 +14,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.CampfireBlock;
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 
 public class BurnableCampfireBlockEntityRenderer implements BlockEntityRenderer<BurnableCampfireBlockEntity> {
 
@@ -40,7 +37,7 @@ public class BurnableCampfireBlockEntityRenderer implements BlockEntityRenderer<
                 poseStack.pushPose();
                 poseStack.translate(0.5f , (0.28f + j * 0.25f), 0.5f);
                 poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot()));
-                if(AllUtil.isFlatItem(itemstack)){
+                if(ItemUtil.isFlatItem(itemstack)){
                     poseStack.translate(0, -0.2f, 0f);
                     poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
                     poseStack.scale(0.8f, 0.8f, 0.8f);

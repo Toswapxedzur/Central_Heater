@@ -1,7 +1,6 @@
 package com.minecart.central_heater.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import com.minecart.central_heater.AllRegistry;
+import com.minecart.central_heater.AllBlockEntity;
 import com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,16 +20,13 @@ import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
@@ -67,7 +63,7 @@ public abstract class CampFireBlockMixin extends BaseEntityBlock {
                     stack.hurtAndBreak(1, (ServerLevel) level, player, item -> {});
                     return ItemInteractionResult.SUCCESS;
                 }
-                if(hitResult.getDirection().equals(Direction.UP) && campfireblockentity.fuels.isItemValid(0, stack)){
+                if(hitResult.getDirection().equals(Direction.UP) && campfireblockentity.fuels.isItemValid(stack)){
                     campfireblockentity.addFuel(stack, false);
                     return ItemInteractionResult.SUCCESS;
                 }
@@ -84,11 +80,11 @@ public abstract class CampFireBlockMixin extends BaseEntityBlock {
     @Overwrite
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if (level.isClientSide) {
-            return state.getValue(CampfireBlock.LIT) ? createTickerHelper(blockEntityType, AllRegistry.burnable_campfire.get(), BurnableCampfireBlockEntity::particleTick) : null;
+            return state.getValue(CampfireBlock.LIT) ? createTickerHelper(blockEntityType, AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntity::particleTick) : null;
         } else {
             return state.getValue(CampfireBlock.LIT)
-                    ? createTickerHelper(blockEntityType, AllRegistry.burnable_campfire.get(), BurnableCampfireBlockEntity::cookTick)
-                    : createTickerHelper(blockEntityType, AllRegistry.burnable_campfire.get(), BurnableCampfireBlockEntity::cooldownTick);
+                    ? createTickerHelper(blockEntityType, AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntity::cookTick)
+                    : createTickerHelper(blockEntityType, AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntity::cooldownTick);
         }
     }
 
