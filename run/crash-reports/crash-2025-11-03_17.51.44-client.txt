@@ -10,7 +10,7 @@ java.lang.UnsupportedOperationException: null
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.core.NonNullList.add(NonNullList.java:81) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at java.base/java.util.AbstractList.add(AbstractList.java:113) ~[?:?] {}
 	at java.base/java.util.AbstractCollection.addAll(AbstractCollection.java:338) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.getItems(AbstractStoveBlockEntity.java:106) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.getItems(AbstractStoveBlockEntity.java:106) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BaseContainerBlockEntity.applyImplicitComponents(BaseContainerBlockEntity.java:164) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.applyComponents(BlockEntity.java:304) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.applyComponentsFromItemStack(BlockEntity.java:297) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
@@ -61,7 +61,7 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.core.NonNullList.add(NonNullList.java:81) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at java.base/java.util.AbstractList.add(AbstractList.java:113) ~[?:?] {}
 	at java.base/java.util.AbstractCollection.addAll(AbstractCollection.java:338) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.getItems(AbstractStoveBlockEntity.java:106) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.getItems(AbstractStoveBlockEntity.java:106) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BaseContainerBlockEntity.applyImplicitComponents(BaseContainerBlockEntity.java:164) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.applyComponents(BlockEntity.java:304) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.applyComponentsFromItemStack(BlockEntity.java:297) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}

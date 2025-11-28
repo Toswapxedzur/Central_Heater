@@ -6,9 +6,9 @@ Description: Ticking block entity
 
 java.util.NoSuchElementException: null
 	at java.base/java.util.List.getLast(List.java:843) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.burnOneFuel(StoneStoveBlockEntity.java:125) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.burnOneFuel(StoneStoveBlockEntity.java:125) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractHeaterBlockEntity.updateFuel(AbstractHeaterBlockEntity.java:103) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:53) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:53) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
@@ -28,15 +28,15 @@ A detailed walkthrough of the error, its code path and all known details is as f
 Thread: Server thread
 Stacktrace:
 	at java.base/java.util.List.getLast(List.java:843) ~[?:?] {}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.burnOneFuel(StoneStoveBlockEntity.java:125) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.burnOneFuel(StoneStoveBlockEntity.java:125) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractHeaterBlockEntity.updateFuel(AbstractHeaterBlockEntity.java:103) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:53) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:53) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
 -- Block entity being ticked --
 Details:
-	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.StoneStoveBlockEntity
+	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity
 	Block: Block{central_heater:stone_stove}[facing=north,lit=true]
 	Block location: World: (-221,74,246), Section: (at 3,10,6 in -14,4,15; chunk contains blocks -224,-64,240 to -209,319,255), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
 	Block: Block{central_heater:stone_stove}[facing=north,lit=true]

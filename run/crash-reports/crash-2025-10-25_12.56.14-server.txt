@@ -5,7 +5,7 @@ Time: 2025-10-25 12:56:14
 Description: Ticking block entity
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity.getContainerSize()" because "entity.entity" is null
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:92) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:92) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
@@ -24,13 +24,13 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:92) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:92) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
 -- Block entity being ticked --
 Details:
-	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.StoneStoveBlockEntity
+	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity
 	Block: Block{central_heater:stone_stove}[facing=south,lit=false]
 	Block location: World: (207,71,-286), Section: (at 15,7,2 in 12,4,-18; chunk contains blocks 192,-64,-288 to 207,319,-273), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,-64,-512 to 511,319,-1)
 	Block: Block{central_heater:stone_stove}[facing=south,lit=false]

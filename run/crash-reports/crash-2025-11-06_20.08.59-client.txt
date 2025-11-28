@@ -4,12 +4,12 @@
 Time: 2025-11-06 20:08:59
 Description: Unexpected error
 
-java.lang.IllegalStateException: Invalid block entity central_heater:stone_stove // com.minecart.central_heater.block_entity.StoneStoveBlockEntity state at BlockPos{x=5, y=117, z=-4}, got Block{central_heater:brick_stove}[facing=east,lit=false]
+java.lang.IllegalStateException: Invalid block entity central_heater:stone_stove // com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity state at BlockPos{x=5, y=117, z=-4}, got Block{central_heater:brick_stove}[facing=east,lit=false]
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.validateBlockState(BlockEntity.java:52) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.<init>(BlockEntity.java:46) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BaseContainerBlockEntity.<init>(BaseContainerBlockEntity.java:31) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.<init>(AbstractStoveBlockEntity.java:33) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.<init>(StoneStoveBlockEntity.java:42) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.<init>(AbstractStoveBlockEntity.java:33) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.<init>(StoneStoveBlockEntity.java:42) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block.BrickStoveBlock.newBlockEntity(BrickStoveBlock.java:54) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk.setBlockState(LevelChunk.java:294) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.setBlock(Level.java:253) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
@@ -60,8 +60,8 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.validateBlockState(BlockEntity.java:52) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BlockEntity.<init>(BlockEntity.java:46) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.BaseContainerBlockEntity.<init>(BaseContainerBlockEntity.java:31) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,re:mixin}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.<init>(AbstractStoveBlockEntity.java:33) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.StoneStoveBlockEntity.<init>(StoneStoveBlockEntity.java:42) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.<init>(AbstractStoveBlockEntity.java:33) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.<init>(StoneStoveBlockEntity.java:42) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block.BrickStoveBlock.newBlockEntity(BrickStoveBlock.java:54) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk.setBlockState(LevelChunk.java:294) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.setBlock(Level.java:253) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}

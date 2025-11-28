@@ -42,7 +42,7 @@ Details:
 Stacktrace:
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.registries.DeferredHolder.value(DeferredHolder.java:103) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.registries.DeferredHolder.get(DeferredHolder.java:117) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.AllRegistry.<clinit>(AllRegistry.java:42) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.AllBlockItem.<clinit>(AllRegistry.java:42) ~[%23186!/:?] {re:mixin,re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.Central_heater.<init>(Central_heater.java:38) ~[%23186!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}

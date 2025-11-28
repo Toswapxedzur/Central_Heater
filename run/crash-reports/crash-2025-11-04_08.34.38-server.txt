@@ -7,7 +7,7 @@ Description: Ticking block entity
 java.lang.RuntimeException: Slot 5 not in valid range - [0,4)
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:171) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.setStackInSlot(ItemStackHandler.java:38) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.setItem(AbstractStoveBlockEntity.java:112) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.setItem(AbstractStoveBlockEntity.java:112) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.tryMoveInItem(HopperBlockEntity.java:342) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.addItem(HopperBlockEntity.java:297) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.ejectItems(HopperBlockEntity.java:153) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}
@@ -33,7 +33,7 @@ Thread: Server thread
 Stacktrace:
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:171) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.setStackInSlot(ItemStackHandler.java:38) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.AbstractStoveBlockEntity.setItem(AbstractStoveBlockEntity.java:112) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity.setItem(AbstractStoveBlockEntity.java:112) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.tryMoveInItem(HopperBlockEntity.java:342) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.addItem(HopperBlockEntity.java:297) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.block.entity.HopperBlockEntity.ejectItems(HopperBlockEntity.java:153) ~[neoforge-21.1.211.jar%23184!/:?] {re:mixin,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B,pl:mixin:A}

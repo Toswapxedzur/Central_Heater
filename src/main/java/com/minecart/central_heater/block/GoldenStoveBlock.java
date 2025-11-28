@@ -1,7 +1,7 @@
 package com.minecart.central_heater.block;
 
-import com.minecart.central_heater.AllRegistry;
-import com.minecart.central_heater.block_entity.GoldenStoveBlockEntity;
+import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity;
 import com.minecart.central_heater.util.AllConstants;
 import com.minecart.central_heater.util.NetherFireState;
 import com.mojang.serialization.MapCodec;
@@ -106,9 +106,9 @@ public class GoldenStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllRegistry.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllRegistry.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::serverTick);
         }
     }
 

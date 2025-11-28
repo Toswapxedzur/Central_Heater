@@ -5,8 +5,8 @@ Time: 2025-10-23 13:23:32
 Description: Rendering Block Entity
 
 java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 2
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:29) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:19) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:29) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:19) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:91) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:74) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:109) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
@@ -43,8 +43,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:29) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:19) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:29) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:19) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:91) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:74) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:109) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
@@ -53,7 +53,7 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1277) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 -- Block Entity Details --
 Details:
-	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.StoneStoveBlockEntity
+	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity
 	Block: Block{central_heater:stone_stove}[facing=west,lit=false]
 	Block location: World: (-611,69,220), Section: (at 13,5,12 in -39,4,13; chunk contains blocks -624,-64,208 to -609,319,223), Region: (-2,0; contains chunks -64,0 to -33,31, blocks -1024,-64,0 to -513,319,511)
 	Block: Block{central_heater:stone_stove}[facing=west,lit=false]

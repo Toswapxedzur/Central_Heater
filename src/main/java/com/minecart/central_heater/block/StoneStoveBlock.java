@@ -1,8 +1,7 @@
 package com.minecart.central_heater.block;
 
-import com.minecart.central_heater.AllRegistry;
-import com.minecart.central_heater.block_entity.BrickStoveBlockEntity;
-import com.minecart.central_heater.block_entity.StoneStoveBlockEntity;
+import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -103,9 +102,9 @@ public class StoneStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllRegistry.stone_stove_be.get(), StoneStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllRegistry.stone_stove_be.get(), StoneStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntity::serverTick);
         }
     }
 

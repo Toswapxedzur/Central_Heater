@@ -1,11 +1,8 @@
 package com.minecart.central_heater.block;
 
-import com.minecart.central_heater.AllRegistry;
-import com.minecart.central_heater.block_entity.BrickStoveBlockEntity;
-import com.minecart.central_heater.block_entity.GoldenStoveBlockEntity;
-import com.minecart.central_heater.block_entity.StoneStoveBlockEntity;
+import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.block_entity.stove.BrickStoveBlockEntity;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.SimpleMapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -33,11 +30,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.fml.LogicalSide;
 import org.jetbrains.annotations.Nullable;
 
 public class BrickStoveBlock extends BaseEntityBlock {
@@ -50,7 +45,6 @@ public class BrickStoveBlock extends BaseEntityBlock {
 
     public BrickStoveBlock(Properties properties) {
         super(properties.lightLevel(state -> state.getValue(LIT) ? 13 : 0).noOcclusion());
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(false)));
     }
 
     @Override
@@ -102,9 +96,9 @@ public class BrickStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllRegistry.brick_stove_be.get(), BrickStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllRegistry.brick_stove_be.get(), BrickStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntity::serverTick);
         }
     }
 
@@ -143,11 +137,6 @@ public class BrickStoveBlock extends BaseEntityBlock {
             super.onRemove(state, level, pos, newState, movedByPiston);
             level.updateNeighbourForOutputSignal(pos, this);
         }
-    }
-
-    @Override
-    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
-        return !state.getValue(LIT).booleanValue();
     }
 
     @Override

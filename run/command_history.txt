@@ -1,13 +1,4 @@
 /time set day
-/give Dev central_heater:cobble
-/give Dev central_heater:stone_brick
-/time set night
-/time set day
-/time set night
-/time set day
-/give Dev minecraft:soul_sand
-/kill @e[type=minecraft:warden]
-/time set day
 /gamemode survival
 /gamemode creative
 /time set day
@@ -48,3 +39,12 @@
 /time set day
 /gamemode creative
 /reload
+/time set day
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/locate biome minecraft:swamp
+/tp @s 1869 67 -2432
+/time set night

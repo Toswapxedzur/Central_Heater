@@ -18,7 +18,7 @@ public class RecipeUtil {
     }
 
     public static <T extends AbstractCookingRecipe> int getCookTime(RecipeType<T> type, ItemStack stack){
-        return getCookTime(LevelUtil.getLevel(), type, stack);
+        return getCookTime(VirtualLevel.getLevel(), type, stack);
     }
 
     public static <T extends AbstractCookingRecipe> int getCookTime(Level level, RecipeType<T> type, ItemStack stack, float multiplier){
@@ -40,6 +40,6 @@ public class RecipeUtil {
     }
 
     public static <T extends AbstractCookingRecipe> ItemStack getCookResult(RecipeType<T> recipeType, ItemStack stack){
-        return getCookResult(LevelUtil.getLevel(), recipeType, stack);
+        return getCookResult(VirtualLevel.getLevel(), recipeType, stack);
     }
 }

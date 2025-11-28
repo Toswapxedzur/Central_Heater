@@ -1,22 +1,28 @@
 package com.minecart.central_heater.data_generation;
 
-import com.minecart.central_heater.AllRegistry;
+import com.minecart.central_heater.AllBlockItem;
+import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.recipe.SeethingRecipe;
+import com.minecart.central_heater.recipe.SmolderingRecipeBuilder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class Recipe extends RecipeProvider implements IConditionBuilder {
+public class Recipe extends ModRecipeProvider implements IConditionBuilder {
     public Recipe(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
@@ -39,101 +45,95 @@ public class Recipe extends RecipeProvider implements IConditionBuilder {
         emptyRecipe(recipeOutput, "minecraft:stone_brick_walls_from_stone_stonecutting");
 
         //add recipe from stone cutter
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, AllRegistry.stone_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILES, AllRegistry.deepslate_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_STAIRS, AllRegistry.deepslate_brick_tile);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_SLAB, AllRegistry.deepslate_brick_tile, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_WALL, AllRegistry.deepslate_brick_tile);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, AllBlockItem.stone_brick_tile);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILES, AllBlockItem.deepslate_brick_tile);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_STAIRS, AllBlockItem.deepslate_brick_tile);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_SLAB, AllBlockItem.deepslate_brick_tile, 2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILE_WALL, AllBlockItem.deepslate_brick_tile);
 
         //deal with tile bricks recipes in crafting
-        tileBrickRecipe(recipeOutput, AllRegistry.stone_brick_tile.asItem(), AllRegistry.stone_brick.asItem());
-        tileBrickRecipe(recipeOutput, AllRegistry.deepslate_brick_tile.asItem(), AllRegistry.deepslate_brick.asItem());
-        tileBrickRecipe(recipeOutput, AllRegistry.mud_brick_tile.asItem(), AllRegistry.mud_brick.asItem());
+        tileBrickRecipe(recipeOutput, AllBlockItem.stone_brick_tile.asItem(), AllBlockItem.stone_brick.asItem());
+        tileBrickRecipe(recipeOutput, AllBlockItem.deepslate_brick_tile.asItem(), AllBlockItem.deepslate_brick.asItem());
+        tileBrickRecipe(recipeOutput, AllBlockItem.mud_brick_tile.asItem(), AllBlockItem.mud_brick.asItem());
         tileBrickRecipe(recipeOutput, Items.NETHER_BRICKS, Items.NETHER_BRICK);
-        tileBrickRecipe(recipeOutput, Items.RED_NETHER_BRICKS, AllRegistry.red_nether_brick.asItem());
+        tileBrickRecipe(recipeOutput, Items.RED_NETHER_BRICKS, AllBlockItem.red_nether_brick.asItem());
         tileBrickRecipe(recipeOutput, Items.BRICKS, Items.BRICK);
 
         //deal with bricks recipe in crafting
-        brickRecipe(recipeOutput, Items.STONE_BRICKS, AllRegistry.stone_brick.asItem());
-        brickRecipe(recipeOutput, Items.DEEPSLATE_BRICKS, AllRegistry.deepslate_brick.asItem());
-        brickRecipe(recipeOutput, Items.MUD_BRICKS, AllRegistry.mud_brick.asItem());
+        brickRecipe(recipeOutput, Items.STONE_BRICKS, AllBlockItem.stone_brick.asItem());
+        brickRecipe(recipeOutput, Items.DEEPSLATE_BRICKS, AllBlockItem.deepslate_brick.asItem());
+        brickRecipe(recipeOutput, Items.MUD_BRICKS, AllBlockItem.mud_brick.asItem());
 
         //other special blocks
-        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.stone_brick_tile.asItem(), AllRegistry.stone_brick_tile_stair.asItem(),
-                AllRegistry.stone_brick_tile_slab.asItem(), AllRegistry.stone_brick_tile_wall.asItem());
-        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.deepslate_brick_tile.asItem(), AllRegistry.deepslate_brick_tile_stair.asItem(),
-                AllRegistry.deepslate_brick_tile_slab.asItem(), AllRegistry.deepslate_brick_tile_wall.asItem());
-        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllRegistry.mud_brick_tile.asItem(), AllRegistry.mud_brick_tile_stair.asItem(),
-                AllRegistry.mud_brick_tile_slab.asItem(), AllRegistry.mud_brick_tile_wall.asItem());
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllBlockItem.stone_brick_tile.asItem(), AllBlockItem.stone_brick_tile_stair.asItem(),
+                AllBlockItem.stone_brick_tile_slab.asItem(), AllBlockItem.stone_brick_tile_wall.asItem());
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllBlockItem.deepslate_brick_tile.asItem(), AllBlockItem.deepslate_brick_tile_stair.asItem(),
+                AllBlockItem.deepslate_brick_tile_slab.asItem(), AllBlockItem.deepslate_brick_tile_wall.asItem());
+        stairSlabWallCraftingStoneCuttingRecipe(recipeOutput, AllBlockItem.mud_brick_tile.asItem(), AllBlockItem.mud_brick_tile_stair.asItem(),
+                AllBlockItem.mud_brick_tile_slab.asItem(), AllBlockItem.mud_brick_tile_wall.asItem());
 
         //other things
-        oreBlasting(recipeOutput, List.of(Items.PACKED_MUD), RecipeCategory.MISC, AllRegistry.mud_brick, 0.1f, 200, "brick");
+        oreBlasting(recipeOutput, List.of(Items.PACKED_MUD), RecipeCategory.MISC, AllBlockItem.mud_brick, 0.1f, 200, "brick");
 
-        oreSeething(recipeOutput, List.of(Items.COAL_BLOCK), RecipeCategory.MISC, AllRegistry.diamond_shard, 1f, 1000, "misc");
+        oreSeething(recipeOutput, List.of(Items.COAL_BLOCK), RecipeCategory.MISC, AllBlockItem.diamond_shard, 1f, 1000, "misc");
         oreSeething(recipeOutput, List.of(Items.SAND), RecipeCategory.MISC, Items.SOUL_SAND, 1f, 400, "misc");
         oreSeething(recipeOutput, List.of(Items.DIRT), RecipeCategory.MISC, Items.SOUL_SOIL, 1f, 300, "misc");
+        oreSeething(recipeOutput, List.of(Items.INK_SAC), RecipeCategory.MISC, Items.GLOW_INK_SAC, 1f, 1000, "misc");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.diamond_shard, 4).requires(Items.DIAMOND)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.diamond_shard, 4).requires(Items.DIAMOND)
                 .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).group("misc").save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(AllRegistry.diamond_shard, 4)
-                .unlockedBy(getHasName(AllRegistry.diamond_shard), has(AllRegistry.diamond_shard)).group("misc").save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND).requires(AllBlockItem.diamond_shard, 4)
+                .unlockedBy(getHasName(AllBlockItem.diamond_shard), has(AllBlockItem.diamond_shard)).group("misc").save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.stone_brick)
-                .requires(AllRegistry.cobble).requires(Items.CLAY_BALL).requires(Items.FLINT).requires(Items.IRON_NUGGET)
-                .unlockedBy(getHasName(AllRegistry.cobble), has(AllRegistry.cobble)).group("misc").save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.stone_brick)
+                .requires(AllBlockItem.cobble).requires(Items.CLAY_BALL).requires(Items.FLINT).requires(Items.IRON_NUGGET)
+                .unlockedBy(getHasName(AllBlockItem.cobble), has(AllBlockItem.cobble)).group("misc").save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.deepslate_brick)
-                .requires(AllRegistry.deepslate_cobble).requires(Items.CLAY_BALL).requires(Items.FLINT).requires(Items.GOLD_NUGGET)
-                .unlockedBy(getHasName(AllRegistry.deepslate_cobble), has(AllRegistry.deepslate_cobble)).group("misc").save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.deepslate_brick)
+                .requires(AllBlockItem.deepslate_cobble).requires(Items.CLAY_BALL).requires(Items.FLINT).requires(Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(AllBlockItem.deepslate_cobble), has(AllBlockItem.deepslate_cobble)).group("misc").save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.red_nether_brick).requires(Items.NETHER_BRICK).requires(Ingredient.of(Items.NETHER_WART, Items.RED_DYE))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.red_nether_brick).requires(Items.NETHER_BRICK).requires(Ingredient.of(Items.NETHER_WART, Items.RED_DYE))
                 .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).group("misc").save(recipeOutput);
 
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.brick_stove, Items.BRICK, Items.IRON_INGOT, Items.IRON_BARS);
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.mud_brick_stove, AllRegistry.mud_brick, Items.IRON_INGOT, Items.IRON_BARS);
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.stone_stove, AllRegistry.stone_brick, Items.IRON_INGOT, Items.IRON_BARS);
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.deepslate_stove, AllRegistry.deepslate_brick, Items.IRON_INGOT, Items.IRON_BARS);
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.nether_brick_stove, Items.NETHER_BRICK, Items.GOLD_INGOT, AllRegistry.gold_bars);
-        stoveCraftingRecipeBuilder(recipeOutput, AllRegistry.red_nether_brick_stove, AllRegistry.red_nether_brick, Items.GOLD_INGOT, AllRegistry.gold_bars);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.brick_stove, Items.BRICK, Items.IRON_INGOT, Items.IRON_BARS);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.mud_brick_stove, AllBlockItem.mud_brick, Items.IRON_INGOT, Items.IRON_BARS);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.stone_stove, AllBlockItem.stone_brick, Items.IRON_INGOT, Items.IRON_BARS);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.deepslate_stove, AllBlockItem.deepslate_brick, Items.IRON_INGOT, Items.IRON_BARS);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.nether_brick_stove, Items.NETHER_BRICK, Items.GOLD_INGOT, AllBlockItem.gold_bars);
+        stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.red_nether_brick_stove, AllBlockItem.red_nether_brick, Items.GOLD_INGOT, AllBlockItem.gold_bars);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllRegistry.gold_bars, 16).pattern("###").pattern("###").define('#', Items.GOLD_INGOT)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.gold_bars, 16).pattern("###").pattern("###").define('#', Items.GOLD_INGOT)
                 .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT)).group("misc").save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.cobble, 4).requires(Items.COBBLESTONE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.cobble, 4).requires(Items.COBBLESTONE)
                 .unlockedBy(getHasName(Items.COBBLESTONE), has(Items.COBBLESTONE)).group("misc").save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COBBLESTONE).requires(AllRegistry.cobble, 4)
-                .unlockedBy(getHasName(AllRegistry.cobble), has(AllRegistry.cobble)).group("misc").save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COBBLESTONE).requires(AllBlockItem.cobble, 4)
+                .unlockedBy(getHasName(AllBlockItem.cobble), has(AllBlockItem.cobble)).group("misc").save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllRegistry.deepslate_cobble, 4).requires(Items.COBBLED_DEEPSLATE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.deepslate_cobble, 4).requires(Items.COBBLED_DEEPSLATE)
                 .unlockedBy(getHasName(Items.COBBLED_DEEPSLATE), has(Items.COBBLED_DEEPSLATE)).group("misc").save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COBBLED_DEEPSLATE).requires(AllRegistry.deepslate_cobble, 4)
-                .unlockedBy(getHasName(AllRegistry.deepslate_cobble), has(AllRegistry.deepslate_cobble)).group("misc").save(recipeOutput);
-    }
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COBBLED_DEEPSLATE).requires(AllBlockItem.deepslate_cobble, 4)
+                .unlockedBy(getHasName(AllBlockItem.deepslate_cobble), has(AllBlockItem.deepslate_cobble)).group("misc").save(recipeOutput);
 
-    protected static void emptyRecipe(RecipeOutput output, String id){
-        emptyRecipe(output, ResourceLocation.parse(id));
-    }
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ICE)), FluidStack.EMPTY, ItemStack.EMPTY, new FluidStack(Fluids.WATER, 750),200, 1,1);
 
-    protected static void emptyRecipe(RecipeOutput output, ResourceLocation id){
-//        dummy recipe
-        SimpleCookingRecipeBuilder.generic(Ingredient.of(Items.BARRIER), RecipeCategory.MISC, Items.BARRIER,
-                0f, 0, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new).group("ungroupable").unlockedBy(getHasName(Items.BARRIER), has(Items.BARRIER)).save(output, id);
-    }
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.MAGMA_CREAM)), new FluidStack(Fluids.LAVA, 250), ItemStack.EMPTY, new FluidStack(Fluids.LAVA, 500),500, 3,2);
 
-    protected static void oreSeething(
-            RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group){
-        oreCooking(
-                recipeOutput,
-                AllRegistry.Seething_ser.get(),
-                SeethingRecipe::new,
-                ingredients,
-                category,
-                result,
-                experience,
-                cookingTime,
-                group,
-                "_from_seething"
-        );
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.CHARCOAL)), new FluidStack(Fluids.LAVA, 200), new ItemStack(Items.COAL), new FluidStack(Fluids.LAVA, 200),400, 2,2);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.BONE)), FluidStack.EMPTY, new ItemStack(Items.BONE_MEAL, 4), FluidStack.EMPTY,800, 1,1);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.NETHERITE_SCRAP),
+                Ingredient.of(Items.NETHERITE_SCRAP), Ingredient.of(Items.NETHERITE_SCRAP)), new FluidStack(Fluids.LAVA, 500), new ItemStack(Items.NETHERITE_INGOT), FluidStack.EMPTY,2400, 3,2);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.OBSIDIAN), Ingredient.of(AllBlockItem.diamond_shard)), new FluidStack(Fluids.WATER, 250), new ItemStack(Items.CRYING_OBSIDIAN), FluidStack.EMPTY,2000, 3,0);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.EGG), Ingredient.of(Items.CLAY_BALL), Ingredient.of(Items.MILK_BUCKET)), FluidStack.EMPTY, new ItemStack(Items.BUCKET), FluidStack.EMPTY,400, 1,1);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.deepslate_cobble), Ingredient.of(Items.GOLD_NUGGET)), new FluidStack(Fluids.LAVA, 300), new ItemStack(AllBlockItem.deepslate_brick.asItem()), new FluidStack(Fluids.LAVA, 250),200, 2,2);
+
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.cobble), Ingredient.of(Items.IRON_NUGGET)), new FluidStack(Fluids.LAVA, 150), new ItemStack(AllBlockItem.stone_brick.asItem()), new FluidStack(Fluids.LAVA, 100),150, 1,2);
     }
 
     protected static void tileBrickRecipe(RecipeOutput output, Item result, Item ingredient){

@@ -5,9 +5,9 @@ Time: 2025-11-03 21:41:47
 Description: Rendering Block Entity
 
 java.lang.ArrayIndexOutOfBoundsException: Index 7 out of bounds for length 4
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.renderFuel(StoneStoveBlockEntityRenderer.java:62) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:31) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:20) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.renderFuel(StoneStoveBlockEntityRenderer.java:62) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:31) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:20) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:91) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:74) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:109) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
@@ -44,9 +44,9 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.renderFuel(StoneStoveBlockEntityRenderer.java:62) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:31) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:20) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.renderFuel(StoneStoveBlockEntityRenderer.java:62) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:31) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity_renderer.stove.StoneStoveBlockEntityRenderer.render(StoneStoveBlockEntityRenderer.java:20) ~[%23186!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:91) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:74) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:109) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:runtimedistcleaner:A}
@@ -55,7 +55,7 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1277) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 -- Block Entity Details --
 Details:
-	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.StoneStoveBlockEntity
+	Name: central_heater:stone_stove // com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity
 	Block: Block{central_heater:stone_stove}[facing=south,lit=false]
 	Block location: World: (211,65,-123), Section: (at 3,1,5 in 13,4,-8; chunk contains blocks 208,-64,-128 to 223,319,-113), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,-64,-512 to 511,319,-1)
 	Block: Block{central_heater:stone_stove}[facing=south,lit=false]

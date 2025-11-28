@@ -8,9 +8,9 @@ java.lang.NullPointerException: Cannot invoke "java.util.Map.isEmpty()" because 
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
@@ -32,15 +32,15 @@ Stacktrace:
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B}
 -- Block entity being ticked --
 Details:
-	Name: central_heater:red_nether_brick_stove // com.minecart.central_heater.block_entity.GoldenStoveBlockEntity
+	Name: central_heater:red_nether_brick_stove // com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity
 	Block: Block{central_heater:red_nether_brick_stove}[facing=north,lit_soul=none]
 	Block location: World: (-39,118,93), Section: (at 9,6,13 in -3,7,5; chunk contains blocks -48,-64,80 to -33,319,95), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
 	Block: Block{central_heater:red_nether_brick_stove}[facing=north,lit_soul=none]
