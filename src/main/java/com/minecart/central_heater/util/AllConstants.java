@@ -25,8 +25,8 @@ public class AllConstants {
             {new Vec3(-0.15, 0.3, -0.15), new Vec3(-0.15, 0.3, 0.15), new Vec3(0.15, 0.3, 0), new Vec3(0, 0.55, 0)}};
 
     public static final Vec3[] potInvLoc8 = new Vec3[]{
-            new Vec3(0.15, 0.375f, 0.15), new Vec3(0.15, 0.375f, -0.15), new Vec3(-0.15, 0.375f, 0.15), new Vec3(-0.15, 0.375f, -0.15),
-            new Vec3(0.25, 0.625f, 0), new Vec3(-0.25, 0.625f, 0), new Vec3(0, 0.625f, 0.25), new Vec3(0, 0.625f, -0.25)
+            new Vec3(0.15, 0.375f, 0.15), new Vec3(0.15, 0.375f, -0.15), new Vec3(-0.15, 0.375f, -0.15), new Vec3(-0.15, 0.375f, 0.15),
+            new Vec3(0.25, 0.625f, 0), new Vec3(0, 0.625f, -0.25), new Vec3(-0.25, 0.625f, 0), new Vec3(0, 0.625f, 0.25)
     };
 
 }

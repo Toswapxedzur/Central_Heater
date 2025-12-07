@@ -45,6 +45,7 @@ public class BrickStoveBlock extends BaseEntityBlock {
 
     public BrickStoveBlock(Properties properties) {
         super(properties.lightLevel(state -> state.getValue(LIT) ? 13 : 0).noOcclusion());
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, Boolean.valueOf(false)));
     }
 
     @Override
@@ -96,9 +97,9 @@ public class BrickStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove.get(), BrickStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.brick_stove.get(), BrickStoveBlockEntity::serverTick);
         }
     }
 

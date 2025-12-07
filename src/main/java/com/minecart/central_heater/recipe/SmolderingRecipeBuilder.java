@@ -12,6 +12,7 @@ import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class SmolderingRecipeBuilder implements RecipeBuilder {
     protected final NonNullList<Ingredient> ingredients;
     protected final FluidStack fluidIngredient;
-    protected final ItemStack result;
+    protected final NonNullList<ItemStack> result;
     protected final FluidStack fluidResult;
     protected final int time;
     protected final int tier;
@@ -33,7 +34,7 @@ public class SmolderingRecipeBuilder implements RecipeBuilder {
     @Nullable
     private String group;
 
-    private SmolderingRecipeBuilder(NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, ItemStack result, FluidStack fluidResult,int time, int tier, int fireLevel){
+    private SmolderingRecipeBuilder(NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, NonNullList<ItemStack> result, FluidStack fluidResult,int time, int tier, int fireLevel){
         this.ingredients = ingredients;
         this.fluidIngredient = fluidIngredient;
         this.result = result;
@@ -43,7 +44,7 @@ public class SmolderingRecipeBuilder implements RecipeBuilder {
         this.fireLevel = fireLevel;
     }
 
-    public static SmolderingRecipeBuilder create(NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, ItemStack result, FluidStack fluidResult,int time, int tier,int fireLevel){
+    public static SmolderingRecipeBuilder create(NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, NonNullList<ItemStack> result, FluidStack fluidResult,int time, int tier,int fireLevel){
         return new SmolderingRecipeBuilder(ingredients, fluidIngredient, result, fluidResult,time, tier,fireLevel);
     }
 
@@ -61,7 +62,7 @@ public class SmolderingRecipeBuilder implements RecipeBuilder {
 
     @Override
     public Item getResult() {
-        return result.getItem();
+        return result.size() > 0 ? result.get(0).getItem() : ItemStack.EMPTY.getItem();
     }
 
     @Override

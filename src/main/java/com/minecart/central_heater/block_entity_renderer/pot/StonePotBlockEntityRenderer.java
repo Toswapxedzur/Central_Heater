@@ -1,6 +1,5 @@
 package com.minecart.central_heater.block_entity_renderer.pot;
 
-import com.minecart.central_heater.block_entity.pot.BrickPotBlockEntity;
 import com.minecart.central_heater.block_entity.pot.StonePotBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -10,9 +9,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StonePotBlockEntityRenderer extends AbstractPotBlockEntityRenderer implements BlockEntityRenderer<StonePotBlockEntity> {
+public class StonePotBlockEntityRenderer extends QuadruplePotBlockEntityRenderer implements BlockEntityRenderer<StonePotBlockEntity> {
     public StonePotBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(context, 8);
+        super(context);
     }
 
     @Override

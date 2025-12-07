@@ -102,9 +102,9 @@ public class StoneStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove.get(), StoneStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove.get(), StoneStoveBlockEntity::serverTick);
         }
     }
 

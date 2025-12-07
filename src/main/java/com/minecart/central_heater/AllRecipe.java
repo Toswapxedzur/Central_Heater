@@ -1,6 +1,8 @@
 package com.minecart.central_heater;
 
+import com.minecart.central_heater.recipe.FireBrewingRecipe;
 import com.minecart.central_heater.recipe.SeethingRecipe;
+import com.minecart.central_heater.recipe.SimpleSmolderingRecipeSerializer;
 import com.minecart.central_heater.recipe.SmolderingRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -25,6 +27,9 @@ public class AllRecipe {
             return "smoldering";
         }
     });
+
+    public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<FireBrewingRecipe>> FIRE_BREWING_SERIALIZER = RECIPE_SERIALIZERS.register("smoldering_fire_brewing",
+            ()->new SimpleSmolderingRecipeSerializer<>(()->new FireBrewingRecipe()));
 
     public static void register(IEventBus modEventbus){
         RECIPE_TYPES.register(modEventbus);

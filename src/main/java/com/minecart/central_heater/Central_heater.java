@@ -1,6 +1,9 @@
 package com.minecart.central_heater;
 
 import com.minecart.central_heater.block_entity_renderer.pot.BrickPotBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.pot.CauldronBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.pot.GoldenCauldronBlockEntityRenderer;
+import com.minecart.central_heater.block_entity_renderer.pot.StonePotBlockEntityRenderer;
 import com.minecart.central_heater.block_entity_renderer.stove.BrickStoveBlockEntityRenderer;
 import com.minecart.central_heater.block_entity_renderer.BurnableCampfireBlockEntityRenderer;
 import com.minecart.central_heater.block_entity_renderer.stove.GoldenStoveBlockEntityRenderer;
@@ -43,6 +46,8 @@ public class Central_heater {
 
         AllRecipe.register(modEventBus);
 
+        AllDataComponents.register(modEventBus);
+
         modEventBus.addListener(CreativeTab::addCreative);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -63,11 +68,14 @@ public class Central_heater {
 
         @SubscribeEvent
         public static void onRegisterBlockEntityRenderer(EntityRenderersEvent.RegisterRenderers event){
-            event.registerBlockEntityRenderer(AllBlockEntity.stone_stove_be.get(), StoneStoveBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllBlockEntity.brick_stove_be.get(), BrickStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.stone_stove.get(), StoneStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.red_nether_brick_stove.get(), GoldenStoveBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.brick_stove.get(), BrickStoveBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllBlockEntity.brick_pot_be.get(), BrickPotBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.pot.get(), BrickPotBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.stone_pot.get(), StonePotBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.cauldron.get(), CauldronBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.golden_cauldron.get(), GoldenCauldronBlockEntityRenderer::new);
         }
     }
 

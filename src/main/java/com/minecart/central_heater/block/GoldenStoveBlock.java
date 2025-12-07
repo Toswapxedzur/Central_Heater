@@ -106,9 +106,9 @@ public class GoldenStoveBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove.get(), GoldenStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove_be.get(), GoldenStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove.get(), GoldenStoveBlockEntity::serverTick);
         }
     }
 

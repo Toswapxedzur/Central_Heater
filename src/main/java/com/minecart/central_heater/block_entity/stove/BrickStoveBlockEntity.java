@@ -36,7 +36,7 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
     public static final float processMultiplier = 0.8f;
 
     public BrickStoveBlockEntity(BlockPos pos, BlockState blockState) {
-        super(AllBlockEntity.brick_stove_be.get(), pos, blockState, 2,
+        super(AllBlockEntity.brick_stove.get(), pos, blockState, 2,
                 stack -> stack.getBurnTime(RecipeType.SMELTING) != 0, 4);
         litState = FireState.NONE;
         litTime = 0;

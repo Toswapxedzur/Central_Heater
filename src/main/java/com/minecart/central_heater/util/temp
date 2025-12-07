@@ -1,3 +1,4 @@
-        withExistingParent("blackstone_brick_tile_stair", modLoc("block/blackstone_brick_tile_stair"));
-        withExistingParent("blackstone_brick_tile_slab", modLoc("block/blackstone_brick_tile_slab"));
-        wallInventory("blackstone_brick_tile_wall", modLoc("block/blackstone_brick_tile"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 4).requires(AllBlockItem.sturdy_brick)
+                .unlockedBy(getHasName(AllBlockItem.sturdy_brick), has(AllBlockItem.sturdy_brick)).group("misc").save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.sturdy_brick).requires(AllBlockItem.sturdy_nugget, 4)
+                .unlockedBy(getHasName(AllBlockItem.sturdy_nugget), has(AllBlockItem.sturdy_nugget)).group("misc").save(recipeOutput);

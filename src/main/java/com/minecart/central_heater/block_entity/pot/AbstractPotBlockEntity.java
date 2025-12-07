@@ -6,7 +6,7 @@ import com.minecart.central_heater.block.*;
 import com.minecart.central_heater.recipe.SmolderingRecipe;
 import com.minecart.central_heater.recipe.SmolderingRecipeInput;
 import com.minecart.central_heater.util.NetherFireState;
-import com.minecart.central_heater.util.StackableItemStackHandler;
+import com.minecart.central_heater.capability.StackItemHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -29,6 +29,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
@@ -39,24 +41,32 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+
     public final int tier;
 
     public final int containerSize;
     public final int[] containerSlot;
-    protected final StackableItemStackHandler container;
+    protected final StackItemHandler container;
     public int[][] progress;
     NonNullList<ItemStack> prevContainer;
 
     public final int fluidTankSize;
     protected final FluidTank fluidTank;
 
+    @OnlyIn(Dist.CLIENT)
+    public FluidStack clientFluidType = FluidStack.EMPTY;
+    @OnlyIn(Dist.CLIENT)
+    public float clientFluid = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevClientFluid = 0;
+
     public static final BlockCapability<IFluidHandler, Direction> fluidCap = BlockCapability.createSided(Central_heater.modLoc("pot_tank"), IFluidHandler.class);
 
-    protected AbstractPotBlockEntity(BlockEntityType<? extends AbstractPotBlockEntity> type, BlockPos pos, BlockState blockState, int tier, int containerSize) {
+    protected AbstractPotBlockEntity(BlockEntityType<? extends AbstractPotBlockEntity> type, BlockPos pos, BlockState blockState, int tier) {
         super(type, pos, blockState);
-        this.containerSize = containerSize;
+        this.containerSize = 4;
         this.containerSlot = IntStream.range(0, this.containerSize).toArray();
-        this.container = new StackableItemStackHandler(this.containerSize, 1){
+        this.container = new StackItemHandler(this.containerSize, 1){
             @Override
             protected void onContentsChanged() {
                 updateBlockEntity();
@@ -111,7 +121,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public StackableItemStackHandler getContainer(){
+    public StackItemHandler getContainer(){
         return this.container;
     }
 
@@ -145,11 +155,17 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
     @Override
     public void setItem(int slot, ItemStack stack) {
         container.setStackInSlot(slot, stack);
+        updateBlockEntity();
     }
 
     @Override
     public int[] getSlotsForFace(Direction side) {
         return containerSlot;
+    }
+
+    @Override
+    public int getMaxStackSize() {
+        return container.getSlotLimit();
     }
 
     @Override
@@ -200,7 +216,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
     public static void serverTick(Level level, BlockPos pos, BlockState state, AbstractPotBlockEntity entity){
         RecipeManager recipeManager = level.getRecipeManager();
 
-        if(entity.isCover()){
+        if(true){
             for(int i=0;i<entity.containerSize;i++){
                 ItemStack stack = entity.getItem(i);
                 entity.progress[0][i] = Math.max(entity.progress[0][i]-2, 0);
@@ -239,27 +255,34 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
                 }
                 if(flag1)
                     continue;
+                SmolderingRecipeInput input = new SmolderingRecipeInput(substack, entity.getFluidTank().getFluidInTank(0), entity.tier, entity.heatLevel().getState());
                 Optional<RecipeHolder<SmolderingRecipe>> recipeHolder = recipeManager.getRecipeFor(AllRecipe.SMOLDERING.get(),
-                        new SmolderingRecipeInput(substack, entity.getFluidTank().getFluidInTank(0), entity.tier), level);
+                        input, level);
                 if (recipeHolder.isEmpty())
                     continue;
                 SmolderingRecipe recipe = recipeHolder.get().value();
-                if(minHeat < recipe.getTime())
+                FluidStack fluidIngredient = recipe.getFluidIngredient(input, level.registryAccess());
+                int time = recipe.getTime(input, level.registryAccess());
+                NonNullList<ItemStack> results = recipe.assembleResults(input, level.registryAccess());
+                FluidStack fluidResult = recipe.assembleFluidResult(input, level.registryAccess());
+                if(minHeat < time)
                     continue;
-                if (entity.getContainer().getNonEmptyItems() + recipe.getIngredients().size() - (recipe.getResult().isEmpty() ? 0 : 1) > entity.getContainer().getSlots())
+                if (entity.getContainer().getNonEmptyItems() + substack.size() - results.size() > entity.getContainer().getSlots())
                     continue;
-                if (!entity.getFluidTank().getFluidInTank(0).isEmpty() &&
-                        !FluidStack.isSameFluidSameComponents(entity.getFluidTank().getFluidInTank(0), recipe.getFluidResult()))
+                if (!entity.getFluidTank().getFluidInTank(0).isEmpty() && !fluidResult.isEmpty() &&
+                        !FluidStack.isSameFluidSameComponents(entity.getFluidTank().getFluidInTank(0), fluidResult)
+                && entity.getFluidTank().getFluidInTank(0).getAmount() > fluidIngredient.getAmount())
                     continue;
-                if (entity.getFluidTank().getFluidInTank(0).getAmount() + recipe.getFluidResult().getAmount() > entity.getFluidTank().getTankCapacity(0))
+                if (entity.getFluidTank().getFluidInTank(0).getAmount() + fluidResult.getAmount() - fluidIngredient.getAmount() > entity.getFluidTank().getTankCapacity(0))
                     continue;
                 flag = false;
                 for (ItemStack stack1 : substack) {
                     stack1.setCount(0);
                 }
-                entity.fluidTank.drain(recipe.getFluidIngredient(), IFluidHandler.FluidAction.EXECUTE);
-                entity.getContainer().insertItem(recipe.getResult().copy(), false);
-                entity.getFluidTank().fill(recipe.getFluidResult().copy(), IFluidHandler.FluidAction.EXECUTE);
+                entity.fluidTank.drain(fluidIngredient, IFluidHandler.FluidAction.EXECUTE);
+                for(ItemStack result : results)
+                    entity.getContainer().insertItem(result.copy(), false);
+                entity.getFluidTank().fill(fluidResult.copy(), IFluidHandler.FluidAction.EXECUTE);
             }
             if (flag)
                 break;
@@ -279,14 +302,18 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         return NetherFireState.NONE;
     }
 
+    @OnlyIn(Dist.CLIENT)
     public static void clientTick(Level level, BlockPos pos, BlockState state, AbstractPotBlockEntity entity){
-
-    }
-
-    private boolean isCover() {
-        if(getLevel().getBlockState(getBlockPos().above()).getBlock() instanceof LidBlock)
-            return true;
-        return false;
+        FluidStack serverFluid = entity.getFluidTank().getFluidInTank(0);
+        float serverAmount = serverFluid.getAmount();
+        entity.prevClientFluid = entity.clientFluid;
+        float clientAmount = entity.clientFluid;
+        clientAmount = clientAmount * 0.8f + serverAmount * 0.2f;
+        if(Math.abs(serverAmount - clientAmount) <= 1f)
+            clientAmount = serverAmount;
+        if(!serverFluid.isEmpty())
+            entity.clientFluidType = serverFluid.copy();
+        entity.clientFluid = clientAmount;
     }
 
     public int calculateLight(){
