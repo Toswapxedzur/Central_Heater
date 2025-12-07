@@ -2,20 +2,28 @@ package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllBlockEntity;
 import com.minecart.central_heater.block_entity.pot.AbstractPotBlockEntity;
-import com.minecart.central_heater.block_entity.pot.BrickPotBlockEntity;
 import com.minecart.central_heater.block_entity.pot.StonePotBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class StonePotBlock extends PotBlock {
     public static final MapCodec<StonePotBlock> CODEC = simpleCodec(StonePotBlock::new);
+
+    public static final VoxelShape SHAPE = Shapes.join(Shapes.block(),
+            Shapes.or(box(2f, 4f, 2f, 14f, 16f, 14f), box(4f, 0f, 0f, 16f, 2f, 12f), box(0f, 0f, 4f, 16f, 2f, 12f)),
+            BooleanOp.ONLY_FIRST);
 
     public StonePotBlock(Properties properties) {
         super(properties);
@@ -34,9 +42,19 @@ public class StonePotBlock extends PotBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_pot_be.get(), AbstractPotBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_pot.get(), AbstractPotBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_pot_be.get(), AbstractPotBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.stone_pot.get(), AbstractPotBlockEntity::serverTick);
         }
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    protected VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return SHAPE;
     }
 }

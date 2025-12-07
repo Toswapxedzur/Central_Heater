@@ -1,6 +1,6 @@
 package com.minecart.central_heater.block_entity.stove;
 
-import com.minecart.central_heater.util.StackableItemStackHandler;
+import com.minecart.central_heater.capability.StackItemHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -23,16 +23,16 @@ import java.util.stream.IntStream;
 public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     //fuel before the item
     public final int fuelCapacity;
-    public final StackableItemStackHandler fuels;
+    public final StackItemHandler fuels;
     public final int itemCapacity;
-    public final StackableItemStackHandler items;
+    public final StackItemHandler items;
     public final int[] fuelSlot;
     public final int[] itemSlot;
 
     public AbstractStoveBlockEntity(BlockEntityType<? extends AbstractStoveBlockEntity> type, BlockPos pos, BlockState blockState, int fuelCapacity, Predicate<ItemStack> isFuelValid, int itemCapacity) {
         super(type, pos, blockState);
         this.fuelCapacity = fuelCapacity;
-        this.fuels = new StackableItemStackHandler(fuelCapacity, 1){
+        this.fuels = new StackItemHandler(fuelCapacity, 1){
             @Override
             public boolean isItemValid(ItemStack stack) {
                 return isFuelValid.test(stack);
@@ -42,7 +42,7 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
         };
         this.fuelSlot = IntStream.range(0, fuelCapacity).toArray();
         this.itemCapacity = itemCapacity;
-        this.items = new StackableItemStackHandler(itemCapacity, 1){
+        this.items = new StackItemHandler(itemCapacity, 1){
             @Override
             protected void onContentsChanged() { updateBlockEntity(); }
         };
@@ -92,10 +92,12 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
 
     @Override
     public ItemStack removeItem(int slot, int amount) {
-        this.setChanged();
+        ItemStack ret;
         if(slot >= fuelCapacity)
-            return items.extractItem(slot - fuelCapacity, amount, false);
-        return fuels.extractItem(slot, amount, false);
+            ret = items.extractItem(slot - fuelCapacity, amount, false);
+        else
+            ret = fuels.extractItem(slot, amount, false);
+        return ret;
     }
 
     @Override

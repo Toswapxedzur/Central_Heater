@@ -1,16 +1,18 @@
+/time set dayw
+/time set day
+/setblock 534 88 -176 central_heater:sturdy_tank
 /time set day
 /gamemode survival
 /gamemode creative
-/time set day
-/tick rate 300
-/locate biome
-/locate biome minecraft:jungle
-/tp @s -1681 73 1066
-/tick rate 500
-/tick rate 2000
-/weather clear
-/locate structure minecraft:mansion
-/tp @s -480 ~ -2448
+/bossbar add
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
 /gamemode spectator
 /gamemode creative
 /time set day
@@ -19,32 +21,30 @@
 /gamemode survival
 /gamemode creative
 /gamemode survival
-/time set dayw
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
 /time set day
-/give Dev minecraft:campfire
-/give Dev minecraft:flint_and_steel
-/gamemode creative
-/summon minecraft:silverfish
-/summon minecraft:silverfish 562.79 76.50 -702.37
-/summon minecraft:silverfish 567.57 78.50 -704.47
+/setblock 95 68 206 minecraft:cauldron
 /gamemode survival
 /gamemode creative
 /gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/time set day
+/gamemode creative
 /effect clear
 /gamemode survival
+/clear
 /gamemode creative
-/gamemode survival
-/gamemode creative
-/gamemode survival
-/time set day
-/gamemode creative
-/reload
-/time set day
-/gamemode survival
-/gamemode creative
-/gamemode survival
-/gamemode creative
-/gamemode survival
-/locate biome minecraft:swamp
-/tp @s 1869 67 -2432
-/time set night
+/kill @e[type=minecraft:ender_dragon]
+/locate structure minecraft:village_plains
+/tp @s 1408 ~ -1328

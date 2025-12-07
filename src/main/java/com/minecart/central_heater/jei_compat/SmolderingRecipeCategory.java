@@ -11,6 +11,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.placement.HorizontalAlignment;
+import mezz.jei.api.gui.placement.VerticalAlignment;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
@@ -36,7 +39,7 @@ public class SmolderingRecipeCategory extends AbstractRecipeCategory<RecipeHolde
     public static final RecipeType<RecipeHolder<SmolderingRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(UID);
 
     public SmolderingRecipeCategory(IGuiHelper helper) {
-        super(RECIPE_TYPE, Component.literal("smoldering"), helper.createDrawableItemLike(AllBlockItem.mud_brick_pot), 160, 88);
+        super(RECIPE_TYPE, Component.translatable("jei.central_heater.category.smoldering"), helper.createDrawableItemLike(AllBlockItem.mud_brick_pot), 160, 88);
     }
 
     @Override
@@ -48,10 +51,23 @@ public class SmolderingRecipeCategory extends AbstractRecipeCategory<RecipeHolde
         if (!recipe.getFluidIngredient().isEmpty())
             builder.addInputSlot(32, 6).setStandardSlotBackground().addFluidStack(recipe.getFluidIngredient().getFluid(), recipe.getFluidIngredient().getAmount());
 
-        if(!recipe.getResult().isEmpty())
-        builder.addOutputSlot(120, 6).setStandardSlotBackground().addItemStack(recipe.getResult());
+        for(int i = 0; i < recipe.getResults().size() ; i++)
+            builder.addOutputSlot(120, 6 + 20 * i).setStandardSlotBackground().addItemStack(recipe.getResults().get(i));
         if (!recipe.getFluidResult().isEmpty())
-            builder.addOutputSlot(120, 30).setStandardSlotBackground().addFluidStack(recipe.getFluidResult().getFluid(), recipe.getFluidResult().getAmount());
+            builder.addOutputSlot(142, 6).setStandardSlotBackground().addFluidStack(recipe.getFluidResult().getFluid(), recipe.getFluidResult().getAmount());
+    }
+
+    @Override
+    public void createRecipeExtras(IRecipeExtrasBuilder builder, RecipeHolder<SmolderingRecipe> holder, IFocusGroup focuses) {
+        SmolderingRecipe recipe = holder.value();
+        int ticks = recipe.getTime();
+        int seconds = ticks/20;
+        Component timeString = Component.translatable("gui.jei.category.smelting.time.seconds", seconds);
+        builder.addText(timeString, getWidth() - 20, 10)
+                .setPosition(0, 0, getWidth(), getHeight(), HorizontalAlignment.RIGHT, VerticalAlignment.BOTTOM)
+                .setTextAlignment(HorizontalAlignment.RIGHT)
+                .setTextAlignment(VerticalAlignment.BOTTOM)
+                .setColor(0xFF808080);
     }
 
     @Override

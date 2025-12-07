@@ -1,7 +1,6 @@
 package com.minecart.central_heater.block_entity.stove;
 
 import com.minecart.central_heater.AllBlockEntity;
-import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.block.GoldenStoveBlock;
 import com.minecart.central_heater.util.AllConstants;
@@ -44,7 +43,7 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
     public static final float processMultiplier = 2f;
 
     public GoldenStoveBlockEntity(BlockPos pos, BlockState blockState) {
-        super(AllBlockEntity.red_nether_brick_stove_be.get(), pos, blockState, 4,
+        super(AllBlockEntity.red_nether_brick_stove.get(), pos, blockState, 4,
                 stack -> stack.getBurnTime(RecipeType.SMELTING) != 0 || FuelMapHook.getBurnTime(stack) != 0, 9);
         litState = NetherFireState.NONE;
         litTime = 0;

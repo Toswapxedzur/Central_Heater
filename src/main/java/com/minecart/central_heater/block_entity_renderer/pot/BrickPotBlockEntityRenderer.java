@@ -9,9 +9,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BrickPotBlockEntityRenderer extends AbstractPotBlockEntityRenderer implements BlockEntityRenderer<BrickPotBlockEntity> {
+public class BrickPotBlockEntityRenderer extends QuadruplePotBlockEntityRenderer implements BlockEntityRenderer<BrickPotBlockEntity> {
     public BrickPotBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(context, 8);
+        super(context);
     }
 
     @Override

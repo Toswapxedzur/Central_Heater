@@ -30,15 +30,11 @@ public class CreativeTab {
             event.accept(AllBlockItem.mud_brick_stove.asItem());
             event.accept(AllBlockItem.deepslate_stove.asItem());
             event.accept(AllBlockItem.nether_brick_stove.asItem());
-            event.accept(AllBlockItem.iron_lid.asItem());
-            event.accept(AllBlockItem.gold_lid.asItem());
 
-            event.accept(AllBlockItem.brick_pot.asItem());
             event.accept(AllBlockItem.mud_brick_pot.asItem());
             event.accept(AllBlockItem.stone_pot.asItem());
             event.accept(AllBlockItem.deepslate_pot.asItem());
-            event.accept(AllBlockItem.red_nether_brick_pot.asItem());
-            event.accept(AllBlockItem.nether_brick_pot.asItem());
+            event.accept(AllBlockItem.golden_cauldron.asItem());
         }else if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept(AllBlockItem.stone_brick_tile.asItem());
             event.accept(AllBlockItem.deepslate_brick_tile.asItem());

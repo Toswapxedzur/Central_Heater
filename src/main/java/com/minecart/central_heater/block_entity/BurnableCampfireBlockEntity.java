@@ -1,35 +1,26 @@
 package com.minecart.central_heater.block_entity;
 
-import com.minecart.central_heater.util.FireState;
-import com.minecart.central_heater.util.StackableItemStackHandler;
+import com.minecart.central_heater.capability.StackItemHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 
 public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
     public static final int fuel_slots = 2;
     public int litTime;
     public int campfireLitTime;
-    public final StackableItemStackHandler fuels = new StackableItemStackHandler(fuel_slots, 1){
+    public final StackItemHandler fuels = new StackItemHandler(fuel_slots, 1){
         @Override
         public boolean isItemValid(ItemStack stack) {
             return stack.getBurnTime(RecipeType.SMELTING) > 0;

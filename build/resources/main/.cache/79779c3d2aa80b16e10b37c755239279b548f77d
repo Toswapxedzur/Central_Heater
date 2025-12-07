@@ -1,6 +1,6 @@
-// 1.21.1	2025-11-18T18:26:42.000484	Tags for minecraft:block mod id central_heater
-038c3ed00cdfc3833ea77a35281ca8d58c063c89 data/minecraft/tags/block/mineable/pickaxe.json
-706c6d2334dd041719fa8522d3a83c7fa0294cf1 data/minecraft/tags/block/needs_stone_tool.json
-9f5ba15b6ec912e15fce717b2cd90ee9c295bc05 data/minecraft/tags/block/slabs.json
-652d726451be59442efda3ad0778d1d8818fd640 data/minecraft/tags/block/stairs.json
-e5f1009a171f4c07d4b638b974d47efb467d9d58 data/minecraft/tags/block/walls.json
+// 1.21.1	2025-12-03T23:08:35.987971	Tags for minecraft:block mod id central_heater
+826c461dd4f24825e603b891f029a6de20cfc39b data/minecraft/tags/block/mineable/pickaxe.json
+2dbe69604c4f81cd005774691d45cd5831289406 data/minecraft/tags/block/needs_stone_tool.json
+f0dda748f7ab6ee57167e17cc58ac0a236b09010 data/minecraft/tags/block/slabs.json
+e2d3b6ccc36cd21fab6888e179692cbd549aa496 data/minecraft/tags/block/stairs.json
+cc8197a064c1e466b71d7f6daeff955332a566b8 data/minecraft/tags/block/walls.json

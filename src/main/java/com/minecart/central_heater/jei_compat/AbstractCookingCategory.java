@@ -64,19 +64,14 @@ public abstract class AbstractCookingCategory<T extends AbstractCookingRecipe> e
 
     @Override
     public void createRecipeExtras(IRecipeExtrasBuilder builder, RecipeHolder<T> recipeHolder, IFocusGroup focuses) {
-        ResourceLocation loc = Central_heater.modLoc("gui/soul_flame");
-        IDrawableStatic drawable = guiHelper.drawableBuilder(loc,0, 0, 14, 14).setTextureSize(14, 14).build();
-        IDrawableAnimated animated = guiHelper.createAnimatedDrawable(drawable, 300, IDrawableAnimated.StartDirection.TOP, true);
-        IDrawable empty = guiHelper.getRecipeFlameEmpty();
         T recipe = recipeHolder.value();
         int cookTime = recipe.getCookingTime();
         if (cookTime <= 0) {
             cookTime = regularCookTime;
         }
-        builder.addDrawable(empty, 1, 20);
-        builder.addDrawable(drawable, 1, 20);
-//        builder.addAnimatedRecipeFlame(300)
-//                .setPosition(1, 20);
+        builder.addAnimatedRecipeArrow(cookTime)
+                .setPosition(26, 17);
+        JEIUtil.addAnimatedRecipeSoulFlame(builder, 1, 20, cookTime, guiHelper);
 
         addExperience(builder, recipeHolder);
         addCookTime(builder, recipeHolder);

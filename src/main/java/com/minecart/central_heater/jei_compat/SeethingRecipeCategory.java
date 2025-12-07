@@ -13,6 +13,6 @@ public class SeethingRecipeCategory extends AbstractCookingCategory<SeethingReci
     public static final RecipeType<RecipeHolder<SeethingRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(UID);
 
     public SeethingRecipeCategory(IGuiHelper guiHelper) {
-        super(guiHelper, RECIPE_TYPE, Blocks.SOUL_CAMPFIRE, "gui.jei.category.seething", 200);
+        super(guiHelper, RECIPE_TYPE, Blocks.SOUL_CAMPFIRE, "jei.central_heater.category.seething", 200);
     }
 }

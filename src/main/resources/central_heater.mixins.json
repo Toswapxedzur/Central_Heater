@@ -7,7 +7,8 @@
     "HopperBlockEntityMixin",
     "CampFireBlockMixin",
     "CampfireBlockEntityMixin",
-    "SimpleCookingRecipeBuilderMixin"
+    "SimpleCookingRecipeBuilderMixin",
+    "WorldGenRegionMixin"
   ],
   "client": [
   ],

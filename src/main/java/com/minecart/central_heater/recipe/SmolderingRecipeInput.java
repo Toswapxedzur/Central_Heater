@@ -12,15 +12,17 @@ public class SmolderingRecipeInput implements RecipeInput {
     protected final FluidStack fluid;
     protected final NonNullList<ItemStack> item;
     protected final int tier;
+    protected final int fireLevel;
 
-    public SmolderingRecipeInput(NonNullList<ItemStack> item, FluidStack fluid, int tier){
+    public SmolderingRecipeInput(NonNullList<ItemStack> item, FluidStack fluid, int tier, int fireLevel){
         this.item = item;
         this.fluid = fluid;
         this.tier = tier;
+        this.fireLevel = fireLevel;
     }
 
-    public SmolderingRecipeInput(NonNullList<ItemStack> item, int tier){
-        this(item, FluidStack.EMPTY, tier);
+    public SmolderingRecipeInput(NonNullList<ItemStack> item, int tier, int fireLevel){
+        this(item, FluidStack.EMPTY, tier, fireLevel);
     }
 
     @Override
@@ -43,5 +45,9 @@ public class SmolderingRecipeInput implements RecipeInput {
 
     public int getTier(){
         return tier;
+    }
+
+    public int getFireLevel() {
+        return fireLevel;
     }
 }

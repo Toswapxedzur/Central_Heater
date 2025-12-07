@@ -18,6 +18,14 @@
     "central_heater:mud_brick_tile_stair",
     "central_heater:mud_brick_tile_slab",
     "central_heater:mud_brick_tile_wall",
+    "central_heater:blackstone_brick_tile",
+    "central_heater:blackstone_brick_tile_stair",
+    "central_heater:blackstone_brick_tile_slab",
+    "central_heater:blackstone_brick_tile_wall",
+    "central_heater:sturdy_brick_tile",
+    "central_heater:sturdy_brick_tile_stair",
+    "central_heater:sturdy_brick_tile_slab",
+    "central_heater:sturdy_brick_tile_wall",
     "central_heater:gold_bars"
   ]
 }

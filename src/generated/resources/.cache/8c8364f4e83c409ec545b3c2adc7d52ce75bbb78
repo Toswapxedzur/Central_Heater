@@ -1,3 +1,4 @@
-// 1.21.1	2025-11-13T18:08:40.538494	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-12-06T15:38:50.479001	Tags for minecraft:item mod id vanilla
 e8933e24c8ecaef8656ded6cec8c5ba117b1909d data/c/tags/item/bricks.json
 f1ae037d8c07e439bf59c9983a6eb48d8a5ef33b data/c/tags/item/nuggets.json
+b6c900021ce295bff88713cdb908196a1b8ad967 data/minecraft/tags/item/trimmable_armor.json

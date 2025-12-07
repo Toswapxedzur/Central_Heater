@@ -5,6 +5,7 @@
   "block.central_heater.mud_brick_stove": "Mud Brick Stove",
   "block.central_heater.nether_brick_stove": "Nether Brick Stove",
   "block.central_heater.red_nether_brick_stove": "Red Nether Brick Stove",
+  "block.central_heater.blackstone_stove": "Blackstone Stove",
 
   "block.central_heater.stone_brick_tile": "Stone Brick Tile",
   "block.central_heater.stone_brick_tile_stair": "Stone Brick Tile Stairs",
@@ -21,7 +22,27 @@
   "block.central_heater.mud_brick_tile_slab": "Mud Brick Tile Slab",
   "block.central_heater.mud_brick_tile_wall": "Mud Brick Tile Wall",
 
+  "block.central_heater.blackstone_brick_tile": "Blackstone Brick Tile",
+  "block.central_heater.blackstone_brick_tile_stair": "Blackstone Brick Tile Stairs",
+  "block.central_heater.blackstone_brick_tile_slab": "Blackstone Brick Tile Slab",
+  "block.central_heater.blackstone_brick_tile_wall": "Blackstone Brick Tile Wall",
+
+  "block.central_heater.iron_lid": "Iron Lid",
+  "block.central_heater.gold_lid": "Gold Lid",
+  "block.central_heater.windowed_iron_lid": "Windowed Iron Lid",
+  "block.central_heater.windowed_gold_lid": "Windowed Gold Lid",
+
+  "block.central_heater.stone_pot": "Stone Pot",
+  "block.central_heater.deepslate_pot": "Deepslate Pot",
+  "block.central_heater.brick_pot": "Brick Pot",
+  "block.central_heater.mud_brick_pot": "Mud Brick Pot",
+  "block.central_heater.nether_brick_pot": "Nether Brick Pot",
+  "block.central_heater.red_nether_brick_pot": "Red Nether Brick Pot",
+  "block.central_heater.blackstone_pot": "Blackstone Pot",
+
   "block.central_heater.gold_bars": "Gold Bars",
+
+  "block.central_heater.sturdy_tank": "Sturdy Tank",
 
   "item.central_heater.cobble": "Cobble",
   "item.central_heater.deepslate_cobble": "Deepslate Cobble",
@@ -29,5 +50,18 @@
   "item.central_heater.mud_brick": "Mud Brick",
   "item.central_heater.red_nether_brick": "Red Nether Brick",
   "item.central_heater.deepslate_brick": "Deepslate Brick",
-  "item.central_heater.diamond_shard": "Diamond Shard"
+  "item.central_heater.diamond_shard": "Diamond Shard",
+  "item.central_heater.blackstone_brick": "Blackstone Brick",
+
+  "central_heater.creativeTabs.central_heater": "Heaters",
+
+  "jei.central_heater.category.seething": "Seething",
+  "jei.central_heater.category.smoldering": "Smoldering",
+  "jei.central_heater.category.netherFuel": "Fuels of the Nether",
+
+  "container.sturdy_tank": "Sturdy Tank",
+
+  "container.sturdy_tank.tooltip.content_title": "Content:",
+  "container.sturdy_tank.tooltip.content": "%s mb of %s ",
+  "container.sturdy_tank.tooltip.potion_title": "Potion Effects: "
 }

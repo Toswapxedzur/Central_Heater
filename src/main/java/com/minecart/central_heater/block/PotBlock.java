@@ -35,9 +35,6 @@ public abstract class PotBlock extends BaseEntityBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
-    public static final VoxelShape SHAPE = Shapes.join(Shapes.block(),
-            Shapes.or(box(2f, 4f, 2f, 14f, 16f, 14f), box(4f, 0f, 0f, 16f, 2f, 12f), box(0f, 0f, 4f, 16f, 2f, 12f)),
-            BooleanOp.ONLY_FIRST);
 
     protected PotBlock(Properties properties) {
         super(properties.noOcclusion().lightLevel(state -> state.getValue(BlockStateProperties.LEVEL)));
@@ -45,18 +42,8 @@ public abstract class PotBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
-    }
-
-    @Override
-    protected VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
-        return SHAPE;
     }
 
     @Override
@@ -92,7 +79,7 @@ public abstract class PotBlock extends BaseEntityBlock {
             if(stack.isEmpty()){
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             }
-            if(FluidUtil.tryEmptyContainer(stack, entity.getFluidTank(), 1000, player, false).isSuccess()){
+            else if(FluidUtil.tryEmptyContainer(stack, entity.getFluidTank(), 1000, player, false).isSuccess()){
                 player.setItemInHand(hand, FluidUtil.tryEmptyContainer(stack, entity.getFluidTank(), 1000, player, true).getResult());
             }
             else if(FluidUtil.tryFillContainer(stack, entity.getFluidTank(), 1000, player, false).isSuccess()){

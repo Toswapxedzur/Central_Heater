@@ -2,6 +2,7 @@
   "values": [
     "central_heater:nether_brick_stove",
     "central_heater:red_nether_brick_stove",
-    "central_heater:gold_bars"
+    "central_heater:gold_bars",
+    "central_heater:sturdy_tank"
   ]
 }

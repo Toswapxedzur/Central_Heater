@@ -5,6 +5,7 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 
@@ -31,6 +32,9 @@ public class VirtualLevel {
         return getLevel().getRecipeManager();
     }
 
+    public static PotionBrewing getPotionBrewing(){
+        return getLevel().potionBrewing();
+    }
 
     public static ItemRenderer getItemRenderer(){
         return getMinecraft().getItemRenderer();
