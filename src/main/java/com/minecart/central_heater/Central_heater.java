@@ -74,7 +74,7 @@ public class Central_heater {
             event.registerBlockEntityRenderer(AllBlockEntity.burnable_campfire.get(), BurnableCampfireBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(AllBlockEntity.pot.get(), BrickPotBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(AllBlockEntity.stone_pot.get(), StonePotBlockEntityRenderer::new);
-            event.registerBlockEntityRenderer(AllBlockEntity.cauldron.get(), CauldronBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(AllBlockEntity.iron_cauldron.get(), CauldronBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(AllBlockEntity.golden_cauldron.get(), GoldenCauldronBlockEntityRenderer::new);
         }
     }

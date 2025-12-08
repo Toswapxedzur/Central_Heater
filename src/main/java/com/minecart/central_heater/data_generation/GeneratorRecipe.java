@@ -7,9 +7,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
@@ -39,6 +41,8 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
         emptyRecipe(recipeOutput, "minecraft:deepslate_bricks_from_polished_deepslate_stonecutting");
         emptyRecipe(recipeOutput, "minecraft:deepslate_brick_wall_from_polished_deepslate_stonecutting");
         emptyRecipe(recipeOutput, "minecraft:stone_brick_walls_from_stone_stonecutting");
+
+//        emptyRecipe(recipeOutput, "minecraft:cauldron");
 
         //add recipe from stone cutter
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, AllBlockItem.stone_brick_tile);
@@ -141,6 +145,39 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
                 .unlockedBy(getHasName(Items.COBBLED_DEEPSLATE), has(Items.COBBLED_DEEPSLATE)).group("misc").save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COBBLED_DEEPSLATE).requires(AllBlockItem.deepslate_cobble, 4)
                 .unlockedBy(getHasName(AllBlockItem.deepslate_cobble), has(AllBlockItem.deepslate_cobble)).group("misc").save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.sturdy_tank_item)
+                .pattern("# #")
+                .pattern(" # ")
+                .define('#', AllBlockItem.sturdy_brick)
+                .unlockedBy(getHasName(AllBlockItem.sturdy_brick), has(AllBlockItem.sturdy_brick))
+                .group("misc")
+                .save(recipeOutput);
+
+        List<ItemLike> sturdyGear = List.of(
+                AllBlockItem.sturdy_pickaxe,
+                AllBlockItem.sturdy_axe,
+                AllBlockItem.sturdy_shovel,
+                AllBlockItem.sturdy_hoe,
+                AllBlockItem.sturdy_sword,
+                AllBlockItem.sturdy_helmet,
+                AllBlockItem.sturdy_chestplate,
+                AllBlockItem.sturdy_leggings,
+                AllBlockItem.sturdy_boots
+        );
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.golden_cauldron)
+                .pattern("# #")
+                .pattern("# #")
+                .pattern("###")
+                .define('#', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .group("cauldron")
+                .save(recipeOutput);
+
+        oreSmelting(recipeOutput, sturdyGear, RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 0.1f, 200, "sturdy_nugget");
+
+        oreBlasting(recipeOutput, sturdyGear, RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 0.1f, 100, "sturdy_nugget");
 
         smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ICE)), FluidStack.EMPTY, NonNullList.of(ItemStack.EMPTY), new FluidStack(Fluids.WATER, 750),200, 1,1);
 
