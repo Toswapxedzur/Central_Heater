@@ -9,9 +9,11 @@ import com.minecart.central_heater.util.VirtualLevel;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -34,13 +36,19 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
+        IVanillaRecipeFactory vanillaFactory = registration.getVanillaRecipeFactory();
+        IIngredientManager ingredientManager = registration.getIngredientManager();
+
         List<RecipeHolder<SeethingRecipe>> seething = VirtualLevel.getRecipeManager().getAllRecipesFor(AllRecipe.SEETHING.get());
         registration.addRecipes(SeethingRecipeCategory.RECIPE_TYPE, seething);
 
         List<RecipeHolder<SmolderingRecipe>> smoldering = VirtualLevel.getRecipeManager().getAllRecipesFor(AllRecipe.SMOLDERING.get());
         registration.addRecipes(SmolderingRecipeCategory.RECIPE_TYPE, smoldering);
+        registration.addRecipes(SmolderingRecipeCategory.RECIPE_TYPE, JEIUtil.fireBrewingSmolderingRecipe());
 
-        registration.addRecipes(NetherFuelCategory.RECIPE_TYPE, JEIUtil.getNetherFuelRecipes(registration.getIngredientManager()));
+        registration.addRecipes(NetherFuelCategory.RECIPE_TYPE, JEIUtil.getNetherFuelRecipes(ingredientManager));
+
+        registration.addRecipes(RecipeTypes.ANVIL, JEIUtil.getAllAnvilRecipes(vanillaFactory, ingredientManager));
     }
 
     @Override

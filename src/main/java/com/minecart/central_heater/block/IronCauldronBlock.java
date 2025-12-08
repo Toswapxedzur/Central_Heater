@@ -3,7 +3,6 @@ package com.minecart.central_heater.block;
 import com.minecart.central_heater.AllBlockEntity;
 import com.minecart.central_heater.block_entity.pot.AbstractPotBlockEntity;
 import com.minecart.central_heater.block_entity.pot.CauldronBlockEntity;
-import com.minecart.central_heater.block_entity.pot.GoldenCauldronBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -42,9 +41,9 @@ public class IronCauldronBlock extends PotBlock{
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.cauldron.get(), AbstractPotBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.iron_cauldron.get(), AbstractPotBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.cauldron.get(), AbstractPotBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.iron_cauldron.get(), AbstractPotBlockEntity::serverTick);
         }
     }
 
