@@ -1,8 +1,11 @@
 package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.block_entity.stove.BrickStoveBlockEntity;
+import com.minecart.central_heater.recipe.SmolderingRecipe;
 import com.mojang.serialization.MapCodec;
+import mezz.jei.api.constants.RecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,6 +22,9 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -34,6 +40,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BrickStoveBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -120,9 +128,17 @@ public class BrickStoveBlock extends BaseEntityBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if(level.isClientSide)
             return InteractionResult.SUCCESS;
-        if(level.getBlockEntity(pos) instanceof BrickStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
-            if(hitResult.getDirection().equals(Direction.UP)){player.setItemInHand(InteractionHand.MAIN_HAND, entity.items.extractItem(false));}
-            else{player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));}
+        if(level.getBlockEntity(pos) instanceof BrickStoveBlockEntity entity && !entity.isRemoved()){
+            if(hitResult.getDirection().equals(Direction.UP)){
+                ItemStack extract = entity.items.extractItem(false);
+                for(RecipeHolder<CampfireCookingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.CAMPFIRE_COOKING))
+                    if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
+                        player.triggerRecipeCrafted(recipe, List.of(extract));
+                player.setItemInHand(InteractionHand.MAIN_HAND, extract);
+            }
+            else{
+                player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));
+            }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.CONSUME;

@@ -9,9 +9,9 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class StoneStoveBlockEntityRenderer extends AbstractStoveBlockEntityRenderer implements BlockEntityRenderer<StoneStoveBlockEntity>{
+public class StoneStoveBlockEntityRenderer extends QuadrupleFuelInvStoveBlockEntityRenderer implements BlockEntityRenderer<StoneStoveBlockEntity>{
     public StoneStoveBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(context, 4, 4);
+        super(context);
     }
 
     public void render(StoneStoveBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {

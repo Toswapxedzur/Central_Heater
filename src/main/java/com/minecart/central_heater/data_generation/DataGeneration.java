@@ -26,13 +26,15 @@ public class DataGeneration {
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.EMPTY_SET,
                  List.of(new LootTableProvider.SubProviderEntry(GeneratorLootTable::new, LootContextParamSets.BLOCK)), lookUpProvider));
 
+        generator.addProvider(event.includeServer(), new GeneratorRecipe(output, lookUpProvider));
+        generator.addProvider(event.includeServer(), new GeneratorDataRegistries(output, lookUpProvider));
+        GeneratorBlockTag blockTag = new GeneratorBlockTag(output, lookUpProvider, fileHelper);
+        generator.addProvider(event.includeServer(), new ProviderAdvancements(output, lookUpProvider, fileHelper));
+        generator.addProvider(event.includeServer(), blockTag);
+        generator.addProvider(event.includeServer(), new GeneratorItemTag(output, lookUpProvider, blockTag.contentsGetter()));
+
         generator.addProvider(event.includeClient(), new GeneratorBlockModel(output, fileHelper));
         generator.addProvider(event.includeClient(), new GeneratorBlockState(output, fileHelper));
         generator.addProvider(event.includeClient(), new GeneratorItemModel(output, fileHelper));
-        generator.addProvider(event.includeServer(), new GeneratorRecipe(output, lookUpProvider));
-        GeneratorBlockTag blockTag = new GeneratorBlockTag(output, lookUpProvider, fileHelper);
-        generator.addProvider(event.includeServer(), blockTag);
-        generator.addProvider(event.includeServer(), new GeneratorItemTag(output, lookUpProvider, blockTag.contentsGetter()));
-        generator.addProvider(event.includeServer(), new GeneratorDataRegistries(output, lookUpProvider));
     }
 }

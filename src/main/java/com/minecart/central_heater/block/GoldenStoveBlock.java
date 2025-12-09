@@ -1,7 +1,9 @@
 package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity;
+import com.minecart.central_heater.recipe.SeethingRecipe;
 import com.minecart.central_heater.util.AllConstants;
 import com.minecart.central_heater.util.NetherFireState;
 import com.mojang.serialization.MapCodec;
@@ -23,6 +25,9 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -39,6 +44,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class GoldenStoveBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -119,8 +126,8 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             return ItemInteractionResult.SUCCESS;
         if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
             if(stack.is(Items.FLINT_AND_STEEL)){ entity.kindle(); }
-            else if(hitResult.getDirection().equals(Direction.UP)){ entity.items.insertItem(stack, false); }
-            else{ entity.fuels.insertItem(stack, false); }
+            else if(hitResult.getDirection().equals(Direction.UP)){ player.setItemInHand(hand, entity.items.insertItem(stack, false)); }
+            else{ player.setItemInHand(hand, entity.fuels.insertItem(stack, false)); }
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -130,9 +137,20 @@ public class GoldenStoveBlock extends BaseEntityBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if(level.isClientSide)
             return InteractionResult.SUCCESS;
-        if(level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
-            if(hitResult.getDirection().equals(Direction.UP)){player.setItemInHand(InteractionHand.MAIN_HAND, entity.items.extractItem(false));}
-            else{player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));}
+        if(level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !entity.isRemoved()){
+            if(hitResult.getDirection().equals(Direction.UP)){
+                ItemStack extract = entity.items.extractItem(false);
+                for(RecipeHolder<SeethingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AllRecipe.SEETHING.get()))
+                    if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
+                        player.triggerRecipeCrafted(recipe, List.of(extract));
+                for(RecipeHolder<SmeltingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING))
+                    if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
+                        player.triggerRecipeCrafted(recipe, List.of(extract));
+                player.setItemInHand(InteractionHand.MAIN_HAND, extract);
+            }
+            else{
+                player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));
+            }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.CONSUME;

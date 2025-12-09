@@ -1,14 +1,8 @@
 {
-  "type": "minecraft:smelting",
-  "category": "blocks",
-  "cookingtime": 0,
-  "experience": 0.0,
-  "group": "ungroupable",
-  "ingredient": {
-    "item": "minecraft:barrier"
-  },
-  "result": {
-    "count": 1,
-    "id": "minecraft:barrier"
-  }
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "type": "central_heater:empty"
 }

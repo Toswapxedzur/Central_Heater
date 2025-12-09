@@ -15,7 +15,7 @@ public class WorldGenRegionMixin {
     @ModifyVariable(method = "setBlock", at = @At(value = "LOAD", ordinal = 0), argsOnly = true)
     public BlockState setBlock(BlockState state){
         if(state.is(Blocks.CAULDRON))
-            return AllBlockItem.cauldron.get().defaultBlockState();
+            return AllBlockItem.iron_cauldron.get().defaultBlockState();
         return state;
     }
 }

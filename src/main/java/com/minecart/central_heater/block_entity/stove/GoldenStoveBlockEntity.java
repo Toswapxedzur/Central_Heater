@@ -37,14 +37,14 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
     public int[] seethingTotalTime;
     public NonNullList<ItemStack> prevItems;
 
-    public static final int fuelConsumptionRate = 3;
-    public static final int netherFuelConsumptionRate = 7;
+    public static final int fuelConsumptionRate = 2;
+    public static final int netherFuelConsumptionRate = 4;
     public static final int coolRate = 2;
-    public static final float processMultiplier = 2f;
+    public static final float processMultiplier = 1.4f;
 
     public GoldenStoveBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.red_nether_brick_stove.get(), pos, blockState, 4,
-                stack -> stack.getBurnTime(RecipeType.SMELTING) != 0 || FuelMapHook.getBurnTime(stack) != 0, 9);
+                stack -> stack.getBurnTime(RecipeType.SMELTING) != 0 || FuelMapHook.getBurnTime(stack) != 0, 4);
         litState = NetherFireState.NONE;
         litTime = 0;
         prevLitState = NetherFireState.NONE;

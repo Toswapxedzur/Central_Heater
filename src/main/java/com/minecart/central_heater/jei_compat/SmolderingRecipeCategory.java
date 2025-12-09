@@ -72,21 +72,26 @@ public class SmolderingRecipeCategory extends AbstractRecipeCategory<RecipeHolde
 
     @Override
     public void draw(RecipeHolder<SmolderingRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        BlockState state = Blocks.CAULDRON.defaultBlockState();
-        BlockState heaterState;
-        switch (recipe.value().getFireLevel()){
-            case 0: {
-                heaterState = Blocks.GRASS_BLOCK.defaultBlockState();
-                break;
-            }
-            case 1: {
-                heaterState = AllBlockItem.brick_stove.get().defaultBlockState().setValue(BlockStateProperties.LIT, Boolean.valueOf(true)).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);
-                break;
-            }
-            default: {
-                heaterState = AllBlockItem.red_nether_brick_stove.get().defaultBlockState().setValue(AllConstants.LIT_SOUL, NetherFireState.SOUL).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);
-            }
-        }
+        BlockState state = switch (recipe.value().getTier()){
+            case 1 ->
+                    AllBlockItem.mud_brick_pot.get().defaultBlockState();
+            case 2 ->
+                    AllBlockItem.deepslate_pot.get().defaultBlockState();
+            case 3 ->
+                    AllBlockItem.iron_cauldron.get().defaultBlockState();
+            case 4 ->
+                    AllBlockItem.golden_cauldron.get().defaultBlockState();
+            default ->
+                    AllBlockItem.mud_brick_pot.get().defaultBlockState();
+        };
+        BlockState heaterState = switch (recipe.value().getFireLevel()){
+            case 0 ->
+                Blocks.GRASS_BLOCK.defaultBlockState();
+            case 1 ->
+                AllBlockItem.brick_stove.get().defaultBlockState().setValue(BlockStateProperties.LIT, Boolean.valueOf(true)).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);
+            default ->
+                    AllBlockItem.blackstone_stove.get().defaultBlockState().setValue(AllConstants.LIT_SOUL, NetherFireState.SOUL).setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH);
+        };
         ItemRenderer itemRender = VirtualLevel.getItemRenderer();
         BlockRenderDispatcher blockRender = VirtualLevel.getBlockRenderer();
         Lighting.setupForEntityInInventory();

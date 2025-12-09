@@ -1,7 +1,4 @@
 /gamemode creative
-/bossbar add
-/gamemode survival
-/gamemode creative
 /gamemode survival
 /gamemode creative
 /gamemode survival
@@ -48,3 +45,6 @@
 /time set day
 /gamemode survival
 /gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival

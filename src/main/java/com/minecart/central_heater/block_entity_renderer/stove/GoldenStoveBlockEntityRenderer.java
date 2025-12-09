@@ -9,10 +9,10 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class GoldenStoveBlockEntityRenderer extends AbstractStoveBlockEntityRenderer implements BlockEntityRenderer<GoldenStoveBlockEntity> {
+public class GoldenStoveBlockEntityRenderer extends QuadrupleFuelInvStoveBlockEntityRenderer implements BlockEntityRenderer<GoldenStoveBlockEntity> {
 
     public GoldenStoveBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(context, 4, 9);
+        super(context);
     }
 
     @Override

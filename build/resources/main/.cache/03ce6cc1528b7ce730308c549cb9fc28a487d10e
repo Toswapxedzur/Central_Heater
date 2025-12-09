@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-06T17:15:13.38083	Item Models: central_heater
+// 1.21.1	2025-12-09T18:25:49.248299	Item Models: central_heater
 61cb4d2070798ca3ff3b16ee425b1c6ca6e457d5 assets/central_heater/models/item/blackstone_brick.json
 4661cd3701cfdc0fb8b0c31d10bb1f46f8945b13 assets/central_heater/models/item/blackstone_brick_tile_slab.json
 49c370937ef6015696cccf921401dbe5c96c6644 assets/central_heater/models/item/blackstone_brick_tile_stair.json
@@ -13,7 +13,6 @@ fd74fe1e7d8e25cb5bc14a9a0298bbbcd20bc71f assets/central_heater/models/item/burnt
 bdf20d981f57a4bdf71ceca4de43cef76a2fe0f1 assets/central_heater/models/item/burnt_potato.json
 0a97f5ca4cdd24c7dea915f6e0fa65c656d727d8 assets/central_heater/models/item/burnt_rabbit.json
 fed275538b1dfdbd4b62105f6b8723ef0b1a2c53 assets/central_heater/models/item/burnt_salmon.json
-9fe28cb2cdf5163b2af128184475bfacce64bfc7 assets/central_heater/models/item/cauldron.json
 addb8f67a4649087f771e24602ecfab726229a7d assets/central_heater/models/item/cobble.json
 aefc44477afad8a42ba9777bc3839f73393ad6cd assets/central_heater/models/item/deepslate_brick.json
 517e6e2018b10c1eb1094d3ffeefb5cda31b3cf8 assets/central_heater/models/item/deepslate_brick_tile_slab.json
@@ -24,6 +23,7 @@ e60e5a02f18fc7aeb0a446010bd86990c95ae99b assets/central_heater/models/item/deeps
 b18de5cb82fdf86507e4a5d0da543ba60c1f21cf assets/central_heater/models/item/diamond_shard.json
 4ebdaac3cc479f6656db48fa434f227a03cdd882 assets/central_heater/models/item/gold_bars.json
 6372c40410a49e724c14535f2ed595d6aa06c84e assets/central_heater/models/item/golden_cauldron.json
+9fe28cb2cdf5163b2af128184475bfacce64bfc7 assets/central_heater/models/item/iron_cauldron.json
 0339d1c68d5dea8834c2697b11a2107e0b8ec418 assets/central_heater/models/item/mud_brick.json
 50afdb24bc0632e9561073e2521536b86ada19a8 assets/central_heater/models/item/mud_brick_stove.json
 03b25991f7173447b85eeb542f7dfbc178276f4e assets/central_heater/models/item/mud_brick_tile_slab.json

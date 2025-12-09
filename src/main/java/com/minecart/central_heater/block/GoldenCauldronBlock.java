@@ -27,7 +27,7 @@ public class GoldenCauldronBlock extends PotBlock {
     private static final VoxelShape SHAPE = Shapes.join(Shapes.block(), Shapes.or(box((double)0.0F, (double)0.0F, (double)4.0F, (double)16.0F, (double)3.0F, (double)12.0F), new VoxelShape[]{box((double)4.0F, (double)0.0F, (double)0.0F, (double)12.0F, (double)3.0F, (double)16.0F), box((double)2.0F, (double)0.0F, (double)2.0F, (double)14.0F, (double)3.0F, (double)14.0F), INSIDE}), BooleanOp.ONLY_FIRST);
 
     public GoldenCauldronBlock(Properties properties) {
-        super(properties);
+        super(properties.noOcclusion());
     }
 
     @Override

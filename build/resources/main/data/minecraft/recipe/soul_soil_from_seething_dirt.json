@@ -1,7 +1,7 @@
 {
   "type": "central_heater:seething",
   "category": "blocks",
-  "cookingtime": 300,
+  "cookingtime": 400,
   "experience": 1.0,
   "group": "misc",
   "ingredient": {

@@ -67,6 +67,45 @@
   "item.central_heater.sturdy_leggings": "Sturdy Leggings",
   "item.central_heater.sturdy_boots": "Sturdy Boots",
 
+  "advancements.heaters.first_heater.title": "Heaters Assemble",
+  "advancements.heaters.first_heater.description": "Human has now sinced to mastered the power of fire, bringing huge progress but also destruction",
+
+  "advancements.heaters.second_heater.title": "Stone Age Heating",
+  "advancements.heaters.second_heater.description": "Upgrade your stove to Stone or Deepslate",
+
+  "advancements.heaters.third_heater.title": "Hell's Kitchen",
+  "advancements.heaters.third_heater.description": "Construct a stove capable of withstanding Nether heat",
+
+  "advancements.heaters.first_pot.title": "Pottery Class",
+  "advancements.heaters.first_pot.description": "Place a Brick Pot of any kind",
+
+  "advancements.heaters.second_pot.title": "Rock Solid Cooking",
+  "advancements.heaters.second_pot.description": "Upgrade to a durable Stone or Deepslate Pot",
+
+  "advancements.heaters.first_cauldron.title": "Heavy Metal",
+  "advancements.heaters.first_cauldron.description": "Construct an Iron Cauldron for alloying",
+
+  "advancements.heaters.second_cauldron.title": "The Golden Standard",
+  "advancements.heaters.second_cauldron.description": "Upgrade youyr iron cauldron to mass produce potions",
+
+  "advancements.heaters.sturdy_brick.title": "Reinforced",
+  "advancements.heaters.sturdy_brick.description": "Obtain a Sturdy Brick",
+
+  "advancements.heaters.sturdy_tank.title": "Liquid Assets",
+  "advancements.heaters.sturdy_tank.description": "Craft a Sturdy Tank to store your fluids",
+
+  "advancements.heaters.overburnt.title": "Extra Crispy",
+  "advancements.heaters.overburnt.description": "Overcook food until it is completely burnt",
+
+  "advancements.heaters.synthetic_rocks.title": "Igneous Reconstruction",
+  "advancements.heaters.synthetic_rocks.description": "Synthesize Stone and Deepslate Bricks from cobble and nuggets",
+
+  "advancements.heaters.synthetic_diamond.title": "Synthesis Diamond",
+  "advancements.heaters.synthetic_diamond.description": "Synthesize a Diamond using intense heat and pressure",
+
+  "advancements.heaters.synthetic_debris.title": "The Formation of Debris",
+  "advancements.heaters.synthetic_debris.description": "Synthesize Ancient Debris from Coal and Lava, it may took a long time",
+
   "central_heater.creativeTabs.central_heater": "Heaters",
 
   "jei.central_heater.category.seething": "Seething",

@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.registries.*;
@@ -59,11 +60,12 @@ public class AllBlockItem {
 
     public static final DeferredBlock<PotBlock> deepslate_pot = registerBlockWithSimpleItem("deepslate_pot", ()->new StonePotBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS)));
 
-    public static final DeferredBlock<PotBlock> cauldron = registerBlockWithSimpleItem("cauldron", ()->new IronCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
+    public static final DeferredBlock<PotBlock> iron_cauldron = registerBlockWithSimpleItem("iron_cauldron", ()->new IronCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
 
-    public static final DeferredBlock<PotBlock> golden_cauldron = registerBlockWithSimpleItem("golden_cauldron", ()->new GoldenCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON)));
+    public static final DeferredBlock<PotBlock> golden_cauldron = registerBlockWithSimpleItem("golden_cauldron", ()->new GoldenCauldronBlock(
+            BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(4f)));
 
-    public static final DeferredBlock<SturdyTankBlock> sturdy_tank = registerBlock("sturdy_tank", ()->new SturdyTankBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO)));
+    public static final DeferredBlock<SturdyTankBlock> sturdy_tank = registerBlock("sturdy_tank", ()->new SturdyTankBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASEDRUM).instabreak().requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredItem<SturdyTankItem> sturdy_tank_item = registerItem("sturdy_tank", ()->new SturdyTankItem(new Item.Properties().fireResistant()));
 
