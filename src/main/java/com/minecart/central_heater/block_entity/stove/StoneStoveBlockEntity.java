@@ -33,7 +33,7 @@ public class StoneStoveBlockEntity extends AbstractStoveBlockEntity {
 
     public static final int fuelConsumptionRate = 2;
     public static final int coolRate = 2;
-    public static final float processMultiplier = 2.25f;
+    public static final float processMultiplier = 1f;
 
     public StoneStoveBlockEntity(BlockPos pos, BlockState blockState){
         super(AllBlockEntity.stone_stove.get(), pos, blockState, 4,

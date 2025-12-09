@@ -1,7 +1,6 @@
 package com.minecart.central_heater.data_generation;
 
 import com.minecart.central_heater.AllBlockItem;
-import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.recipe.FireBrewingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -42,8 +41,6 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
         emptyRecipe(recipeOutput, "minecraft:deepslate_brick_wall_from_polished_deepslate_stonecutting");
         emptyRecipe(recipeOutput, "minecraft:stone_brick_walls_from_stone_stonecutting");
 
-//        emptyRecipe(recipeOutput, "minecraft:cauldron");
-
         //add recipe from stone cutter
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_STONE_BRICKS, AllBlockItem.stone_brick_tile);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE_TILES, AllBlockItem.deepslate_brick_tile);
@@ -82,11 +79,6 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
         //other things
         oreBlasting(recipeOutput, List.of(Items.PACKED_MUD), RecipeCategory.MISC, AllBlockItem.mud_brick, 0.1f, 200, "brick");
         oreBlasting(recipeOutput, List.of(Items.POLISHED_BLACKSTONE), RecipeCategory.MISC, AllBlockItem.blackstone_brick, 0.1f, 200, "brick");
-
-        oreSeething(recipeOutput, List.of(Items.COAL_BLOCK), RecipeCategory.MISC, AllBlockItem.diamond_shard, 1f, 1000, "misc");
-        oreSeething(recipeOutput, List.of(Items.SAND), RecipeCategory.MISC, Items.SOUL_SAND, 1f, 400, "misc");
-        oreSeething(recipeOutput, List.of(Items.DIRT), RecipeCategory.MISC, Items.SOUL_SOIL, 1f, 300, "misc");
-        oreSeething(recipeOutput, List.of(Items.INK_SAC), RecipeCategory.MISC, Items.GLOW_INK_SAC, 1f, 1000, "misc");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.diamond_shard, 4).requires(Items.DIAMOND)
                 .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND)).group("misc").save(recipeOutput);
@@ -166,37 +158,45 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
                 AllBlockItem.sturdy_boots
         );
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.golden_cauldron)
-                .pattern("# #")
-                .pattern("# #")
-                .pattern("###")
-                .define('#', Items.GOLD_INGOT)
-                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
-                .group("cauldron")
-                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.iron_cauldron).pattern("# #").pattern("# #").pattern("###")
+                .define('#', Items.IRON_INGOT).unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT)).save(recipeOutput, ResourceLocation.withDefaultNamespace("cauldron"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AllBlockItem.golden_cauldron).pattern("# #").pattern("# #").pattern("###")
+                .define('#', Items.GOLD_INGOT).unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT)).save(recipeOutput);
 
         oreSmelting(recipeOutput, sturdyGear, RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 0.1f, 200, "sturdy_nugget");
 
         oreBlasting(recipeOutput, sturdyGear, RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 0.1f, 100, "sturdy_nugget");
 
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ICE)), FluidStack.EMPTY, NonNullList.of(ItemStack.EMPTY), new FluidStack(Fluids.WATER, 750),200, 1,1);
+        oreSeething(recipeOutput, List.of(Items.SAND), RecipeCategory.MISC, Items.SOUL_SAND, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.DIRT), RecipeCategory.MISC, Items.SOUL_SOIL, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.COAL_BLOCK), RecipeCategory.MISC, AllBlockItem.diamond_shard, 1f, 2000, "misc");
+        oreSeething(recipeOutput, List.of(Items.INK_SAC), RecipeCategory.MISC, Items.GLOW_INK_SAC, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.GLASS), RecipeCategory.MISC, Items.QUARTZ, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BRICK), RecipeCategory.MISC, Items.NETHER_BRICK, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BRICKS), RecipeCategory.MISC, Items.NETHER_BRICKS, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BRICK_STAIRS), RecipeCategory.MISC, Items.NETHER_BRICK_STAIRS, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BRICK_SLAB), RecipeCategory.MISC, Items.NETHER_BRICK_SLAB, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BRICK_WALL), RecipeCategory.MISC, Items.NETHER_BRICK_WALL, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.REDSTONE), RecipeCategory.MISC, Items.GLOWSTONE_DUST, 1f, 800, "misc");
+        oreSeething(recipeOutput, List.of(Items.SWEET_BERRIES), RecipeCategory.MISC, Items.GLOW_BERRIES, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.VINE), RecipeCategory.MISC, Items.GLOW_LICHEN, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.POTATO), RecipeCategory.MISC, Items.POISONOUS_POTATO, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.OBSIDIAN), RecipeCategory.MISC, Items.MAGMA_BLOCK, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.RED_MUSHROOM), RecipeCategory.MISC, Items.CRIMSON_FUNGUS, 1f, 400, "misc");
+        oreSeething(recipeOutput, List.of(Items.BROWN_MUSHROOM), RecipeCategory.MISC, Items.WARPED_FUNGUS, 1f, 400, "misc");
 
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.MAGMA_CREAM)), new FluidStack(Fluids.LAVA, 250), NonNullList.of(ItemStack.EMPTY), new FluidStack(Fluids.LAVA, 500),500, 3,2);
-
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.CHARCOAL)), new FluidStack(Fluids.LAVA, 200), NonNullList.of(ItemStack.EMPTY, new ItemStack(Items.COAL)), new FluidStack(Fluids.LAVA, 200),400, 2,2);
-
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.BONE)), FluidStack.EMPTY, NonNullList.of(ItemStack.EMPTY, new ItemStack(Items.BONE_MEAL, 4)), FluidStack.EMPTY,800, 1,1);
-
+        smoldering(recipeOutput, Ingredient.of(Items.ICE), FluidStack.EMPTY, NonNullList.of(ItemStack.EMPTY), new FluidStack(Fluids.WATER, 750),200, 1,1);
+        smoldering(recipeOutput, Ingredient.of(Items.MAGMA_CREAM), new FluidStack(Fluids.LAVA, 250), NonNullList.of(ItemStack.EMPTY), new FluidStack(Fluids.LAVA, 500),500, 3,2);
+        smoldering(recipeOutput, Ingredient.of(Items.CHARCOAL), new FluidStack(Fluids.LAVA, 200), new ItemStack(Items.COAL), new FluidStack(Fluids.LAVA, 200),400, 2,2);
+        smoldering(recipeOutput, Ingredient.of(Items.BONE), FluidStack.EMPTY, new ItemStack(Items.BONE_MEAL, 4), FluidStack.EMPTY,800, 1,1);
         smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.GOLD_INGOT), Ingredient.of(Items.NETHERITE_SCRAP),
-                Ingredient.of(Items.NETHERITE_SCRAP)), new FluidStack(Fluids.LAVA, 500), NonNullList.of(ItemStack.EMPTY, new ItemStack(Items.NETHERITE_INGOT)), FluidStack.EMPTY,2400, 3,2);
-
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.OBSIDIAN), Ingredient.of(AllBlockItem.diamond_shard)), new FluidStack(Fluids.WATER, 250), NonNullList.of(ItemStack.EMPTY, new ItemStack(Items.CRYING_OBSIDIAN)), FluidStack.EMPTY,2000, 3,0);
-
+                Ingredient.of(Items.NETHERITE_SCRAP)), new FluidStack(Fluids.LAVA, 500), new ItemStack(Items.NETHERITE_INGOT), FluidStack.EMPTY,2400, 3,2);
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.OBSIDIAN), Ingredient.of(AllBlockItem.diamond_shard)), new FluidStack(Fluids.WATER, 250), new ItemStack(Items.CRYING_OBSIDIAN), FluidStack.EMPTY,2000, 3,0);
         smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.EGG), Ingredient.of(Items.CLAY_BALL), Ingredient.of(Items.MILK_BUCKET)), FluidStack.EMPTY, NonNullList.of(ItemStack.EMPTY, new ItemStack(Items.SLIME_BALL), new ItemStack(Items.BUCKET)), FluidStack.EMPTY,400, 1,1);
-
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.deepslate_cobble), Ingredient.of(Items.GOLD_NUGGET)), new FluidStack(Fluids.LAVA, 300), NonNullList.of(ItemStack.EMPTY, new ItemStack(AllBlockItem.deepslate_brick.asItem())), new FluidStack(Fluids.LAVA, 250),200, 2,2);
-
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.cobble), Ingredient.of(Items.IRON_NUGGET)), new FluidStack(Fluids.LAVA, 150), NonNullList.of(ItemStack.EMPTY, new ItemStack(AllBlockItem.stone_brick.asItem())), new FluidStack(Fluids.LAVA, 100),150, 1,2);
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.deepslate_cobble), Ingredient.of(Items.GOLD_NUGGET)), new FluidStack(Fluids.LAVA, 300), new ItemStack(AllBlockItem.deepslate_brick.asItem()), new FluidStack(Fluids.LAVA, 250),200, 2,1);
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.cobble), Ingredient.of(Items.IRON_NUGGET)), new FluidStack(Fluids.LAVA, 150), new ItemStack(AllBlockItem.stone_brick.asItem()), new FluidStack(Fluids.LAVA, 100),150, 2,1);
+        smoldering(recipeOutput, Ingredient.of(Items.COAL_BLOCK), new FluidStack(Fluids.LAVA, 1000), new ItemStack(Items.ANCIENT_DEBRIS), new FluidStack(Fluids.LAVA, 400),12000, 3,2);
 
         SpecialRecipeBuilder.special(category -> new FireBrewingRecipe()).save(recipeOutput, "cauldron_potion_brewing");
     }

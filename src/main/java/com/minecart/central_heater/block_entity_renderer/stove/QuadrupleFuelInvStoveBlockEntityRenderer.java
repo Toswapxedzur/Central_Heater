@@ -19,28 +19,17 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public abstract class AbstractStoveBlockEntityRenderer{
+public abstract class QuadrupleFuelInvStoveBlockEntityRenderer {
     public final BlockEntityRendererProvider.Context context;
-    private final int fuelLocSize;
+    private static final int fuelLocSize = 4;
     private final Vec3[][] fuelLoc;
-    private final int invLocSize;
+    private static final int invLocSize = 4;
     private final Vec3[] invLoc;
 
-    public AbstractStoveBlockEntityRenderer(BlockEntityRendererProvider.Context context, int fuelLocSize, int invLocSize){
+    public QuadrupleFuelInvStoveBlockEntityRenderer(BlockEntityRendererProvider.Context context){
         this.context = context;
-        this.fuelLocSize = fuelLocSize;
-        this.invLocSize = invLocSize;
-
-        if(fuelLocSize<=4)
-            this.fuelLoc = AllConstants.stoveFuelLoc4;
-        else
-            this.fuelLoc = AllConstants.stoveFuelLoc4;
-        switch (invLocSize){
-            case 1 -> this.invLoc = AllConstants.stoveInvLoc1;
-            case 4 -> this.invLoc = AllConstants.stoveInvLoc4;
-            case 9 -> this.invLoc = AllConstants.stoveInvLoc9;
-            default -> this.invLoc = AllConstants.stoveInvLoc4;
-        }
+        this.fuelLoc = AllConstants.stoveFuelLoc4;
+        this.invLoc = AllConstants.stoveInvLoc4;
     }
 
     public void render(AbstractStoveBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
@@ -51,26 +40,25 @@ public abstract class AbstractStoveBlockEntityRenderer{
     public void renderInv(AbstractStoveBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         NonNullList<ItemStack> stacks = blockEntity.items.get();
         Direction direction = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
+        int i = (int) blockEntity.getBlockPos().asLong();
 
-        for(int j=0;j<stacks.size();j++){
+        for(int j=0;j<Math.min(stacks.size(), 4);j++){
             ItemStack stack = stacks.get(j);
             if(stack.isEmpty())
                 continue;
-
+            Direction direction1 = Direction.from2DDataValue((j + direction.get2DDataValue()) % 4);
+            float f = -direction1.toYRot();
             poseStack.pushPose();
-            poseStack.translate(0.5f, 0, 0.5f);
-
-            poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot()));
-            poseStack.translate(invLoc[j].x, invLoc[j].y, invLoc[j].z);
-            poseStack.scale(0.5f, 0.5f, 0.5f);
-
+            poseStack.translate(0.5f, 0f, 0.5f);
+            poseStack.mulPose(Axis.YP.rotationDegrees(f));
+            poseStack.translate(-0.25f, 0f, -0.25f);
             if(ItemUtil.isFlatItem(stack)) {
-                poseStack.scale(0.8f, 0.8f, 0.8f);
-                poseStack.translate(0, -0.2f, 0);
-                if(direction.getAxis().equals(Direction.Axis.X))
-                    poseStack.mulPose(Axis.XP.rotationDegrees(90));
-                else
-                    poseStack.mulPose(Axis.XN.rotationDegrees(90));
+                poseStack.translate(0, 1.0125f, 0);
+                poseStack.mulPose(Axis.XP.rotationDegrees(90));
+                poseStack.scale(0.4f, 0.4f, 0.4f);
+            }else{
+                poseStack.translate(0, 1.125f, 0);
+                poseStack.scale(0.5f, 0.5f, 0.5f);
             }
 
             getRenderer().renderStatic(stack, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, blockEntity.getLevel(), j);
@@ -95,7 +83,7 @@ public abstract class AbstractStoveBlockEntityRenderer{
             poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot()));
             poseStack.translate(fuelLoc[i][j].x, fuelLoc[i][j].y, fuelLoc[i][j].z);
 
-            if(fuelLocSize == 2 && j == 3 && isFlat[0] && isFlat[1] && isFlat[2])
+            if(j == 3 && isFlat[0] && isFlat[1] && isFlat[2])
                 poseStack.translate(0, -0.2f, 0);
 
             poseStack.scale(0.5f, 0.5f, 0.5f);

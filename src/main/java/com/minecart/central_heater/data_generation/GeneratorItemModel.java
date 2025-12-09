@@ -59,7 +59,7 @@ public class GeneratorItemModel extends ItemModelProvider {
         basicItem(AllBlockItem.sturdy_brick.asItem());
         basicItem(AllBlockItem.sturdy_tank_item.asItem());
         basicItem(AllBlockItem.sturdy_nugget.asItem());
-        withExistingParent("cauldron", mcLoc("item/cauldron"));
+        withExistingParent("iron_cauldron", mcLoc("item/cauldron"));
         basicItem(AllBlockItem.golden_cauldron.asItem());
         basicItemWithTexture(AllBlockItem.gold_bars.asItem(), "block/gold_bars");
         handheldItem(AllBlockItem.sturdy_pickaxe.asItem());

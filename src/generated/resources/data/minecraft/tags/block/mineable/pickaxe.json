@@ -6,6 +6,12 @@
     "central_heater:deepslate_stove",
     "central_heater:nether_brick_stove",
     "central_heater:red_nether_brick_stove",
+    "central_heater:blackstone_stove",
+    "central_heater:mud_brick_pot",
+    "central_heater:stone_pot",
+    "central_heater:deepslate_pot",
+    "central_heater:iron_cauldron",
+    "central_heater:golden_cauldron",
     "central_heater:stone_brick_tile",
     "central_heater:stone_brick_tile_stair",
     "central_heater:stone_brick_tile_slab",
@@ -26,6 +32,7 @@
     "central_heater:sturdy_brick_tile_stair",
     "central_heater:sturdy_brick_tile_slab",
     "central_heater:sturdy_brick_tile_wall",
-    "central_heater:gold_bars"
+    "central_heater:gold_bars",
+    "central_heater:sturdy_tank"
   ]
 }

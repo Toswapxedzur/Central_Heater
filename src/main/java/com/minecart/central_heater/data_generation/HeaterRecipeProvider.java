@@ -3,9 +3,13 @@ package com.minecart.central_heater.data_generation;
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.Central_heater;
+import com.minecart.central_heater.recipe.EmptyRecipe;
 import com.minecart.central_heater.recipe.SeethingRecipe;
 import com.minecart.central_heater.recipe.SmolderingRecipe;
 import com.minecart.central_heater.recipe.SmolderingRecipeBuilder;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +22,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.conditions.FalseCondition;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.crafting.ConditionalRecipeOutput;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.List;
@@ -131,9 +138,9 @@ public class HeaterRecipeProvider extends RecipeProvider {
     }
 
     protected static void emptyRecipe(RecipeOutput output, ResourceLocation id){
-//        dummy recipe
-        SimpleCookingRecipeBuilder.generic(Ingredient.of(Items.BARRIER), RecipeCategory.MISC, Items.BARRIER,
-                0f, 0, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new).group("ungroupable").unlockedBy(getHasName(Items.BARRIER), has(Items.BARRIER)).save(output, id);
+        EmptyRecipe emptyRecipe = new EmptyRecipe();
+        AdvancementHolder emptyAdvancement = output.advancement().addCriterion("empty", CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance())).build(id);
+        output.withConditions(FalseCondition.INSTANCE).accept(id, emptyRecipe, emptyAdvancement);
     }
 
     protected static void oreSeething(
@@ -158,6 +165,18 @@ public class HeaterRecipeProvider extends RecipeProvider {
 
     protected static void oreCampfiring(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
         oreCooking(recipeOutput, RecipeSerializer.CAMPFIRE_COOKING_RECIPE, CampfireCookingRecipe::new, ingredients, category, result, experience, cookingTime, group, "_from_campfire_cooking");
+    }
+
+    protected static void smoldering(RecipeOutput output, Ingredient ingredients, FluidStack fluidIngredient, ItemStack result, FluidStack fluidResult, int time, int tier, int fireLevel){
+        smoldering(output, NonNullList.of(Ingredient.EMPTY, ingredients), fluidIngredient, NonNullList.of(ItemStack.EMPTY, result), fluidResult, time, tier, fireLevel);
+    }
+
+    protected static void smoldering(RecipeOutput output, NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, ItemStack result, FluidStack fluidResult, int time, int tier, int fireLevel){
+        smoldering(output, ingredients, fluidIngredient, NonNullList.of(ItemStack.EMPTY, result), fluidResult, time, tier, fireLevel);
+    }
+
+    protected static void smoldering(RecipeOutput output, Ingredient ingredients, FluidStack fluidIngredient, NonNullList<ItemStack> result, FluidStack fluidResult, int time, int tier, int fireLevel){
+        smoldering(output, NonNullList.of(Ingredient.EMPTY, ingredients), fluidIngredient, result, fluidResult, time, tier, fireLevel);
     }
 
     protected static void smoldering(RecipeOutput output, NonNullList<Ingredient> ingredients, FluidStack fluidIngredient, NonNullList<ItemStack> result, FluidStack fluidResult, int time, int tier, int fireLevel){

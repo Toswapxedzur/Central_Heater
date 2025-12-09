@@ -31,9 +31,9 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
     public int[] cookingTotalTime;
     public NonNullList<ItemStack> prevItems;
 
-    public static final int fuelConsumptionRate = 1;
+    public static final int fuelConsumptionRate = 2;
     public static final int coolRate = 2;
-    public static final float processMultiplier = 0.8f;
+    public static final float processMultiplier = 0.4f;
 
     public BrickStoveBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.brick_stove.get(), pos, blockState, 2,
@@ -178,16 +178,6 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
     public void updateBlockState(BlockState newState){
         getLevel().setBlock(getBlockPos(), newState, Block.UPDATE_ALL);
         getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), newState, Block.UPDATE_ALL);
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
-        return false;
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-        return false;
     }
 
 }

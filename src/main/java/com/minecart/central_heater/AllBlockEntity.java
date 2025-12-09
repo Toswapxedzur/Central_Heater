@@ -36,7 +36,7 @@ public class AllBlockEntity {
             ()->BlockEntityType.Builder.of(StonePotBlockEntity::new, AllBlockItem.stone_pot.get(), AllBlockItem.deepslate_pot.get()).build(null));
 
     public static Supplier<BlockEntityType<CauldronBlockEntity>> iron_cauldron = BLOCK_ENTITIES.register("iron_cauldron",
-            ()->BlockEntityType.Builder.of(CauldronBlockEntity::new, AllBlockItem.cauldron.get()).build(null));
+            ()->BlockEntityType.Builder.of(CauldronBlockEntity::new, AllBlockItem.iron_cauldron.get()).build(null));
 
     public static Supplier<BlockEntityType<GoldenCauldronBlockEntity>> golden_cauldron = BLOCK_ENTITIES.register("golden_cauldron",
             ()->BlockEntityType.Builder.of(GoldenCauldronBlockEntity::new, AllBlockItem.golden_cauldron.get()).build(null));

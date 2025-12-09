@@ -1,7 +1,10 @@
 package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.AllRecipe;
 import com.minecart.central_heater.block_entity.pot.AbstractPotBlockEntity;
+import com.minecart.central_heater.recipe.SmolderingRecipe;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -10,6 +13,8 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -30,6 +35,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class PotBlock extends BaseEntityBlock {
 
@@ -98,7 +105,11 @@ public abstract class PotBlock extends BaseEntityBlock {
         if(level.isClientSide)
             return InteractionResult.SUCCESS;
         if(level.getBlockEntity(pos) instanceof AbstractPotBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
-            player.setItemInHand(InteractionHand.MAIN_HAND, entity.getContainer().extractItem(false));
+            ItemStack extract = entity.getContainer().extractItem(false);
+            for(RecipeHolder<SmolderingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AllRecipe.SMOLDERING.get()))
+                if(recipe.value().getResults().stream().anyMatch(i -> i.is(extract.getItem())))
+                    player.triggerRecipeCrafted(recipe, List.of(extract));
+            player.setItemInHand(InteractionHand.MAIN_HAND, extract);
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.CONSUME;

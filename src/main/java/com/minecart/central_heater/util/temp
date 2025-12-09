@@ -1,4 +1,5 @@
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.sturdy_nugget, 4).requires(AllBlockItem.sturdy_brick)
-                .unlockedBy(getHasName(AllBlockItem.sturdy_brick), has(AllBlockItem.sturdy_brick)).group("misc").save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.sturdy_brick).requires(AllBlockItem.sturdy_nugget, 4)
-                .unlockedBy(getHasName(AllBlockItem.sturdy_nugget), has(AllBlockItem.sturdy_nugget)).group("misc").save(recipeOutput);
+            AdvancementHolder firstCauldron = Advancement.Builder.advancement().parent(firstHeater).display(new ItemStack(AllBlockItem.mud_brick_pot.asItem()), Component.translatable("advancements.heaters.first_cauldron.title"),
+                            Component.translatable("advancements.heaters.first_cauldron.description"), null,
+                            AdvancementType.TASK, true, true, false).addCriterion("placed_mud_brick_pot",
+                            ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AllBlockItem.mud_brick_pot.get()))
+                    .save(consumer, Central_heater.modLoc("heater/first_cauldron"), existingFileHelper);

@@ -75,11 +75,11 @@ public class QuadruplePotBlockEntityRenderer {
             float f = -direction1.toYRot();
             poseStack.pushPose();
             poseStack.translate(0.5f, 0f, 0.5f);
-            poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot() + f));
-            poseStack.translate(0.2f, 0f, 0.2f);
+            poseStack.mulPose(Axis.YP.rotationDegrees(f));
+            poseStack.translate(-0.1875f, 0f, -0.1875f);
             if(ItemUtil.isFlatItem(stack)) {
                 poseStack.translate(0f, 0.0125f + fluidHeight, 0f);
-                poseStack.mulPose(Axis.XN.rotationDegrees(90));
+                poseStack.mulPose(Axis.XP.rotationDegrees(90));
                 poseStack.scale(0.4f, 0.4f, 0.4f);
             }else {
                 poseStack.translate(0, Math.max(fluidHeight, 0.375f), 0f);

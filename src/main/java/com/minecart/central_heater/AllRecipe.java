@@ -1,9 +1,6 @@
 package com.minecart.central_heater;
 
-import com.minecart.central_heater.recipe.FireBrewingRecipe;
-import com.minecart.central_heater.recipe.SeethingRecipe;
-import com.minecart.central_heater.recipe.SimpleSmolderingRecipeSerializer;
-import com.minecart.central_heater.recipe.SmolderingRecipe;
+import com.minecart.central_heater.recipe.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -15,6 +12,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class AllRecipe {
     public static DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, Central_heater.MODID);
     public static DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, Central_heater.MODID);
+
+    public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<EmptyRecipe>> EMPTY_SERIALIZER = RECIPE_SERIALIZERS.register("empty", ()->new EmptyRecipe.Serializer());
+    public static DeferredHolder<RecipeType<?>, RecipeType<EmptyRecipe>> EMPTY = RECIPE_TYPES.register("empty", ()->new RecipeType<EmptyRecipe>(){
+        public String toString(){ return "empty"; }});
 
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<SeethingRecipe>> SEETHING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("seething", ()->new SimpleCookingSerializer<>(SeethingRecipe::new, 200));
     public static DeferredHolder<RecipeType<?>, RecipeType<SeethingRecipe>> SEETHING = RECIPE_TYPES.register("seething", ()->new RecipeType<SeethingRecipe>(){

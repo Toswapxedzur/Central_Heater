@@ -19,6 +19,10 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -35,6 +39,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class StoneStoveBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -126,9 +132,17 @@ public class StoneStoveBlock extends BaseEntityBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if(level.isClientSide)
             return InteractionResult.SUCCESS;
-        if(level.getBlockEntity(pos) != null && !level.getBlockEntity(pos).isRemoved() && level.getBlockEntity(pos) instanceof StoneStoveBlockEntity entity){
-            if(hitResult.getDirection().equals(Direction.UP)){player.setItemInHand(InteractionHand.MAIN_HAND, entity.items.extractItem(false));}
-            else{player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));}
+        if(level.getBlockEntity(pos) instanceof StoneStoveBlockEntity entity && !entity.isRemoved()){
+            if(hitResult.getDirection().equals(Direction.UP)){
+                ItemStack extract = entity.items.extractItem(false);
+                for(RecipeHolder<SmeltingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING))
+                    if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
+                        player.triggerRecipeCrafted(recipe, List.of(extract));
+                player.setItemInHand(InteractionHand.MAIN_HAND, extract);
+            }
+            else{
+                player.setItemInHand(InteractionHand.MAIN_HAND, entity.fuels.extractItem(false));
+            }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.CONSUME;
