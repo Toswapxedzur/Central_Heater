@@ -92,8 +92,7 @@ public abstract class CampFireBlockMixin extends BaseEntityBlock {
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             if (level.getBlockEntity(pos) instanceof BurnableCampfireBlockEntity blockentity) {
-                Containers.dropContents(level, pos, blockentity.getFuels());
-                Containers.dropContents(level, pos, blockentity.getItems());
+                blockentity.dropContents();
             }
             super.onRemove(state, level, pos, newState, isMoving);
         }

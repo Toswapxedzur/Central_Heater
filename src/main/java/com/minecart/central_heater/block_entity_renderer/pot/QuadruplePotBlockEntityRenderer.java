@@ -67,24 +67,30 @@ public class QuadruplePotBlockEntityRenderer {
         Direction direction = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
         int i = (int) blockEntity.getBlockPos().asLong();
 
+        float spin = Mth.lerp(partialTick, blockEntity.prevClientSpin, blockEntity.clientSpin);
+        float setIn = Mth.lerp(partialTick, blockEntity.prevSpinVelocity, blockEntity.spinVelocity);
+
         for(int j=0;j<4;j++){
             ItemStack stack = stacks.get(j);
             if(stack.isEmpty())
                 continue;
             Direction direction1 = Direction.from2DDataValue((j + direction.get2DDataValue()) % 4);
-            float f = -direction1.toYRot();
+            float f = -direction1.toYRot() + spin;
             poseStack.pushPose();
             poseStack.translate(0.5f, 0f, 0.5f);
             poseStack.mulPose(Axis.YP.rotationDegrees(f));
-            poseStack.translate(-0.1875f, 0f, -0.1875f);
+            poseStack.translate(-0.1875f + setIn * 0.05f, 0f, -0.1875f + setIn * 0.05f);
+
             if(ItemUtil.isFlatItem(stack)) {
-                poseStack.translate(0f, 0.0125f + fluidHeight, 0f);
+                poseStack.translate(0f, Math.max(fluidHeight, 0.2625f), 0f);
                 poseStack.mulPose(Axis.XP.rotationDegrees(90));
                 poseStack.scale(0.4f, 0.4f, 0.4f);
             }else {
                 poseStack.translate(0, Math.max(fluidHeight, 0.375f), 0f);
                 poseStack.scale(0.5f, 0.5f, 0.5f);
             }
+
+            poseStack.mulPose(Axis.XP.rotationDegrees(10));
             VirtualLevel.getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, blockEntity.getLevel(), i + j);
             poseStack.popPose();
         }

@@ -54,12 +54,23 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
     public final int fluidTankSize;
     protected final FluidTank fluidTank;
 
+    public boolean hasRecipe = false;
+
     @OnlyIn(Dist.CLIENT)
     public FluidStack clientFluidType = FluidStack.EMPTY;
     @OnlyIn(Dist.CLIENT)
     public float clientFluid = 0f;
     @OnlyIn(Dist.CLIENT)
-    public float prevClientFluid = 0;
+    public float prevClientFluid = 0f;
+
+    @OnlyIn(Dist.CLIENT)
+    public float clientSpin = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevClientSpin = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float spinVelocity = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevSpinVelocity = 0f;
 
     public static final BlockCapability<IFluidHandler, Direction> fluidCap = BlockCapability.createSided(Central_heater.modLoc("pot_tank"), IFluidHandler.class);
 
@@ -97,6 +108,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         progress[0] = tag.getIntArray("cookingProgress");
         progress[0] = tag.getIntArray("seethingProgress");
         ContainerHelper.loadAllItems(tag.getCompound("prevContainer"), prevContainer, registries);
+        hasRecipe = tag.getBoolean("hasRecipe");
     }
 
     @Override
@@ -108,6 +120,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         tag.putIntArray("cookingProgress", progress[1]);
         tag.putIntArray("seethingProgress", progress[2]);
         ContainerHelper.saveAllItems(tag.getCompound("prevContainer"), prevContainer, registries);
+        tag.putBoolean("hasRecipe", hasRecipe);
     }
 
     @Override
@@ -238,6 +251,8 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         NonNullList<ItemStack> stack = entity.getItems();
         int slots = stack.size();
 
+        entity.hasRecipe = false;
+
         while (true) {
             boolean flag = true;
             for (int i = 0; i < (1 << slots); i++) {
@@ -266,15 +281,16 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
                 int time = recipe.getTime(input, level.registryAccess());
                 NonNullList<ItemStack> results = recipe.assembleResults(input, level.registryAccess());
                 FluidStack fluidResult = recipe.assembleFluidResult(input, level.registryAccess());
-                if(minHeat < time)
-                    continue;
-                if (entity.getContainer().getNonEmptyItems() + substack.size() - results.size() > entity.getContainer().getSlots())
+                if (entity.getContainer().getNonEmptyItems() - substack.size() + results.size() > entity.getContainer().getSlots())
                     continue;
                 if (!entity.getFluidTank().getFluidInTank(0).isEmpty() && !fluidResult.isEmpty() &&
                         !FluidStack.isSameFluidSameComponents(entity.getFluidTank().getFluidInTank(0), fluidResult)
                 && entity.getFluidTank().getFluidInTank(0).getAmount() > fluidIngredient.getAmount())
                     continue;
                 if (entity.getFluidTank().getFluidInTank(0).getAmount() + fluidResult.getAmount() - fluidIngredient.getAmount() > entity.getFluidTank().getTankCapacity(0))
+                    continue;
+                entity.hasRecipe = true;
+                if(minHeat < time)
                     continue;
                 flag = false;
                 for (ItemStack stack1 : substack) {
@@ -315,6 +331,50 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         if(!serverFluid.isEmpty())
             entity.clientFluidType = serverFluid.copy();
         entity.clientFluid = clientAmount;
+
+
+        entity.prevClientSpin = entity.clientSpin;
+        entity.prevSpinVelocity = entity.spinVelocity;
+
+        float maxSpeed = 2f;
+        float acceleration = 0.5f;
+        float brakeFactor = 0.15f;
+        float stopThreshold = 3f;
+
+        if (entity.hasRecipe) {
+            if (entity.spinVelocity < maxSpeed) {
+                entity.spinVelocity = Math.min(entity.spinVelocity + acceleration, maxSpeed);
+            }
+        } else {
+            if (entity.spinVelocity == 0) {
+                entity.clientSpin = 0;
+                entity.prevClientSpin = 0;
+                return;
+            }
+            if (entity.clientSpin > 300f) {
+                float distanceRemaining = 360f - entity.clientSpin;
+                float arrivalSpeed = distanceRemaining * brakeFactor;
+                entity.spinVelocity = Math.min(entity.spinVelocity, arrivalSpeed);
+
+                if (distanceRemaining < stopThreshold) {
+                    entity.clientSpin = 0f;
+                    entity.prevClientSpin = 0f;
+                    entity.spinVelocity = 0f;
+                    return;
+                }
+            } else {
+                if (entity.spinVelocity < maxSpeed) {
+                    entity.spinVelocity = Math.min(entity.spinVelocity + acceleration, maxSpeed);
+                }
+            }
+        }
+
+        entity.clientSpin += entity.spinVelocity;
+
+        if (entity.clientSpin >= 360f) {
+            entity.clientSpin -= 360f;
+            entity.prevClientSpin -= 360f;
+        }
     }
 
     public int calculateLight(){

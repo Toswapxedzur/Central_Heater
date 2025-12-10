@@ -136,11 +136,11 @@ public class SturdyTankItem extends BlockItem {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         if(context.getPlayer().isShiftKeyDown())
-            super.useOn(context);
+            return super.useOn(context);
         InteractionResultHolder<ItemStack> fluidResult = tryPickUpFluid(context.getLevel(), context.getPlayer(), context.getHand());
         context.getPlayer().setItemInHand(context.getHand(), fluidResult.getObject());
         if(fluidResult.getResult().equals(InteractionResult.PASS))
-            super.useOn(context);
+            return super.useOn(context);
         return fluidResult.getResult();
     }
 
@@ -169,6 +169,16 @@ public class SturdyTankItem extends BlockItem {
     }
 
     @Override
+    public SoundEvent getEatingSound() {
+        return SoundEvents.HONEY_DRINK;
+    }
+
+    @Override
+    public SoundEvent getDrinkingSound() {
+        return SoundEvents.HONEY_DRINK;
+    }
+
+    @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving) {
         Player player = entityLiving instanceof Player ? (Player)entityLiving : null;
         if (player instanceof ServerPlayer) {
@@ -192,10 +202,9 @@ public class SturdyTankItem extends BlockItem {
                     float lengthAmplifier = fluidStack.getAmount() * 1f / 250;
                     potioncontents.forEachEffect(effect -> {
                         if (effect.getEffect().value().isInstantenous()) {
-                            effect.getEffect().value().applyInstantenousEffect(player, player, entityLiving, effect.getAmplifier(), 1.0);
+                            effect.getEffect().value().applyInstantenousEffect(player, player, entityLiving, effect.getAmplifier(), lengthAmplifier);
                         } else {
-                            MobEffectInstance newEffect = new MobEffectInstance(effect);
-                            newEffect.mapDuration(n -> (int) (n * lengthAmplifier));
+                            MobEffectInstance newEffect = new MobEffectInstance(effect.getEffect(), (int) (effect.getDuration() * lengthAmplifier), effect.getAmplifier(), effect.isAmbient(), effect.isVisible(), effect.showIcon());
                             entityLiving.addEffect(newEffect);
                         }
                     });

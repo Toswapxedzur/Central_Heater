@@ -66,10 +66,12 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(AllBlockItem.mud_brick_pot, SmolderingRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.stone_pot, SmolderingRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.deepslate_pot, SmolderingRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(AllBlockItem.iron_cauldron, SmolderingRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.golden_cauldron, SmolderingRecipeCategory.RECIPE_TYPE);
 
         registration.addRecipeCatalyst(AllBlockItem.golden_cauldron, NetherFuelCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.nether_brick_stove, NetherFuelCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.red_nether_brick_stove, NetherFuelCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(AllBlockItem.blackstone_stove, NetherFuelCategory.RECIPE_TYPE);
     }
 }

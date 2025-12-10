@@ -125,9 +125,15 @@ public class GoldenStoveBlock extends BaseEntityBlock {
         if(level.isClientSide)
             return ItemInteractionResult.SUCCESS;
         if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
-            if(stack.is(Items.FLINT_AND_STEEL)){ entity.kindle(); }
-            else if(hitResult.getDirection().equals(Direction.UP)){ player.setItemInHand(hand, entity.items.insertItem(stack, false)); }
-            else{ player.setItemInHand(hand, entity.fuels.insertItem(stack, false)); }
+            if(stack.is(Items.FLINT_AND_STEEL)){
+                entity.kindle();
+            }
+            else if(hitResult.getDirection().equals(Direction.UP)){
+                player.setItemInHand(hand, entity.items.insertItem(stack, false));
+            }
+            else {
+                player.setItemInHand(hand, entity.fuels.insertItem(stack, false));
+            }
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
