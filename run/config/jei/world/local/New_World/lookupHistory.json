@@ -1,5 +1,7 @@
 [
   {"version":1},
+  {"ingredient":{"id":"minecraft:obsidian"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:mud_brick_pot"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_helmet"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_leggings"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_boots"},"type":"item_stack","bookmarkType":"INGREDIENT"},
@@ -44,7 +46,6 @@
   {"ingredient":{"id":"central_heater:burnt_rabbit"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:cobble"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:stone_pot"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"central_heater:mud_brick_pot"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:blackstone_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:mud_brick_tile"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:deepslate_brick_tile"},"type":"item_stack","bookmarkType":"INGREDIENT"},
@@ -98,6 +99,5 @@
   {"ingredient":{"id":"minecraft:coal"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"minecraft:charcoal"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:mud_brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"central_heater:brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"minecraft:blast_furnace"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+  {"ingredient":{"id":"central_heater:brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"}
 ]

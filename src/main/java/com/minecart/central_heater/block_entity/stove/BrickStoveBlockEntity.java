@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
 
 public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
@@ -117,6 +118,7 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
 
     public static void clientTick(Level level, BlockPos pos, BlockState state, BrickStoveBlockEntity entity){
         RandomSource randomsource = level.random;
+
         if(state.getValue(BrickStoveBlock.LIT).booleanValue()) {
             if (randomsource.nextFloat() < 0.11F) {
                 for (int i = 0; i < randomsource.nextInt(2) + 2; i++) {
@@ -125,6 +127,33 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
                             (double)pos.getY() + randomsource.nextDouble() + randomsource.nextDouble(),
                             (double)pos.getZ() + 0.5 + randomsource.nextDouble() / 3.0 * (double)(randomsource.nextBoolean() ? 1 : -1),
                             0.0, 0.07, 0.0);
+                }
+            }
+        }
+
+        if(state.getValue(BrickStoveBlock.LIT).booleanValue()) {
+            int facingValue = state.getValue(BlockStateProperties.HORIZONTAL_FACING).get2DDataValue();
+
+            for (int j = 0; j < entity.items.getSlots(); ++j) {
+
+                if (!entity.items.getStackInSlot(j).isEmpty() && randomsource.nextFloat() < 0.2F) {
+
+                    Direction direction = Direction.from2DDataValue(Math.floorMod(j + facingValue, 4));
+                    float offset = 0.3125F;
+
+                    double x = (double) pos.getX() + 0.5D
+                            - (double) ((float) direction.getStepX() * offset)
+                            + (double) ((float) direction.getClockWise().getStepX() * offset);
+
+                    double y = (double) pos.getY() + 1.0D;
+
+                    double z = (double) pos.getZ() + 0.5D
+                            - (double) ((float) direction.getStepZ() * offset)
+                            + (double) ((float) direction.getClockWise().getStepZ() * offset);
+
+                    for (int k = 0; k < 4; ++k) {
+                        level.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 5.0E-4D, 0.0D);
+                    }
                 }
             }
         }

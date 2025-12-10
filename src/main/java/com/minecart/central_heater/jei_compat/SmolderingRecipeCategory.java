@@ -2,6 +2,7 @@ package com.minecart.central_heater.jei_compat;
 
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.Central_heater;
+import com.minecart.central_heater.recipe.FireBrewingRecipe;
 import com.minecart.central_heater.recipe.SmolderingRecipe;
 import com.minecart.central_heater.util.AllConstants;
 import com.minecart.central_heater.util.NetherFireState;
@@ -119,5 +120,12 @@ public class SmolderingRecipeCategory extends AbstractRecipeCategory<RecipeHolde
         pose.popPose();
         Lighting.setupForFlatItems();
         buffer.endBatch();
+    }
+
+    @Override
+    public boolean isHandled(RecipeHolder<SmolderingRecipe> recipe) {
+        if(recipe.value() instanceof FireBrewingRecipe)
+            return false;
+        return true;
     }
 }

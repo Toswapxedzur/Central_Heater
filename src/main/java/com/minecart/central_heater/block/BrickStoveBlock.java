@@ -115,10 +115,16 @@ public class BrickStoveBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.isClientSide)
             return ItemInteractionResult.SUCCESS;
-        if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof BrickStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
-            if(stack.is(Items.FLINT_AND_STEEL)){ entity.kindle(); }
-            else if(hitResult.getDirection().equals(Direction.UP)){ entity.items.insertItem(stack, false); }
-            else{ entity.fuels.insertItem(stack, false); }
+        if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof BrickStoveBlockEntity entity && !entity.isRemoved()){
+            if(stack.is(Items.FLINT_AND_STEEL)){
+                entity.kindle();
+            }
+            else if(hitResult.getDirection().equals(Direction.UP)){
+                player.setItemInHand(hand, entity.items.insertItem(stack, false));
+            }
+            else {
+                player.setItemInHand(hand, entity.fuels.insertItem(stack, false));
+            }
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

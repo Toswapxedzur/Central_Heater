@@ -1,10 +1,6 @@
 /gamemode creative
 /gamemode survival
 /gamemode creative
-/gamemode survival
-/gamemode creative
-/gamemode survival
-/gamemode creative
 /gamemode spectator
 /gamemode creative
 /time set day
@@ -48,3 +44,7 @@
 /gamemode survival
 /gamemode creative
 /gamemode survival
+/time set day
+/weather clear
+/time set day
+/effect clear

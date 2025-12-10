@@ -5,8 +5,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -24,6 +27,11 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
         @Override
         public boolean isItemValid(ItemStack stack) {
             return stack.getBurnTime(RecipeType.SMELTING) > 0;
+        }
+
+        @Override
+        protected void onContentsChanged() {
+            updateBlockEntity();
         }
     };
 
@@ -78,27 +86,20 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
         return this.fuels.get();
     }
 
-    public void consumeFuel(int amount){
-        litTime -= amount;
-        if(litTime < 0){
-            campfireLitTime += litTime;
-            litTime = 0;
-        }
-    }
-
     public boolean isLit(){
         return getBlockState().getValue(CampfireBlock.LIT).booleanValue();
     }
 
     public void setLit(boolean lit){
         if(!level.isClientSide)
-            level.setBlock(getBlockPos(), getBlockState().setValue(CampfireBlock.LIT, Boolean.valueOf(lit)), 11);
+            updateBlockState(getBlockState().setValue(CampfireBlock.LIT, Boolean.valueOf(lit)));
     }
 
     public boolean addFuel(ItemStack stack, boolean simulate){
         for(int i=0;i<fuel_slots;i++){
             if(getFuel(i).isEmpty()){
-                setFuel(i, stack.split(1));
+                if(!simulate)
+                    setFuel(i, stack.split(1));
                 return true;
             }
         }
@@ -129,14 +130,19 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
 
 
     public static void cookTick(Level level, BlockPos pos, BlockState state, BurnableCampfireBlockEntity blockEntity) {
-        blockEntity.consumeFuel(1);
+        blockEntity.litTime -= 1;
         if (blockEntity.litTime <= 0) {
             blockEntity.burnFuel();
         }
+        if(blockEntity.litTime < 0){
+            blockEntity.campfireLitTime += blockEntity.litTime;
+            blockEntity.litTime = 0;
+        }
         if (blockEntity.campfireLitTime <= 0) {
-            level.destroyBlock(pos, true);
-            level.setBlock(pos, Blocks.FIRE.defaultBlockState(), Block.UPDATE_ALL);
             level.playLocalSound(pos, SoundEvents.GENERIC_BURN, SoundSource.BLOCKS, 1f, 1f, true);
+            level.destroyBlock(pos, false);
+            level.setBlock(pos, Blocks.FIRE.defaultBlockState(), Block.UPDATE_ALL);
+            return;
         }
 
         CampfireBlockEntity.cookTick(level, pos, state, blockEntity);
@@ -154,6 +160,16 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
         setLit(true);
     }
 
+    public void dropContents(){
+        Containers.dropContents(getLevel(), getBlockPos(), getFuels());
+        Containers.dropContents(getLevel(), getBlockPos(), getItems());
+    }
+
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = new CompoundTag();
@@ -165,5 +181,15 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
     public void clearContent() {
         this.fuels.get().clear();
         super.clearContent();
+    }
+
+    public void updateBlockEntity() {
+        setChanged(getLevel(), this.getBlockPos(), getBlockState());
+        getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), Block.UPDATE_ALL);
+    }
+
+    public void updateBlockState(BlockState newState){
+        getLevel().setBlock(getBlockPos(), newState, Block.UPDATE_ALL);
+        getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), newState, Block.UPDATE_ALL);
     }
 }
