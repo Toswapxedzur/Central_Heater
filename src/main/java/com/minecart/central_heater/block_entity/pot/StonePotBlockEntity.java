@@ -9,9 +9,4 @@ public class StonePotBlockEntity extends AbstractPotBlockEntity {
     public StonePotBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.stone_pot.get(), pos, blockState,2);
     }
-
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.stone_pot");
-    }
 }

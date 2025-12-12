@@ -38,12 +38,11 @@ public abstract class QuadrupleFuelInvStoveBlockEntityRenderer {
     }
 
     public void renderInv(AbstractStoveBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
-        NonNullList<ItemStack> stacks = blockEntity.items.get();
         Direction direction = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
         int i = (int) blockEntity.getBlockPos().asLong();
 
-        for(int j=0;j<Math.min(stacks.size(), 4);j++){
-            ItemStack stack = stacks.get(j);
+        for(int j=0;j<Math.min(blockEntity.getItemSlots(), 4);j++){
+            ItemStack stack = blockEntity.getStackInItems(j);
             if(stack.isEmpty())
                 continue;
             Direction direction1 = Direction.from2DDataValue((j + direction.get2DDataValue()) % 4);

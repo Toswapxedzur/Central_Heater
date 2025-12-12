@@ -131,6 +131,10 @@ public class AllBlockItem {
 
     public static final DeferredItem<Item> sturdy_nugget = ITEMS.registerSimpleItem("sturdy_nugget", new Item.Properties().fireResistant());
 
+    public static final DeferredItem<Item> scorched_coal = ITEMS.registerSimpleItem("scorched_coal");
+
+    public static final DeferredItem<Item> scorched_dust = ITEMS.registerSimpleItem("scorched_dust");
+
     public static final FoodProperties burnt_food = new FoodProperties.Builder().nutrition(2).effect(new MobEffectInstance(MobEffects.HUNGER, 300), 0.6f).effect(new MobEffectInstance(MobEffects.POISON, 120), 0.4f).build();
 
     public static final DeferredItem<Item> burnt_beef = ITEMS.registerSimpleItem("burnt_beef", new Item.Properties().food(burnt_food));

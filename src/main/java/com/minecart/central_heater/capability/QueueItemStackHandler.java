@@ -11,29 +11,29 @@ import net.neoforged.neoforge.common.util.INBTSerializable;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 
-public class StackItemHandler implements IItemHandler, IItemHandlerModifiable, INBTSerializable<CompoundTag> {
+public class QueueItemStackHandler implements IItemHandler, IItemHandlerModifiable, INBTSerializable<CompoundTag> {
     protected NonNullList<ItemStack> stacks;
     public int maxSlotLimit;
 
-    public StackItemHandler(int size, int maxSlotLimit){
+    public QueueItemStackHandler(int size, int maxSlotLimit){
         stacks = NonNullList.withSize(size, ItemStack.EMPTY);
         this.maxSlotLimit = maxSlotLimit;
     }
 
-    public StackItemHandler(int size){
+    public QueueItemStackHandler(int size){
         this(size, 1);
     }
 
-    public StackItemHandler(NonNullList<ItemStack> stacks, int maxSlotLimit){
+    public QueueItemStackHandler(NonNullList<ItemStack> stacks, int maxSlotLimit){
         this.stacks = stacks;
         this.maxSlotLimit = maxSlotLimit;
     }
 
-    public StackItemHandler(NonNullList<ItemStack> stacks){
+    public QueueItemStackHandler(NonNullList<ItemStack> stacks){
         this(stacks, 1);
     }
 
-    public StackItemHandler(){
+    public QueueItemStackHandler(){
         this(1);
     }
 
@@ -71,6 +71,7 @@ public class StackItemHandler implements IItemHandler, IItemHandlerModifiable, I
     }
 
     public ItemStack getStackInSlot(int slot) {
+        validateSlotIndex(slot);
         return stacks.get(slot);
     }
 
@@ -119,38 +120,16 @@ public class StackItemHandler implements IItemHandler, IItemHandlerModifiable, I
         if (stack.isEmpty())
             return ItemStack.EMPTY;
 
-        if (!isItemValid(stack))
-            return stack.copy();
-
-        for(int i = 0 ; i < stacks.size() ; i++){
-            ItemStack existing = stacks.get(i);
-            int limit = getStackLimit(stack);
-
-            if(!existing.isEmpty()){
-                if(!ItemStack.isSameItemSameComponents(existing, stack)){
-                    continue;
-                }
-                limit -= existing.getCount();
+        for(int i=0;i<getSlots();i++){
+            ItemStack simulatedRemainder = insertItem(i, stack, true);
+            if(simulatedRemainder.getCount() != stack.getCount()){
+                if(simulate)
+                    return simulatedRemainder;
+                return insertItem(i, stack, false);
             }
-
-            if(limit <= 0)
-                continue;
-
-            boolean reachedLimit = stack.getCount() > limit;
-
-            if(!simulate){
-                if(existing.isEmpty()){
-                    stacks.set(i, reachedLimit ? stack.copyWithCount(limit) : stack.copy());
-                }else{
-                    existing.grow(reachedLimit ? limit : stack.getCount());
-                }
-                onContentsChanged();
-            }
-
-            return reachedLimit ? stack.copyWithCount(stack.getCount() - limit) : ItemStack.EMPTY;
         }
 
-        return stack.copy();
+        return stack;
     }
 
     /**
@@ -165,27 +144,16 @@ public class StackItemHandler implements IItemHandler, IItemHandlerModifiable, I
         if (amount == 0)
             return ItemStack.EMPTY;
 
-        for(int i = stacks.size()-1; i >= 0 ; i--){
-            ItemStack existing = stacks.get(i);
-
-            if(existing.isEmpty())
-                continue;
-
-            int toExtract = Math.min(amount, existing.getMaxStackSize());
-
-            if (existing.getCount() <= toExtract) {
-                if (!simulate) {
-                    this.stacks.set(i, ItemStack.EMPTY);
-                    onContentsChanged();
+        for(int i=0;i<getSlots();i++){
+            ItemStack result = extractItem(i, amount, true);
+            if (!result.isEmpty()) {
+                if (simulate) {
+                    return result;
+                } else {
+                    result = extractItem(i, amount, false);
+                    pop();
+                    return result;
                 }
-                return existing.copy();
-            } else {
-                if (!simulate) {
-                    this.stacks.set(i, existing.copyWithCount(existing.getCount() - toExtract));
-                    onContentsChanged();
-                }
-
-                return existing.copyWithCount(toExtract);
             }
         }
 
@@ -268,25 +236,21 @@ public class StackItemHandler implements IItemHandler, IItemHandlerModifiable, I
     }
 
     public void pop(){
+        boolean changed = false;
         int toSwap = 0;
         for(int i=0;i<getSlots();i++){
-            if(!getStackInSlot(i).isEmpty()){
-                setStackInSlot(toSwap, getStackInSlot(i));
+            ItemStack stack = getStackInSlot(i);
+            if(!stack.isEmpty()){
+                if(i != toSwap){
+                    setStackInSlot(toSwap, stack);
+                    setStackInSlot(i, ItemStack.EMPTY);
+                    changed = true;
+                }
                 toSwap++;
             }
         }
-        for(int i=toSwap;i<getSlots();i++)
-            setStackInSlot(i, ItemStack.EMPTY);
-    }
-
-    public void swap(int slot1, int slot2){
-        validateSlotIndex(slot1);
-        validateSlotIndex(slot2);
-        if(slot1 != slot2){
-            ItemStack stack = getStackInSlot(slot1);
-            setStackInSlot(slot1, getStackInSlot(slot2));
-            setStackInSlot(slot2, stack);
-        }
+        if(changed)
+            onContentsChanged();
     }
 
     protected void validateSlotIndex(int slot) {

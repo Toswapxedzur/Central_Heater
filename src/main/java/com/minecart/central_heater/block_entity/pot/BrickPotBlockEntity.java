@@ -9,9 +9,4 @@ public class BrickPotBlockEntity extends AbstractPotBlockEntity {
     public BrickPotBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.pot.get(), pos, blockState,1);
     }
-
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.brick_pot");
-    }
 }

@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -42,9 +43,9 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
         litState = FireState.NONE;
         litTime = 0;
         prevLitState = FireState.NONE;
-        cookingProgress = new int[itemCapacity];
-        cookingTotalTime = new int[itemCapacity];
-        prevItems = NonNullList.withSize(itemCapacity, ItemStack.EMPTY);
+        cookingProgress = new int[getItemSlots()];
+        cookingTotalTime = new int[getItemSlots()];
+        prevItems = NonNullList.withSize(getItemSlots(), ItemStack.EMPTY);
     }
 
     @Override
@@ -71,12 +72,10 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
         tag.put("prevItems", prevItemsTag);
     }
 
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.brick_stove");
-    }
-
     public static void serverTick(Level level, BlockPos pos, BlockState state, BrickStoveBlockEntity entity){
+        if(level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN))
+            entity.dropContent();
+
         entity.litTime -= fuelConsumptionRate;
         if(entity.litTime<=0){
             entity.litState = FireState.NONE;
@@ -86,7 +85,7 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
         }
         entity.prevLitState = entity.litState;
 
-        for (int i = 0; i < entity.itemCapacity; i++) {
+        for (int i = 0; i < entity.getItemSlots(); i++) {
             if(!entity.isLit())
                 entity.cookingProgress[i] = Math.max(0, entity.cookingProgress[i] - coolRate);
             if(ItemStack.matches(entity.items.getStackInSlot(i), entity.prevItems.get(i))) {
@@ -101,7 +100,7 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
             entity.prevItems.set(i, entity.items.getStackInSlot(i).copy());
         }
 
-        for (int i = 0; i < entity.itemCapacity; i++) {
+        for (int i = 0; i < entity.getItemSlots(); i++) {
             if (entity.cookingTotalTime[i] != 0 && entity.cookingProgress[i] >= entity.cookingTotalTime[i]) {
                 ItemStack ingredient = entity.items.getStackInSlot(i);
                 ItemStack result = RecipeUtil.getCookResult(RecipeType.CAMPFIRE_COOKING, ingredient);
@@ -160,10 +159,14 @@ public class BrickStoveBlockEntity extends AbstractStoveBlockEntity {
     }
 
     public void dropContent() {
-        for(int i = 0; i< fuels.getSlots(); i++)
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5, this.getBlockPos().getY()+0.5, this.getBlockPos().getZ()+0.5, this.fuels.getStackInSlot(i)));
-        for(int i = 0; i< items.getSlots(); i++)
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5, this.getBlockPos().getY()+0.8, this.getBlockPos().getZ()+0.5, this.items.getStackInSlot(i)));
+        for(int i = 0; i< fuels.getSlots(); i++) {
+            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.5, this.getBlockPos().getZ() + 0.5, this.fuels.getStackInSlot(i)));
+            fuels.setStackInSlot(i, ItemStack.EMPTY);
+        }
+        for(int i = 0; i< items.getSlots(); i++) {
+            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.8, this.getBlockPos().getZ() + 0.5, this.items.getStackInSlot(i)));
+            items.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 
     public void kindle() {

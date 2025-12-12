@@ -1,12 +1,15 @@
 package com.minecart.central_heater.block_entity.stove;
 
-import com.minecart.central_heater.capability.StackItemHandler;
+import com.minecart.central_heater.capability.QueueItemStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.Nameable;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -14,25 +17,22 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
-    //fuel before the item
-    public final int fuelCapacity;
-    public final StackItemHandler fuels;
-    public final int itemCapacity;
-    public final StackItemHandler items;
-    public final int[] fuelSlot;
-    public final int[] itemSlot;
+public abstract class AbstractStoveBlockEntity extends BlockEntity implements Nameable {
+    @Nullable
+    private Component name;
+    public final QueueItemStackHandler fuels;
+    public final ItemStackHandler items;
 
     public AbstractStoveBlockEntity(BlockEntityType<? extends AbstractStoveBlockEntity> type, BlockPos pos, BlockState blockState, int fuelCapacity, Predicate<ItemStack> isFuelValid, int itemCapacity) {
         super(type, pos, blockState);
-        this.fuelCapacity = fuelCapacity;
-        this.fuels = new StackItemHandler(fuelCapacity, 1){
+        this.fuels = new QueueItemStackHandler(fuelCapacity, 1){
             @Override
             public boolean isItemValid(ItemStack stack) {
                 return isFuelValid.test(stack);
@@ -40,18 +40,49 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
             @Override
             protected void onContentsChanged() { updateBlockEntity(); }
         };
-        this.fuelSlot = IntStream.range(0, fuelCapacity).toArray();
-        this.itemCapacity = itemCapacity;
-        this.items = new StackItemHandler(itemCapacity, 1){
+        this.items = new ItemStackHandler(itemCapacity){
             @Override
-            protected void onContentsChanged() { updateBlockEntity(); }
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+
+            @Override
+            protected void onContentsChanged(int slot) {
+                updateBlockEntity();
+            }
         };
-        this.itemSlot = IntStream.range(fuelCapacity, fuelCapacity + itemCapacity).toArray();
+    }
+
+    public QueueItemStackHandler getFuels(){
+        return fuels;
+    }
+
+    public ItemStackHandler getItems(){
+        return items;
+    }
+
+    public int getFuelSlots(){
+        return getFuels().getSlots();
+    }
+
+    public int getItemSlots(){
+        return getItems().getSlots();
+    }
+
+    public ItemStack getStackInFuels(int i){
+        return getFuels().getStackInSlot(i);
+    }
+
+    public ItemStack getStackInItems(int i){
+        return getItems().getStackInSlot(i);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        if (tag.contains("CustomName", 8)) {
+            this.name = parseCustomNameSafe(tag.getString("CustomName"), registries);
+        }
         items.deserializeNBT(registries, tag.getCompound("items"));
         fuels.deserializeNBT(registries, tag.getCompound("fuels"));
     }
@@ -59,125 +90,42 @@ public abstract class AbstractStoveBlockEntity extends BaseContainerBlockEntity 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
+        if (this.name != null) {
+            tag.putString("CustomName", Component.Serializer.toJson(this.name, registries));
+        }
         tag.put("items", items.serializeNBT(registries));
         tag.put("fuels", fuels.serializeNBT(registries));
     }
 
-    public abstract void updateBlockEntity();
-
-
-
-    @Override
-    public int getContainerSize() {
-        return fuelCapacity + itemCapacity;
+    public Component getName() {
+        return this.name != null ? this.name : Component.empty();
     }
 
-    @Override
-    public boolean isEmpty() {
-        for(ItemStack stack : fuels.get())
-            if(!stack.isEmpty())
-                return false;
-        for(ItemStack stack : items.get())
-            if(!stack.isEmpty())
-                return false;
-        return true;
+    public Component getDisplayName() {
+        return this.getName();
     }
 
-    @Override
-    public ItemStack getItem(int slot) {
-        if(slot >= fuelCapacity)
-            return items.getStackInSlot(slot - fuelCapacity);
-        return fuels.getStackInSlot(slot);
-    }
-
-    @Override
-    public ItemStack removeItem(int slot, int amount) {
-        ItemStack ret;
-        if(slot >= fuelCapacity)
-            ret = items.extractItem(slot - fuelCapacity, amount, false);
-        else
-            ret = fuels.extractItem(slot, amount, false);
-        return ret;
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(int slot) {
-        if(slot >= fuelCapacity)
-            return items.extractItem(slot - fuelCapacity, Item.ABSOLUTE_MAX_STACK_SIZE, false);
-        return fuels.extractItem(slot, Item.ABSOLUTE_MAX_STACK_SIZE, false);
-    }
-
-    @Override
-    public void setItem(int slot, ItemStack stack) {
-        if(slot >= fuelCapacity) {
-            items.setStackInSlot(slot - fuelCapacity, stack);
-            return;
-        }
-        fuels.setStackInSlot(slot, stack);
-    }
-
-    @Override
-    public int[] getSlotsForFace(Direction side) {
-        switch (side){
-            case UP -> {
-                return itemSlot;
-            }
-            case DOWN -> {
-                return itemSlot;
-            }
-            default -> {
-                return fuelSlot;
-            }
-        }
-    }
-
-    @Override
-    public int getMaxStackSize() {
-        return Math.min(fuels.maxSlotLimit, items.maxSlotLimit);
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
-        boolean flag = false;
-        for(int i : getSlotsForFace(direction))
-            if(i == index)
-                flag = true;
-        if(!flag)
-            return false;
-
-        if(index < fuelCapacity){
-            return fuels.isItemValid(itemStack);
-        }else{
-            return items.isItemValid(itemStack);
-        }
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-        return Arrays.stream(itemSlot).anyMatch(i -> i == index);
-    }
-
-
-
-    @Override
-    public NonNullList<ItemStack> getItems() {
-        return null;
-    }
-
-    @Override
-    protected void setItems(NonNullList<ItemStack> items) {
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return null;
+    @Nullable
+    public Component getCustomName() {
+        return this.name;
     }
 
     @Override
     protected void applyImplicitComponents(DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.name = (Component)componentInput.get(DataComponents.CUSTOM_NAME);
     }
 
     @Override
     protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(DataComponents.CUSTOM_NAME, this.name);
     }
+
+    @Override
+    public void removeComponentsFromTag(CompoundTag tag) {
+        tag.remove("CustomName");
+    }
+
+    public abstract void updateBlockEntity();
 }

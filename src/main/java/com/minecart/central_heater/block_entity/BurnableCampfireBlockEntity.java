@@ -1,6 +1,6 @@
 package com.minecart.central_heater.block_entity;
 
-import com.minecart.central_heater.capability.StackItemHandler;
+import com.minecart.central_heater.capability.QueueItemStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -8,7 +8,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -23,7 +22,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity {
     public static final int fuel_slots = 2;
     public int litTime;
     public int campfireLitTime;
-    public final StackItemHandler fuels = new StackItemHandler(fuel_slots, 1){
+    public final QueueItemStackHandler fuels = new QueueItemStackHandler(fuel_slots, 1){
         @Override
         public boolean isItemValid(ItemStack stack) {
             return stack.getBurnTime(RecipeType.SMELTING) > 0;

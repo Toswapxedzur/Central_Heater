@@ -5,6 +5,12 @@
     },
     "minecraft:soul_soil": {
       "value": 200
+    },
+    "central_heater:scorched_dust": {
+      "value": 100
+    },
+    "central_heater:scorched_coal": {
+      "value": 2400
     }
   }
 }

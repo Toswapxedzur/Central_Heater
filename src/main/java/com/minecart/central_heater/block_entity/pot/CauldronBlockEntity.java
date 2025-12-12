@@ -9,9 +9,4 @@ public class CauldronBlockEntity extends AbstractPotBlockEntity {
     public CauldronBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.iron_cauldron.get(), pos, blockState,3);
     }
-
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.cauldron");
-    }
 }

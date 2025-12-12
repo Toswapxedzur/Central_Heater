@@ -1,5 +1,8 @@
 [
   {"version":1},
+  {"ingredient":{"id":"central_heater:scorched_dust"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:scorched_coal"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"central_heater:sturdy_brick"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"minecraft:obsidian"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:mud_brick_pot"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_helmet"},"type":"item_stack","bookmarkType":"INGREDIENT"},
@@ -37,7 +40,6 @@
   {"ingredient":{"id":"central_heater:sturdy_brick_tile_stair"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_brick_tile_wall"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:burnt_potato"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"central_heater:sturdy_brick"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:sturdy_nugget"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:burnt_chicken"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"central_heater:burnt_mutton"},"type":"item_stack","bookmarkType":"INGREDIENT"},
@@ -97,7 +99,5 @@
   {"ingredient":{"id":"minecraft:porkchop"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"minecraft:campfire"},"type":"item_stack","bookmarkType":"INGREDIENT"},
   {"ingredient":{"id":"minecraft:coal"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"minecraft:charcoal"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"central_heater:mud_brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"},
-  {"ingredient":{"id":"central_heater:brick_stove"},"type":"item_stack","bookmarkType":"INGREDIENT"}
+  {"ingredient":{"id":"minecraft:charcoal"},"type":"item_stack","bookmarkType":"INGREDIENT"}
 ]

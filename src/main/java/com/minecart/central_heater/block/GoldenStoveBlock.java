@@ -22,6 +22,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -41,6 +42,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -125,11 +127,12 @@ public class GoldenStoveBlock extends BaseEntityBlock {
         if(level.isClientSide)
             return ItemInteractionResult.SUCCESS;
         if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
+            Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
             if(stack.is(Items.FLINT_AND_STEEL)){
                 entity.kindle();
             }
             else if(hitResult.getDirection().equals(Direction.UP)){
-                player.setItemInHand(hand, entity.items.insertItem(stack, false));
+                player.setItemInHand(hand, entity.items.insertItem(getIndexFromHitResult(hitResult, blockDir), stack, false));
             }
             else {
                 player.setItemInHand(hand, entity.fuels.insertItem(stack, false));
@@ -144,8 +147,9 @@ public class GoldenStoveBlock extends BaseEntityBlock {
         if(level.isClientSide)
             return InteractionResult.SUCCESS;
         if(level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !entity.isRemoved()){
+            Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
             if(hitResult.getDirection().equals(Direction.UP)){
-                ItemStack extract = entity.items.extractItem(false);
+                ItemStack extract = entity.items.extractItem(getIndexFromHitResult(hitResult, blockDir), Item.ABSOLUTE_MAX_STACK_SIZE, false);
                 for(RecipeHolder<SeethingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AllRecipe.SEETHING.get()))
                     if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
                         player.triggerRecipeCrafted(recipe, List.of(extract));
@@ -267,5 +271,22 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             }
         }
         super.animateTick(state, level, pos, random);
+    }
+
+    private int getIndexFromHitResult(BlockHitResult result, Direction direction){
+        Vec3 hitLoc = result.getLocation();
+        int dir = direction.get2DDataValue();
+        boolean b0 = hitLoc.x - Math.floor(hitLoc.x) > 0.5d;
+        boolean b1 = hitLoc.z - Math.floor(hitLoc.z) > 0.5d;
+        int index;
+        if(b0 && b1)
+            index = 2;
+        else if (!b0 && b1)
+            index = 3;
+        else if (b0 && !b1)
+            index = 1;
+        else
+            index = 0;
+        return (index - dir + 4) % 4;
     }
 }

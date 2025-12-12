@@ -2,7 +2,6 @@ package com.minecart.central_heater.data_generation;
 
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.Central_heater;
-import com.minecart.central_heater.item.AllTrimMaterials;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -59,6 +58,8 @@ public class GeneratorItemModel extends ItemModelProvider {
         basicItem(AllBlockItem.sturdy_brick.asItem());
         basicItem(AllBlockItem.sturdy_tank_item.asItem());
         basicItem(AllBlockItem.sturdy_nugget.asItem());
+        basicItem(AllBlockItem.scorched_coal.asItem());
+        basicItem(AllBlockItem.scorched_dust.asItem());
         withExistingParent("iron_cauldron", mcLoc("item/cauldron"));
         basicItem(AllBlockItem.golden_cauldron.asItem());
         basicItemWithTexture(AllBlockItem.gold_bars.asItem(), "block/gold_bars");

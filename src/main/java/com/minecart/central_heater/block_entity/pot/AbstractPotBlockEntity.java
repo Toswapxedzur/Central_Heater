@@ -6,17 +6,20 @@ import com.minecart.central_heater.block.*;
 import com.minecart.central_heater.recipe.SmolderingRecipe;
 import com.minecart.central_heater.recipe.SmolderingRecipeInput;
 import com.minecart.central_heater.util.NetherFireState;
-import com.minecart.central_heater.capability.StackItemHandler;
+import com.minecart.central_heater.capability.QueueItemStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Nameable;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
@@ -26,6 +29,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -36,57 +40,40 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+public abstract class AbstractPotBlockEntity extends BlockEntity implements Nameable {
+    @Nullable
+    private Component name;
 
     public final int tier;
 
-    public final int containerSize;
-    public final int[] containerSlot;
-    protected final StackItemHandler container;
+    protected final QueueItemStackHandler container;
     public int[][] progress;
-    NonNullList<ItemStack> prevContainer;
 
     public final int fluidTankSize;
     protected final FluidTank fluidTank;
 
-    public boolean hasRecipe = false;
-
-    @OnlyIn(Dist.CLIENT)
-    public FluidStack clientFluidType = FluidStack.EMPTY;
-    @OnlyIn(Dist.CLIENT)
-    public float clientFluid = 0f;
-    @OnlyIn(Dist.CLIENT)
-    public float prevClientFluid = 0f;
-
-    @OnlyIn(Dist.CLIENT)
-    public float clientSpin = 0f;
-    @OnlyIn(Dist.CLIENT)
-    public float prevClientSpin = 0f;
-    @OnlyIn(Dist.CLIENT)
-    public float spinVelocity = 0f;
-    @OnlyIn(Dist.CLIENT)
-    public float prevSpinVelocity = 0f;
-
     public static final BlockCapability<IFluidHandler, Direction> fluidCap = BlockCapability.createSided(Central_heater.modLoc("pot_tank"), IFluidHandler.class);
+
+    NonNullList<ItemStack> prevContainer;
+    public boolean hasRecipe = false;
 
     protected AbstractPotBlockEntity(BlockEntityType<? extends AbstractPotBlockEntity> type, BlockPos pos, BlockState blockState, int tier) {
         super(type, pos, blockState);
-        this.containerSize = 4;
-        this.containerSlot = IntStream.range(0, this.containerSize).toArray();
-        this.container = new StackItemHandler(this.containerSize, 1){
+        this.container = new QueueItemStackHandler(4, 1){
             @Override
             protected void onContentsChanged() {
                 updateBlockEntity();
             }
         };
 
-        this.prevContainer = NonNullList.withSize(this.containerSize, ItemStack.EMPTY);
-        this.progress = new int[3][this.containerSize];
+        this.prevContainer = NonNullList.withSize(4, ItemStack.EMPTY);
+        this.progress = new int[3][4];
 
         this.fluidTankSize = 1000;
         this.fluidTank = new FluidTank(this.fluidTankSize){
@@ -99,9 +86,25 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         this.tier = tier;
     }
 
+    public Component getName() {
+        return this.name != null ? this.name : Component.empty();
+    }
+
+    public Component getDisplayName() {
+        return this.getName();
+    }
+
+    @Nullable
+    public Component getCustomName() {
+        return this.name;
+    }
+
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+        if (tag.contains("CustomName", 8)) {
+            this.name = parseCustomNameSafe(tag.getString("CustomName"), registries);
+        }
         container.deserializeNBT(registries, tag.getCompound("container"));
         fluidTank.readFromNBT(registries, tag.getCompound("fluidTank"));
         progress[0] = tag.getIntArray("brewingProgress");
@@ -114,6 +117,9 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
+        if (this.name != null) {
+            tag.putString("CustomName", Component.Serializer.toJson(this.name, registries));
+        }
         tag.put("container", container.serializeNBT(registries));
         tag.put("fluidTank", fluidTank.writeToNBT(registries, new CompoundTag()));
         tag.putIntArray("brewingProgress", progress[0]);
@@ -135,7 +141,24 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public StackItemHandler getContainer(){
+    @Override
+    protected void applyImplicitComponents(DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.name = (Component)componentInput.get(DataComponents.CUSTOM_NAME);
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(DataComponents.CUSTOM_NAME, this.name);
+    }
+
+    @Override
+    public void removeComponentsFromTag(CompoundTag tag) {
+        tag.remove("CustomName");
+    }
+
+    public QueueItemStackHandler getContainer(){
         return this.container;
     }
 
@@ -143,74 +166,18 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         return this.fluidTank;
     }
 
-    @Override
-    public boolean isEmpty() {
-        for(ItemStack stack : container.get())
-            if(!stack.isEmpty())
-                return false;
-        return true;
+    public int getItemSlots(){
+        return getItems().size();
     }
 
-    @Override
-    public ItemStack getItem(int slot) {
-        return container.getStackInSlot(slot);
+    public NonNullList<ItemStack> getItems(){
+        return getContainer().get();
     }
 
-    @Override
-    public ItemStack removeItem(int slot, int amount) {
-        return container.extractItem(slot, amount, false);
+    public ItemStack getStackInSlot(int i){
+        return getContainer().getStackInSlot(i);
     }
 
-    @Override
-    public ItemStack removeItemNoUpdate(int slot) {
-        return container.extractItem(slot, Item.ABSOLUTE_MAX_STACK_SIZE, false);
-    }
-
-    @Override
-    public void setItem(int slot, ItemStack stack) {
-        container.setStackInSlot(slot, stack);
-        updateBlockEntity();
-    }
-
-    @Override
-    public int[] getSlotsForFace(Direction side) {
-        return containerSlot;
-    }
-
-    @Override
-    public int getMaxStackSize() {
-        return container.getSlotLimit();
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
-        return true;
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-        return true;
-    }
-
-    @Override
-    protected NonNullList<ItemStack> getItems() {
-        return container.get();
-    }
-
-    @Override
-    protected void setItems(NonNullList<ItemStack> items) {
-        container.set(items);
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return null;
-    }
-
-    @Override
-    public int getContainerSize() {
-        return containerSize;
-    }
 
     public void updateBlockEntity() {
         setChanged(getLevel(), this.getBlockPos(), getBlockState());
@@ -223,7 +190,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
     }
 
     public void drop(){
-        for(ItemStack stack : this.getItems())
+        for(ItemStack stack : getItems())
             getLevel().addFreshEntity(new ItemEntity(getLevel(), getBlockPos().getX()+0.5, getBlockPos().getY()+0.5, getBlockPos().getZ()+0.5, stack));
     }
 
@@ -231,8 +198,8 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         RecipeManager recipeManager = level.getRecipeManager();
 
         if(true){
-            for(int i=0;i<entity.containerSize;i++){
-                ItemStack stack = entity.getItem(i);
+            for(int i=0;i<entity.getItemSlots();i++){
+                ItemStack stack = entity.getStackInSlot(i);
                 entity.progress[0][i] = Math.max(entity.progress[0][i]-2, 0);
                 entity.progress[1][i] = Math.max(entity.progress[1][i]-2, 0);
                 entity.progress[2][i] = Math.max(entity.progress[2][i]-2, 0);
@@ -244,7 +211,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
                     entity.progress[1][i] = 0;
                     entity.progress[2][i] = 0;
                 }
-                entity.prevContainer.set(i, entity.getContainer().getStackInSlot(i).copy());
+                entity.prevContainer.set(i, entity.getStackInSlot(i).copy());
             }
         }
 
@@ -281,7 +248,7 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
                 int time = recipe.getTime(input, level.registryAccess());
                 NonNullList<ItemStack> results = recipe.assembleResults(input, level.registryAccess());
                 FluidStack fluidResult = recipe.assembleFluidResult(input, level.registryAccess());
-                if (entity.getContainer().getNonEmptyItems() - substack.size() + results.size() > entity.getContainer().getSlots())
+                if (entity.getContainer().getNonEmptyItems() - substack.size() + results.size() > entity.getItemSlots())
                     continue;
                 if (!entity.getFluidTank().getFluidInTank(0).isEmpty() && !fluidResult.isEmpty() &&
                         !FluidStack.isSameFluidSameComponents(entity.getFluidTank().getFluidInTank(0), fluidResult)
@@ -318,6 +285,35 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
         }
         return NetherFireState.NONE;
     }
+
+    public int calculateLight(){
+        FluidState fluidState = getFluidTank().getFluidInTank(0).getFluid().defaultFluidState();
+        int fluidLight = fluidState.createLegacyBlock().getLightEmission(level, getBlockPos());
+        int itemLight = -1;
+        for(ItemStack stack : getItems()){
+            if(stack.getItem() instanceof BlockItem blockItem){
+                itemLight = Math.max(itemLight, blockItem.getBlock().defaultBlockState().getLightEmission(level, getBlockPos()));
+            }
+        }
+        return Math.max(fluidLight, itemLight);
+    }
+
+
+    @OnlyIn(Dist.CLIENT)
+    public FluidStack clientFluidType = FluidStack.EMPTY;
+    @OnlyIn(Dist.CLIENT)
+    public float clientFluid = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevClientFluid = 0f;
+
+    @OnlyIn(Dist.CLIENT)
+    public float clientSpin = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevClientSpin = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float spinVelocity = 0f;
+    @OnlyIn(Dist.CLIENT)
+    public float prevSpinVelocity = 0f;
 
     @OnlyIn(Dist.CLIENT)
     public static void clientTick(Level level, BlockPos pos, BlockState state, AbstractPotBlockEntity entity){
@@ -375,17 +371,5 @@ public abstract class AbstractPotBlockEntity extends BaseContainerBlockEntity im
             entity.clientSpin -= 360f;
             entity.prevClientSpin -= 360f;
         }
-    }
-
-    public int calculateLight(){
-        FluidState fluidState = getFluidTank().getFluidInTank(0).getFluid().defaultFluidState();
-        int fluidLight = fluidState.createLegacyBlock().getLightEmission(level, getBlockPos());
-        int itemLight = -1;
-        for(ItemStack stack : getItems()){
-            if(stack.getItem() instanceof BlockItem blockItem){
-                itemLight = Math.max(itemLight, blockItem.getBlock().defaultBlockState().getLightEmission(level, getBlockPos()));
-            }
-        }
-        return Math.max(fluidLight, itemLight);
     }
 }
