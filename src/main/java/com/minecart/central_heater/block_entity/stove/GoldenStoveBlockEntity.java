@@ -51,10 +51,10 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
         litState = NetherFireState.NONE;
         litTime = 0;
         prevLitState = NetherFireState.NONE;
-        cookingProgress = new int[itemCapacity];
-        smeltingTotalTime = new int[itemCapacity];
-        seethingTotalTime = new int[itemCapacity];
-        prevItems = NonNullList.withSize(itemCapacity, ItemStack.EMPTY);
+        cookingProgress = new int[getItemSlots()];
+        smeltingTotalTime = new int[getItemSlots()];
+        seethingTotalTime = new int[getItemSlots()];
+        prevItems = NonNullList.withSize(getItemSlots(), ItemStack.EMPTY);
     }
 
     @Override
@@ -83,12 +83,9 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
         tag.put("validator", validatorTag);
     }
 
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.golden_stove");
-    }
-
     public static void serverTick(Level level, BlockPos pos, BlockState state, GoldenStoveBlockEntity entity) {
+        if(level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN))
+            entity.dropContent();
 
         if(entity.litState.equals(NetherFireState.SOUL))
             entity.litTime -= netherFuelConsumptionRate;
@@ -102,7 +99,7 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
         }
         entity.prevLitState = entity.litState;
 
-        for (int i = 0; i < entity.itemCapacity; i++) {
+        for (int i = 0; i < entity.getItemSlots(); i++) {
             if(!entity.isLit())
                 entity.cookingProgress[i] = Math.max(0, entity.cookingProgress[i] - coolRate);
             if(ItemStack.matches(entity.items.getStackInSlot(i), entity.prevItems.get(i))) {
@@ -122,7 +119,7 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
             entity.prevItems.set(i, entity.items.getStackInSlot(i).copy());
         }
 
-        for (int i = 0; i < entity.itemCapacity; i++) {
+        for (int i = 0; i < entity.getItemSlots(); i++) {
             ItemStack ingredient = entity.items.getStackInSlot(i);
             ItemStack result;
             if (entity.smeltingTotalTime[i] != 0 && entity.cookingProgress[i] >= entity.smeltingTotalTime[i]) {
@@ -199,10 +196,14 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
     }
 
     public void dropContent() {
-        for(int i = 0; i< fuels.getSlots(); i++)
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5, this.getBlockPos().getY()+0.5, this.getBlockPos().getZ()+0.5, this.fuels.getStackInSlot(i)));
-        for(int i = 0; i< items.getSlots(); i++)
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX()+0.5, this.getBlockPos().getY()+0.8, this.getBlockPos().getZ()+0.5, this.items.getStackInSlot(i)));
+        for(int i = 0; i< fuels.getSlots(); i++) {
+            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.5, this.getBlockPos().getZ() + 0.5, this.fuels.getStackInSlot(i)));
+            fuels.setStackInSlot(i, ItemStack.EMPTY);
+        }
+        for(int i = 0; i< items.getSlots(); i++) {
+            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.8, this.getBlockPos().getZ() + 0.5, this.items.getStackInSlot(i)));
+            items.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 
     public void kindle() {

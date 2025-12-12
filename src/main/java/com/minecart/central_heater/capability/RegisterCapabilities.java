@@ -3,6 +3,7 @@ package com.minecart.central_heater.capability;
 import com.minecart.central_heater.AllBlockEntity;
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.AllDataComponents;
+import com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -10,11 +11,28 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
+import net.neoforged.neoforge.items.IItemHandler;
 
 @EventBusSubscriber
 public class RegisterCapabilities {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event){
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.brick_stove.get(),
+                CapabilityFunction::stoveCapability);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.stone_stove.get(),
+                CapabilityFunction::stoveCapability);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.red_nether_brick_stove.get(),
+                CapabilityFunction::stoveCapability);
+
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.pot.get(),
+                (pot, side) -> pot.getContainer());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.stone_pot.get(),
+                (pot, side) -> pot.getContainer());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.iron_cauldron.get(),
+                (pot, side) -> pot.getContainer());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.golden_cauldron.get(),
+                (pot, side) -> pot.getContainer());
+
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.pot.get(),
                 (entity, side) -> side.equals(Direction.DOWN) ? null : entity.getFluidTank());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.stone_pot.get(),

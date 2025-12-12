@@ -9,9 +9,4 @@ public class GoldenCauldronBlockEntity extends AbstractPotBlockEntity {
     public GoldenCauldronBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.golden_cauldron.get(), pos, blockState,4);
     }
-
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.golden_cauldron");
-    }
 }

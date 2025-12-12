@@ -101,6 +101,9 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.red_nether_brick).requires(Items.NETHER_BRICK).requires(Ingredient.of(Items.NETHER_WART, Items.RED_DYE))
                 .unlockedBy(getHasName(Items.NETHER_BRICK), has(Items.NETHER_BRICK)).group("misc").save(recipeOutput);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AllBlockItem.scorched_coal).requires(Items.COAL).requires(AllBlockItem.scorched_dust, 8)
+                        .unlockedBy(getHasName(AllBlockItem.scorched_dust), has(AllBlockItem.scorched_dust)).group("misc").save(recipeOutput);
+
         stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.brick_stove, Items.BRICK, Items.IRON_INGOT, Items.IRON_BARS);
         stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.mud_brick_stove, AllBlockItem.mud_brick, Items.IRON_INGOT, Items.IRON_BARS);
         stoveCraftingRecipeBuilder(recipeOutput, AllBlockItem.stone_stove, AllBlockItem.stone_brick, Items.IRON_INGOT, Items.IRON_BARS);
@@ -197,7 +200,8 @@ public class GeneratorRecipe extends HeaterRecipeProvider implements IConditionB
         smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.deepslate_cobble), Ingredient.of(Items.GOLD_NUGGET)), new FluidStack(Fluids.LAVA, 300), new ItemStack(AllBlockItem.deepslate_brick.asItem()), new FluidStack(Fluids.LAVA, 250),200, 2,1);
         smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.cobble), Ingredient.of(Items.IRON_NUGGET)), new FluidStack(Fluids.LAVA, 150), new ItemStack(AllBlockItem.stone_brick.asItem()), new FluidStack(Fluids.LAVA, 100),150, 2,1);
         smoldering(recipeOutput, Ingredient.of(Items.COAL_BLOCK), new FluidStack(Fluids.LAVA, 1000), new ItemStack(Items.ANCIENT_DEBRIS), new FluidStack(Fluids.LAVA, 400),12000, 3,2);
-        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.stone_brick), Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.KELP)), new FluidStack(Fluids.LAVA, 100), new ItemStack(AllBlockItem.sturdy_brick.asItem()), FluidStack.EMPTY,1000, 3,1);
+        smoldering(recipeOutput, NonNullList.of(Ingredient.EMPTY, Ingredient.of(AllBlockItem.stone_brick), Ingredient.of(Items.IRON_INGOT), Ingredient.of(Items.KELP), Ingredient.of(Items.KELP)), new FluidStack(Fluids.LAVA, 100), new ItemStack(AllBlockItem.sturdy_brick.asItem()), FluidStack.EMPTY,1000, 3,1);
+        smoldering(recipeOutput, Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL), new FluidStack(Fluids.WATER, 750), new ItemStack(AllBlockItem.scorched_dust.asItem()), new FluidStack(Fluids.WATER, 650), 200, 2, 1);
 
         SpecialRecipeBuilder.special(category -> new FireBrewingRecipe()).save(recipeOutput, "cauldron_potion_brewing");
     }

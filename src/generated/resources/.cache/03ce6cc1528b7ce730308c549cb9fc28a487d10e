@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-09T18:25:49.248299	Item Models: central_heater
+// 1.21.1	2025-12-11T23:02:38.502034	Item Models: central_heater
 61cb4d2070798ca3ff3b16ee425b1c6ca6e457d5 assets/central_heater/models/item/blackstone_brick.json
 4661cd3701cfdc0fb8b0c31d10bb1f46f8945b13 assets/central_heater/models/item/blackstone_brick_tile_slab.json
 49c370937ef6015696cccf921401dbe5c96c6644 assets/central_heater/models/item/blackstone_brick_tile_stair.json
@@ -32,6 +32,8 @@ f1fc26c49013dac3569572c19820c6d5a0be1032 assets/central_heater/models/item/mud_b
 129c4dd15c57091c720e201413ac6e63cca393a5 assets/central_heater/models/item/nether_brick_stove.json
 2948eaa09f9a29b5e05e244c1962eb52e4477caa assets/central_heater/models/item/red_nether_brick.json
 28dedc837b396f4614a30e4b48f98caff153a167 assets/central_heater/models/item/red_nether_brick_stove.json
+5cd76123dcaf27c4194c527695e662dc033f5167 assets/central_heater/models/item/scorched_coal.json
+251f1e0f75d3a6b70ecbfa6bc11f284db80317dd assets/central_heater/models/item/scorched_dust.json
 094f374f10f455eae63354f735af37a0ea502883 assets/central_heater/models/item/stone_brick.json
 7ba1082b163fa785825d7a41868db4db24a07091 assets/central_heater/models/item/stone_brick_tile_slab.json
 42ba6e0cd1be6880de43e618de5811d875b55bba assets/central_heater/models/item/stone_brick_tile_stair.json
