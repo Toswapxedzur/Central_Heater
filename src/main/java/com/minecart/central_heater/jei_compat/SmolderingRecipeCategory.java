@@ -77,7 +77,7 @@ public class SmolderingRecipeCategory extends AbstractRecipeCategory<RecipeHolde
             case 1 ->
                     AllBlockItem.mud_brick_pot.get().defaultBlockState();
             case 2 ->
-                    AllBlockItem.deepslate_pot.get().defaultBlockState();
+                    AllBlockItem.brick_cauldron.get().defaultBlockState();
             case 3 ->
                     AllBlockItem.iron_cauldron.get().defaultBlockState();
             case 4 ->

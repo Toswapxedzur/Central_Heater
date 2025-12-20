@@ -1,0 +1,7 @@
+{
+  "values": {
+    "#central_heater:overburnt": {
+      "chance": 0.3
+    }
+  }
+}

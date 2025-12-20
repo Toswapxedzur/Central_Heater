@@ -1,5 +1,5 @@
-// 1.21.1	2025-12-09T21:19:48.749018	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-12-19T21:53:13.079624	Tags for minecraft:item mod id vanilla
 e8933e24c8ecaef8656ded6cec8c5ba117b1909d data/c/tags/item/bricks.json
 f1ae037d8c07e439bf59c9983a6eb48d8a5ef33b data/c/tags/item/nuggets.json
-cef95da0128f3d416f0035120eb954e12316c2aa data/central_heater/tags/item/overburnt.json
+6043cd0bfaff1700fb7dbe5ab649e730818c16a7 data/central_heater/tags/item/overburnt.json
 b6c900021ce295bff88713cdb908196a1b8ad967 data/minecraft/tags/item/trimmable_armor.json

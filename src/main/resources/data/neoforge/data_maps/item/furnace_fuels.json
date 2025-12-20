@@ -1,0 +1,13 @@
+{
+  "values": {
+    "central_heater:wood_chips": {
+      "burn_time": 200
+    },
+    "central_heater:fire_ash": {
+      "burn_time": 50
+    },
+    "#central_heater:overburnt": {
+      "burn_time": 100
+    }
+  }
+}

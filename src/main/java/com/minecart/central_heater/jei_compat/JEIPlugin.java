@@ -14,7 +14,6 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.runtime.IIngredientManager;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
@@ -64,8 +63,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(AllBlockItem.blackstone_stove, SeethingRecipeCategory.RECIPE_TYPE);
 
         registration.addRecipeCatalyst(AllBlockItem.mud_brick_pot, SmolderingRecipeCategory.RECIPE_TYPE);
-        registration.addRecipeCatalyst(AllBlockItem.stone_pot, SmolderingRecipeCategory.RECIPE_TYPE);
-        registration.addRecipeCatalyst(AllBlockItem.deepslate_pot, SmolderingRecipeCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(AllBlockItem.brick_cauldron, SmolderingRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.iron_cauldron, SmolderingRecipeCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(AllBlockItem.golden_cauldron, SmolderingRecipeCategory.RECIPE_TYPE);
 

@@ -1,5 +1,0 @@
-            AdvancementHolder firstCauldron = Advancement.Builder.advancement().parent(firstHeater).display(new ItemStack(AllBlockItem.mud_brick_pot.asItem()), Component.translatable("advancements.heaters.first_cauldron.title"),
-                            Component.translatable("advancements.heaters.first_cauldron.description"), null,
-                            AdvancementType.TASK, true, true, false).addCriterion("placed_mud_brick_pot",
-                            ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AllBlockItem.mud_brick_pot.get()))
-                    .save(consumer, Central_heater.modLoc("heater/first_cauldron"), existingFileHelper);

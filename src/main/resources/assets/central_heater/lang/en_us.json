@@ -10,7 +10,9 @@
   "block.central_heater.stone_pot": "Stone Pot",
   "block.central_heater.deepslate_pot": "Deepslate Pot",
   "block.central_heater.mud_brick_pot": "Mud Brick Pot",
-  "block.central_heater.cauldron": "Iron Cauldron",
+  "block.central_heater.clay_cauldron": "Clay Cauldron",
+  "block.central_heater.brick_cauldron": "Brick Cauldron",
+  "block.central_heater.iron_cauldron": "Iron Cauldron",
   "block.central_heater.golden_cauldron": "Golden Cauldron",
 
   "block.central_heater.stone_brick_tile": "Stone Brick Tile",
@@ -48,14 +50,20 @@
   "item.central_heater.sturdy_brick": "Sturdy Brick",
   "item.central_heater.sturdy_nugget": "Sturdy Nugget",
   "item.central_heater.scorched_dust": "Scorched Dust",
+  "item.central_heater.fire_ash": "Fire Ashes",
   "item.central_heater.scorched_coal": "Scorched Coal",
+  "item.central_heater.clay_bit": "Clay Bit",
+  "item.central_heater.clay_brick": "Clay Brick",
+  "item.central_heater.soul_mixture": "Soul Mixture",
+  "item.central_heater.wheat_dough": "Wheat Dough",
+  "item.central_heater.wheat_flour": "Wheat Flour",
+  "item.central_heater.wood_chips": "Wood Chips",
 
   "item.central_heater.burnt_beef": "Burnt Beef",
   "item.central_heater.burnt_chicken": "Burnt Chicken",
   "item.central_heater.burnt_cod": "Burnt Cod",
   "item.central_heater.burnt_mutton": "Burnt Mutton",
   "item.central_heater.burnt_porkchop": "Burnt Porkchop",
-  "item.central_heater.burnt_potato": "Burnt Potato",
   "item.central_heater.burnt_rabbit": "Burnt Rabbit",
   "item.central_heater.burnt_salmon": "Burnt Salmon",
 
@@ -81,8 +89,8 @@
   "advancements.heaters.first_pot.title": "Pottery Class",
   "advancements.heaters.first_pot.description": "Place a Brick Pot of any kind",
 
-  "advancements.heaters.second_pot.title": "Rock Solid Cooking",
-  "advancements.heaters.second_pot.description": "Upgrade to a durable Stone or Deepslate Pot",
+  "advancements.heaters.second_pot.title": "Brick Solid Cooking",
+  "advancements.heaters.second_pot.description": "Upgrade to a durable Brick Cauldron",
 
   "advancements.heaters.first_cauldron.title": "Heavy Metal",
   "advancements.heaters.first_cauldron.description": "Construct an Iron Cauldron for alloying",

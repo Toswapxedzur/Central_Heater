@@ -60,6 +60,15 @@ public class GeneratorItemModel extends ItemModelProvider {
         basicItem(AllBlockItem.sturdy_nugget.asItem());
         basicItem(AllBlockItem.scorched_coal.asItem());
         basicItem(AllBlockItem.scorched_dust.asItem());
+        basicItem(AllBlockItem.fire_ash.asItem());
+        basicItem(AllBlockItem.clay_bit.asItem());
+        basicItem(AllBlockItem.clay_brick.asItem());
+        basicItem(AllBlockItem.soul_mixture.asItem());
+        basicItem(AllBlockItem.wheat_dough.asItem());
+        basicItem(AllBlockItem.wheat_flour.asItem());
+        basicItem(AllBlockItem.wood_chips.asItem());
+        basicItem(AllBlockItem.clay_cauldron.asItem());
+        basicItem(AllBlockItem.brick_cauldron.asItem());
         withExistingParent("iron_cauldron", mcLoc("item/cauldron"));
         basicItem(AllBlockItem.golden_cauldron.asItem());
         basicItemWithTexture(AllBlockItem.gold_bars.asItem(), "block/gold_bars");
@@ -69,7 +78,6 @@ public class GeneratorItemModel extends ItemModelProvider {
         handheldItem(AllBlockItem.sturdy_hoe.asItem());
         handheldItem(AllBlockItem.sturdy_sword.asItem());
 
-        basicItem(AllBlockItem.burnt_potato.asItem());
         basicItem(AllBlockItem.burnt_beef.asItem());
         basicItem(AllBlockItem.burnt_chicken.asItem());
         basicItem(AllBlockItem.burnt_cod.asItem());
