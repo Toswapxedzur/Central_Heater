@@ -1,0 +1,63 @@
+package com.minecart.central_heater.mixin;
+
+import com.minecart.central_heater.AllBlockItem;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import javax.annotation.Nullable;
+import java.util.UUID;
+
+@Mixin(ItemEntity.class)
+public abstract class ItemEntityMixin extends Entity {
+    @Shadow public abstract ItemStack getItem();
+
+    @Shadow @Nullable public abstract Entity getOwner();
+
+    public ItemEntityMixin(EntityType<?> entityType, Level level) {
+        super(entityType, level);
+    }
+
+    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/item/ItemEntity;discard()V"))
+    private void onBurned(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (this.level().isClientSide) return;
+        if (source.is(DamageTypeTags.IS_FIRE)) {
+            ItemStack stack = this.getItem();
+            int burnTime = stack.getBurnTime(RecipeType.SMELTING);
+            if (burnTime > 0) {
+                int ashCount = 0;
+                int stackSize = stack.getCount();
+                for (int i = 0; i < stackSize; i++) {
+                    if (this.random.nextFloat() < 0.5f) {
+                        ashCount++;
+                    }
+                }
+                if (ashCount > 0) {
+                    ItemStack ashStack = new ItemStack(AllBlockItem.fire_ash.asItem(), ashCount);
+                    ItemEntity ashEntity = new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), ashStack);
+                    ashEntity.setDeltaMovement(this.getDeltaMovement());
+                    ashEntity.setXRot(this.getXRot());
+                    ashEntity.setYRot(this.getYRot());
+                    ashEntity.xRotO = this.xRotO;
+                    ashEntity.yRotO = this.yRotO;
+                    ashEntity.setNoGravity(this.isNoGravity());
+                    ashEntity.setInvulnerable(true);
+                    ashEntity.setDefaultPickUpDelay();
+                    ashEntity.setThrower(this.getOwner());
+                    this.level().addFreshEntity(ashEntity);
+                }
+            }
+        }
+    }
+}

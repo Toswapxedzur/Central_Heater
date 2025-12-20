@@ -2,7 +2,7 @@ package com.minecart.central_heater.block;
 
 import com.minecart.central_heater.AllBlockEntity;
 import com.minecart.central_heater.block_entity.pot.AbstractPotBlockEntity;
-import com.minecart.central_heater.block_entity.pot.BrickPotBlockEntity;
+import com.minecart.central_heater.block_entity.pot.MudBrickPotBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
@@ -36,7 +36,7 @@ public class BrickPotBlock extends PotBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new BrickPotBlockEntity(pos, state);
+        return new MudBrickPotBlockEntity(pos, state);
     }
 
     @Override

@@ -27,6 +27,6 @@ public class GeneratorItemTag extends ItemTagsProvider {
 
         tag(Alltags.Items.OVERBURNT).add(AllBlockItem.burnt_beef.asItem(), AllBlockItem.burnt_chicken.asItem(), AllBlockItem.burnt_cod.asItem(),
                 AllBlockItem.burnt_mutton.asItem(), AllBlockItem.burnt_salmon.asItem(), AllBlockItem.burnt_porkchop.asItem(),
-                AllBlockItem.burnt_rabbit.asItem(), AllBlockItem.burnt_potato.asItem());
+                AllBlockItem.burnt_rabbit.asItem());
     }
 }

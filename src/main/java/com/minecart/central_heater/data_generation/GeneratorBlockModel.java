@@ -34,11 +34,6 @@ public class GeneratorBlockModel extends BlockModelProvider {
         stoveModelSeeth("red_nether_brick_stove_soul", mcLoc("block/red_nether_bricks"), "block/red_nether_bricks_stove_side", "block/red_nether_bricks_stove_front", "block/gold_grid");
         stoveModelSeeth("blackstone_stove_soul", modLoc("block/blackstone_brick_tile"), "block/blackstone_stove_side", "block/blackstone_stove_front", "block/gold_grid");
 
-        lidModel("iron_lid", "block/iron_lid");
-        lidModel("gold_lid", "block/gold_lid");
-        windowedLidModel("windowed_iron_lid", "block/iron_lid");
-        windowedLidModel("windowed_gold_lid", "block/gold_lid");
-
         potModel("brick_pot", mcLoc("block/bricks"));
         potModel("mud_brick_pot", modLoc("block/mud_brick_tile"));
         potModel("stone_pot", modLoc("block/stone_brick_tile"));
@@ -46,6 +41,12 @@ public class GeneratorBlockModel extends BlockModelProvider {
         potModel("red_nether_brick_pot", mcLoc("block/red_nether_bricks"));
         potModel("nether_brick_pot", mcLoc("block/nether_bricks"));
         potModel("blackstone_pot", modLoc("block/blackstone_brick_tile"));
+
+        cauldronModel("brick_cauldron", modLoc("block/brick_cauldron_side"), modLoc("block/brick_cauldron_top"),
+                modLoc("block/brick_cauldron_bottom"), modLoc("block/brick_cauldron_inner"));
+
+        cauldronModel("clay_cauldron", mcLoc("block/clay"), mcLoc("block/clay"),
+                mcLoc("block/clay"), mcLoc("block/clay"));
 
         cauldronModel("golden_cauldron", modLoc("block/golden_cauldron_side"), modLoc("block/golden_cauldron_top"),
                 modLoc("block/golden_cauldron_bottom"), modLoc("block/golden_cauldron_inner"));
@@ -107,27 +108,6 @@ public class GeneratorBlockModel extends BlockModelProvider {
                 .texture("particle", bricks);
     }
 
-
-    public void lidModel(String name, String lid){
-        lidModel(name, modLoc(lid));
-    }
-
-    public void windowedLidModel(String name, String lid){
-        windowedLidModel(name, modLoc(lid));
-    }
-
-    public void lidModel(String name, ResourceLocation lid){
-        getBuilder(name).parent(getExistingFile(modLoc("block/lid")))
-                .texture("lid", lid)
-                .texture("particle", lid);
-    }
-
-    public void windowedLidModel(String name, ResourceLocation lid){
-        getBuilder(name).parent(getExistingFile(modLoc("block/windowed_lid")))
-                .texture("lid", lid)
-                .texture("particle", lid);
-    }
-
     public void potModel(String name, String bricks){
         potModel(name, modLoc(bricks));
     }
@@ -139,10 +119,8 @@ public class GeneratorBlockModel extends BlockModelProvider {
     }
 
     public void cauldronModel(String name, ResourceLocation side, ResourceLocation top, ResourceLocation bottom, ResourceLocation inside) {
-        // Inherit from the vanilla cauldron model
         withExistingParent(name, mcLoc("block/cauldron"))
-                // Override the textures
-                .texture("particle", side) // Use side texture for particles
+                .texture("particle", side)
                 .texture("side", side)
                 .texture("top", top)
                 .texture("bottom", bottom)

@@ -1,6 +1,6 @@
 package com.minecart.central_heater.block_entity_renderer.pot;
 
-import com.minecart.central_heater.block_entity.pot.BrickPotBlockEntity;
+import com.minecart.central_heater.block_entity.pot.MudBrickPotBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -9,13 +9,13 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class BrickPotBlockEntityRenderer extends QuadruplePotBlockEntityRenderer implements BlockEntityRenderer<BrickPotBlockEntity> {
-    public BrickPotBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+public class MudBrickPotBlockEntityRenderer extends QuadruplePotBlockEntityRenderer implements BlockEntityRenderer<MudBrickPotBlockEntity> {
+    public MudBrickPotBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public void render(BrickPotBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(MudBrickPotBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         super.render(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
     }
 }

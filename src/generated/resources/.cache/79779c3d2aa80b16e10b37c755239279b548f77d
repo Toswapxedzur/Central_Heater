@@ -1,6 +1,0 @@
-// 1.21.1	2025-12-08T23:12:35.7516	Tags for minecraft:block mod id central_heater
-ec230882e394966852099761f4c192fe5d0ff844 data/minecraft/tags/block/mineable/pickaxe.json
-3e619c42b63e1b23d560c412fadc88e36e7fc857 data/minecraft/tags/block/needs_stone_tool.json
-f0dda748f7ab6ee57167e17cc58ac0a236b09010 data/minecraft/tags/block/slabs.json
-e2d3b6ccc36cd21fab6888e179692cbd549aa496 data/minecraft/tags/block/stairs.json
-cc8197a064c1e466b71d7f6daeff955332a566b8 data/minecraft/tags/block/walls.json

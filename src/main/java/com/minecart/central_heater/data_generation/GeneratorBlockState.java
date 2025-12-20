@@ -40,8 +40,8 @@ public class GeneratorBlockState extends BlockStateProvider {
         wallBlock(AllBlockItem.blackstone_brick_tile_wall.get(), blockTexture(AllBlockItem.blackstone_brick_tile.get()));
 
         simpleBlockWithItem(AllBlockItem.mud_brick_pot.get(), models().getExistingFile(modLoc("block/mud_brick_pot")));
-        simpleBlockWithItem(AllBlockItem.stone_pot.get(), models().getExistingFile(modLoc("block/stone_pot")));
-        simpleBlockWithItem(AllBlockItem.deepslate_pot.get(), models().getExistingFile(modLoc("block/deepslate_pot")));
+        simpleBlockWithItem(AllBlockItem.brick_cauldron.get(), models().getExistingFile(modLoc("block/brick_cauldron")));
+        simpleBlockWithItem(AllBlockItem.clay_cauldron.get(), models().getExistingFile(modLoc("block/clay_cauldron")));
         simpleBlock(AllBlockItem.iron_cauldron.get(), models().getExistingFile(mcLoc("block/cauldron")));
         simpleBlock(AllBlockItem.golden_cauldron.get(), models().getExistingFile(modLoc("block/golden_cauldron")));
 

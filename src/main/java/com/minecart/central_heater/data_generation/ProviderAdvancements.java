@@ -9,14 +9,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.behavior.declarative.Trigger;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
-import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -60,12 +56,12 @@ public class ProviderAdvancements extends AdvancementProvider {
                             ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AllBlockItem.mud_brick_pot.get()))
                     .save(consumer, Central_heater.modLoc("heater/first_pot"), existingFileHelper);
 
-            AdvancementHolder secondPot = Advancement.Builder.advancement().parent(firstPot).display(new ItemStack(AllBlockItem.deepslate_pot.asItem()), Component.translatable("advancements.heaters.second_pot.title"),
+            AdvancementHolder secondPot = Advancement.Builder.advancement().parent(firstPot).display(new ItemStack(AllBlockItem.brick_cauldron.asItem()), Component.translatable("advancements.heaters.second_pot.title"),
                             Component.translatable("advancements.heaters.second_pot.description"), null,
-                            AdvancementType.TASK, true, true, false).addCriterion("placed_stone_pot",
-                            ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AnyOfCondition.anyOf(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlockItem.stone_pot.get()),
-                                    LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlockItem.deepslate_pot.get()))))
-                    .save(consumer, Central_heater.modLoc("heater/second_pot"), existingFileHelper);
+                            AdvancementType.TASK, true, true, false).addCriterion("placed_brick_cauldron",
+                            ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(AnyOfCondition.anyOf(LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlockItem.brick_cauldron.get()),
+                                    LootItemBlockStatePropertyCondition.hasBlockStateProperties(AllBlockItem.brick_cauldron.get()))))
+                    .save(consumer, Central_heater.modLoc("heater/second_cauldron"), existingFileHelper);
 
             AdvancementHolder firstCauldron = Advancement.Builder.advancement().parent(secondPot).display(new ItemStack(AllBlockItem.iron_cauldron.asItem()), Component.translatable("advancements.heaters.first_cauldron.title"),
                             Component.translatable("advancements.heaters.first_cauldron.description"), null,

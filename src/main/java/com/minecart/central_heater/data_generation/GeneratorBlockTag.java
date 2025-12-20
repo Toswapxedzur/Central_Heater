@@ -23,7 +23,7 @@ public class GeneratorBlockTag extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.brick_stove.get(), AllBlockItem.mud_brick_stove.get(), AllBlockItem.stone_stove.get(),
                 AllBlockItem.deepslate_stove.get(), AllBlockItem.nether_brick_stove.get(), AllBlockItem.red_nether_brick_stove.get(), AllBlockItem.blackstone_stove.get());
 
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.mud_brick_pot.get(), AllBlockItem.stone_pot.get(), AllBlockItem.deepslate_pot.get(),
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.mud_brick_pot.get(), AllBlockItem.brick_cauldron.get(),
                 AllBlockItem.iron_cauldron.get(), AllBlockItem.golden_cauldron.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(AllBlockItem.stone_brick_tile.get(), AllBlockItem.stone_brick_tile_stair.get(), AllBlockItem.stone_brick_tile_slab.get(), AllBlockItem.stone_brick_tile_wall.get(),
@@ -43,5 +43,7 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.blackstone_brick_tile_slab.get(), AllBlockItem.sturdy_brick_tile_slab.get());
         tag(BlockTags.WALLS).add(AllBlockItem.stone_brick_tile_wall.value(), AllBlockItem.deepslate_brick_tile_wall.get(), AllBlockItem.mud_brick_tile_wall.get(),
                 AllBlockItem.blackstone_brick_tile_wall.get(), AllBlockItem.sturdy_brick_tile_wall.get());
+
+        tag(BlockTags.CAULDRONS).add(AllBlockItem.iron_cauldron.get());
     }
 }

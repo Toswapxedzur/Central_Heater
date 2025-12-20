@@ -1,5 +1,6 @@
 package com.minecart.central_heater.data_generation;
 
+import com.minecart.central_heater.AllStructures;
 import com.minecart.central_heater.Central_heater;
 import com.minecart.central_heater.item.AllTrimMaterials;
 import net.minecraft.core.HolderLookup;
@@ -17,5 +18,6 @@ public class GeneratorDataRegistries extends DatapackBuiltinEntriesProvider {
     }
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.TEMPLATE_POOL, AllStructures::bootstrapPools)
             .add(Registries.TRIM_MATERIAL, AllTrimMaterials::bootstrap);
 }

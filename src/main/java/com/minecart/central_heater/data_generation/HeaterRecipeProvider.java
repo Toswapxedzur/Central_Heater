@@ -133,6 +133,12 @@ public class HeaterRecipeProvider extends RecipeProvider {
         bootsItem(output, boots, ingredient);
     }
 
+    protected void stonecutterTag(RecipeOutput recipeOutput, RecipeCategory category, ItemLike result, Ingredient input, int count, String nameSuffix) {
+        SingleItemRecipeBuilder.stonecutting(input, category, result, count)
+                .unlockedBy("has_" + nameSuffix, has(result))
+                .save(recipeOutput, getItemName(result) + "_from_" + nameSuffix);
+    }
+
     protected static void emptyRecipe(RecipeOutput output, String id){
         emptyRecipe(output, ResourceLocation.parse(id));
     }
