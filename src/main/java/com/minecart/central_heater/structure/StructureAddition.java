@@ -1,8 +1,7 @@
 package com.minecart.central_heater.structure;
 
-import com.minecart.central_heater.Central_heater;
+import com.minecart.central_heater.CentralHeater;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.client.gui.components.SpriteIconButton;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
@@ -40,11 +38,11 @@ public class StructureAddition {
             List<Pair<StructurePoolElement, Integer>> newTaigaVillage = new ArrayList<>();
             List<Pair<StructurePoolElement, Integer>> newSnowyVillage = new ArrayList<>();
 
-            newPlainsVillage.add(Pair.of(SinglePoolElement.legacy(Central_heater.modLoc("village/plains/houses/plains_huge_house_1").toString(),
+            newPlainsVillage.add(Pair.of(SinglePoolElement.legacy(CentralHeater.modLoc("village/plains/houses/plains_huge_house_1").toString(),
                     processorListRegistry.getHolderOrThrow(EMPTY_PROCESSOR_LIST_KEY)).apply(StructureTemplatePool.Projection.RIGID), 2));
-            newTaigaVillage.add(Pair.of(SinglePoolElement.legacy(Central_heater.modLoc("village/taiga/houses/taiga_huge_house_1").toString(),
+            newTaigaVillage.add(Pair.of(SinglePoolElement.legacy(CentralHeater.modLoc("village/taiga/houses/taiga_huge_house_1").toString(),
                     processorListRegistry.getHolderOrThrow(EMPTY_PROCESSOR_LIST_KEY)).apply(StructureTemplatePool.Projection.RIGID), 2));
-            newSnowyVillage.add(Pair.of(SinglePoolElement.legacy(Central_heater.modLoc("village/snowy/houses/snowy_huge_house_1").toString(),
+            newSnowyVillage.add(Pair.of(SinglePoolElement.legacy(CentralHeater.modLoc("village/snowy/houses/snowy_huge_house_1").toString(),
                     processorListRegistry.getHolderOrThrow(EMPTY_PROCESSOR_LIST_KEY)).apply(StructureTemplatePool.Projection.RIGID), 2));
 
             for(Pair<StructurePoolElement, Integer> entry : newPlainsVillage)

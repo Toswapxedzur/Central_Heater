@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-20T19:13:35.359515	Block States: central_heater
+// 1.21.1	2026-01-02T17:29:02.989995	Block States: central_heater
 aa39dda093207deb7eac368c5c96b086f242bb3f assets/central_heater/blockstates/blackstone_brick_tile.json
 11392a2b1558a81d240601cb876820fd74e1dda1 assets/central_heater/blockstates/blackstone_brick_tile_slab.json
 18b2615d3ec763d8dd09ccfbf9df519c8b8dcf48 assets/central_heater/blockstates/blackstone_brick_tile_stair.json
@@ -71,8 +71,6 @@ bd153bff5e477f5cd67a5dc5f50b926833d9a4d8 assets/central_heater/models/block/stur
 9cb1090f178266fcb80759331170cae114db53b9 assets/central_heater/models/block/sturdy_brick_tile_wall_side.json
 8c154613bbfe38252c3cf0d5d14c5d8d5b7f9ac5 assets/central_heater/models/block/sturdy_brick_tile_wall_side_tall.json
 a58c12e484e26f6f7777343712e7e22721e5dff3 assets/central_heater/models/item/blackstone_brick_tile.json
-b60017bbc444f8bca0f4cf1708e10b23b5f3208b assets/central_heater/models/item/brick_cauldron.json
-fe1d818ced5dff236d8427f205d9df0bb8abe902 assets/central_heater/models/item/clay_cauldron.json
 decb86e848e26d2f975e02a6df0ecb5c1ce252be assets/central_heater/models/item/deepslate_brick_tile.json
 6eae8b757d498e6f1b67aac161e157fa5da11579 assets/central_heater/models/item/mud_brick_pot.json
 1b833fb25ba296408bee77df7f35333424619f54 assets/central_heater/models/item/mud_brick_tile.json

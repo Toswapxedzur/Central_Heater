@@ -1,0 +1,14 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": {
+    "Name": "minecraft:bone_block",
+    "Properties": {
+      "axis": "y"
+    }
+  },
+  "output": {
+    "Name": "minecraft:ancient_debris"
+  },
+  "time": 12000
+}

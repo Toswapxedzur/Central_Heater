@@ -5,8 +5,8 @@ Time: 2025-11-17 21:47:20
 Description: Ticking block entity
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.item.crafting.RecipeHolder.equals(Object)" because "recipeHolder" is null
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.RecipeUtil.getCookTime(RecipeUtil.java:14) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.RecipeUtil.getCookTime(RecipeUtil.java:25) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.RecipeUtil.getCookTime(RecipeUtil.java:14) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.RecipeUtil.getCookTime(RecipeUtil.java:25) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:83) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
@@ -26,8 +26,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.RecipeUtil.getCookTime(RecipeUtil.java:14) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.RecipeUtil.getCookTime(RecipeUtil.java:25) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.RecipeUtil.getCookTime(RecipeUtil.java:14) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.RecipeUtil.getCookTime(RecipeUtil.java:25) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity.serverTick(StoneStoveBlockEntity.java:83) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}

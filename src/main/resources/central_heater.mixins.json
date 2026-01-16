@@ -1,5 +1,5 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
   "package": "com.minecart.central_heater.mixin",
   "compatibilityLevel": "JAVA_21",
@@ -9,12 +9,19 @@
     "CampfireBlockEntityMixin",
     "SimpleCookingRecipeBuilderMixin",
     "WorldGenRegionMixin",
-    "ItemEntityMixin"
+    "ItemEntityMixin",
+    "AbstractFurnaceBlockEntityAccessor",
+    "AbstractFurnaceBlockEntityMixin",
+    "AbstractFurnaceBlockMixin",
+    "FireBlockMixin"
   ],
   "client": [
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
   },
   "overwrites": {
     "requireAnnotations": true

@@ -1,0 +1,68 @@
+{
+  "values": {
+    "minecraft:coal_block": { "value": 1.0 },
+    "minecraft:charcoal": { "value": 0.8 },
+    "minecraft:coal": { "value": 0.7 },
+    "minecraft:dried_kelp_block": { "value": 0.5 },
+
+    "#minecraft:logs": { "value": 0.5 },
+    "#minecraft:logs_that_burn": { "value": 0.5 },
+
+    "#minecraft:boats": { "value": 0.3 },
+    "#minecraft:chest_boats": { "value": 0.3 },
+
+    "#minecraft:planks": { "value": 0.25 },
+    "#minecraft:wooden_stairs": { "value": 0.25 },
+    "#minecraft:wooden_doors": { "value": 0.25 },
+
+    "#minecraft:wooden_fences": { "value": 0.2 },
+    "#minecraft:fence_gates": { "value": 0.2 },
+    "#minecraft:signs": { "value": 0.2 },
+    "#minecraft:hanging_signs": { "value": 0.2 },
+
+    "#minecraft:banners": { "value": 0.2 },
+    "#minecraft:wooden_pressure_plates": { "value": 0.2 },
+    "#minecraft:wooden_buttons": { "value": 0.2 },
+
+    "minecraft:crafting_table": { "value": 0.2 },
+    "minecraft:cartography_table": { "value": 0.2 },
+    "minecraft:fletching_table": { "value": 0.2 },
+    "minecraft:smithing_table": { "value": 0.2 },
+    "minecraft:loom": { "value": 0.2 },
+    "minecraft:composter": { "value": 0.2 },
+    "minecraft:barrel": { "value": 0.2 },
+    "minecraft:chest": { "value": 0.2 },
+    "minecraft:trapped_chest": { "value": 0.2 },
+    "minecraft:bookshelf": { "value": 0.2 },
+    "minecraft:lectern": { "value": 0.2 },
+    "minecraft:note_block": { "value": 0.2 },
+    "minecraft:jukebox": { "value": 0.2 },
+    "minecraft:daylight_detector": { "value": 0.2 },
+    "minecraft:chiseled_bookshelf": { "value": 0.2 },
+
+    "#minecraft:wooden_slabs": { "value": 0.12 },
+    "#minecraft:wooden_trapdoors": { "value": 0.12 },
+
+    "#minecraft:wool": { "value": 0.1 },
+    "minecraft:blaze_rod": { "value": 0.1 },
+
+    "minecraft:stick": { "value": 0.05 },
+    "#minecraft:saplings": { "value": 0.05 },
+    "minecraft:bowl": { "value": 0.05 },
+    "#minecraft:wool_carpets": { "value": 0.05 },
+    "minecraft:scaffolding": { "value": 0.05 },
+    "minecraft:ladder": { "value": 0.05 },
+    "minecraft:torch": { "value": 0.05 },
+    "minecraft:soul_torch": { "value": 0.05 },
+    "minecraft:dried_kelp": { "value": 0.05 },
+
+    "minecraft:bamboo": { "value": 0.02 },
+
+    "minecraft:lava_bucket": { "value": 0.0 },
+
+    "central_heater:fire_ash": { "value": 0.5 },
+    "central_heater:wood_chips": {"value": 0.25},
+    "central_heater:burnt_log": {"value": 0.8},
+    "central_heater:burnt_wood": {"value": 0.8}
+  }
+}

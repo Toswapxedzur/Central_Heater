@@ -1,8 +1,8 @@
 package com.minecart.central_heater.block_entity_renderer.pot;
 
-import com.minecart.central_heater.block_entity.pot.AbstractPotBlockEntity;
-import com.minecart.central_heater.util.ItemUtil;
-import com.minecart.central_heater.util.VirtualLevel;
+import com.minecart.central_heater.block_entity.cauldron.AbstractCauldronBlockEntity;
+import com.minecart.central_heater.misc.ItemUtil;
+import com.minecart.central_heater.misc.VirtualLevel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -37,7 +37,7 @@ public class QuadruplePotBlockEntityRenderer {
         this.context = context;
     }
 
-    public void render(AbstractPotBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(AbstractCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         int smoothAmount = (int) Mth.lerp(partialTick, blockEntity.prevClientFluid, blockEntity.clientFluid);
         float percentage = (float) (smoothAmount * 1.0 / blockEntity.getFluidTank().getTankCapacity(0));
         float renderHeight = 0.249375f + percentage * 0.688125f;
@@ -45,7 +45,7 @@ public class QuadruplePotBlockEntityRenderer {
         renderFluid(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay, renderHeight);
     }
 
-    public void renderFluid(AbstractPotBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight){
+    public void renderFluid(AbstractCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight){
         FluidStack fluidStack = blockEntity.clientFluidType.copy();
         PotionContents potion = fluidStack.getOrDefault(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
         IClientFluidTypeExtensions attributes = IClientFluidTypeExtensions.of(fluidStack.getFluid());
@@ -62,7 +62,7 @@ public class QuadruplePotBlockEntityRenderer {
         renderQuad(poseStack.last(), buffer, tintColor, packedLight, fluidHeight, fluidHeight, 0f, 0f, 1f, 1f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1());
     }
 
-    public void renderInv(AbstractPotBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight) {
+    public void renderInv(AbstractCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight) {
         NonNullList<ItemStack> stacks = blockEntity.getContainer().get();
         Direction direction = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
         int i = (int) blockEntity.getBlockPos().asLong();

@@ -3,6 +3,7 @@
     "central_heater:mud_brick",
     "central_heater:stone_brick",
     "central_heater:deepslate_brick",
-    "central_heater:red_nether_brick"
+    "central_heater:red_nether_brick",
+    "central_heater:mud_brick"
   ]
 }

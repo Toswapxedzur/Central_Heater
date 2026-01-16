@@ -4,10 +4,10 @@
 Time: 2025-10-31 18:40:21
 Description: Ticking block entity
 
-java.lang.NullPointerException: Cannot invoke "java.util.Map.isEmpty()" because "com.minecart.central_heater.util.FuelMap.soul_fuel_map" is null
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
+java.lang.NullPointerException: Cannot invoke "java.util.Map.isEmpty()" because "com.minecart.central_heater.misc.FuelMap.soul_fuel_map" is null
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}
@@ -29,9 +29,9 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.util.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.initializeSoulFuelMap(SoulFuel.java:16) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.getSoulBurnTime(SoulFuel.java:26) ~[%23186!/:?] {re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.misc.FuelMap.getBurnTime(SoulFuel.java:31) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.burnOneFuel(GoldenStoveBlockEntity.java:134) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.updateFuel(GoldenStoveBlockEntity.java:115) ~[%23186!/:?] {re:classloading}
 	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity.serverTick(GoldenStoveBlockEntity.java:87) ~[%23186!/:?] {re:classloading}

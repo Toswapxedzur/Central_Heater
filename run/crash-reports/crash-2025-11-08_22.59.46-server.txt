@@ -7,10 +7,10 @@ Description: Ticking block entity
 java.lang.RuntimeException: Slot 2 not in valid range - [0,2)
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:171) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.getStackInSlot(ItemStackHandler.java:50) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.getFuel(BurnableCampfireBlockEntity.java:70) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.takeFuel(BurnableCampfireBlockEntity.java:111) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.burnFuel(BurnableCampfireBlockEntity.java:122) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.cookTick(BurnableCampfireBlockEntity.java:136) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.getFuel(BurnableCampfireBlockEntity.java:70) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.takeFuel(BurnableCampfireBlockEntity.java:111) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.burnFuel(BurnableCampfireBlockEntity.java:122) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.cookTick(BurnableCampfireBlockEntity.java:136) ~[%23186!/:?] {re:mixin,re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
@@ -31,16 +31,16 @@ Thread: Server thread
 Stacktrace:
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:171) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.211/net.neoforged.neoforge.items.ItemStackHandler.getStackInSlot(ItemStackHandler.java:50) ~[neoforge-21.1.211.jar%23185!/:?] {re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.getFuel(BurnableCampfireBlockEntity.java:70) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.takeFuel(BurnableCampfireBlockEntity.java:111) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.burnFuel(BurnableCampfireBlockEntity.java:122) ~[%23186!/:?] {re:mixin,re:classloading}
-	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity.cookTick(BurnableCampfireBlockEntity.java:136) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.getFuel(BurnableCampfireBlockEntity.java:70) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.takeFuel(BurnableCampfireBlockEntity.java:111) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.burnFuel(BurnableCampfireBlockEntity.java:122) ~[%23186!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/central_heater@1.0-SNAPSHOT/com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity.cookTick(BurnableCampfireBlockEntity.java:136) ~[%23186!/:?] {re:mixin,re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick(LevelChunk.java:711) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick(LevelChunk.java:788) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.tickBlockEntities(Level.java:599) ~[neoforge-21.1.211.jar%23184!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 -- Block entity being ticked --
 Details:
-	Name: central_heater:burnable_campfire_be // com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity
+	Name: central_heater:burnable_campfire_be // com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity
 	Block: Block{minecraft:campfire}[facing=south,lit=true,signal_fire=false,waterlogged=false]
 	Block location: World: (-22,78,15), Section: (at 10,14,15 in -2,4,0; chunk contains blocks -32,-64,0 to -17,319,15), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
 	Block: Block{minecraft:campfire}[facing=south,lit=true,signal_fire=false,waterlogged=false]

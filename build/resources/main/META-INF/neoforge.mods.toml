@@ -9,7 +9,7 @@ modLoader = "javafml" #mandatory
 loaderVersion = "[4,)" #mandatory
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
-license = "IDK"
+license = "MIT"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
@@ -17,7 +17,7 @@ license = "IDK"
 # The modid of the mod
 modId = "central_heater" #mandatory
 # The version number of the mod
-version = "1.0.0" #mandatory
+version = "1.2.2" #mandatory
 # A display name for the mod
 displayName = "Central Heater" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforge.net/docs/misc/updatechecker/
@@ -27,6 +27,7 @@ displayName = "Central Heater" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="central_heater.png" #optional
 # A text field displayed in the mod UI
+enumExtensions="META-INF/enumextensions.json"
 #credits="" #optional
 # A text field displayed in the mod UI
 authors = "Toswapxedzur" #optional

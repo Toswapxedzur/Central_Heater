@@ -1,7 +1,6 @@
 package com.minecart.central_heater.mixin;
 
-import com.minecart.central_heater.AllBlockItem;
-import com.minecart.central_heater.AllRecipe;
+import com.minecart.central_heater.recipe.AllRecipe;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.BlockItem;
@@ -21,7 +20,7 @@ public abstract class SimpleCookingRecipeBuilderMixin {
 
     @Inject(method = "determineRecipeCategory", at = @At(value = "HEAD"), cancellable = true)
     private static void determineRecipeCategory(RecipeSerializer<? extends AbstractCookingRecipe> serializer, ItemLike result, CallbackInfoReturnable<CookingBookCategory> returnable) {
-        if (serializer == AllRecipe.SEETHING_RECIPE_SERIALIZER.get()) {
+        if (serializer == AllRecipe.HAUNTING_RECIPE_SERIALIZER.get()) {
             if (result.asItem().components().has(DataComponents.FOOD)) {
                 returnable.setReturnValue(CookingBookCategory.FOOD);
             } else {

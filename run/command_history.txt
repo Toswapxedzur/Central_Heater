@@ -1,50 +1,50 @@
-/locate structure minecraft:village_taiga
-/tp @s -1824 ~ -1536
-/locate structure minecraft:village_snowy
-/tp @s -2544 ~ -1840
+/tp @s 6784 ~ -2864
 /locate structure minecraft:village_plains
-/tp @s -1552 ~ -496
-/locate structure minecraft:village_snowy
-/tp @s -864 ~ -1520
-/locate structure minecraft:village_taiga
-/tp @s -1392 ~ -2672
-/locate structure minecraft:village_snowy
-/tp @s -2080 ~ -2336
-/locate structure minecraft:village_taiga
-/tp @s -2352 ~ -2704
-/locate structure minecraft:mansion
-/tp @s -5584 ~ -7216
-/locate structure minecraft:village_taiga
-/tp @s -3696 ~ -4640
+/tp @s -1584 ~ 1792
+/time set day
+/locate biome
+/locate biome minecraft:plains
+/tp @s -100 73 -50
+/time set night
+/gamemode spectator
+/gamemode creative
+/time set day
+/gamemode survival
+/gamemode creative
+/time set night
+/gamemode survival
+/gamemode creative
+/time set day
+/tick rate 60
+/time set night
+/setblock 16 65 -12 minecraft:kelp
+/setblock 20 65 -9 minecraft:potatoes
+/setblock 20 65 -9 potatoes
+/gamemode survival
+/give Dev central_heater:blazing_furnace
+/gamemode creative
 /gamemode survival
 /gamemode creative
 /gamemode survival
-/locate structure minecraft:village_plains
-/tp @s 400 ~ -448
-/tp Dev 1000 1000 1000
-/locate structure minecraft:village_plains
-/tp @s 1328 ~ 16
-/tp Dev 2000 100 1000
-/locate structure minecraft:village_plains
-/tp Dev 3000 100 1000
-/locate structure minecraft:village_plains
-/tp @s 3296 ~ 688
-/tp Dev 4000 100 1000
-/locate structure minecraft:village_plains
-/tp Dev 7000 100 1000
-/locate structure minecraft:village_plains
-/tp @s 6000 ~ -480
-/locate poi minecraft:weaponsmith
-/tp @s 6010 ~ -454
-/locate poi minecraft:toolsmith
-/locate poi minecraft:cartographer
-/tick rate 60
-/time set day
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/gamemode creative
+/gamemode survival
+/effect clear
+/gamemode creative
+/gamemode survival
+/advancement grant Dev everything
+/gamemode survival
+/advancement grant Dev everything
+/gamemode survival
+/gamemode creative
+/advancement grant Dev everything
+/advancement revoke Dev everything
+/data get entity Dev Motion
+/advancement grant Dev everything
+/tick rate 1000
 /tick rate 20
-/locate structure minecraft:village_plains
-/tp @s -832 ~ 1440
-/tp 10000 100 0
-/locate structure minecraft:village_plains
-/tp @s 8768 ~ 1440
-/locate structure minecraft:swamp_hut
-/tp @s 6784 ~ -2864
