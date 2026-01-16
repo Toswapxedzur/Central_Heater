@@ -1,8 +1,7 @@
 package com.minecart.central_heater.block_entity_renderer.stove;
 
 import com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity;
-import com.minecart.central_heater.util.AllConstants;
-import com.minecart.central_heater.util.ItemUtil;
+import com.minecart.central_heater.misc.ItemUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -20,16 +19,16 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public abstract class QuadrupleFuelInvStoveBlockEntityRenderer {
+    public static final Vec3[][] fuelLocation = new Vec3[][]{
+            {new Vec3(0, 0.3, 0)},
+            {new Vec3(-0.15, 0.3, 0), new Vec3(0.15, 0.3, 0)},
+            {new Vec3(-0.15, 0.3, -0.15), new Vec3(-0.15, 0.3, 0.15), new Vec3(0.15, 0.3, 0)},
+            {new Vec3(-0.15, 0.3, -0.15), new Vec3(-0.15, 0.3, 0.15), new Vec3(0.15, 0.3, 0), new Vec3(0, 0.55, 0)}};
+
     public final BlockEntityRendererProvider.Context context;
-    private static final int fuelLocSize = 4;
-    private final Vec3[][] fuelLoc;
-    private static final int invLocSize = 4;
-    private final Vec3[] invLoc;
 
     public QuadrupleFuelInvStoveBlockEntityRenderer(BlockEntityRendererProvider.Context context){
         this.context = context;
-        this.fuelLoc = AllConstants.stoveFuelLoc4;
-        this.invLoc = AllConstants.stoveInvLoc4;
     }
 
     public void render(AbstractStoveBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
@@ -80,7 +79,7 @@ public abstract class QuadrupleFuelInvStoveBlockEntityRenderer {
             poseStack.pushPose();
             poseStack.translate(0.5f, 0, 0.5f);
             poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot()));
-            poseStack.translate(fuelLoc[i][j].x, fuelLoc[i][j].y, fuelLoc[i][j].z);
+            poseStack.translate(fuelLocation[i][j].x, fuelLocation[i][j].y, fuelLocation[i][j].z);
 
             if(j == 3 && isFlat[0] && isFlat[1] && isFlat[2])
                 poseStack.translate(0, -0.2f, 0);

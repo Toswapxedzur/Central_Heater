@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/inventory/RecipeBookType",
+      "name": "CENTRAL_HEATER_BLAZING",
+      "constructor": "()V",
+      "parameters": []
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "CENTRAL_HEATER_BLAZING_SEARCH",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/minecart/central_heater/misc/enumeration/EnumProxyParam",
+        "field": "BLAZING_SEARCH_PROXY"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "CENTRAL_HEATER_BLAZING_MISC",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "com/minecart/central_heater/misc/enumeration/EnumProxyParam",
+        "field": "BLAZING_FURNACE_MISC_PROXY"
+      }
+    }
+  ]
+}

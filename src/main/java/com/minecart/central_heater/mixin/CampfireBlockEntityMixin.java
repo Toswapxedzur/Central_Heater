@@ -1,6 +1,6 @@
 package com.minecart.central_heater.mixin;
 
-import com.minecart.central_heater.AllBlockEntity;
+import com.minecart.central_heater.block_entity.AllBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import org.spongepowered.asm.mixin.Debug;

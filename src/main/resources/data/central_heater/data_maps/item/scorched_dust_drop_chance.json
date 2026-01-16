@@ -1,0 +1,9 @@
+{
+  "values": {
+    "minecraft:soul_sand": { "value": 0.1 },
+    "minecraft:soul_soil": { "value": 0.1 },
+    "central_heater:scorched_dust": { "value": 0.2 },
+    "central_heater:soul_mixture": { "value": 0.2 },
+    "central_heater:scorched_coal": { "value": 0.5 }
+  }
+}

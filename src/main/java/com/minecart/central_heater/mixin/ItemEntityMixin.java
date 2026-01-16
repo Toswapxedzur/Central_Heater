@@ -1,7 +1,9 @@
 package com.minecart.central_heater.mixin;
 
 import com.minecart.central_heater.AllBlockItem;
-import net.minecraft.server.level.ServerLevel;
+import com.minecart.central_heater.advancement.AllTrigger;
+import com.minecart.central_heater.misc.DataMapHook;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.annotation.Nullable;
-import java.util.UUID;
 
 @Mixin(ItemEntity.class)
 public abstract class ItemEntityMixin extends Entity {
@@ -34,17 +35,20 @@ public abstract class ItemEntityMixin extends Entity {
         if (this.level().isClientSide) return;
         if (source.is(DamageTypeTags.IS_FIRE)) {
             ItemStack stack = this.getItem();
+            if (this.getOwner() instanceof ServerPlayer player) {
+                AllTrigger.BURNT_OBJECT.get().trigger(player, this.getItem());
+            }
             int burnTime = stack.getBurnTime(RecipeType.SMELTING);
             if (burnTime > 0) {
                 int ashCount = 0;
                 int stackSize = stack.getCount();
                 for (int i = 0; i < stackSize; i++) {
-                    if (this.random.nextFloat() < 0.5f) {
+                    if (this.random.nextFloat() < DataMapHook.getFireAshDropChance(stack)) {
                         ashCount++;
                     }
                 }
                 if (ashCount > 0) {
-                    ItemStack ashStack = new ItemStack(AllBlockItem.fire_ash.asItem(), ashCount);
+                    ItemStack ashStack = new ItemStack(AllBlockItem.FIRE_ASH.asItem(), ashCount);
                     ItemEntity ashEntity = new ItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), ashStack);
                     ashEntity.setDeltaMovement(this.getDeltaMovement());
                     ashEntity.setXRot(this.getXRot());
@@ -54,7 +58,8 @@ public abstract class ItemEntityMixin extends Entity {
                     ashEntity.setNoGravity(this.isNoGravity());
                     ashEntity.setInvulnerable(true);
                     ashEntity.setDefaultPickUpDelay();
-                    ashEntity.setThrower(this.getOwner());
+                    if(this.getOwner() != null)
+                        ashEntity.setThrower(this.getOwner());
                     this.level().addFreshEntity(ashEntity);
                 }
             }

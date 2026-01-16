@@ -1,8 +1,0 @@
-{
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:false"
-    }
-  ],
-  "type": "central_heater:empty"
-}

@@ -1,33 +1,41 @@
 package com.minecart.central_heater.block_entity.stove;
 
-import com.minecart.central_heater.AllBlockEntity;
-import com.minecart.central_heater.AllRecipe;
-import com.minecart.central_heater.block.BrickStoveBlock;
-import com.minecart.central_heater.block.GoldenStoveBlock;
-import com.minecart.central_heater.util.AllConstants;
-import com.minecart.central_heater.fuel.FuelMapHook;
-import com.minecart.central_heater.util.NetherFireState;
-import com.minecart.central_heater.util.RecipeUtil;
+import com.minecart.central_heater.block_entity.AllBlockEntity;
+import com.minecart.central_heater.AllBlockItem;
+import com.minecart.central_heater.recipe.AllRecipe;
+import com.minecart.central_heater.block.stove.GoldenStoveBlock;
+import com.minecart.central_heater.misc.DataMapHook;
+import com.minecart.central_heater.misc.enumeration.NetherFireState;
+import com.minecart.central_heater.misc.RecipeUtil;
+import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
 
@@ -47,7 +55,7 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
 
     public GoldenStoveBlockEntity(BlockPos pos, BlockState blockState) {
         super(AllBlockEntity.red_nether_brick_stove.get(), pos, blockState, 4,
-                stack -> stack.getBurnTime(RecipeType.SMELTING) != 0 || FuelMapHook.getBurnTime(stack) != 0, 4);
+                stack -> stack.getBurnTime(RecipeType.SMELTING) != 0 || DataMapHook.getNetherFuelBurnTime(stack) != 0, 4, 3);
         litState = NetherFireState.NONE;
         litTime = 0;
         prevLitState = NetherFireState.NONE;
@@ -60,13 +68,38 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        litTime = tag.getInt("litTime");
-        litState = NetherFireState.func.apply(tag.getString("litState"));
-        prevLitState = NetherFireState.func.apply(tag.getString("litStateValidator"));
-        cookingProgress = tag.getIntArray("cookingProgress");
-        smeltingTotalTime = tag.getIntArray("cookingTotalTime");
-        seethingTotalTime = tag.getIntArray("seethingTotalTime");
-        ContainerHelper.loadAllItems(tag.getCompound("validator"), prevItems, registries);
+
+        // 1. Load Primitives
+        this.litTime = tag.getInt("litTime");
+
+        // 2. Load Enums (Safe Fallback)
+        // If the tag is missing, getString returns "", so ensure your func handles that
+        // or we default to NONE manually.
+        String litStateStr = tag.getString("litState");
+        this.litState = litStateStr.isEmpty() ? NetherFireState.NONE : NetherFireState.func.apply(litStateStr);
+
+        String prevLitStateStr = tag.getString("litStateValidator");
+        this.prevLitState = prevLitStateStr.isEmpty() ? NetherFireState.NONE : NetherFireState.func.apply(prevLitStateStr);
+
+        // 3. Array Safety
+        // Ensure arrays are the correct size (getItemSlots()) to prevent index out of bounds crashes
+        int[] progress = tag.getIntArray("cookingProgress");
+        this.cookingProgress = (progress.length == getItemSlots()) ? progress : new int[getItemSlots()];
+
+        int[] smeltTime = tag.getIntArray("cookingTotalTime"); // Note: Key matches saveAdditional
+        this.smeltingTotalTime = (smeltTime.length == getItemSlots()) ? smeltTime : new int[getItemSlots()];
+
+        int[] seethTime = tag.getIntArray("seethingTotalTime");
+        this.seethingTotalTime = (seethTime.length == getItemSlots()) ? seethTime : new int[getItemSlots()];
+
+        // 4. Item List Safety
+        // Initialize list with Empty stacks first
+        this.prevItems = NonNullList.withSize(getItemSlots(), ItemStack.EMPTY);
+
+        // Only attempt to load if the specific tag exists
+        if (tag.contains("validator")) {
+            ContainerHelper.loadAllItems(tag.getCompound("validator"), prevItems, registries);
+        }
     }
 
     @Override
@@ -83,60 +116,89 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
         tag.put("validator", validatorTag);
     }
 
+    @Override
+    public void litTick() {
+        if(litState.equals(NetherFireState.SOUL))
+            litTime -= netherFuelConsumptionRate;
+        else
+            litTime -= fuelConsumptionRate;
+        if(litTime <= 0){
+            litState = NetherFireState.NONE;
+            litTime = 0;
+            if(!prevLitState.equals(NetherFireState.NONE))
+                burnOneFuel();
+        }
+        prevLitState = litState;
+    }
+
+    @Override
+    public void updateCookingTime() {
+        for (int i = 0; i < getItemSlots(); i++) {
+            if(!isLit())
+                cookingProgress[i] = Math.max(0, cookingProgress[i] - coolRate);
+            if(ItemStack.matches(items.getStackInSlot(i), prevItems.get(i))) {
+                if(isLit())
+                    cookingProgress[i] += 1;
+            }else if(ItemStack.isSameItemSameComponents(items.getStackInSlot(i), prevItems.get(i))){
+                smeltingTotalTime[i] = RecipeUtil.getCookTime(level, RecipeType.SMELTING, items.getStackInSlot(i), processMultiplier);
+                seethingTotalTime[i] = RecipeUtil.getCookTime(level, AllRecipe.HAUNTING.get(), items.getStackInSlot(i), processMultiplier);
+            }else{
+                cookingProgress[i] = 0;
+                smeltingTotalTime[i] = RecipeUtil.getCookTime(level, RecipeType.SMELTING, items.getStackInSlot(i), processMultiplier);
+                seethingTotalTime[i] = RecipeUtil.getCookTime(level, AllRecipe.HAUNTING.get(), items.getStackInSlot(i), processMultiplier);
+            }
+            if(!litState.equals(prevLitState) && !prevLitState.equals(NetherFireState.SOUL)) {
+                cookingProgress[i] = 0;
+            }
+            prevItems.set(i, items.getStackInSlot(i).copy());
+        }
+    }
+
+    @Override
+    public void smeltItem() {
+        for (int i = 0; i < getItemSlots(); i++) {
+            ItemStack ingredient = items.getStackInSlot(i);
+            ItemStack result = ItemStack.EMPTY;
+            ResourceLocation recipeId = null;
+
+            if (smeltingTotalTime[i] != 0 && cookingProgress[i] >= smeltingTotalTime[i]) {
+                Optional<RecipeHolder<SmeltingRecipe>> holder = RecipeUtil.getCookRecipe(level, RecipeType.SMELTING, ingredient);
+                if (holder.isPresent()) {
+                    result = holder.get().value().assemble(new SingleRecipeInput(ingredient), level.registryAccess());
+                    recipeId = holder.get().id();
+                }
+            }
+            else if (seethingTotalTime[i] != 0 && cookingProgress[i] >= seethingTotalTime[i]) {
+                Optional<RecipeHolder<HauntingRecipe>> holder = RecipeUtil.getCookRecipe(level, AllRecipe.HAUNTING.get(), ingredient);
+                if (holder.isPresent()) {
+                    result = holder.get().value().assemble(new SingleRecipeInput(ingredient), level.registryAccess());
+                    recipeId = holder.get().id();
+                }
+            }
+
+            if (!result.isEmpty()) {
+                result.setCount(ingredient.getCount());
+                items.setStackInSlot(i, result);
+
+                if (this.getPlacer() != null && recipeId != null && level instanceof ServerLevel serverLevel) {
+                    if (serverLevel.getPlayerByUUID(this.getPlacer()) instanceof ServerPlayer serverPlayer) {
+                        net.minecraft.advancements.CriteriaTriggers.RECIPE_CRAFTED.trigger(serverPlayer, recipeId, java.util.Collections.singletonList(result));
+                    }
+                }
+            }
+        }
+    }
+
     public static void serverTick(Level level, BlockPos pos, BlockState state, GoldenStoveBlockEntity entity) {
         if(level.getBlockState(pos.above()).isFaceSturdy(level, pos.above(), Direction.DOWN))
-            entity.dropContent();
+            entity.dropItem();
 
-        if(entity.litState.equals(NetherFireState.SOUL))
-            entity.litTime -= netherFuelConsumptionRate;
-        else
-            entity.litTime -= fuelConsumptionRate;
-        if(entity.litTime <= 0){
-            entity.litState = NetherFireState.NONE;
-            entity.litTime = 0;
-            if(!entity.prevLitState.equals(NetherFireState.NONE))
-                entity.burnOneFuel();
-        }
-        entity.prevLitState = entity.litState;
+        entity.litTick();
+        entity.updateCookingTime();
+        entity.smeltItem();
+        entity.smolderBlock();
 
-        for (int i = 0; i < entity.getItemSlots(); i++) {
-            if(!entity.isLit())
-                entity.cookingProgress[i] = Math.max(0, entity.cookingProgress[i] - coolRate);
-            if(ItemStack.matches(entity.items.getStackInSlot(i), entity.prevItems.get(i))) {
-                if(entity.isLit())
-                    entity.cookingProgress[i] += 1;
-            }else if(ItemStack.isSameItemSameComponents(entity.items.getStackInSlot(i), entity.prevItems.get(i))){
-                entity.smeltingTotalTime[i] = RecipeUtil.getCookTime(level, RecipeType.SMELTING, entity.items.getStackInSlot(i), processMultiplier);
-                entity.seethingTotalTime[i] = RecipeUtil.getCookTime(level, AllRecipe.SEETHING.get(), entity.items.getStackInSlot(i), processMultiplier);
-            }else{
-                entity.cookingProgress[i] = 0;
-                entity.smeltingTotalTime[i] = RecipeUtil.getCookTime(level, RecipeType.SMELTING, entity.items.getStackInSlot(i), processMultiplier);
-                entity.seethingTotalTime[i] = RecipeUtil.getCookTime(level, AllRecipe.SEETHING.get(), entity.items.getStackInSlot(i), processMultiplier);
-            }
-            if(!entity.litState.equals(entity.prevLitState) && !entity.prevLitState.equals(NetherFireState.SOUL)) {
-                entity.cookingProgress[i] = 0;
-            }
-            entity.prevItems.set(i, entity.items.getStackInSlot(i).copy());
-        }
-
-        for (int i = 0; i < entity.getItemSlots(); i++) {
-            ItemStack ingredient = entity.items.getStackInSlot(i);
-            ItemStack result;
-            if (entity.smeltingTotalTime[i] != 0 && entity.cookingProgress[i] >= entity.smeltingTotalTime[i]) {
-                result = RecipeUtil.getCookResult(RecipeType.SMELTING, ingredient);
-                result.setCount(ingredient.getCount());
-                if(!result.isEmpty())
-                    entity.items.setStackInSlot(i, result);
-            }
-            else if (entity.seethingTotalTime[i] != 0 && entity.cookingProgress[i] >= entity.seethingTotalTime[i]) {
-                result = RecipeUtil.getCookResult(AllRecipe.SEETHING.get(), ingredient);
-                result.setCount(ingredient.getCount());
-                if(!result.isEmpty())
-                    entity.items.setStackInSlot(i, result);
-            }
-        }
-
-        if(!state.getValue(AllConstants.LIT_SOUL).equals(entity.litState)){
+        if(!state.getValue(GoldenStoveBlock.LIT_SOUL).equals(entity.litState)){
             entity.updateBlockState(entity.getBlockState().setValue(GoldenStoveBlock.LIT_SOUL, entity.litState));
         }
     }
@@ -195,39 +257,49 @@ public class GoldenStoveBlockEntity extends AbstractStoveBlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public void dropContent() {
-        for(int i = 0; i< fuels.getSlots(); i++) {
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.5, this.getBlockPos().getZ() + 0.5, this.fuels.getStackInSlot(i)));
-            fuels.setStackInSlot(i, ItemStack.EMPTY);
-        }
-        for(int i = 0; i< items.getSlots(); i++) {
-            this.level.addFreshEntity(new ItemEntity(this.level, this.getBlockPos().getX() + 0.5, this.getBlockPos().getY() + 0.8, this.getBlockPos().getZ() + 0.5, this.items.getStackInSlot(i)));
-            items.setStackInSlot(i, ItemStack.EMPTY);
-        }
-    }
-
     public void kindle() {
-        if(this.isLit())
+        if(this.isLit() || this.isHaunt())
             return;
         burnOneFuel();
     }
 
-    public boolean isLit() { return !this.litState.equals(NetherFireState.NONE); }
+    public boolean isLit() { return this.litState.equals(NetherFireState.BURN); }
+
+    @Override
+    public boolean isHaunt() {
+        return this.litState.equals(NetherFireState.SOUL);
+    }
 
     public void burnOneFuel(){
         ItemStack stack = fuels.extractItem(true);
-        if(stack.isEmpty() || stack.getBurnTime(RecipeType.SMELTING) == 0 && FuelMapHook.getBurnTime(stack) == 0 )
+        if(stack.isEmpty() || stack.getBurnTime(RecipeType.SMELTING) == 0 && DataMapHook.getNetherFuelBurnTime(stack) == 0 )
             return;
         stack = fuels.extractItem(false);
-        if(FuelMapHook.getBurnTime(stack) != 0){
+        if (stack.hasCraftingRemainingItem()) {
+            ItemStack toInsert = new ItemStack(stack.getCraftingRemainingItem().getItem());
+            if(fuels.insertItem(toInsert, true).isEmpty())
+                fuels.insertItem(toInsert, false);
+            else
+                Containers.dropItemStack(getLevel(), getBlockPos().getX(), getBlockPos().getY(), getBlockPos().getZ(), toInsert);
+        }
+        float chance;
+        ItemStack toInsert;
+        if(DataMapHook.getNetherFuelBurnTime(stack) != 0){
             this.litState = NetherFireState.SOUL;
-            this.litTime += FuelMapHook.getBurnTime(stack);
+            this.litTime += DataMapHook.getNetherFuelBurnTime(stack);
+            chance = DataMapHook.getScorchedDustDropChance(stack);
+            toInsert = new ItemStack(AllBlockItem.SCORCHED_DUST.asItem());
         }else{
             this.litState = NetherFireState.BURN;
             this.litTime += stack.getBurnTime(RecipeType.SMELTING);
+            chance = DataMapHook.getFireAshDropChance(stack);
+            toInsert = new ItemStack(AllBlockItem.FIRE_ASH.asItem());
         }
-        if (stack.hasCraftingRemainingItem()) {
-            fuels.insertItem(stack.getCraftingRemainingItem(), false);
+        if(getLevel().getRandom().nextFloat() < chance) {
+            if(fuels.insertItem(toInsert, true).isEmpty())
+                fuels.insertItem(toInsert, false);
+            else
+                Containers.dropItemStack(getLevel(), getBlockPos().getX(), getBlockPos().getY(), getBlockPos().getZ(), toInsert);
         }
     }
 

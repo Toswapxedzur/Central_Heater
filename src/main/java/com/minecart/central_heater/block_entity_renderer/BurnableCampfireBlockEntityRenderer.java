@@ -1,7 +1,7 @@
 package com.minecart.central_heater.block_entity_renderer;
 
-import com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity;
-import com.minecart.central_heater.util.ItemUtil;
+import com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity;
+import com.minecart.central_heater.misc.ItemUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;

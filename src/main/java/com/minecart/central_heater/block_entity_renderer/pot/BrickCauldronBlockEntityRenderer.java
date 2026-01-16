@@ -1,6 +1,6 @@
 package com.minecart.central_heater.block_entity_renderer.pot;
 
-import com.minecart.central_heater.block_entity.pot.BrickCauldronBlockEntity;
+import com.minecart.central_heater.block_entity.cauldron.BrickCauldronBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

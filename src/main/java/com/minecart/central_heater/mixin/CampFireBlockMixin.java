@@ -1,12 +1,11 @@
 package com.minecart.central_heater.mixin;
 
-import com.minecart.central_heater.AllBlockEntity;
-import com.minecart.central_heater.block_entity.BurnableCampfireBlockEntity;
+import com.minecart.central_heater.block_entity.AllBlockEntity;
+import com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
