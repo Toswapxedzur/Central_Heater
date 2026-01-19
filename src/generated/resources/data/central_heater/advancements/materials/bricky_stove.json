@@ -1,0 +1,37 @@
+{
+  "parent": "central_heater:materials/bricky",
+  "criteria": {
+    "placed_brick_stove": {
+      "conditions": {
+        "location": [
+          {
+            "block": "central_heater:brick_stove",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.bricky_stove.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:brick_stove"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.bricky_stove.title"
+    }
+  },
+  "requirements": [
+    [
+      "placed_brick_stove"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

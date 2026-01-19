@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 0,
+  "fluidIngredient": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:green_concrete_powder"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:green_concrete"
+    }
+  ],
+  "time": 100
+}

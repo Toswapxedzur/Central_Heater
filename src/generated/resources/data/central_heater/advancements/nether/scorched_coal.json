@@ -1,0 +1,38 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_scorched_coal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "central_heater:scorched_coal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.scorched_coal.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:scorched_coal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.scorched_coal.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_scorched_coal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

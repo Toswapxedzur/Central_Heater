@@ -1,0 +1,20 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 0,
+  "fluidIngredient": {
+    "amount": 250,
+    "fluid": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:wheat_flour"
+    }
+  ],
+  "result": [
+    {
+      "item": "central_heater:wheat_dough"
+    }
+  ],
+  "tier": 1,
+  "time": 200
+}

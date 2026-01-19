@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "brick",
+  "ingredient": {
+    "item": "minecraft:packed_mud"
+  },
+  "result": "central_heater:mud_brick"
+}

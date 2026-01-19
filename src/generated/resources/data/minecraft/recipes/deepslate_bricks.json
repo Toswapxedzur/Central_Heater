@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "building",
+  "key": {
+    "#": {
+      "item": "central_heater:deepslate_brick"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "item": "minecraft:deepslate_bricks"
+  },
+  "show_notification": true
+}

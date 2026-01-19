@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:burnt_log"
+    }
+  ],
+  "result": {
+    "item": "minecraft:charcoal"
+  }
+}

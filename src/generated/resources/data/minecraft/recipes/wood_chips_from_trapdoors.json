@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 6,
+  "ingredient": {
+    "tag": "minecraft:wooden_trapdoors"
+  },
+  "result": "central_heater:wood_chips"
+}

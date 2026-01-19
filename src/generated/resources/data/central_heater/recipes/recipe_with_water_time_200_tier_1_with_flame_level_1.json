@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidResult": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:air"
+    }
+  ],
+  "tier": 1,
+  "time": 200
+}

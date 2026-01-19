@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "building",
+  "key": {
+    "#": {
+      "item": "central_heater:deepslate_brick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "central_heater:deepslate_brick_tile"
+  },
+  "show_notification": true
+}

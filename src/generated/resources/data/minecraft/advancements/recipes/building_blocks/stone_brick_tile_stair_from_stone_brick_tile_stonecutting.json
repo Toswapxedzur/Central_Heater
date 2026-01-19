@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stone_brick_tile": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "central_heater:stone_brick_tile"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:stone_brick_tile_stair_from_stone_brick_tile_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_stone_brick_tile",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_brick_tile_stair_from_stone_brick_tile_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

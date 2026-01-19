@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "brick",
+  "ingredient": {
+    "item": "minecraft:polished_blackstone"
+  },
+  "result": "central_heater:blackstone_brick"
+}

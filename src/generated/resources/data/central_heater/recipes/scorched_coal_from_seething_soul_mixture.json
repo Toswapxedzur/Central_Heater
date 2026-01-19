@@ -1,0 +1,11 @@
+{
+  "type": "central_heater:haunting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 1.0,
+  "group": "scorched",
+  "ingredient": {
+    "item": "central_heater:soul_mixture"
+  },
+  "result": "central_heater:scorched_coal"
+}

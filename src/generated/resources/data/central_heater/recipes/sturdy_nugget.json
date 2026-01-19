@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:sturdy_brick"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "central_heater:sturdy_nugget"
+  }
+}

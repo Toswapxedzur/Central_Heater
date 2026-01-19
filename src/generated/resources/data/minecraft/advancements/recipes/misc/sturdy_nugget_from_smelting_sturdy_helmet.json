@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sturdy_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "central_heater:sturdy_helmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:sturdy_nugget_from_smelting_sturdy_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sturdy_helmet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:sturdy_nugget_from_smelting_sturdy_helmet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

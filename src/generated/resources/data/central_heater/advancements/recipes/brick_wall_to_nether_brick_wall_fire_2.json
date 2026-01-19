@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brick_wall": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:brick_wall"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:brick_wall_to_nether_brick_wall_fire_2"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brick_wall"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:brick_wall_to_nether_brick_wall_fire_2"
+    ]
+  },
+  "sends_telemetry_event": true
+}

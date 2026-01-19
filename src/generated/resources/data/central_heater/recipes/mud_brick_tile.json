@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "building",
+  "key": {
+    "#": {
+      "item": "central_heater:mud_brick"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "central_heater:mud_brick_tile"
+  },
+  "show_notification": true
+}

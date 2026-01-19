@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_brick_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:brick_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:brick_slab_to_nether_brick_slab_fire_2"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_brick_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:brick_slab_to_nether_brick_slab_fire_2"
+    ]
+  },
+  "sends_telemetry_event": true
+}

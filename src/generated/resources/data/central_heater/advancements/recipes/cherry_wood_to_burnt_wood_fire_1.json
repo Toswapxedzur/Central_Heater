@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cherry_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cherry_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:cherry_wood_to_burnt_wood_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cherry_wood"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:cherry_wood_to_burnt_wood_fire_1"
+    ]
+  },
+  "sends_telemetry_event": true
+}

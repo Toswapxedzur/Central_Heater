@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:clay_brick"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:clay_ball"
+  }
+}

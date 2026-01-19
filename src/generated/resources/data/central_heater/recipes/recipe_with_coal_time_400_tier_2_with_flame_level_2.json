@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 2,
+  "fluidIngredient": {
+    "amount": 250,
+    "fluid": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "tier": 2
+}

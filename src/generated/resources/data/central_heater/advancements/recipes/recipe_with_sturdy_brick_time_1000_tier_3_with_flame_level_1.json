@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cauldron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cauldron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:recipe_with_sturdy_brick_time_1000_tier_3_with_flame_level_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cauldron"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:recipe_with_sturdy_brick_time_1000_tier_3_with_flame_level_1"
+    ]
+  },
+  "sends_telemetry_event": true
+}

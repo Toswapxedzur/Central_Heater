@@ -1,0 +1,37 @@
+{
+  "parent": "central_heater:materials/muddy",
+  "criteria": {
+    "placed_mud_stove": {
+      "conditions": {
+        "location": [
+          {
+            "block": "central_heater:mud_brick_stove",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.muddy_stove.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:mud_brick_stove"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.muddy_stove.title"
+    }
+  },
+  "requirements": [
+    [
+      "placed_mud_stove"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

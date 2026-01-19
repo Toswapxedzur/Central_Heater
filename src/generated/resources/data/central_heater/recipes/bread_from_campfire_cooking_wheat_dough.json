@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "group": "bread",
+  "ingredient": {
+    "item": "central_heater:wheat_dough"
+  },
+  "result": "minecraft:bread"
+}

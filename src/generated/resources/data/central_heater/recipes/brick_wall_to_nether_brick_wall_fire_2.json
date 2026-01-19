@@ -1,0 +1,6 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": "minecraft:brick_wall",
+  "output": "minecraft:nether_brick_wall"
+}

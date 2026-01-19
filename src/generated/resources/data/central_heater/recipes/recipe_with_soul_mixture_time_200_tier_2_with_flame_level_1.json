@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 125,
+    "fluid": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:scorched_dust"
+    }
+  ],
+  "result": [
+    {
+      "item": "central_heater:soul_mixture"
+    }
+  ],
+  "tier": 2,
+  "time": 200
+}

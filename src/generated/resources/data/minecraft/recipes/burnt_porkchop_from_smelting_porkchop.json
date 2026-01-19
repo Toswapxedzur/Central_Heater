@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "burnt",
+  "ingredient": {
+    "item": "minecraft:porkchop"
+  },
+  "result": "central_heater:burnt_porkchop"
+}

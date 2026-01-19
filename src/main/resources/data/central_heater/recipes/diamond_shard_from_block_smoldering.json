@@ -1,0 +1,12 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": "minecraft:coal_block",
+  "itemOutput": [
+    {
+      "item": "central_heater:diamond_shard"
+    }
+  ],
+  "output": "minecraft:air",
+  "time": 1200
+}r

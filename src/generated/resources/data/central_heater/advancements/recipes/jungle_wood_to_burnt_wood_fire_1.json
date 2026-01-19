@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jungle_wood": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:jungle_wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:jungle_wood_to_burnt_wood_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jungle_wood"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:jungle_wood_to_burnt_wood_fire_1"
+    ]
+  },
+  "sends_telemetry_event": true
+}

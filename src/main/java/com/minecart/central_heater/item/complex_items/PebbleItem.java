@@ -1,0 +1,62 @@
+package com.minecart.central_heater.item.complex_items;
+
+import com.minecart.central_heater.entity.ThrowablePebbleEntity;
+import net.minecraft.Util;
+import net.minecraft.core.Position;
+import net.minecraft.core.dispenser.AbstractProjectileDispenseBehavior;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
+
+public class PebbleItem extends Item {
+    public PebbleItem(Properties properties) {
+        super(properties);
+        // Manual dispenser registration to replace 1.21 ProjectileItem interface
+        DispenserBlock.registerBehavior(this, new AbstractProjectileDispenseBehavior() {
+            @Override
+            protected Projectile getProjectile(Level level, Position pos, ItemStack stack) {
+                ThrowablePebbleEntity pebble = new ThrowablePebbleEntity(level, pos.x(), pos.y(), pos.z());
+                pebble.setItem(stack);
+                return pebble;
+            }
+        });
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
+        level.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                SoundEvents.ENDER_PEARL_THROW,
+                SoundSource.NEUTRAL,
+                0.5F,
+                0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
+        );
+        if (!level.isClientSide) {
+            ThrowablePebbleEntity pebble = new ThrowablePebbleEntity(level, player);
+            pebble.setItem(itemstack);
+            pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+            level.addFreshEntity(pebble);
+        }
+
+        player.awardStat(Stats.ITEM_USED.get(this));
+
+        // 1.20.1 Item Consumption Logic
+        if (!player.getAbilities().instabuild) {
+            itemstack.shrink(1);
+        }
+
+        return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+    }
+}

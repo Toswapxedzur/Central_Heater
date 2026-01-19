@@ -1,0 +1,15 @@
+{
+  "type": "central_heater:smoldering",
+  "ingredients": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "tier": 1
+}

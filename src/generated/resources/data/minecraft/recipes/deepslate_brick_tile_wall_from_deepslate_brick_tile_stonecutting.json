@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "central_heater:deepslate_brick_tile"
+  },
+  "result": "central_heater:deepslate_brick_tile_wall"
+}

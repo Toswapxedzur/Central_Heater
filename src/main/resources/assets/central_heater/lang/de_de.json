@@ -1,0 +1,122 @@
+{
+  "block.central_heater.stone_stove": "Steinofen",
+  "block.central_heater.deepslate_stove": "Tiefenschieferofen",
+  "block.central_heater.brick_stove": "Ziegelofen",
+  "block.central_heater.mud_brick_stove": "Lehmziegelofen",
+  "block.central_heater.nether_brick_stove": "Netherziegelofen",
+  "block.central_heater.red_nether_brick_stove": "Roter Netherziegelofen",
+  "block.central_heater.blackstone_stove": "Schwarzsteinofen",
+
+  "block.central_heater.stone_pot": "Steintopf",
+  "block.central_heater.deepslate_pot": "Tiefenschiefertopf",
+  "block.central_heater.mud_brick_pot": "Lehmziegeltopf",
+  "block.central_heater.cauldron": "Eisenkessel",
+  "block.central_heater.golden_cauldron": "Goldkessel",
+
+  "block.central_heater.stone_brick_tile": "Steinziegelfliese",
+  "block.central_heater.stone_brick_tile_stair": "Steinziegelfliesentreppe",
+  "block.central_heater.stone_brick_tile_slab": "Steinziegelfliesenstufe",
+  "block.central_heater.stone_brick_tile_wall": "Steinziegelfliesenmauer",
+  "block.central_heater.deepslate_brick_tile": "Tiefenschieferziegelfliese",
+  "block.central_heater.deepslate_brick_tile_stair": "Tiefenschieferziegelfliesentreppe",
+  "block.central_heater.deepslate_brick_tile_slab": "Tiefenschieferziegelfliesenstufe",
+  "block.central_heater.deepslate_brick_tile_wall": "Tiefenschieferziegelfliesenmauer",
+  "block.central_heater.mud_brick_tile": "Lehmziegelfliese",
+  "block.central_heater.mud_brick_tile_stair": "Lehmziegelfliesentreppe",
+  "block.central_heater.mud_brick_tile_slab": "Lehmziegelfliesenstufe",
+  "block.central_heater.mud_brick_tile_wall": "Lehmziegelfliesenmauer",
+  "block.central_heater.blackstone_brick_tile": "Schwarzsteinziegelfliese",
+  "block.central_heater.blackstone_brick_tile_stair": "Schwarzsteinziegelfliesentreppe",
+  "block.central_heater.blackstone_brick_tile_slab": "Schwarzsteinziegelfliesenstufe",
+  "block.central_heater.blackstone_brick_tile_wall": "Schwarzsteinziegelfliesenmauer",
+  "block.central_heater.sturdy_brick_tile": "Robuste Ziegelfliese",
+  "block.central_heater.sturdy_brick_tile_stair": "Robuste Ziegelfliesentreppe",
+  "block.central_heater.sturdy_brick_tile_slab": "Robuste Ziegelfliesenstufe",
+  "block.central_heater.sturdy_brick_tile_wall": "Robuste Ziegelfliesenmauer",
+
+  "block.central_heater.gold_bars": "Goldgitter",
+  "block.central_heater.sturdy_tank": "Robuster Tank",
+
+  "item.central_heater.cobble": "Bruchstein",
+  "item.central_heater.deepslate_cobble": "Tiefenschieferbruchstein",
+  "item.central_heater.stone_brick": "Steinziegel",
+  "item.central_heater.mud_brick": "Lehmziegel",
+  "item.central_heater.red_nether_brick": "Roter Netherziegel",
+  "item.central_heater.deepslate_brick": "Tiefenschieferziegel",
+  "item.central_heater.diamond_shard": "Diamantscherbe",
+  "item.central_heater.blackstone_brick": "Schwarzsteinziegel",
+  "item.central_heater.sturdy_brick": "Robuster Ziegel",
+  "item.central_heater.sturdy_nugget": "Robustes Klümpchen",
+  "item.central_heater.scorched_dust": "Versengter Staub",
+  "item.central_heater.scorched_coal": "Versengte Kohle",
+
+  "item.central_heater.burnt_beef": "Verbranntes Rindfleisch",
+  "item.central_heater.burnt_chicken": "Verbranntes Hühnchen",
+  "item.central_heater.burnt_cod": "Verbrannter Kabeljau",
+  "item.central_heater.burnt_mutton": "Verbranntes Hammelfleisch",
+  "item.central_heater.burnt_porkchop": "Verbranntes Schweinekotelett",
+  "item.central_heater.burnt_potato": "Verbrannte Kartoffel",
+  "item.central_heater.burnt_rabbit": "Verbranntes Kaninchen",
+  "item.central_heater.burnt_salmon": "Verbrannter Lachs",
+
+  "item.central_heater.sturdy_pickaxe": "Robuste Spitzhacke",
+  "item.central_heater.sturdy_axe": "Robuste Axt",
+  "item.central_heater.sturdy_shovel": "Robuste Schaufel",
+  "item.central_heater.sturdy_hoe": "Robuste Hacke",
+  "item.central_heater.sturdy_sword": "Robustes Schwert",
+  "item.central_heater.sturdy_helmet": "Robuster Helm",
+  "item.central_heater.sturdy_chestplate": "Robuster Harnisch",
+  "item.central_heater.sturdy_leggings": "Robuste Beinschutz",
+  "item.central_heater.sturdy_boots": "Robuste Stiefel",
+
+  "advancements.heaters.first_heater.title": "Heizkörper versammelt euch",
+  "advancements.heaters.first_heater.description": "Die Menschheit hat nun die Kraft des Feuers gemeistert, was großen Fortschritt, aber auch Zerstörung brachte",
+
+  "advancements.heaters.second_heater.title": "Heizen der Steinzeit",
+  "advancements.heaters.second_heater.description": "Rüste deinen Ofen auf Stein oder Tiefenschiefer auf",
+
+  "advancements.heaters.third_heater.title": "Höllenküche",
+  "advancements.heaters.third_heater.description": "Baue einen Ofen, der der Hitze des Nethers standhält",
+
+  "advancements.heaters.first_pot.title": "Töpferkurs",
+  "advancements.heaters.first_pot.description": "Platziere einen beliebigen Ziegeltopf",
+
+  "advancements.heaters.second_pot.title": "Felsenfestes Kochen",
+  "advancements.heaters.second_pot.description": "Rüste auf einen langlebigen Stein- oder Tiefenschiefertopf auf",
+
+  "advancements.heaters.first_cauldron.title": "Schwermetall",
+  "advancements.heaters.first_cauldron.description": "Konstruiere einen Eisenkessel für Legierungen",
+
+  "advancements.heaters.second_cauldron.title": "Der Goldstandard",
+  "advancements.heaters.second_cauldron.description": "Rüste deinen Eisenkessel auf, um Tränke in Massen zu produzieren",
+
+  "advancements.heaters.sturdy_brick.title": "Verstärkt",
+  "advancements.heaters.sturdy_brick.description": "Erhalte einen robusten Ziegel",
+
+  "advancements.heaters.sturdy_tank.title": "Flüssiges Vermögen",
+  "advancements.heaters.sturdy_tank.description": "Baue einen robusten Tank, um deine Flüssigkeiten zu lagern",
+
+  "advancements.heaters.overburnt.title": "Extra Knusprig",
+  "advancements.heaters.overburnt.description": "Verkoche Essen, bis es vollständig verbrannt ist",
+
+  "advancements.heaters.synthetic_rocks.title": "Magmatische Rekonstruktion",
+  "advancements.heaters.synthetic_rocks.description": "Synthetisiere Stein- und Tiefenschieferziegel aus Bruchstein und Klümpchen",
+
+  "advancements.heaters.synthetic_diamond.title": "Synthetischer Diamant",
+  "advancements.heaters.synthetic_diamond.description": "Synthetisiere einen Diamanten mit intensiver Hitze und Druck",
+
+  "advancements.heaters.synthetic_debris.title": "Die Bildung von Trümmern",
+  "advancements.heaters.synthetic_debris.description": "Synthetisiere antiken Schrott aus Kohle und Lava; dies kann lange dauern",
+
+  "central_heater.creativeTabs.central_heater": "Heizkörper",
+
+  "jei.central_heater.category.seething": "Sieden",
+  "jei.central_heater.category.smoldering": "Schwelen",
+  "jei.central_heater.category.netherFuel": "Brennstoffe des Nethers",
+
+  "container.sturdy_tank": "Robuster Tank",
+
+  "container.sturdy_tank.tooltip.content_title": "Inhalt:",
+  "container.sturdy_tank.tooltip.content": "%s mb %s ",
+  "container.sturdy_tank.tooltip.potion_title": "Trankeffekte:"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "central_heater:sturdy_brick"
+    },
+    "*": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "##",
+    " *",
+    " *"
+  ],
+  "result": {
+    "item": "central_heater:sturdy_hoe"
+  },
+  "show_notification": true
+}

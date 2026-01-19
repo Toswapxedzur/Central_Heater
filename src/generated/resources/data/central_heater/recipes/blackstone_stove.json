@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "misc",
+  "key": {
+    "#": {
+      "item": "central_heater:blackstone_brick"
+    },
+    "&": {
+      "item": "central_heater:gold_bars"
+    },
+    "*": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "*&*",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "central_heater:blackstone_stove"
+  },
+  "show_notification": true
+}

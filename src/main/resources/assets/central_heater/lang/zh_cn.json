@@ -1,0 +1,122 @@
+{
+  "block.central_heater.stone_stove": "石炉",
+  "block.central_heater.deepslate_stove": "深板岩炉",
+  "block.central_heater.brick_stove": "砖炉",
+  "block.central_heater.mud_brick_stove": "泥砖炉",
+  "block.central_heater.nether_brick_stove": "下界砖炉",
+  "block.central_heater.red_nether_brick_stove": "红色下界砖炉",
+  "block.central_heater.blackstone_stove": "黑石炉",
+
+  "block.central_heater.stone_pot": "石锅",
+  "block.central_heater.deepslate_pot": "深板岩锅",
+  "block.central_heater.mud_brick_pot": "泥砖锅",
+  "block.central_heater.cauldron": "铁炼药锅",
+  "block.central_heater.golden_cauldron": "金炼药锅",
+
+  "block.central_heater.stone_brick_tile": "石砖瓦",
+  "block.central_heater.stone_brick_tile_stair": "石砖瓦楼梯",
+  "block.central_heater.stone_brick_tile_slab": "石砖瓦台阶",
+  "block.central_heater.stone_brick_tile_wall": "石砖瓦墙",
+  "block.central_heater.deepslate_brick_tile": "深板岩砖瓦",
+  "block.central_heater.deepslate_brick_tile_stair": "深板岩砖瓦楼梯",
+  "block.central_heater.deepslate_brick_tile_slab": "深板岩砖瓦台阶",
+  "block.central_heater.deepslate_brick_tile_wall": "深板岩砖瓦墙",
+  "block.central_heater.mud_brick_tile": "泥砖瓦",
+  "block.central_heater.mud_brick_tile_stair": "泥砖瓦楼梯",
+  "block.central_heater.mud_brick_tile_slab": "泥砖瓦台阶",
+  "block.central_heater.mud_brick_tile_wall": "泥砖瓦墙",
+  "block.central_heater.blackstone_brick_tile": "黑石砖瓦",
+  "block.central_heater.blackstone_brick_tile_stair": "黑石砖瓦楼梯",
+  "block.central_heater.blackstone_brick_tile_slab": "黑石砖瓦台阶",
+  "block.central_heater.blackstone_brick_tile_wall": "黑石砖瓦墙",
+  "block.central_heater.sturdy_brick_tile": "坚固砖瓦",
+  "block.central_heater.sturdy_brick_tile_stair": "坚固砖瓦楼梯",
+  "block.central_heater.sturdy_brick_tile_slab": "坚固砖瓦台阶",
+  "block.central_heater.sturdy_brick_tile_wall": "坚固砖瓦墙",
+
+  "block.central_heater.gold_bars": "金栏杆",
+  "block.central_heater.sturdy_tank": "坚固储罐",
+
+  "item.central_heater.cobble": "碎石",
+  "item.central_heater.deepslate_cobble": "深板岩碎石",
+  "item.central_heater.stone_brick": "石砖",
+  "item.central_heater.mud_brick": "泥砖",
+  "item.central_heater.red_nether_brick": "红色下界砖",
+  "item.central_heater.deepslate_brick": "深板岩砖",
+  "item.central_heater.diamond_shard": "钻石碎片",
+  "item.central_heater.blackstone_brick": "黑石砖",
+  "item.central_heater.sturdy_brick": "坚固砖",
+  "item.central_heater.sturdy_nugget": "坚固粒",
+  "item.central_heater.scorched_dust": "焦黑粉末",
+  "item.central_heater.scorched_coal": "焦黑煤炭",
+
+  "item.central_heater.burnt_beef": "烤焦的牛肉",
+  "item.central_heater.burnt_chicken": "烤焦的鸡肉",
+  "item.central_heater.burnt_cod": "烤焦的鳕鱼",
+  "item.central_heater.burnt_mutton": "烤焦的羊肉",
+  "item.central_heater.burnt_porkchop": "烤焦的猪排",
+  "item.central_heater.burnt_potato": "烤焦的马铃薯",
+  "item.central_heater.burnt_rabbit": "烤焦的兔肉",
+  "item.central_heater.burnt_salmon": "烤焦的鲑鱼",
+
+  "item.central_heater.sturdy_pickaxe": "坚固镐",
+  "item.central_heater.sturdy_axe": "坚固斧",
+  "item.central_heater.sturdy_shovel": "坚固锹",
+  "item.central_heater.sturdy_hoe": "坚固锄",
+  "item.central_heater.sturdy_sword": "坚固剑",
+  "item.central_heater.sturdy_helmet": "坚固头盔",
+  "item.central_heater.sturdy_chestplate": "坚固胸甲",
+  "item.central_heater.sturdy_leggings": "坚固护腿",
+  "item.central_heater.sturdy_boots": "坚固靴子",
+
+  "advancements.heaters.first_heater.title": "加热器集结",
+  "advancements.heaters.first_heater.description": "人类现已掌握了火焰的力量，带来了巨大的进步，但也带来了破坏",
+
+  "advancements.heaters.second_heater.title": "石器时代的加热",
+  "advancements.heaters.second_heater.description": "将你的炉子升级为石头或深板岩材质",
+
+  "advancements.heaters.third_heater.title": "地狱厨房",
+  "advancements.heaters.third_heater.description": "建造一个能够承受下界高温的炉子",
+
+  "advancements.heaters.first_pot.title": "陶艺课",
+  "advancements.heaters.first_pot.description": "放置任意一种砖锅",
+
+  "advancements.heaters.second_pot.title": "坚如磐石的烹饪",
+  "advancements.heaters.second_pot.description": "升级到耐用的石锅或深板岩锅",
+
+  "advancements.heaters.first_cauldron.title": "重金属",
+  "advancements.heaters.first_cauldron.description": "建造一个用于合金制作的铁炼药锅",
+
+  "advancements.heaters.second_cauldron.title": "黄金标准",
+  "advancements.heaters.second_cauldron.description": "升级你的铁炼药锅以大规模生产药水",
+
+  "advancements.heaters.sturdy_brick.title": "强化",
+  "advancements.heaters.sturdy_brick.description": "获得一块坚固砖",
+
+  "advancements.heaters.sturdy_tank.title": "流动资产",
+  "advancements.heaters.sturdy_tank.description": "制作一个坚固储罐来存储你的流体",
+
+  "advancements.heaters.overburnt.title": "外焦里嫩",
+  "advancements.heaters.overburnt.description": "过度烹饪食物直到它完全烧焦",
+
+  "advancements.heaters.synthetic_rocks.title": "火成岩重构",
+  "advancements.heaters.synthetic_rocks.description": "用碎石和矿粒合成石砖和深板岩砖",
+
+  "advancements.heaters.synthetic_diamond.title": "合成钻石",
+  "advancements.heaters.synthetic_diamond.description": "利用高温高压合成钻石",
+
+  "advancements.heaters.synthetic_debris.title": "残骸的形成",
+  "advancements.heaters.synthetic_debris.description": "用煤炭和熔岩合成远古残骸，这可能需要很长时间",
+
+  "central_heater.creativeTabs.central_heater": "加热器",
+
+  "jei.central_heater.category.seething": "沸腾",
+  "jei.central_heater.category.smoldering": "闷烧",
+  "jei.central_heater.category.netherFuel": "下界燃料",
+
+  "container.sturdy_tank": "坚固储罐",
+
+  "container.sturdy_tank.tooltip.content_title": "内容：",
+  "container.sturdy_tank.tooltip.content": "%s mb 的 %s ",
+  "container.sturdy_tank.tooltip.potion_title": "药水效果："
+}

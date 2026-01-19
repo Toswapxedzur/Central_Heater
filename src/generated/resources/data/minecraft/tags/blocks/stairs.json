@@ -1,0 +1,9 @@
+{
+  "values": [
+    "central_heater:stone_brick_tile_stair",
+    "central_heater:deepslate_brick_tile_stair",
+    "central_heater:mud_brick_tile_stair",
+    "central_heater:blackstone_brick_tile_stair",
+    "central_heater:sturdy_brick_tile_stair"
+  ]
+}

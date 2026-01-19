@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "dead_bush_from_sapling",
+  "ingredient": {
+    "item": "minecraft:bamboo"
+  },
+  "result": "minecraft:dead_bush"
+}

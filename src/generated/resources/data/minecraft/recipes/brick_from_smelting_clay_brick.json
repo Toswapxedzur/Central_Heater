@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "clay_processing",
+  "ingredient": {
+    "item": "central_heater:clay_brick"
+  },
+  "result": "minecraft:brick"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:acacia_log",
+  "output": "central_heater:burnt_log"
+}

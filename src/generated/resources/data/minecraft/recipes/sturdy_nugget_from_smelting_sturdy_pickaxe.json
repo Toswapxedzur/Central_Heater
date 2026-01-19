@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "sturdy_nugget",
+  "ingredient": {
+    "item": "central_heater:sturdy_pickaxe"
+  },
+  "result": "central_heater:sturdy_nugget"
+}

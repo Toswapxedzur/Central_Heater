@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_brick"
+    },
+    [
+      {
+        "item": "minecraft:nether_wart"
+      },
+      {
+        "item": "minecraft:red_dye"
+      }
+    ]
+  ],
+  "result": {
+    "item": "central_heater:red_nether_brick"
+  }
+}

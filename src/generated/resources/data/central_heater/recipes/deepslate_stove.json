@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "misc",
+  "key": {
+    "#": {
+      "item": "central_heater:deepslate_brick"
+    },
+    "&": {
+      "item": "minecraft:iron_bars"
+    },
+    "*": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "*&*",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "central_heater:deepslate_stove"
+  },
+  "show_notification": true
+}

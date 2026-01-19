@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "clay_processing",
+  "ingredients": [
+    {
+      "item": "central_heater:clay_bit"
+    },
+    {
+      "item": "central_heater:clay_bit"
+    },
+    {
+      "item": "central_heater:clay_bit"
+    },
+    {
+      "item": "central_heater:clay_bit"
+    }
+  ],
+  "result": {
+    "item": "minecraft:clay_ball"
+  }
+}

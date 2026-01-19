@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "central_heater:blackstone_brick_tile"
+    },
+    "N": {
+      "item": "minecraft:nether_brick"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "N N",
+    "BBB"
+  ],
+  "result": {
+    "item": "central_heater:blazing_furnace"
+  },
+  "show_notification": true
+}

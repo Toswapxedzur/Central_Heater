@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/cauldron",
+  "textures": {
+    "bottom": "central_heater:block/golden_cauldron_bottom",
+    "inside": "central_heater:block/golden_cauldron_inner",
+    "particle": "central_heater:block/golden_cauldron_side",
+    "side": "central_heater:block/golden_cauldron_side",
+    "top": "central_heater:block/golden_cauldron_top"
+  }
+}

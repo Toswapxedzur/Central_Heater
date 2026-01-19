@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    },
+    {
+      "item": "central_heater:sturdy_nugget"
+    }
+  ],
+  "result": {
+    "item": "central_heater:sturdy_brick"
+  }
+}

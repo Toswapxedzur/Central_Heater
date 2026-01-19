@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 2,
+  "fluidResult": {
+    "amount": 250,
+    "fluid": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:magma_cream"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "tier": 3
+}

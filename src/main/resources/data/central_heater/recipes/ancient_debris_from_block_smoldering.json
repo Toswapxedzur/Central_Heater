@@ -1,0 +1,7 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": "minecraft:bone_block",
+  "output": "minecraft:ancient_debris",
+  "time": 12000
+}

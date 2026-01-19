@@ -1,0 +1,13 @@
+// 1.20.1	2026-01-19T17:53:40.290828	Tags for minecraft:block mod id central_heater
+15a70bce78597ce4e7006207f273844ea14322af data/minecraft/tags/blocks/cauldrons.json
+005953484e7c0e4f17319105b9d9dc7a63d7f3e4 data/minecraft/tags/blocks/guarded_by_piglins.json
+e9faef212a95453bc7d5463466804a4526df2ed8 data/minecraft/tags/blocks/logs.json
+e9faef212a95453bc7d5463466804a4526df2ed8 data/minecraft/tags/blocks/logs_that_burn.json
+e9faef212a95453bc7d5463466804a4526df2ed8 data/minecraft/tags/blocks/mineable/axe.json
+69a75a98befcd477779fa70bce48409aedeafaa5 data/minecraft/tags/blocks/mineable/pickaxe.json
+fbf80d274c3cf6b5efcdd3243d096b8058881bda data/minecraft/tags/blocks/mineable/shovel.json
+0e36f0769c26c0f1d843a4e8024200e4de0a2473 data/minecraft/tags/blocks/needs_iron_tool.json
+e733e1a7e15548503b7636fe37448f25271f57b8 data/minecraft/tags/blocks/needs_stone_tool.json
+f0dda748f7ab6ee57167e17cc58ac0a236b09010 data/minecraft/tags/blocks/slabs.json
+e2d3b6ccc36cd21fab6888e179692cbd549aa496 data/minecraft/tags/blocks/stairs.json
+cc8197a064c1e466b71d7f6daeff955332a566b8 data/minecraft/tags/blocks/walls.json

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "central_heater:block/sturdy_brick_tile_slab"
+    },
+    "type=double": {
+      "model": "central_heater:block/sturdy_brick_tile"
+    },
+    "type=top": {
+      "model": "central_heater:block/sturdy_brick_tile_slab_top"
+    }
+  }
+}

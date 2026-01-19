@@ -1,0 +1,6 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:jungle_wood",
+  "output": "central_heater:burnt_wood"
+}

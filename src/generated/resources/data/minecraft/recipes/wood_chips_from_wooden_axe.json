@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 8,
+  "ingredient": {
+    "item": "minecraft:wooden_axe"
+  },
+  "result": "central_heater:wood_chips"
+}

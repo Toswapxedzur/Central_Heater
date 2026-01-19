@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "central_heater:deepslate_cobble"
+    },
+    {
+      "item": "central_heater:deepslate_cobble"
+    },
+    {
+      "item": "central_heater:deepslate_cobble"
+    },
+    {
+      "item": "central_heater:deepslate_cobble"
+    }
+  ],
+  "result": {
+    "item": "minecraft:cobbled_deepslate"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sturdy_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "central_heater:sturdy_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:sturdy_nugget_from_smelting_sturdy_axe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sturdy_axe",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:sturdy_nugget_from_smelting_sturdy_axe"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.1,
+  "group": "burnt",
+  "ingredient": {
+    "item": "minecraft:cooked_beef"
+  },
+  "result": "central_heater:burnt_beef"
+}

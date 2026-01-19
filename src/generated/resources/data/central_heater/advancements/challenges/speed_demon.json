@@ -1,0 +1,34 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "fast_minecart": {
+      "conditions": {
+        "speed": {
+          "min": 1.6
+        }
+      },
+      "trigger": "central_heater:minecart_speed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.speed_demon.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:blazing_furnace_minecart"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.speed_demon.title"
+    }
+  },
+  "requirements": [
+    [
+      "fast_minecart"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

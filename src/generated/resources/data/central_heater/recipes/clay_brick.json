@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "clay_processing",
+  "key": {
+    "#": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "central_heater:clay_brick"
+  },
+  "show_notification": true
+}
