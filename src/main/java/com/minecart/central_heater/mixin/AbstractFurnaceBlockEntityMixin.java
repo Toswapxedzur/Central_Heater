@@ -47,21 +47,6 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
         this.central_heater$ashCount = count;
     }
 
-    @Override
-    public void dropAsh(Level level, BlockPos pos) {
-        if (this.central_heater$ashCount <= 0) return;
-
-        Item ashItem = AllBlockItem.FIRE_ASH.get();
-        int maxStackSize = ashItem.getMaxStackSize();
-
-        while (this.central_heater$ashCount > 0) {
-            int dropAmount = Math.min(this.central_heater$ashCount, maxStackSize);
-            ItemStack ashStack = new ItemStack(ashItem, dropAmount);
-            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), ashStack);
-            this.central_heater$ashCount -= dropAmount;
-        }
-    }
-
     // 1.20.1 NBT Methods (No registries provider)
     @Inject(method = "saveAdditional", at = @At("TAIL"))
     private void central_heater$saveAsh(CompoundTag tag, CallbackInfo ci) {

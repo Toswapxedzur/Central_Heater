@@ -24,11 +24,9 @@ public abstract class SimpleCookingRecipeBuilderMixin {
         if (serializer == AllRecipe.HAUNTING_RECIPE_SERIALIZER.get()) {
             Item item = result.asItem();
 
-            // Check if the item is food in 1.20.1
             if (item.isEdible()) {
                 cir.setReturnValue(CookingBookCategory.FOOD);
             } else {
-                // Determine if it's a block or miscellaneous item
                 cir.setReturnValue(item instanceof BlockItem ? CookingBookCategory.BLOCKS : CookingBookCategory.MISC);
             }
         }
