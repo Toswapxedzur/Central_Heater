@@ -12,10 +12,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(WorldGenRegion.class)
 public class WorldGenRegionMixin {
     @ModifyVariable(
-            method = "setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z",
+            method = "setBlock",
             at = @At("HEAD"),
-            argsOnly = true,
-            remap = false
+            argsOnly = true
     )
     private BlockState central_heater$replaceVanillaCauldron(BlockState state) {
         if (Config.replaceCauldron && state.getBlock() instanceof CauldronBlock) {

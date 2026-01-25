@@ -20,8 +20,7 @@ public class HopperBlockEntityMixin {
      */
     @Redirect(
             method = "tryMoveInItem",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getMaxStackSize()I"),
-            remap = true
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getMaxStackSize()I")
     )
     private static int central_heater$getMaxStackSize(ItemStack stack, @Local(ordinal = 1, argsOnly = true) Container destination) {
         // We get the smaller of the two: the item's inherent limit or the container's specific limit for that stack
