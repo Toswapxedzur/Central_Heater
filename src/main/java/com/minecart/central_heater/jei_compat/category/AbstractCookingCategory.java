@@ -1,10 +1,7 @@
 package com.minecart.central_heater.jei_compat.category;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.minecart.central_heater.jei_compat.misc.VariantCategory;
 import com.minecart.central_heater.jei_compat.misc.JEIUtil;
+import com.minecart.central_heater.jei_compat.misc.VariantCategory;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;

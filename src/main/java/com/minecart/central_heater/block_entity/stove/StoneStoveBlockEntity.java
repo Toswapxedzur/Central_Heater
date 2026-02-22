@@ -1,8 +1,8 @@
 package com.minecart.central_heater.block_entity.stove;
 
 import com.minecart.central_heater.AllBlockItem;
-import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.block.stove.StoneStoveBlock;
+import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.misc.DataMapHook;
 import com.minecart.central_heater.misc.RecipeUtil;
 import com.minecart.central_heater.misc.enumeration.FireState;

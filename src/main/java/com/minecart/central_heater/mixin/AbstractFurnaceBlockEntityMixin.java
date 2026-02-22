@@ -3,16 +3,13 @@ package com.minecart.central_heater.mixin;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import com.minecart.central_heater.AllBlockItem;
-import com.minecart.central_heater.mixin_interface.IAshProducer;
 import com.minecart.central_heater.misc.DataMapHook;
+import com.minecart.central_heater.mixin_interface.IAshProducer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.inventory.RecipeHolder; // Note: In 1.20.1 this is likely not needed here
 import net.minecraft.world.inventory.StackedContentsCompatible;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;

@@ -1,14 +1,13 @@
 package com.minecart.central_heater.jei_compat;
 
 import com.minecart.central_heater.AllBlockItem;
+import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.jei_compat.category.*;
 import com.minecart.central_heater.jei_compat.misc.JEIUtil;
+import com.minecart.central_heater.misc.VirtualLevel;
 import com.minecart.central_heater.recipe.AllRecipe;
-import com.minecart.central_heater.CentralHeater;
-import com.minecart.central_heater.recipe.recipe_types.BlockSmolderingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.SmolderingRecipe;
-import com.minecart.central_heater.misc.VirtualLevel;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;

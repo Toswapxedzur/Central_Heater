@@ -1,7 +1,6 @@
 package com.minecart.central_heater.jei_compat.category;
 
 import com.minecart.central_heater.CentralHeater;
-import com.minecart.central_heater.recipe.AllRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;

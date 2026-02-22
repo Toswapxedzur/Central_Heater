@@ -29,7 +29,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ToolActions;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 

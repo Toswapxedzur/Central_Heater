@@ -28,7 +28,6 @@ import net.minecraftforge.fluids.FluidUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
-import java.util.List;
 
 public abstract class CauldronBlock extends BaseEntityBlock {
 

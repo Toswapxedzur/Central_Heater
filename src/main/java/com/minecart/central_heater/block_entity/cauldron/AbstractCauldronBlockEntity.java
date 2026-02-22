@@ -1,6 +1,5 @@
 package com.minecart.central_heater.block_entity.cauldron;
 
-import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.block.cauldron.CauldronBlock;
 import com.minecart.central_heater.block.stove.BrickStoveBlock;
 import com.minecart.central_heater.block.stove.GoldenStoveBlock;

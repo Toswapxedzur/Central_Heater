@@ -2,7 +2,6 @@ package com.minecart.central_heater.data_generation.server;
 
 import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.structure.AllStructures;
-import com.minecart.central_heater.item.AllTrimMaterials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

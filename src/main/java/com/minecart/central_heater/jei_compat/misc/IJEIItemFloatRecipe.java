@@ -1,6 +1,7 @@
 package com.minecart.central_heater.jei_compat.misc;
 
 import net.minecraft.world.item.ItemStack;
+
 import javax.annotation.Nonnull;
 import java.util.List;
 

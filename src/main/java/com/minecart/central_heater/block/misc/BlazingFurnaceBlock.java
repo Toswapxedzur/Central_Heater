@@ -16,14 +16,13 @@ import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
 public class BlazingFurnaceBlock extends AbstractFurnaceBlock {
 
-    public BlazingFurnaceBlock(BlockBehaviour.Properties properties) {
+    public BlazingFurnaceBlock(Properties properties) {
         super(properties.lightLevel(state -> state.getValue(AbstractFurnaceBlock.LIT) ? 15 : 0));
     }
 

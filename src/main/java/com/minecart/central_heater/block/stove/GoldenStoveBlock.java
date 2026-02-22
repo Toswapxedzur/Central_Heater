@@ -2,10 +2,10 @@ package com.minecart.central_heater.block.stove;
 
 import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.block_entity.stove.AbstractStoveBlockEntity;
-import com.minecart.central_heater.recipe.AllRecipe;
 import com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity;
-import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import com.minecart.central_heater.misc.enumeration.NetherFireState;
+import com.minecart.central_heater.recipe.AllRecipe;
+import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,7 +45,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
-import java.util.List;
 
 public class GoldenStoveBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.RegistryAccess;
-// import net.minecraft.world.item.alchemy.PotionBrewing; // Static in 1.20.1
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;

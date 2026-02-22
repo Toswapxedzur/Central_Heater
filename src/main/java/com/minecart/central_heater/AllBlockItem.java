@@ -47,7 +47,7 @@ public class AllBlockItem {
     // Armor Material Implementation for 1.20.1
     public static final ArmorMaterial STURDY_ARMOR_MAT = new SturdyArmorMaterial();
     public static final Tier STURDY;
-    
+
     public static final FoodProperties BURNT_FOOD;
 
     // Items
