@@ -11,6 +11,7 @@
 *.log.gz
 /usercache.json
 /options.txt
+/src/generated/resources/.cache/
 
 # Editor and operating-system files
 /.idea/
