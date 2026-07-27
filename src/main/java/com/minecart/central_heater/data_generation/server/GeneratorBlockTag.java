@@ -2,6 +2,7 @@ package com.minecart.central_heater.data_generation.server;
 
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.CentralHeater;
+import com.minecart.central_heater.misc.Alltags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -37,7 +38,16 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.GOLD_BARS.get(),
                 AllBlockItem.BLAZING_FURNACE.get(),
 
-                // Tiles
+                // Anvils
+                AllBlockItem.STURDY_ANVIL.get(),
+                AllBlockItem.CHIPPED_STURDY_ANVIL.get(),
+                AllBlockItem.DAMAGED_STURDY_ANVIL.get(),
+
+                AllBlockItem.STURDY_BRICKS.get(),
+                AllBlockItem.STURDY_BRICK_STAIR.get(),
+                AllBlockItem.STURDY_BRICK_SLAB.get(),
+
+                // Original Tiles
                 AllBlockItem.STONE_BRICK_TILE.get(),
                 AllBlockItem.STONE_BRICK_TILE_STAIR.get(),
                 AllBlockItem.STONE_BRICK_TILE_SLAB.get(),
@@ -57,7 +67,43 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.STURDY_BRICK_TILE.get(),
                 AllBlockItem.STURDY_BRICK_TILE_STAIR.get(),
                 AllBlockItem.STURDY_BRICK_TILE_SLAB.get(),
-                AllBlockItem.STURDY_BRICK_TILE_WALL.get()
+                AllBlockItem.STURDY_BRICK_TILE_WALL.get(),
+
+                // Coal Bricks
+                AllBlockItem.COAL_BRICKS.get(),
+                AllBlockItem.COAL_BRICK_STAIR.get(),
+                AllBlockItem.COAL_BRICK_SLAB.get(),
+                AllBlockItem.COAL_BRICK_TILE.get(),
+                AllBlockItem.COAL_BRICK_TILE_STAIR.get(),
+                AllBlockItem.COAL_BRICK_TILE_SLAB.get(),
+                AllBlockItem.COAL_BRICK_TILE_WALL.get(),
+
+                // Golden Bricks
+                AllBlockItem.GOLDEN_BRICKS.get(),
+                AllBlockItem.GOLDEN_BRICK_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_WALL.get(),
+
+                // Netherite Bricks
+                AllBlockItem.NETHERITE_BRICKS.get(),
+                AllBlockItem.NETHERITE_BRICK_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_WALL.get(),
+
+                // Scorched Bricks
+                AllBlockItem.SCORCHED_BRICKS.get(),
+                AllBlockItem.SCORCHED_BRICK_STAIR.get(),
+                AllBlockItem.SCORCHED_BRICK_SLAB.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_STAIR.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_SLAB.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_WALL.get()
         );
 
         // --- Axe Mineable ---
@@ -94,7 +140,7 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.BLACKSTONE_BRICK_TILE_WALL.get()
         );
 
-        // Tier 2: Needs Iron (Vanilla Gold Logic)
+        // Tier 2: Needs Iron
         tag(BlockTags.NEEDS_IRON_TOOL).add(
                 AllBlockItem.GOLDEN_CAULDRON.get(),
                 AllBlockItem.GOLD_BARS.get(),
@@ -104,7 +150,33 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.STURDY_BRICK_TILE.get(),
                 AllBlockItem.STURDY_BRICK_TILE_STAIR.get(),
                 AllBlockItem.STURDY_BRICK_TILE_SLAB.get(),
-                AllBlockItem.STURDY_BRICK_TILE_WALL.get()
+                AllBlockItem.STURDY_BRICK_TILE_WALL.get(),
+
+                // Anvils
+                AllBlockItem.STURDY_ANVIL.get(),
+                AllBlockItem.CHIPPED_STURDY_ANVIL.get(),
+                AllBlockItem.DAMAGED_STURDY_ANVIL.get(),
+
+                // Golden Bricks
+                AllBlockItem.GOLDEN_BRICKS.get(),
+                AllBlockItem.GOLDEN_BRICK_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_WALL.get()
+        );
+
+        // Tier 3: Needs Diamond
+        tag(BlockTags.NEEDS_DIAMOND_TOOL).add(
+                // Netherite Bricks
+                AllBlockItem.NETHERITE_BRICKS.get(),
+                AllBlockItem.NETHERITE_BRICK_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_WALL.get()
         );
 
         // --- Shape Tags ---
@@ -113,7 +185,19 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.DEEPSLATE_BRICK_TILE_STAIR.get(),
                 AllBlockItem.MUD_BRICK_TILE_STAIR.get(),
                 AllBlockItem.BLACKSTONE_BRICK_TILE_STAIR.get(),
-                AllBlockItem.STURDY_BRICK_TILE_STAIR.get()
+                AllBlockItem.STURDY_BRICK_TILE_STAIR.get(),
+
+                AllBlockItem.STURDY_BRICK_STAIR.get(),
+
+                // New Stairs
+                AllBlockItem.COAL_BRICK_STAIR.get(),
+                AllBlockItem.COAL_BRICK_TILE_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_STAIR.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_STAIR.get(),
+                AllBlockItem.SCORCHED_BRICK_STAIR.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_STAIR.get()
         );
 
         tag(BlockTags.SLABS).add(
@@ -121,7 +205,18 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.DEEPSLATE_BRICK_TILE_SLAB.get(),
                 AllBlockItem.MUD_BRICK_TILE_SLAB.get(),
                 AllBlockItem.BLACKSTONE_BRICK_TILE_SLAB.get(),
-                AllBlockItem.STURDY_BRICK_TILE_SLAB.get()
+                AllBlockItem.STURDY_BRICK_TILE_SLAB.get(),
+
+                AllBlockItem.STURDY_BRICK_SLAB.get(),
+                // New Slabs
+                AllBlockItem.COAL_BRICK_SLAB.get(),
+                AllBlockItem.COAL_BRICK_TILE_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_SLAB.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_SLAB.get(),
+                AllBlockItem.SCORCHED_BRICK_SLAB.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_SLAB.get()
         );
 
         tag(BlockTags.WALLS).add(
@@ -129,7 +224,13 @@ public class GeneratorBlockTag extends BlockTagsProvider {
                 AllBlockItem.DEEPSLATE_BRICK_TILE_WALL.get(),
                 AllBlockItem.MUD_BRICK_TILE_WALL.get(),
                 AllBlockItem.BLACKSTONE_BRICK_TILE_WALL.get(),
-                AllBlockItem.STURDY_BRICK_TILE_WALL.get()
+                AllBlockItem.STURDY_BRICK_TILE_WALL.get(),
+
+                // New Walls
+                AllBlockItem.COAL_BRICK_TILE_WALL.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_WALL.get(),
+                AllBlockItem.NETHERITE_BRICK_TILE_WALL.get(),
+                AllBlockItem.SCORCHED_BRICK_TILE_WALL.get()
         );
 
         // --- Functional Tags ---
@@ -157,7 +258,150 @@ public class GeneratorBlockTag extends BlockTagsProvider {
         // Piglin Interaction: Mining these will anger Piglins
         tag(BlockTags.GUARDED_BY_PIGLINS).add(
                 AllBlockItem.GOLDEN_CAULDRON.get(),
-                AllBlockItem.GOLD_BARS.get()
+                AllBlockItem.GOLD_BARS.get(),
+                AllBlockItem.GOLDEN_BRICKS.get(),
+                AllBlockItem.GOLDEN_BRICK_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_STAIR.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_SLAB.get(),
+                AllBlockItem.GOLDEN_BRICK_TILE_WALL.get()
+        );
+
+        // --- Anvils ---
+        tag(BlockTags.ANVIL).add(
+                AllBlockItem.STURDY_ANVIL.get(),
+                AllBlockItem.CHIPPED_STURDY_ANVIL.get(),
+                AllBlockItem.DAMAGED_STURDY_ANVIL.get()
+        );
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                AllBlockItem.COPPER_STOVE.get(),
+                AllBlockItem.EXPOSED_COPPER_STOVE.get(),
+                AllBlockItem.WEATHERED_COPPER_STOVE.get(),
+                AllBlockItem.OXIDIZED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_EXPOSED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_WEATHERED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_OXIDIZED_COPPER_STOVE.get(),
+                AllBlockItem.ASHTRAY.get()
+        );
+
+        tag(BlockTags.PIGLIN_REPELLENTS).add(AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get());
+
+        tag(BlockTags.MINEABLE_WITH_AXE).add(
+                // Specific Burnt Logs
+                AllBlockItem.BURNT_BIRCH_LOG.get(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get(),
+                AllBlockItem.BURNT_CHERRY_LOG.get(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get(),
+
+                AllBlockItem.BURNT_PLANKS.get(),
+                AllBlockItem.BURNT_STAIRS.get(),
+                AllBlockItem.BURNT_SLAB.get(),
+                AllBlockItem.BURNT_FENCE.get(),
+                AllBlockItem.BURNT_FENCE_GATE.get(),
+                AllBlockItem.BURNT_TRAPDOOR.get(),
+                AllBlockItem.BURNT_BUTTON.get(),
+                AllBlockItem.BURNT_PRESSURE_PLATE.get(),
+                AllBlockItem.BURNT_DOOR.get(),
+
+                // Campfires
+                AllBlockItem.BURNABLE_CAMPFIRE.get(),
+                AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get()
+        );
+
+        // --- Add to Existing Needs Stone Tool ---
+        tag(BlockTags.NEEDS_STONE_TOOL).add(
+                AllBlockItem.COPPER_STOVE.get(),
+                AllBlockItem.EXPOSED_COPPER_STOVE.get(),
+                AllBlockItem.WEATHERED_COPPER_STOVE.get(),
+                AllBlockItem.OXIDIZED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_EXPOSED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_WEATHERED_COPPER_STOVE.get(),
+                AllBlockItem.WAXED_OXIDIZED_COPPER_STOVE.get()
+        );
+
+        // --- Add to Existing Shape Tags ---
+        tag(BlockTags.STAIRS).add(AllBlockItem.BURNT_STAIRS.get());
+        tag(BlockTags.WOODEN_STAIRS).add(AllBlockItem.BURNT_STAIRS.get());
+
+        tag(BlockTags.SLABS).add(AllBlockItem.BURNT_SLAB.get());
+        tag(BlockTags.WOODEN_SLABS).add(AllBlockItem.BURNT_SLAB.get());
+
+        // --- New Shape Tags for the Burnt Set ---
+        tag(BlockTags.FENCES).add(AllBlockItem.BURNT_FENCE.get());
+        tag(BlockTags.WOODEN_FENCES).add(AllBlockItem.BURNT_FENCE.get());
+
+        tag(BlockTags.FENCE_GATES).add(AllBlockItem.BURNT_FENCE_GATE.get());
+
+        tag(BlockTags.DOORS).add(AllBlockItem.BURNT_DOOR.get());
+        tag(BlockTags.WOODEN_DOORS).add(AllBlockItem.BURNT_DOOR.get());
+
+        tag(BlockTags.TRAPDOORS).add(AllBlockItem.BURNT_TRAPDOOR.get());
+        tag(BlockTags.WOODEN_TRAPDOORS).add(AllBlockItem.BURNT_TRAPDOOR.get());
+
+        tag(BlockTags.BUTTONS).add(AllBlockItem.BURNT_BUTTON.get());
+        tag(BlockTags.WOODEN_BUTTONS).add(AllBlockItem.BURNT_BUTTON.get());
+
+        tag(BlockTags.PRESSURE_PLATES).add(AllBlockItem.BURNT_PRESSURE_PLATE.get());
+        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(AllBlockItem.BURNT_PRESSURE_PLATE.get());
+
+        // --- Add to Existing Functional Tags ---
+        tag(BlockTags.LOGS_THAT_BURN).add(
+                AllBlockItem.BURNT_BIRCH_LOG.get(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get(),
+                AllBlockItem.BURNT_CHERRY_LOG.get(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get()
+        );
+
+        tag(BlockTags.LOGS).add(
+                AllBlockItem.BURNT_BIRCH_LOG.get(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get(),
+                AllBlockItem.BURNT_CHERRY_LOG.get(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get()
+        );
+
+        for (AllBlockItem.BurntWoodSet set : AllBlockItem.BURNT_WOOD_SETS) {
+            tag(BlockTags.MINEABLE_WITH_AXE).add(set.log().get(), set.wood().get(), set.planks().get(), set.stairs().get(),
+                    set.slab().get(), set.fence().get(), set.fenceGate().get(), set.trapdoor().get(), set.button().get(),
+                    set.pressurePlate().get(), set.door().get());
+            tag(BlockTags.LOGS_THAT_BURN).add(set.log().get(), set.wood().get());
+            tag(BlockTags.LOGS).add(set.log().get(), set.wood().get());
+            tag(BlockTags.PLANKS).add(set.planks().get());
+            tag(BlockTags.STAIRS).add(set.stairs().get());
+            tag(BlockTags.WOODEN_STAIRS).add(set.stairs().get());
+            tag(BlockTags.SLABS).add(set.slab().get());
+            tag(BlockTags.WOODEN_SLABS).add(set.slab().get());
+            tag(BlockTags.FENCES).add(set.fence().get());
+            tag(BlockTags.WOODEN_FENCES).add(set.fence().get());
+            tag(BlockTags.FENCE_GATES).add(set.fenceGate().get());
+            tag(BlockTags.DOORS).add(set.door().get());
+            tag(BlockTags.WOODEN_DOORS).add(set.door().get());
+            tag(BlockTags.TRAPDOORS).add(set.trapdoor().get());
+            tag(BlockTags.WOODEN_TRAPDOORS).add(set.trapdoor().get());
+            tag(BlockTags.BUTTONS).add(set.button().get());
+            tag(BlockTags.WOODEN_BUTTONS).add(set.button().get());
+            tag(BlockTags.PRESSURE_PLATES).add(set.pressurePlate().get());
+            tag(BlockTags.WOODEN_PRESSURE_PLATES).add(set.pressurePlate().get());
+        }
+
+        tag(BlockTags.CAMPFIRES).add(
+                AllBlockItem.BURNABLE_CAMPFIRE.get(),
+                AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get()
         );
     }
 }

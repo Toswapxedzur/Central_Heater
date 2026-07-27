@@ -1,6 +1,16 @@
 package com.minecart.central_heater.block_entity.misc;
 
+import com.minecart.central_heater.AllBlockItem;
+import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.capability.QueueItemStackHandler;
+import com.minecart.central_heater.heat.api.HeatApi;
+import com.minecart.central_heater.heat.api.HeatBlockEntityBehavior;
+import com.minecart.central_heater.heat.api.HeatEmission;
+import com.minecart.central_heater.heat.api.HeatSink;
+import com.minecart.central_heater.heat.api.HeatType;
+import com.minecart.central_heater.heat.context.HeatNodeAccess;
+import com.minecart.central_heater.heat.context.HeatNodeContext;
+import com.minecart.central_heater.heat.storage.HeatNode;
 import com.minecart.central_heater.mixin_interface.IAshProducer;
 import com.minecart.central_heater.misc.DataMapHook;
 import net.minecraft.core.BlockPos;
@@ -8,41 +18,37 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements IAshProducer {
+public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements IAshProducer, HeatBlockEntityBehavior {
     public static final int fuel_slots = 2;
     public int litTime;
     public int campfireLitTime;
     public int ashCount;
-    public final QueueItemStackHandler fuels = new QueueItemStackHandler(fuel_slots, 1){
-        @Override
-        public boolean isItemValid(ItemStack stack) {
-            return stack.getBurnTime(RecipeType.SMELTING) > 0;
-        }
-
-        @Override
-        protected void onContentsChanged() {
-            updateBlockEntity();
-        }
-    };
+    public int tier;
+    public final QueueItemStackHandler fuels;
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
 
-        this.litTime = tag.getInt("litTime");
-        this.ashCount = tag.getInt("ashCount");
+        this.litTime = !tag.contains("litTime") ? 0 : tag.getInt("litTime");
+        this.ashCount = !tag.contains("ashCount") ? 0 : tag.getInt("ashCount");
+        this.tier = !tag.contains("tier") ? 0 : tag.getInt("tier");
 
         if (tag.contains("campfireLitTime")) {
             this.campfireLitTime = tag.getInt("campfireLitTime");
@@ -60,13 +66,32 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
         tag.putInt("campfireLitTime", campfireLitTime);
         tag.put("fuels", fuels.serializeNBT(registries));
         tag.putInt("ashCount", ashCount);
+        tag.putInt("tier", tier);
     }
 
-    public BurnableCampfireBlockEntity(BlockPos pos, BlockState blockState) {
+    public BurnableCampfireBlockEntity(BlockPos pos, BlockState blockState, int tier) {
         super(pos, blockState);
+        this.tier = tier;
         litTime = 0;
         campfireLitTime = 200;
         ashCount = 0;
+
+        this.fuels = new QueueItemStackHandler(fuel_slots, 1){
+            @Override
+            public boolean isItemValid(ItemStack stack) {
+                return tier == 0 ? stack.getBurnTime(RecipeType.SMELTING) > 0 : DataMapHook.getNetherFuelBurnTime(stack) > 0;
+            }
+
+            @Override
+            protected void onContentsChanged() {
+                updateBlockEntity();
+            }
+        };
+    }
+
+    @Override
+    public Item getAshType() {
+        return tier == 0 ? AllBlockItem.FIRE_ASH.get() : AllBlockItem.SCORCHED_DUST.get();
     }
 
     public int getLitTime() {
@@ -111,6 +136,33 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
         return getBlockState().getValue(CampfireBlock.LIT).booleanValue();
     }
 
+    @Override
+    public HeatNode createHeatNode() {
+        return new HeatNode(getBlockPos(), isLit() ? 120 : 0, 420, tier == 0 ? HeatType.NORMAL : HeatType.SOUL);
+    }
+
+    @Override
+    public HeatEmission getEmission(HeatNodeContext ctx) {
+        if (!isLit()) {
+            return HeatEmission.NONE;
+        }
+        return tier == 0
+                ? new HeatEmission(10, 170, 280, HeatType.NORMAL)
+                : new HeatEmission(14, 230, 360, HeatType.SOUL);
+    }
+
+    @Override
+    public HeatSink getSink(HeatNodeContext ctx) {
+        return isLit() ? HeatSink.NONE : new HeatSink(4, 0, 4, false);
+    }
+
+    @Override
+    public void tickHeatNode(HeatNodeContext ctx, HeatNodeAccess heat) {
+        if (!isLit() && heat.getHeat() > 0) {
+            heat.setHeat(Math.max(0, heat.getHeat() - 4));
+        }
+    }
+
     public void setLit(boolean lit){
         if(!level.isClientSide)
             updateBlockState(getBlockState().setValue(CampfireBlock.LIT, Boolean.valueOf(lit)));
@@ -133,7 +185,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
             if (stack.isEmpty()) continue;
 
-            int burnTime = stack.getBurnTime(RecipeType.SMELTING);
+            int burnTime = tier == 0 ? stack.getBurnTime(RecipeType.SMELTING) : DataMapHook.getNetherFuelBurnTime(stack);
             if (burnTime <= 0) continue;
 
             // 1. Add Burn Time
@@ -141,7 +193,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
             // 2. Ash Drop Logic
             // Check the chance before consuming the item
-            float chance = DataMapHook.getFireAshDropChance(stack);
+            float chance = tier == 0 ? DataMapHook.getFireAshDropChance(stack) : DataMapHook.getScorchedDustDropChance(stack);
             if (chance > 0 && this.level.random.nextFloat() < chance) {
                 // Add to your internal counter or output slot
                 // If this is the mixin interface, cast it; otherwise use your field
@@ -150,7 +202,6 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
             // 3. Consume Fuel
             if (stack.hasCraftingRemainingItem()) {
-                // Replace with container (e.g., Lava Bucket -> Bucket)
                 setFuel(i, stack.getCraftingRemainingItem().copy());
             } else {
                 // Consume 1 item
@@ -167,7 +218,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
 
     public static void cookTick(Level level, BlockPos pos, BlockState state, BurnableCampfireBlockEntity blockEntity) {
-        blockEntity.litTime -= 1;
+        blockEntity.litTime -= (blockEntity.tier == 0 ? 1 : 2);
         if (blockEntity.litTime <= 0) {
             blockEntity.burnFuel();
         }
@@ -183,12 +234,18 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
         }
 
         CampfireBlockEntity.cookTick(level, pos, state, blockEntity);
+        if (level instanceof ServerLevel serverLevel && (blockEntity.isLit() || blockEntity.litTime > 0)) {
+            HeatApi.touch(serverLevel, pos);
+        }
     }
 
     public static void cooldownTick(Level level, BlockPos pos, BlockState state, BurnableCampfireBlockEntity blockEntity) {
         blockEntity.litTime = 0;
 
         CampfireBlockEntity.cooldownTick(level, pos, state, (CampfireBlockEntity) blockEntity);
+        if (level instanceof ServerLevel serverLevel && blockEntity.campfireLitTime > 0) {
+            HeatApi.touch(serverLevel, pos);
+        }
     }
 
     public void kindle(){

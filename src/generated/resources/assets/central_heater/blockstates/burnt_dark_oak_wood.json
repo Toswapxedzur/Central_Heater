@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "central_heater:block/burnt_dark_oak_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "central_heater:block/burnt_dark_oak_wood"
+    },
+    "axis=z": {
+      "model": "central_heater:block/burnt_dark_oak_wood_horizontal",
+      "x": 90
+    }
+  }
+}

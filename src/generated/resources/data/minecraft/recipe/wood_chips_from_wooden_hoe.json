@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:wooden_hoe"
+  },
+  "result": {
+    "count": 6,
+    "id": "central_heater:wood_chips"
+  }
+}

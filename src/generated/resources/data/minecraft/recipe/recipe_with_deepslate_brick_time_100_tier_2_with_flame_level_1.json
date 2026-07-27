@@ -1,0 +1,23 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 125,
+    "id": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:deepslate_cobble"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "id": "central_heater:deepslate_brick"
+    }
+  ],
+  "tier": 2,
+  "time": 100
+}

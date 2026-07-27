@@ -1,6 +1,6 @@
 package com.minecart.central_heater.misc;
 
-import com.minecart.central_heater.block_entity.cauldron.AbstractCauldronBlockEntity;
+import com.minecart.central_heater.block_entity.cauldron.ModCauldronBlockEntity;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
@@ -35,7 +35,7 @@ public interface NewCauldronInteraction {
     int WATER_AMOUNT_PER_LEVEL = 250;
 
     // Functional Method
-    ItemInteractionResult interact(Level level, AbstractCauldronBlockEntity entity, Player player, InteractionHand hand, ItemStack stack);
+    ItemInteractionResult interact(Level level, ModCauldronBlockEntity entity, Player player, InteractionHand hand, ItemStack stack);
 
     // --- Interaction Logic ---
 
@@ -127,7 +127,7 @@ public interface NewCauldronInteraction {
 
     // --- Helpers ---
 
-    static ItemInteractionResult tryWash(Level level, AbstractCauldronBlockEntity entity, Player player, Runnable action) {
+    static ItemInteractionResult tryWash(Level level, ModCauldronBlockEntity entity, Player player, Runnable action) {
         FluidStack current = entity.getFluidTank().getFluidInTank(0);
         if (current.is(FluidTags.WATER) && current.getAmount() >= WATER_AMOUNT_PER_LEVEL) {
             if (!level.isClientSide) {
@@ -140,7 +140,7 @@ public interface NewCauldronInteraction {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    static void drainWater(Level level, AbstractCauldronBlockEntity entity) {
+    static void drainWater(Level level, ModCauldronBlockEntity entity) {
         entity.getFluidTank().drain(WATER_AMOUNT_PER_LEVEL, IFluidHandler.FluidAction.EXECUTE);
         level.gameEvent(null, GameEvent.FLUID_PICKUP, entity.getBlockPos());
     }

@@ -30,6 +30,11 @@ public class AllRecipe {
         }
     });
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BlockCleaningRecipe>> BLOCK_CLEANING_RECIPE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("block_cleaning", BlockCleaningRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<BlockCleaningRecipe>> BLOCK_CLEANING =
+            RECIPE_TYPES.register("block_cleaning", () -> RecipeType.simple(CentralHeater.modLoc("block_cleaning")));
+
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BlockSmolderingRecipe>> BLOCK_SMOLDERING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("block_smoldering", ()->new BlockSmolderingRecipe.Serializer());
     public static DeferredHolder<RecipeType<?>, RecipeType<BlockSmolderingRecipe>> BLOCK_SMOLDERING_RECIPE = RECIPE_TYPES.register("block_smoldering", ()->new RecipeType<BlockSmolderingRecipe>() {
         public String toString() {

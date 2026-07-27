@@ -1,0 +1,11 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:spruce_planks"
+  },
+  "output": {
+    "Name": "central_heater:burnt_spruce_planks"
+  },
+  "time": 50
+}

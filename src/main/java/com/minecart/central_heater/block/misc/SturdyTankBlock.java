@@ -1,6 +1,9 @@
 package com.minecart.central_heater.block.misc;
 
 import com.minecart.central_heater.block_entity.misc.SturdyTankBlockEntity;
+import com.minecart.central_heater.heat.api.ThermalMaterial;
+import com.minecart.central_heater.heat.api.ThermalMaterialBehavior;
+import com.minecart.central_heater.heat.api.ThermalOverrideProvider;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,7 +28,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import org.jetbrains.annotations.Nullable;
 
-public class SturdyTankBlock extends BaseEntityBlock {
+public class SturdyTankBlock extends BaseEntityBlock implements ThermalOverrideProvider {
     public static final MapCodec<SturdyTankBlock> CODEC = simpleCodec(SturdyTankBlock::new);
 
     public static final VoxelShape SHAPE = box(3f, 0f, 3f, 13f, 12f, 13f);
@@ -33,6 +36,16 @@ public class SturdyTankBlock extends BaseEntityBlock {
 
     public SturdyTankBlock(Properties properties) {
         super(properties.noOcclusion());
+    }
+
+    @Override
+    public @Nullable ThermalMaterial getThermalMaterialOverride(BlockState state) {
+        return ThermalMaterial.STURDY;
+    }
+
+    @Override
+    public @Nullable ThermalMaterialBehavior getThermalBehaviorOverride(BlockState state) {
+        return null;
     }
 
     @Override

@@ -37,7 +37,9 @@ public class BlockSmolderingRecipe implements Recipe<BlockSmolderingRecipeInput>
 
     @Override
     public boolean matches(BlockSmolderingRecipeInput input, Level level) {
-        if (input.getFireLevel() != this.fireLevel)
+        if(input.getfireBurn() && !this.isfireBurn())
+            return false;
+        if (input.getFireLevel() != this.getFireLevel())
             return false;
         return input.state.is(this.input.getBlock());
     }

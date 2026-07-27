@@ -1,0 +1,268 @@
+{
+  "block.central_heater.stone_stove": "Estufa de piedra",
+  "block.central_heater.deepslate_stove": "Estufa de pizarra profunda",
+  "block.central_heater.brick_stove": "Estufa de ladrillos",
+  "block.central_heater.mud_brick_stove": "Estufa de ladrillos de barro",
+  "block.central_heater.nether_brick_stove": "Estufa de ladrillos del Nether",
+  "block.central_heater.red_nether_brick_stove": "Estufa de ladrillos rojos del Nether",
+  "block.central_heater.blackstone_stove": "Estufa de piedra negra",
+
+  "block.central_heater.mud_brick_pot": "Olla de ladrillos de barro",
+  "block.central_heater.clay_cauldron": "Caldero de arcilla",
+  "block.central_heater.brick_cauldron": "Caldero de ladrillos",
+  "block.central_heater.iron_cauldron": "Caldero de hierro",
+  "block.central_heater.golden_cauldron": "Caldero de oro",
+
+  "block.central_heater.stone_brick_tile": "Baldosa de ladrillos de piedra",
+  "block.central_heater.stone_brick_tile_stair": "Escaleras de baldosa de ladrillos de piedra",
+  "block.central_heater.stone_brick_tile_slab": "Losa de baldosa de ladrillos de piedra",
+  "block.central_heater.stone_brick_tile_wall": "Muro de baldosa de ladrillos de piedra",
+  "block.central_heater.deepslate_brick_tile": "Baldosa de ladrillos de pizarra profunda",
+  "block.central_heater.deepslate_brick_tile_stair": "Escaleras de baldosa de ladrillos de pizarra profunda",
+  "block.central_heater.deepslate_brick_tile_slab": "Losa de baldosa de ladrillos de pizarra profunda",
+  "block.central_heater.deepslate_brick_tile_wall": "Muro de baldosa de ladrillos de pizarra profunda",
+  "block.central_heater.mud_brick_tile": "Baldosa de ladrillos de barro",
+  "block.central_heater.mud_brick_tile_stair": "Escaleras de baldosa de ladrillos de barro",
+  "block.central_heater.mud_brick_tile_slab": "Losa de baldosa de ladrillos de barro",
+  "block.central_heater.mud_brick_tile_wall": "Muro de baldosa de ladrillos de barro",
+  "block.central_heater.blackstone_brick_tile": "Baldosa de ladrillos de piedra negra",
+  "block.central_heater.blackstone_brick_tile_stair": "Escaleras de baldosa de ladrillos de piedra negra",
+  "block.central_heater.blackstone_brick_tile_slab": "Losa de baldosa de ladrillos de piedra negra",
+  "block.central_heater.blackstone_brick_tile_wall": "Muro de baldosa de ladrillos de piedra negra",
+  "block.central_heater.sturdy_brick_tile": "Baldosa de ladrillos robustos",
+  "block.central_heater.sturdy_brick_tile_stair": "Escaleras de baldosa de ladrillos robustos",
+  "block.central_heater.sturdy_brick_tile_slab": "Losa de baldosa de ladrillos robustos",
+  "block.central_heater.sturdy_brick_tile_wall": "Muro de baldosa de ladrillos robustos",
+
+  "block.central_heater.gold_bars": "Barrotes de oro",
+  "block.central_heater.sturdy_tank": "Tanque robusto",
+  "block.central_heater.blazing_furnace": "Horno ardiente",
+
+  "item.central_heater.cobble": "Trozo de adoquín",
+  "item.central_heater.deepslate_cobble": "Trozo de pizarra profunda",
+  "item.central_heater.stone_brick": "Ladrillo de piedra",
+  "item.central_heater.mud_brick": "Ladrillo de barro",
+  "item.central_heater.red_nether_brick": "Ladrillo rojo del Nether",
+  "item.central_heater.deepslate_brick": "Ladrillo de pizarra profunda",
+  "item.central_heater.diamond_shard": "Fragmento de diamante",
+  "item.central_heater.blackstone_brick": "Ladrillo de piedra negra",
+  "item.central_heater.sturdy_brick": "Ladrillo robusto",
+  "item.central_heater.sturdy_nugget": "Pepita robusta",
+  "item.central_heater.scorched_dust": "Polvo chamuscado",
+  "item.central_heater.fire_ash": "Cenizas",
+  "item.central_heater.scorched_coal": "Carbón chamuscado",
+  "item.central_heater.clay_bit": "Trozo de arcilla",
+  "item.central_heater.clay_brick": "Ladrillo de arcilla",
+  "item.central_heater.soul_mixture": "Mezcla de almas",
+  "item.central_heater.wheat_dough": "Masa de trigo",
+  "item.central_heater.wheat_flour": "Harina de trigo",
+  "item.central_heater.wood_chips": "Astillas de madera",
+
+  "item.central_heater.burnt_beef": "Ternera quemada",
+  "item.central_heater.burnt_chicken": "Pollo quemado",
+  "item.central_heater.burnt_cod": "Bacalao quemado",
+  "item.central_heater.burnt_mutton": "Cordero quemado",
+  "item.central_heater.burnt_porkchop": "Cerdo quemado",
+  "item.central_heater.burnt_rabbit": "Conejo quemado",
+  "item.central_heater.burnt_salmon": "Salmón quemado",
+
+  "item.central_heater.sturdy_pickaxe": "Pico robusto",
+  "item.central_heater.sturdy_axe": "Hacha robusta",
+  "item.central_heater.sturdy_shovel": "Pala robusta",
+  "item.central_heater.sturdy_hoe": "Azada robusta",
+  "item.central_heater.sturdy_sword": "Espada robusta",
+  "item.central_heater.sturdy_helmet": "Casco robusto",
+  "item.central_heater.sturdy_chestplate": "Peto robusto",
+  "item.central_heater.sturdy_leggings": "Grebas robustas",
+  "item.central_heater.sturdy_boots": "Botas robustas",
+
+  "central_heater.creativeTabs.central_heater": "Calentadores",
+
+  "jei.central_heater.category.haunting": "Embrujo",
+  "jei.central_heater.category.smoldering": "Combustión lenta",
+  "jei.central_heater.category.netherFuel": "Combustibles del Nether",
+  "jei.central_heater.category.ash_drop": "Reciclaje de cenizas",
+  "jei.central_heater.ash_drop_chance": "Probabilidad: %s",
+  "jei.central_heater.category.scorched_dust_drop": "Reciclaje de polvo chamuscado",
+  "jei.central_heater.scorched_dust_drop_chance": "Probabilidad: %s",
+
+  "jei.central_heater.burnt_woods.description": "Madera que ha sido carbonizada por un calor intenso. Puedes encontrarla después de un gran incendio forestal, o crearla artificialmente en estufas. Puedes quitarle la corteza con un hacha para retirar la capa carbonizada y producir carbón vegetal.",
+  "jei.central_heater.blazing_furnace.description": "Un horno místico que quema arena de almas o tierra de almas en lugar de combustible estándar. Realiza 'Embrujos', transformando objetos en sus equivalentes mágicos o del Nether (ej. bayas dulces a bayas luminosas).",
+  "jei.central_heater.blazing_furnace_minecart.description": "Una variante de la vagoneta con horno que funciona exclusivamente con combustibles de almas. Arde a mayor temperatura y proporciona un impulso más fuerte que su contraparte de carbón.",
+  "jei.central_heater.sturdy_brick.description": "Un compuesto denso y resistente al calor. Aunque es difícil de encantar, las herramientas y armaduras hechas de ladrillos robustos rivalizan en durabilidad con el diamante, haciéndolos excelentes para la supervivencia temprana o media.",
+  "jei.central_heater.sturdy_tank.description": "Un contenedor reforzado capaz de soportar temperaturas extremas. A diferencia de los frascos de cristal estándar, el tanque robusto puede almacenar y transportar lava de forma segura.",
+  "jei.central_heater.fire_ash.description": "El residuo en polvo que queda después de que el combustible sólido se haya consumido por completo. Se puede usar como aglutinante o ingrediente de fabricación.",
+  "jei.central_heater.scorched_dust.description": "El equivalente del Nether a la ceniza. Este polvo arenoso queda cuando los objetos del Nether se incineran en fuego de almas.",
+
+  "container.sturdy_tank": "Tanque robusto",
+  "container.blazing_furnace": "Horno ardiente",
+  "gui.recipebook.toggleRecipes.hauntable": "Mostrando embrujables",
+
+  "container.sturdy_tank.tooltip.content_title": "Contenido:",
+  "container.sturdy_tank.tooltip.content": "%s mb de %s ",
+  "container.sturdy_tank.tooltip.potion_title": "Efectos de poción: ",
+
+  "item.central_heater.blazing_furnace_minecart": "Vagoneta con horno ardiente",
+
+  "block.central_heater.burnt_wood": "Madera carbonizada",
+  "block.central_heater.burnt_log": "Tronco carbonizado",
+
+  "jei.central_heater.category.block_smoldering": "Combustión de bloques",
+
+  "advancements.central_heater.root.title": "Calefacción",
+  "advancements.central_heater.root.description": "Fabrica un horno y cocina algo",
+
+  "advancements.central_heater.blasting.title": "Más caliente que un horno",
+  "advancements.central_heater.blasting.description": "Construye un alto horno",
+
+  "advancements.central_heater.campfire.title": "Hoguera acogedora",
+  "advancements.central_heater.campfire.description": "Construye una fogata",
+
+  "advancements.central_heater.haunting.title": "Horno embrujado",
+  "advancements.central_heater.haunting.description": "Construye un horno ardiente",
+
+  "advancements.central_heater.muddy.title": "Fangoso",
+  "advancements.central_heater.muddy.description": "Obtén un ladrillo de barro",
+
+  "advancements.central_heater.muddy_stove.title": "Calefacción de barro",
+  "advancements.central_heater.muddy_stove.description": "Construye una estufa de ladrillos de barro",
+
+  "advancements.central_heater.muddy_pot.title": "Cocina de barro",
+  "advancements.central_heater.muddy_pot.description": "Construye una olla de ladrillos de barro",
+
+  "advancements.central_heater.bricky.title": "Ladrillo a ladrillo",
+  "advancements.central_heater.bricky.description": "Obtén un ladrillo",
+
+  "advancements.central_heater.bricky_stove.title": "Calefacción de ladrillos",
+  "advancements.central_heater.bricky_stove.description": "Construye una estufa de ladrillos",
+
+  "advancements.central_heater.bricky_cauldron.title": "Cocina de ladrillos",
+  "advancements.central_heater.bricky_cauldron.description": "Construye un caldero de ladrillos",
+
+  "advancements.central_heater.stoney.title": "Piedra lisa",
+  "advancements.central_heater.stoney.description": "Obtén un ladrillo de piedra",
+
+  "advancements.central_heater.stoney_appliances.title": "Calefacción de roca",
+  "advancements.central_heater.stoney_appliances.description": "Construye una estufa de piedra",
+
+  "advancements.central_heater.iron_cauldron.title": "Chef de hierro",
+  "advancements.central_heater.iron_cauldron.description": "Construye un caldero de hierro",
+
+  "advancements.central_heater.golden_cauldron.title": "Estándar de oro",
+  "advancements.central_heater.golden_cauldron.description": "Construye un caldero de oro",
+
+  "advancements.central_heater.sturdy_brick.title": "Cimientos robustos",
+  "advancements.central_heater.sturdy_brick.description": "Obtén un ladrillo robusto",
+
+  "advancements.central_heater.sturdy_tank.title": "Grado militar",
+  "advancements.central_heater.sturdy_tank.description": "Fabrica un tanque robusto para almacenar fluidos",
+
+  "advancements.central_heater.sturdy_armor.title": "Hombre de hierro",
+  "advancements.central_heater.sturdy_armor.description": "Obtén un traje completo de armadura robusta",
+
+  "advancements.central_heater.nether_stove.title": "Cocina del Nether",
+  "advancements.central_heater.nether_stove.description": "Construye una estufa hecha de materiales del Nether",
+
+  "advancements.central_heater.scorched_coal.title": "Sobrecalentado",
+  "advancements.central_heater.scorched_coal.description": "Obtén carbón chamuscado",
+
+  "advancements.central_heater.diamond_shard.title": "Diamante artificial",
+  "advancements.central_heater.diamond_shard.description": "Obtén un fragmento de diamante calentando carbón",
+
+  "advancements.central_heater.synthetic_debris.title": "Alquimia antigua",
+  "advancements.central_heater.synthetic_debris.description": "Sintetiza escombros ancestrales a partir de un bloque de huesos",
+
+  "advancements.central_heater.extra_crispy.title": "Extra crujiente",
+  "advancements.central_heater.extra_crispy.description": "Obtén cualquier comida quemada",
+
+  "advancements.central_heater.speed_demon.title": "Demonio de la velocidad",
+  "advancements.central_heater.speed_demon.description": "Alcanza altas velocidades en una vagoneta",
+
+  "advancements.central_heater.wasteful_burning.title": "Dinero para quemar",
+  "advancements.central_heater.wasteful_burning.description": "Quema un bloque entero de carbón solo por las cenizas",
+
+  "item.central_heater.briquettes": "Briquetas",
+  "item.central_heater.scorched_briquettes": "Briquetas chamuscadas",
+  "item.central_heater.soap": "Jabón",
+  "item.central_heater.sturdy_shears": "Tijeras robustas",
+
+  "block.central_heater.coal_bricks": "Ladrillos de carbón",
+  "block.central_heater.coal_brick_tile": "Baldosas de ladrillo de carbón",
+  "block.central_heater.coal_brick_tile_stair": "Escaleras de baldosa de carbón",
+  "block.central_heater.coal_brick_tile_slab": "Losa de baldosa de carbón",
+  "block.central_heater.coal_brick_tile_wall": "Muro de baldosa de carbón",
+  "block.central_heater.coal_brick_stair": "Escaleras de ladrillos de carbón",
+  "block.central_heater.coal_brick_slab": "Losa de ladrillos de carbón",
+
+  "block.central_heater.golden_bricks": "Ladrillos de oro",
+  "block.central_heater.golden_brick_tile": "Baldosas de ladrillo de oro",
+  "block.central_heater.golden_brick_tile_stair": "Escaleras de baldosa de oro",
+  "block.central_heater.golden_brick_tile_slab": "Losa de baldosa de oro",
+  "block.central_heater.golden_brick_tile_wall": "Muro de baldosa de oro",
+  "block.central_heater.golden_brick_stair": "Escaleras de ladrillos de oro",
+  "block.central_heater.golden_brick_slab": "Losa de ladrillos de oro",
+
+  "block.central_heater.netherite_bricks": "Ladrillos de inframundita",
+  "block.central_heater.netherite_brick_tile": "Baldosas de ladrillo de inframundita",
+  "block.central_heater.netherite_brick_tile_stair": "Escaleras de baldosa de inframundita",
+  "block.central_heater.netherite_brick_tile_slab": "Losa de baldosa de inframundita",
+  "block.central_heater.netherite_brick_tile_wall": "Muro de baldosa de inframundita",
+  "block.central_heater.netherite_brick_stair": "Escaleras de ladrillos de inframundita",
+  "block.central_heater.netherite_brick_slab": "Losa de ladrillos de inframundita",
+
+  "block.central_heater.scorched_bricks": "Ladrillos chamuscados",
+  "block.central_heater.scorched_brick_tile": "Baldosas de ladrillo chamuscado",
+  "block.central_heater.scorched_brick_tile_stair": "Escaleras de baldosa chamuscada",
+  "block.central_heater.scorched_brick_tile_slab": "Losa de baldosa chamuscada",
+  "block.central_heater.scorched_brick_tile_wall": "Muro de baldosa chamuscada",
+  "block.central_heater.scorched_brick_stair": "Escaleras de ladrillos chamuscados",
+  "block.central_heater.scorched_brick_slab": "Losa de ladrillos chamuscados",
+
+  "block.central_heater.sturdy_anvil": "Yunque robusto",
+  "block.central_heater.chipped_sturdy_anvil": "Yunque robusto dañado",
+  "block.central_heater.damaged_sturdy_anvil": "Yunque robusto muy dañado",
+
+  "block.central_heater.sturdy_bricks": "Ladrillos robustos",
+  "block.central_heater.sturdy_brick_stair": "Escaleras de ladrillos robustos",
+  "block.central_heater.sturdy_brick_slab": "Losa de ladrillos robustos",
+
+  "jei.central_heater.category.block_cleaning": "Limpieza de bloques",
+
+  "block.central_heater.ashtray": "Cenicero",
+  "block.central_heater.burnable_campfire": "Hoguera",
+  "block.central_heater.burnable_soul_campfire": "Hoguera de almas",
+
+  "item.central_heater.coal_bit": "Trozo de carbón",
+  "item.central_heater.charcoal_bit": "Trozo de carbón vegetal",
+
+  "block.central_heater.burnt_birch_log": "Tronco de abedul carbonizado",
+  "block.central_heater.burnt_birch_wood": "Madera de abedul carbonizada",
+  "block.central_heater.burnt_jungle_log": "Tronco de jungla carbonizado",
+  "block.central_heater.burnt_jungle_wood": "Madera de jungla carbonizada",
+  "block.central_heater.burnt_cherry_log": "Tronco de cerezo carbonizado",
+  "block.central_heater.burnt_cherry_wood": "Madera de cerezo carbonizada",
+  "block.central_heater.burnt_mangrove_log": "Tronco de mangle carbonizado",
+  "block.central_heater.burnt_mangrove_wood": "Madera de mangle carbonizada",
+
+  "block.central_heater.burnt_planks": "Tablones carbonizados",
+  "block.central_heater.burnt_stairs": "Escaleras carbonizadas",
+  "block.central_heater.burnt_slab": "Losa carbonizada",
+  "block.central_heater.burnt_fence": "Valla carbonizada",
+  "block.central_heater.burnt_fence_gate": "Puerta de valla carbonizada",
+  "block.central_heater.burnt_trapdoor": "Trampilla carbonizada",
+  "block.central_heater.burnt_button": "Botón carbonizado",
+  "block.central_heater.burnt_pressure_plate": "Placa de presión carbonizada",
+  "block.central_heater.burnt_door": "Puerta carbonizada",
+
+  "item.central_heater.burnt_boat": "Bote carbonizado",
+  "item.central_heater.burnt_chest_boat": "Bote carbonizado con cofre",
+
+  "block.central_heater.copper_stove": "Estufa de cobre",
+  "block.central_heater.exposed_copper_stove": "Estufa de cobre expuesto",
+  "block.central_heater.weathered_copper_stove": "Estufa de cobre desgastado",
+  "block.central_heater.oxidized_copper_stove": "Estufa de cobre oxidado",
+  "block.central_heater.waxed_copper_stove": "Estufa de cobre encerado",
+  "block.central_heater.waxed_exposed_copper_stove": "Estufa de cobre expuesto encerado",
+  "block.central_heater.waxed_weathered_copper_stove": "Estufa de cobre desgastado encerado",
+  "block.central_heater.waxed_oxidized_copper_stove": "Estufa de cobre oxidado encerado"
+}

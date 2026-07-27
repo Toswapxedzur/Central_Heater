@@ -1,0 +1,16 @@
+{
+  "values": {
+    "central_heater:copper_stove": {
+      "waxed": "central_heater:waxed_copper_stove"
+    },
+    "central_heater:exposed_copper_stove": {
+      "waxed": "central_heater:waxed_exposed_copper_stove"
+    },
+    "central_heater:weathered_copper_stove": {
+      "waxed": "central_heater:waxed_weathered_copper_stove"
+    },
+    "central_heater:oxidized_copper_stove": {
+      "waxed": "central_heater:waxed_oxidized_copper_stove"
+    }
+  }
+}

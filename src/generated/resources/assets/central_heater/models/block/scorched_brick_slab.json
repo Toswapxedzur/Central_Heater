@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "central_heater:block/scorched_bricks",
+    "side": "central_heater:block/scorched_bricks",
+    "top": "central_heater:block/scorched_bricks"
+  }
+}

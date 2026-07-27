@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:wooden_pickaxe"
+  },
+  "result": {
+    "count": 8,
+    "id": "central_heater:wood_chips"
+  }
+}

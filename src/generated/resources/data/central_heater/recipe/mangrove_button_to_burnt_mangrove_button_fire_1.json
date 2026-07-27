@@ -1,0 +1,21 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:mangrove_button",
+    "Properties": {
+      "face": "wall",
+      "facing": "north",
+      "powered": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_mangrove_button",
+    "Properties": {
+      "face": "wall",
+      "facing": "north",
+      "powered": "false"
+    }
+  },
+  "time": 25
+}

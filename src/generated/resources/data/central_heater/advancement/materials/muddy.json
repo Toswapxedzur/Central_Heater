@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_mud_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:mud_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.muddy.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:mud_brick"
+    },
+    "title": {
+      "translate": "advancements.central_heater.muddy.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_mud_brick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

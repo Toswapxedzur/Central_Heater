@@ -13,5 +13,6 @@ public class ItemUtil {
     }
 
     public static boolean isFlatItem(Item item){
-        return VirtualLevel.getItemRenderer().getItemModelShaper().getItemModel(item).isGui3d();
-    }}
+        return !VirtualLevel.getItemRenderer().getItemModelShaper().getItemModel(item).isGui3d();
+    }
+}

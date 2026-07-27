@@ -1,0 +1,31 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "burnt_coal_block": {
+      "conditions": {
+        "item": {
+          "items": "minecraft:coal_block"
+        }
+      },
+      "trigger": "central_heater:burnt_object"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.wasteful_burning.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:fire_ash"
+    },
+    "title": {
+      "translate": "advancements.central_heater.wasteful_burning.title"
+    }
+  },
+  "requirements": [
+    [
+      "burnt_coal_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

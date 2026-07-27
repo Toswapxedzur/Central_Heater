@@ -1,0 +1,32 @@
+{
+  "parent": "central_heater:main/processing_haunting",
+  "criteria": {
+    "fast_minecart": {
+      "conditions": {
+        "speed": {
+          "min": 1.6
+        }
+      },
+      "trigger": "central_heater:minecart_speed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.speed_demon.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "central_heater:blazing_furnace_minecart"
+    },
+    "title": {
+      "translate": "advancements.central_heater.speed_demon.title"
+    }
+  },
+  "requirements": [
+    [
+      "fast_minecart"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,14 @@
+{
+  "type": "central_heater:haunting",
+  "category": "misc",
+  "cookingtime": 800,
+  "experience": 1.0,
+  "group": "misc",
+  "ingredient": {
+    "item": "minecraft:redstone"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:glowstone_dust"
+  }
+}

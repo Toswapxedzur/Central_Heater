@@ -1,0 +1,26 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 125,
+    "id": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:cobble"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "id": "central_heater:sturdy_brick"
+    }
+  ],
+  "tier": 3,
+  "time": 200
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mangrove_trapdoor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mangrove_trapdoor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:mangrove_trapdoor_to_burnt_mangrove_trapdoor_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mangrove_trapdoor"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:mangrove_trapdoor_to_burnt_mangrove_trapdoor_fire_1"
+    ]
+  }
+}

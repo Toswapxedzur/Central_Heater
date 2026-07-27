@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "central_heater:block/golden_bricks",
+    "side": "central_heater:block/golden_bricks",
+    "top": "central_heater:block/golden_bricks"
+  }
+}

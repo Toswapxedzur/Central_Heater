@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "central_heater:block/chipped_sturdy_anvil",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "central_heater:block/chipped_sturdy_anvil"
+    },
+    "facing=south": {
+      "model": "central_heater:block/chipped_sturdy_anvil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "central_heater:block/chipped_sturdy_anvil",
+      "y": 270
+    }
+  }
+}

@@ -15,33 +15,36 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 public class AllCapabilities {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event){
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.brick_stove.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.BRICK_STOVE.get(),
                 CapabilityFunction::stoveCapability);
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.stone_stove.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.STONE_STOVE.get(),
                 CapabilityFunction::stoveCapability);
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.red_nether_brick_stove.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.RED_NETHER_BRICK_STOVE.get(),
                 CapabilityFunction::stoveCapability);
 
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.pot.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.MUD_BRICK_POT.get(),
                 (pot, side) -> pot.getContainer());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.brick_cauldron.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.BRICK_CAULDRON.get(),
                 (pot, side) -> pot.getContainer());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.iron_cauldron.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.IRON_CAULDRON.get(),
                 (pot, side) -> pot.getContainer());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.golden_cauldron.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.GOLDEN_CAULDRON.get(),
                 (pot, side) -> pot.getContainer());
 
-        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.pot.get(),
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AllBlockEntity.ASHTRAY.get(),
+                (tray, side) -> tray.inventory);
+
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.MUD_BRICK_POT.get(),
                 (entity, side) -> side.equals(Direction.DOWN) ? null : entity.getFluidTank());
-        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.brick_cauldron.get(),
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.BRICK_CAULDRON.get(),
                 (entity, side) -> side.equals(Direction.DOWN) ? null : entity.getFluidTank());
-        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.golden_cauldron.get(),
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.GOLDEN_CAULDRON.get(),
                 (entity, side) -> side.equals(Direction.DOWN) ? null : entity.getFluidTank());
 
         event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new PotionWrapper(stack), Items.GLASS_BOTTLE, Items.POTION);
 
         event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> new FluidHandlerItemStack(AllDataComponents.SIMPLE_FLUID_CONTENT, stack, 500), AllBlockItem.STURDY_TANK.asItem());
-        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.sturdy_tank.get(),
+        event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, AllBlockEntity.STURDY_TANK.get(),
                 (entity, side) -> entity.getTank());
     }
 }

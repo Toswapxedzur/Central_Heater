@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spruce_door": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:spruce_door"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:spruce_door_to_burnt_spruce_door_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_spruce_door"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:spruce_door_to_burnt_spruce_door_fire_1"
+    ]
+  }
+}

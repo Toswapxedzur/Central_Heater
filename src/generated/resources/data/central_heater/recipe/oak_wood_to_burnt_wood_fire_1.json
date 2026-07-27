@@ -1,0 +1,16 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:oak_wood",
+    "Properties": {
+      "axis": "y"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_wood",
+    "Properties": {
+      "axis": "y"
+    }
+  }
+}

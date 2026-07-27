@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.045,
+  "input": "minecraft:brown_stained_glass_pane",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:brown_dye"
+  },
+  "output": "minecraft:glass_pane"
+}

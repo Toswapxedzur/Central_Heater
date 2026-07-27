@@ -1,0 +1,13 @@
+{
+  "values": [
+    "central_heater:golden_cauldron",
+    "central_heater:gold_bars",
+    "central_heater:golden_bricks",
+    "central_heater:golden_brick_stair",
+    "central_heater:golden_brick_slab",
+    "central_heater:golden_brick_tile",
+    "central_heater:golden_brick_tile_stair",
+    "central_heater:golden_brick_tile_slab",
+    "central_heater:golden_brick_tile_wall"
+  ]
+}

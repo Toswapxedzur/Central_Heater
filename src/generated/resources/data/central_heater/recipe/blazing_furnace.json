@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "central_heater:golden_bricks"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
+    },
+    "N": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    "NNN",
+    "NFN",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "central_heater:blazing_furnace"
+  }
+}

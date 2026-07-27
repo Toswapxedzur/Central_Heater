@@ -1,0 +1,11 @@
+{
+  "values": [
+    "central_heater:netherite_bricks",
+    "central_heater:netherite_brick_stair",
+    "central_heater:netherite_brick_slab",
+    "central_heater:netherite_brick_tile",
+    "central_heater:netherite_brick_tile_stair",
+    "central_heater:netherite_brick_tile_slab",
+    "central_heater:netherite_brick_tile_wall"
+  ]
+}

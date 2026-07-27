@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:materials/muddy",
+  "criteria": {
+    "has_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.bricky.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:brick"
+    },
+    "title": {
+      "translate": "advancements.central_heater.bricky.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_brick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

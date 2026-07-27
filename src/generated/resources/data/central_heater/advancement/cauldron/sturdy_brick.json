@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:cauldron/iron",
+  "criteria": {
+    "has_sturdy_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:sturdy_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.sturdy_brick.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:sturdy_brick"
+    },
+    "title": {
+      "translate": "advancements.central_heater.sturdy_brick.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sturdy_brick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,22 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": {
+    "Name": "minecraft:brick_stairs",
+    "Properties": {
+      "facing": "north",
+      "half": "bottom",
+      "shape": "straight",
+      "waterlogged": "false"
+    }
+  },
+  "output": {
+    "Name": "minecraft:nether_brick_stairs",
+    "Properties": {
+      "facing": "north",
+      "half": "bottom",
+      "shape": "straight",
+      "waterlogged": "false"
+    }
+  }
+}

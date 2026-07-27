@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.12,
+  "input": "minecraft:cyan_stained_glass",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:cyan_dye"
+  },
+  "output": "minecraft:glass"
+}

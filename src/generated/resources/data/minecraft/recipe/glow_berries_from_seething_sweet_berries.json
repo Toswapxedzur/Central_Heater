@@ -1,0 +1,14 @@
+{
+  "type": "central_heater:haunting",
+  "category": "food",
+  "cookingtime": 400,
+  "experience": 1.0,
+  "group": "misc",
+  "ingredient": {
+    "item": "minecraft:sweet_berries"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:glow_berries"
+  }
+}

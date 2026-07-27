@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.12,
+  "input": "minecraft:light_blue_concrete_powder",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:light_blue_dye"
+  },
+  "output": "minecraft:white_concrete_powder"
+}

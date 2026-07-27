@@ -1,0 +1,9 @@
+{
+  "asset_name": "sturdy",
+  "description": {
+    "color": "#0B120C",
+    "translate": "central_heater.trim_material.sturdy"
+  },
+  "ingredient": "central_heater:sturdy_brick",
+  "item_model_index": 1.1
+}

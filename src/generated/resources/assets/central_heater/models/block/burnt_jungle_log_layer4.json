@@ -1,0 +1,9 @@
+{
+  "parent": "central_heater:block/burnt_layer4",
+  "textures": {
+    "bottom": "central_heater:block/burnt_jungle_log_top",
+    "particle": "central_heater:block/burnt_jungle_log",
+    "side": "central_heater:block/burnt_jungle_log",
+    "top": "central_heater:block/burnt_jungle_log_top"
+  }
+}

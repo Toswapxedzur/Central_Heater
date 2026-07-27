@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "central_heater:block/sturdy_tank"
+    }
+  }
+}

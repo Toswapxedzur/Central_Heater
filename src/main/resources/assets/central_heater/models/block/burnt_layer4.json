@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "central_heater:block/burnt_log_top",
+    "bottom": "central_heater:block/burnt_log_top",
+    "side": "central_heater:block/burnt_log",
+    "particle": "central_heater:block/burnt_log"
+  }
+}

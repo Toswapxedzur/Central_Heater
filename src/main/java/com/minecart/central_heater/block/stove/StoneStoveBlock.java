@@ -44,14 +44,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StoneStoveBlock extends BaseEntityBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+public class StoneStoveBlock extends AbstractStoveBlock {
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
-    public static final VoxelShape SHAPE = Block.box(0,0,0,16,16,16);
-
     public static final MapCodec<StoneStoveBlock> CODEC = simpleCodec(StoneStoveBlock::new);
-
 
     public StoneStoveBlock(Properties properties){
         super(properties.noOcclusion().lightLevel(state -> state.getValue(LIT) ? 13 : 0));
@@ -59,82 +54,28 @@ public class StoneStoveBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new StoneStoveBlockEntity(pos, state);
-    }
-
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
+    public MapCodec<? extends StoneStoveBlock> codec() {
         return CODEC;
     }
 
-
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    protected VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
-        return SHAPE;
-    }
-
-
-    @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) {
-        return state.rotate(mirror.getRotation(state.getValue(FACING)));
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new StoneStoveBlockEntity(pos, state);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, LIT);
+        super.createBlockStateDefinition(builder);
     }
-
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove.get(), StoneStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.STONE_STOVE.get(), StoneStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.stone_stove.get(), StoneStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.STONE_STOVE.get(), StoneStoveBlockEntity::serverTick);
         }
-    }
-
-
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if(level.isClientSide)
-            return ItemInteractionResult.SUCCESS;
-        if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof StoneStoveBlockEntity entity && !entity.isRemoved()){
-            Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-            if(stack.is(Items.FLINT_AND_STEEL)){
-                entity.kindle();
-            }
-            else if(hitResult.getDirection().equals(Direction.UP)){
-                player.setItemInHand(hand, entity.items.insertItem(getIndexFromHitResult(hitResult, blockDir), stack, false));
-            }
-            else {
-                player.setItemInHand(hand, entity.fuels.insertItem(stack, false));
-            }
-            return ItemInteractionResult.SUCCESS;
-        }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
@@ -143,7 +84,8 @@ public class StoneStoveBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         if(level.getBlockEntity(pos) instanceof StoneStoveBlockEntity entity && !entity.isRemoved()){
             Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-            if(hitResult.getDirection().equals(Direction.UP)){
+            if(hitResult.getLocation().y - hitResult.getBlockPos().getY() >= 0.9375){
+                // Calls getIndexFromHitResult which is now inherited from AbstractStoveBlock
                 ItemStack extract = entity.items.extractItem(getIndexFromHitResult(hitResult, blockDir), Item.ABSOLUTE_MAX_STACK_SIZE, false);
                 for(RecipeHolder<SmeltingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING))
                     if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
@@ -159,29 +101,8 @@ public class StoneStoveBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if(level.isClientSide)
-            return;
-        if (!state.is(newState.getBlock())) {
-            if (level.getBlockEntity(pos) instanceof StoneStoveBlockEntity entity)
-                entity.dropContent();
-            super.onRemove(state, level, pos, newState, movedByPiston);
-            level.updateNeighbourForOutputSignal(pos, this);
-        }
-    }
-
-    @Override
     protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
         return !state.getValue(LIT).booleanValue();
-    }
-
-    @Override
-    protected void onProjectileHit(Level level, BlockState state, BlockHitResult hit, Projectile projectile) {
-        BlockPos blockpos = hit.getBlockPos();
-        if (!level.isClientSide && projectile.isOnFire() && projectile.mayInteract(level, blockpos) &&
-                level.getBlockEntity(hit.getBlockPos()) instanceof StoneStoveBlockEntity entity && !entity.isLit()) {
-            entity.kindle();
-        }
     }
 
     @Override
@@ -213,7 +134,7 @@ public class StoneStoveBlock extends BaseEntityBlock {
                         d0 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
                         d1 + random.nextDouble() * 0.5,
                         d2 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
-                         0.0, 0.07, 0.0);
+                        0.0, 0.07, 0.0);
             }
 
             for(int i=0;i<random.nextIntBetweenInclusive(2,3);i++){
@@ -238,34 +159,6 @@ public class StoneStoveBlock extends BaseEntityBlock {
                         d1 + random.nextDouble() * 0.5,
                         d2 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
                         0.0, 0.07, 0.0);
-            }
-        }
-    }
-
-    private int getIndexFromHitResult(BlockHitResult result, Direction direction){
-        Vec3 hitLoc = result.getLocation();
-        int dir = direction.get2DDataValue();
-        boolean b0 = hitLoc.x - Math.floor(hitLoc.x) > 0.5d;
-        boolean b1 = hitLoc.z - Math.floor(hitLoc.z) > 0.5d;
-        int index;
-        if(b0 && b1)
-            index = 2;
-        else if (!b0 && b1)
-            index = 3;
-        else if (b0 && !b1)
-            index = 1;
-        else
-            index = 0;
-        return (index - dir + 4) % 4;
-    }
-
-    @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide && placer instanceof Player player) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof AbstractStoveBlockEntity stove) {
-                stove.setPlacer(player.getUUID());
             }
         }
     }

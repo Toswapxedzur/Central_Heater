@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "central_heater:block/golden_brick_slab"
+    },
+    "type=double": {
+      "model": "central_heater:block/golden_bricks"
+    },
+    "type=top": {
+      "model": "central_heater:block/golden_brick_slab_top"
+    }
+  }
+}

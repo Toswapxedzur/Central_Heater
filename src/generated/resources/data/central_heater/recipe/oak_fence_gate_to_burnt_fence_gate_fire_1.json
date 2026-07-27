@@ -1,0 +1,23 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:oak_fence_gate",
+    "Properties": {
+      "facing": "north",
+      "in_wall": "false",
+      "open": "false",
+      "powered": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_fence_gate",
+    "Properties": {
+      "facing": "north",
+      "in_wall": "false",
+      "open": "false",
+      "powered": "false"
+    }
+  },
+  "time": 50
+}

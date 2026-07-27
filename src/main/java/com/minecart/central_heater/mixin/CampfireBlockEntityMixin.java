@@ -13,6 +13,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class CampfireBlockEntityMixin {
     @Redirect(method = "<init>", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/entity/BlockEntityType;CAMPFIRE:Lnet/minecraft/world/level/block/entity/BlockEntityType;"))
     private static BlockEntityType<?> newBlockEntity(){
-        return AllBlockEntity.burnable_campfire.get();
+        return AllBlockEntity.BURNABLE_CAMPFIRE.get();
     }
 }
