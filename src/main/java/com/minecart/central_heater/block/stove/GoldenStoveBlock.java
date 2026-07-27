@@ -49,21 +49,22 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class GoldenStoveBlock extends BaseEntityBlock {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+public class GoldenStoveBlock extends AbstractStoveBlock {
     public static final EnumProperty<NetherFireState> LIT_SOUL = EnumProperty.create("lit_soul", NetherFireState.class);
-
-    public static final VoxelShape SHAPE = box(0,0,0,16,16,16);
-
     public static final MapCodec<GoldenStoveBlock> CODEC = simpleCodec(GoldenStoveBlock::new);
 
     public GoldenStoveBlock(Properties properties) {
         super(properties.noOcclusion().lightLevel(lit -> {
-            if(lit.getValue(LIT_SOUL).getState() == 2){ return 15; }
-            else if(lit.getValue(LIT_SOUL).getState() == 1){ return 13; }
-            else{ return 0; }
+            if (lit.getValue(LIT_SOUL).getState() == 2) { return 15; }
+            else if (lit.getValue(LIT_SOUL).getState() == 1) { return 13; }
+            else { return 0; }
         }));
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(LIT_SOUL, NetherFireState.NONE));
+    }
+
+    @Override
+    public MapCodec<? extends GoldenStoveBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -71,67 +72,30 @@ public class GoldenStoveBlock extends BaseEntityBlock {
         return new GoldenStoveBlockEntity(pos, state);
     }
 
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
-
-
-    @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return SHAPE;
-    }
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
-    }
-
-
-    @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) {
-        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) {
-        return state.mirror(mirror);
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
-
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, LIT_SOUL);
-        super.createBlockStateDefinition(builder);
     }
-
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
         if(level.isClientSide){
-            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove.get(), GoldenStoveBlockEntity::clientTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.RED_NETHER_BRICK_STOVE.get(), GoldenStoveBlockEntity::clientTick);
         }else{
-            return createTickerHelper(blockEntityType, AllBlockEntity.red_nether_brick_stove.get(), GoldenStoveBlockEntity::serverTick);
+            return createTickerHelper(blockEntityType, AllBlockEntity.RED_NETHER_BRICK_STOVE.get(), GoldenStoveBlockEntity::serverTick);
         }
     }
-
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.isClientSide)
             return ItemInteractionResult.SUCCESS;
-        if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !level.getBlockEntity(pos).isRemoved()){
+        if(!player.getItemInHand(hand).isEmpty() && level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !entity.isRemoved()){
             Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
             if(stack.is(Items.FLINT_AND_STEEL)){
                 entity.kindle();
             }
-            else if(hitResult.getDirection().equals(Direction.UP)){
+            else if(hitResult.getLocation().y - hitResult.getBlockPos().getY() >= 0.9375){
                 player.setItemInHand(hand, entity.items.insertItem(getIndexFromHitResult(hitResult, blockDir), stack, false));
             }
             else {
@@ -148,7 +112,7 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         if(level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity && !entity.isRemoved()){
             Direction blockDir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-            if(hitResult.getDirection().equals(Direction.UP)){
+            if(hitResult.getLocation().y - hitResult.getBlockPos().getY() >= 0.9375){
                 ItemStack extract = entity.items.extractItem(getIndexFromHitResult(hitResult, blockDir), Item.ABSOLUTE_MAX_STACK_SIZE, false);
                 for(RecipeHolder<HauntingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AllRecipe.HAUNTING.get()))
                     if(recipe.value().getResultItem(level.registryAccess()).is(extract.getItem()))
@@ -164,18 +128,6 @@ public class GoldenStoveBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.CONSUME;
-    }
-
-    @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-        if(level.isClientSide)
-            return;
-        if(!state.is(newState.getBlock())) {
-            if (level.getBlockEntity(pos) instanceof GoldenStoveBlockEntity entity)
-                entity.dropContent();
-            super.onRemove(state, level, pos, newState, movedByPiston);
-            level.updateNeighbourForOutputSignal(pos, this);
-        }
     }
 
     @Override
@@ -268,35 +220,6 @@ public class GoldenStoveBlock extends BaseEntityBlock {
                         d1 + random.nextDouble() * 0.5,
                         d2 + random.nextDouble() / 3.0 * (random.nextBoolean() ? 1 : -1),
                         ((random.nextFloat()-0.5f) / 4.0F), 0.07, ((random.nextFloat()-0.5f) / 4.0F));
-            }
-        }
-        super.animateTick(state, level, pos, random);
-    }
-
-    private int getIndexFromHitResult(BlockHitResult result, Direction direction){
-        Vec3 hitLoc = result.getLocation();
-        int dir = direction.get2DDataValue();
-        boolean b0 = hitLoc.x - Math.floor(hitLoc.x) > 0.5d;
-        boolean b1 = hitLoc.z - Math.floor(hitLoc.z) > 0.5d;
-        int index;
-        if(b0 && b1)
-            index = 2;
-        else if (!b0 && b1)
-            index = 3;
-        else if (b0 && !b1)
-            index = 1;
-        else
-            index = 0;
-        return (index - dir + 4) % 4;
-    }
-
-    @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, pos, state, placer, stack);
-        if (!level.isClientSide && placer instanceof Player player) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof AbstractStoveBlockEntity stove) {
-                stove.setPlacer(player.getUUID());
             }
         }
     }

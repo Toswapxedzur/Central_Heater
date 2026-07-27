@@ -25,7 +25,6 @@ public class GeneratorItemModel extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        withExistingParent("burnt_log", modLoc("block/burnt_log_layer4"));
         withExistingParent("stone_stove", modLoc("block/stone_stove_off"));
         withExistingParent("red_nether_brick_stove", modLoc("block/red_nether_brick_stove_off"));
         withExistingParent("brick_stove", modLoc("block/brick_stove_off"));
@@ -49,6 +48,15 @@ public class GeneratorItemModel extends ItemModelProvider {
         withExistingParent("sturdy_brick_tile_slab", modLoc("block/sturdy_brick_tile_slab"));
         wallInventory("sturdy_brick_tile_wall", modLoc("block/sturdy_brick_tile"));
         withExistingParent("burnt_wood", modLoc("block/burnt_wood"));
+        basicItem(AllBlockItem.SCORCHED_BRIQUETTES.asItem());
+
+        withExistingParent("sturdy_bricks", modLoc("block/sturdy_bricks"));
+        withExistingParent("sturdy_brick_stair", modLoc("block/sturdy_brick_stair"));
+        withExistingParent("sturdy_brick_slab", modLoc("block/sturdy_brick_slab"));
+
+        withExistingParent("sturdy_anvil", modLoc("block/sturdy_anvil"));
+        withExistingParent("chipped_sturdy_anvil", modLoc("block/chipped_sturdy_anvil"));
+        withExistingParent("damaged_sturdy_anvil", modLoc("block/damaged_sturdy_anvil"));
         basicItem(AllBlockItem.COBBLE.asItem());
         basicItem(AllBlockItem.DEEPSLATE_COBBLE.asItem());
         basicItem(AllBlockItem.STONE_BRICK.asItem());
@@ -90,16 +98,112 @@ public class GeneratorItemModel extends ItemModelProvider {
         basicItem(AllBlockItem.BURNT_RABBIT.asItem());
         basicItem(AllBlockItem.BURNT_SALMON.asItem());
 
+        // --- Standard Items ---
+        basicItem(AllBlockItem.BRIQUETTES.asItem());
+        basicItem(AllBlockItem.SOAP.asItem());
+        handheldItem(AllBlockItem.STURDY_SHEARS.asItem());
+
+        // --- Block Items (Delegating to Block Models) ---
+        // Coal
+        withExistingParent("coal_bricks", modLoc("block/coal_bricks"));
+        withExistingParent("coal_brick_stair", modLoc("block/coal_brick_stair"));
+        withExistingParent("coal_brick_slab", modLoc("block/coal_brick_slab"));
+        withExistingParent("coal_brick_tile", modLoc("block/coal_brick_tile"));
+        withExistingParent("coal_brick_tile_stair", modLoc("block/coal_brick_tile_stair"));
+        withExistingParent("coal_brick_tile_slab", modLoc("block/coal_brick_tile_slab"));
+        wallInventory("coal_brick_tile_wall", modLoc("block/coal_brick_tile"));
+
+        // Golden
+        withExistingParent("golden_bricks", modLoc("block/golden_bricks"));
+        withExistingParent("golden_brick_stair", modLoc("block/golden_brick_stair"));
+        withExistingParent("golden_brick_slab", modLoc("block/golden_brick_slab"));
+        withExistingParent("golden_brick_tile", modLoc("block/golden_brick_tile"));
+        withExistingParent("golden_brick_tile_stair", modLoc("block/golden_brick_tile_stair"));
+        withExistingParent("golden_brick_tile_slab", modLoc("block/golden_brick_tile_slab"));
+        wallInventory("golden_brick_tile_wall", modLoc("block/golden_brick_tile"));
+
+        // Iron
+//        withExistingParent("iron_bricks", modLoc("block/iron_bricks"));
+//        withExistingParent("iron_brick_stair", modLoc("block/iron_brick_stair"));
+//        withExistingParent("iron_brick_slab", modLoc("block/iron_brick_slab"));
+//        withExistingParent("iron_brick_tile", modLoc("block/iron_brick_tile"));
+//        withExistingParent("iron_brick_tile_stair", modLoc("block/iron_brick_tile_stair"));
+//        withExistingParent("iron_brick_tile_slab", modLoc("block/iron_brick_tile_slab"));
+//        wallInventory("iron_brick_tile_wall", modLoc("block/iron_brick_tile"));
+
+        // Netherite
+        withExistingParent("netherite_bricks", modLoc("block/netherite_bricks"));
+        withExistingParent("netherite_brick_stair", modLoc("block/netherite_brick_stair"));
+        withExistingParent("netherite_brick_slab", modLoc("block/netherite_brick_slab"));
+        withExistingParent("netherite_brick_tile", modLoc("block/netherite_brick_tile"));
+        withExistingParent("netherite_brick_tile_stair", modLoc("block/netherite_brick_tile_stair"));
+        withExistingParent("netherite_brick_tile_slab", modLoc("block/netherite_brick_tile_slab"));
+        wallInventory("netherite_brick_tile_wall", modLoc("block/netherite_brick_tile"));
+
+        // Scorched
+        withExistingParent("scorched_bricks", modLoc("block/scorched_bricks"));
+        withExistingParent("scorched_brick_stair", modLoc("block/scorched_brick_stair"));
+        withExistingParent("scorched_brick_slab", modLoc("block/scorched_brick_slab"));
+        withExistingParent("scorched_brick_tile", modLoc("block/scorched_brick_tile"));
+        withExistingParent("scorched_brick_tile_stair", modLoc("block/scorched_brick_tile_stair"));
+        withExistingParent("scorched_brick_tile_slab", modLoc("block/scorched_brick_tile_slab"));
+        wallInventory("scorched_brick_tile_wall", modLoc("block/scorched_brick_tile"));
+
+        withExistingParent("ashtray", modLoc("block/ashtray"));
+
+        // --- Normal Copper Stove Items ---
+        withExistingParent("copper_stove", modLoc("block/copper_stove"));
+        withExistingParent("exposed_copper_stove", modLoc("block/exposed_copper_stove"));
+        withExistingParent("weathered_copper_stove", modLoc("block/weathered_copper_stove"));
+        withExistingParent("oxidized_copper_stove", modLoc("block/oxidized_copper_stove"));
+
+        // --- Waxed Copper Stove Items ---
+        withExistingParent("waxed_copper_stove", modLoc("block/copper_stove"));
+        withExistingParent("waxed_exposed_copper_stove", modLoc("block/exposed_copper_stove"));
+        withExistingParent("waxed_weathered_copper_stove", modLoc("block/weathered_copper_stove"));
+        withExistingParent("waxed_oxidized_copper_stove", modLoc("block/oxidized_copper_stove"));
+
+        for (AllBlockItem.BurntWoodSet set : AllBlockItem.BURNT_WOOD_SETS) {
+            burntWoodSetItems(set);
+        }
+
+        basicItem(AllBlockItem.BURNT_BOAT.asItem());
+        basicItem(AllBlockItem.BURNT_CHEST_BOAT.asItem());
+        basicItem(AllBlockItem.COAL_BIT.asItem());
+        basicItem(AllBlockItem.CHARCOAL_BIT.asItem());
+
+        basicItemWithTexture(AllBlockItem.BURNABLE_CAMPFIRE.asItem(), mcLoc("item/campfire"));
+        basicItemWithTexture(AllBlockItem.BURNABLE_SOUL_CAMPFIRE.asItem(), mcLoc("item/soul_campfire"));
+
         generateArmorTrims(AllBlockItem.STURDY_CHESTPLATE.get());
         generateArmorTrims(AllBlockItem.STURDY_HELMET.get());
         generateArmorTrims(AllBlockItem.STURDY_LEGGINGS.get());
         generateArmorTrims(AllBlockItem.STURDY_BOOTS.get());
     }
 
+    private void burntWoodSetItems(AllBlockItem.BurntWoodSet set) {
+        String prefix = set.prefix();
+        withExistingParent(prefix + "_log", modLoc("block/" + prefix + "_log_layer4"));
+        withExistingParent(prefix + "_wood", modLoc("block/" + prefix + "_wood"));
+        withExistingParent(prefix + "_planks", modLoc("block/" + prefix + "_planks"));
+        withExistingParent(prefix + "_stairs", modLoc("block/" + prefix + "_stairs"));
+        withExistingParent(prefix + "_slab", modLoc("block/" + prefix + "_slab"));
+        fenceInventory(prefix + "_fence", modLoc("block/burnt_planks"));
+        withExistingParent(prefix + "_fence_gate", modLoc("block/" + prefix + "_fence_gate"));
+        withExistingParent(prefix + "_trapdoor", modLoc("block/" + prefix + "_trapdoor_bottom"));
+        buttonInventory(prefix + "_button", modLoc("block/burnt_planks"));
+        withExistingParent(prefix + "_pressure_plate", modLoc("block/" + prefix + "_pressure_plate"));
+        basicItemWithTexture(set.door().asItem(), modLoc("item/burnt_door"));
+    }
+
     public ItemModelBuilder basicItemWithTexture(Item item, String key) {
+        return basicItemWithTexture(item, modLoc(key));
+    }
+
+    public ItemModelBuilder basicItemWithTexture(Item item, ResourceLocation key) {
         return getBuilder(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", modLoc(key));
+                .texture("layer0", key);
     }
 
     public void trimMaterial(TrimMaterial material){

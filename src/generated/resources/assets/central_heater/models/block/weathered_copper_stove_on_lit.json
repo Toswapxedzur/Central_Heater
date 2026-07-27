@@ -1,0 +1,12 @@
+{
+  "parent": "central_heater:block/stove_on",
+  "textures": {
+    "0": "central_heater:block/sturdy_brick_tile",
+    "1": "central_heater:block/weathered_sturdy_stove_side_on",
+    "2": "central_heater:block/weathered_copper_grid_on",
+    "4": "central_heater:block/weathered_sturdy_stove_front_on",
+    "5": "minecraft:block/campfire_fire",
+    "6": "central_heater:block/campfire_dust",
+    "particle": "central_heater:block/sturdy_brick_tile"
+  }
+}

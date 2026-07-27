@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "minecraft:boats"
+  },
+  "result": {
+    "count": 12,
+    "id": "central_heater:wood_chips"
+  }
+}

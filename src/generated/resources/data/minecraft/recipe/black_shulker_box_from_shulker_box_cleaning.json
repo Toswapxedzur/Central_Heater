@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 1.0,
+  "input": "minecraft:black_shulker_box",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:black_dye"
+  },
+  "output": "minecraft:shulker_box"
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mangrove_button": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mangrove_button"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:mangrove_button_to_burnt_mangrove_button_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mangrove_button"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:mangrove_button_to_burnt_mangrove_button_fire_1"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:cauldron/iron",
+  "criteria": {
+    "has_golden_cauldron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:golden_cauldron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.golden_cauldron.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:golden_cauldron"
+    },
+    "title": {
+      "translate": "advancements.central_heater.golden_cauldron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_golden_cauldron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

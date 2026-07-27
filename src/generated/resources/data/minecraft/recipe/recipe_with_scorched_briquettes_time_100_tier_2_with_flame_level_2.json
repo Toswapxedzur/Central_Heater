@@ -1,0 +1,24 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 2,
+  "fluidIngredient": {
+    "amount": 250,
+    "id": "minecraft:lava"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:scorched_coal"
+    },
+    {
+      "item": "minecraft:magma_cream"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "id": "central_heater:scorched_briquettes"
+    }
+  ],
+  "tier": 2,
+  "time": 100
+}

@@ -10,6 +10,7 @@ import com.minecart.central_heater.recipe.recipe_types.BlockSmolderingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.SmolderingRecipe;
 import com.minecart.central_heater.misc.VirtualLevel;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
@@ -19,6 +20,12 @@ import mezz.jei.api.recipe.vanilla.IJeiAnvilRecipe;
 import mezz.jei.api.recipe.vanilla.IJeiFuelingRecipe;
 import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.runtime.IIngredientManager;
+import mezz.jei.library.plugins.vanilla.cooking.fuel.FuelingRecipe;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
@@ -32,21 +39,55 @@ import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
+import static com.mojang.text2speech.Narrator.LOGGER;
+
 public class JEIUtil {
+    private static final Set<Block> FAILED_RENDER_BLOCKS = new HashSet<>();
+
     private JEIUtil(){
 
+    }
+
+    public static void render3DBlock(BlockState state, PoseStack poseStack, MultiBufferSource buffer) {
+        Minecraft mc = Minecraft.getInstance();
+
+        // 1. Render the standard static block model
+        mc.getBlockRenderer().renderSingleBlock(state, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY);
+
+        Block block = state.getBlock();
+
+        // 2. Render the BlockEntity (if it hasn't crashed before)
+        if (block instanceof EntityBlock entityBlock && !FAILED_RENDER_BLOCKS.contains(block)) {
+            BlockEntity be = entityBlock.newBlockEntity(BlockPos.ZERO, state);
+            if (be != null && mc.level != null) {
+                be.setLevel(mc.level);
+
+                BlockEntityRenderer<BlockEntity> renderer = mc.getBlockEntityRenderDispatcher().getRenderer(be);
+
+                if (renderer != null) {
+                    try {
+                        renderer.render(be, 0.0f, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY);
+                    } catch (Throwable throwable) {
+                        // Soft fail: Log it once, add to the blacklist, and move on without crashing
+                        LOGGER.error("Failed to render BlockEntity for {} in JEI. Hiding it to prevent crashes.", BuiltInRegistries.BLOCK.getKey(block), throwable);
+                        FAILED_RENDER_BLOCKS.add(block);
+                    }
+                }
+            }
+        }
     }
 
     public static List<IJeiFuelingRecipe> getNetherFuelRecipes(IIngredientManager manager){
@@ -54,7 +95,7 @@ public class JEIUtil {
                 .<IJeiFuelingRecipe>mapMulti((stack, consumer) -> {
                     int burnTime = DataMapHook.getNetherFuelBurnTime(stack);
                     if(burnTime > 0)
-                        consumer.accept(new NetherFuelingRecipe(List.of(stack), burnTime));
+                        consumer.accept(new FuelingRecipe(List.of(stack), burnTime));
                 }).sorted(Comparator.comparingInt(IJeiFuelingRecipe::getBurnTime))
                 .toList();
     }
@@ -65,9 +106,9 @@ public class JEIUtil {
         Stream<RecipeHolder<BlockSmolderingRecipe>> original = manager.getAllRecipesFor(AllRecipe.BLOCK_SMOLDERING_RECIPE.get()).stream();
         List<RecipeHolder<AbstractCookingRecipe>> allCookingRecipes = new ArrayList<>();
         allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.SMELTING));
-        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.BLASTING));
-        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.SMOKING));
-        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.CAMPFIRE_COOKING));
+//        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.BLASTING));
+//        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.SMOKING));
+//        allCookingRecipes.addAll((List) manager.getAllRecipesFor(RecipeType.CAMPFIRE_COOKING));
         allCookingRecipes.addAll((List) manager.getAllRecipesFor(AllRecipe.HAUNTING.get()));
         Stream<RecipeHolder<BlockSmolderingRecipe>> cooking = allCookingRecipes.stream().mapMulti((holder, mapper) -> {
             AbstractCookingRecipe recipe = holder.value();
@@ -98,16 +139,20 @@ public class JEIUtil {
     }
 
     public static List<AshDropChanceRecipe> getFireAshDropChanceRecipes(IIngredientManager manager){
-        return manager.getAllItemStacks().stream().filter(stack -> stack.getBurnTime(RecipeType.SMELTING) > 0)
+        return manager.getAllItemStacks().stream()
                 .<AshDropChanceRecipe>mapMulti((stack, consumer) -> {
-                    consumer.accept(new AshDropChanceRecipe(List.of(stack), DataMapHook.getFireAshDropChance(stack)));
+                    float dropChance = DataMapHook.getFireAshDropChance(stack);
+                    if(dropChance > 0)
+                        consumer.accept(new AshDropChanceRecipe(List.of(stack), DataMapHook.getFireAshDropChance(stack)));
                 }).sorted().toList();
     }
 
     public static List<AshDropChanceRecipe> getScorchedDustDropChanceRecipes(IIngredientManager manager){
         return manager.getAllItemStacks().stream().filter(stack -> DataMapHook.getNetherFuelBurnTime(stack) > 0)
                 .<AshDropChanceRecipe>mapMulti((stack, consumer) -> {
-                    consumer.accept(new AshDropChanceRecipe(List.of(stack), DataMapHook.getScorchedDustDropChance(stack)));
+                    float dropChance = DataMapHook.getScorchedDustDropChance(stack);
+                    if(dropChance > 0)
+                        consumer.accept(new AshDropChanceRecipe(List.of(stack), DataMapHook.getScorchedDustDropChance(stack)));
                 }).sorted().toList();
     }
 

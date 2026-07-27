@@ -1,0 +1,212 @@
+{
+  "variants": {
+    "facing=down,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 180
+    },
+    "facing=down,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 180
+    },
+    "facing=down,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 180
+    },
+    "facing=down,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 180
+    },
+    "facing=down,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 180
+    },
+    "facing=down,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 180
+    },
+    "facing=down,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 180
+    },
+    "facing=down,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 180
+    },
+    "facing=east,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90
+    },
+    "facing=north,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90
+    },
+    "facing=north,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90
+    },
+    "facing=north,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90
+    },
+    "facing=north,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90
+    },
+    "facing=north,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90
+    },
+    "facing=north,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90
+    },
+    "facing=north,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90
+    },
+    "facing=south,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1"
+    },
+    "facing=up,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1"
+    },
+    "facing=up,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2"
+    },
+    "facing=up,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2"
+    },
+    "facing=up,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3"
+    },
+    "facing=up,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3"
+    },
+    "facing=up,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4"
+    },
+    "facing=up,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4"
+    },
+    "facing=west,layers=1,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=1,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer1",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=2,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=2,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer2",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=3,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=3,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer3",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=4,waterlogged=false": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,layers=4,waterlogged=true": {
+      "model": "central_heater:block/burnt_acacia_log_layer4",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

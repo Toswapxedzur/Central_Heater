@@ -3,6 +3,7 @@ package com.minecart.central_heater.data_generation.server;
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.recipe.AllRecipe;
 import com.minecart.central_heater.CentralHeater;
+import com.minecart.central_heater.recipe.builder.BlockCleaningRecipeBuilder;
 import com.minecart.central_heater.recipe.builder.BlockSmolderingRecipeBuilder;
 import com.minecart.central_heater.recipe.recipe_types.EmptyRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
@@ -10,17 +11,20 @@ import com.minecart.central_heater.recipe.builder.SmolderingRecipeBuilder;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.critereon.ImpossibleTrigger;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.conditions.FalseCondition;
@@ -54,6 +58,54 @@ public class HeaterRecipeProvider extends RecipeProvider {
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.of(ingredient)).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, wall, Ingredient.of(ingredient)).unlockedBy(getHasName(ingredient), has(ingredient)).save(output);
     }
+    protected void registerInterchangeableBrickFamily(RecipeOutput output, String name, ItemLike baseItem, ItemLike brick, ItemLike brickSlab, ItemLike brickStair, ItemLike tile, ItemLike tileSlab, ItemLike tileStair, ItemLike tileWall) {
+
+        // --- SHAPED CRAFTING ---
+        // 4 Base Blocks -> 4 Bricks
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brick, 1)
+                .pattern("BB").pattern("BB").define('B', baseItem)
+                .unlockedBy(getHasName(baseItem), has(baseItem))
+                .save(output, name + "_bricks_from_base");
+
+        // 4 Bricks -> 4 Tiles
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tile, 4)
+                .pattern("BB").pattern("BB").define('B', brick)
+                .unlockedBy(getHasName(brick), has(brick))
+                .save(output, name + "_tiles_from_bricks");
+
+        // Variants Crafting (Bricks)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brickSlab, 6)
+                .pattern("BBB").define('B', brick).unlockedBy(getHasName(brick), has(brick)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brickStair, 4)
+                .pattern("B  ").pattern("BB ").pattern("BBB").define('B', brick)
+                .unlockedBy(getHasName(brick), has(brick)).save(output);
+
+        // Variants Crafting (Tiles)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileSlab, 6)
+                .pattern("TTT").define('T', tile).unlockedBy(getHasName(tile), has(tile)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileStair, 4)
+                .pattern("T  ").pattern("TT ").pattern("TTT").define('T', tile)
+                .unlockedBy(getHasName(tile), has(tile)).save(output);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileWall, 6)
+                .pattern("TTT").pattern("TTT").define('T', tile)
+                .unlockedBy(getHasName(tile), has(tile)).save(output);
+
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tile, brick, 1);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, brick, tile, 1);
+
+        // Stonecut to Variants: From Bricks
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, brickSlab, brick, 2);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, brickStair, brick, 1);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileSlab, brick, 2);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileStair, brick, 1);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileWall, brick, 1);
+
+        // Stonecut to Variants: From Tiles
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileSlab, tile, 2);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileStair, tile, 1);
+        stonecutterResultFromBase(output, RecipeCategory.BUILDING_BLOCKS, tileWall, tile, 1);
+    }
+
 
     protected static void stoveCraftingRecipeBuilder(RecipeOutput output, ItemLike stove, ItemLike baseBrick, ItemLike ingot, ItemLike bars){
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, stove).pattern("*&*").pattern("# #").pattern("###")
@@ -217,6 +269,24 @@ public class HeaterRecipeProvider extends RecipeProvider {
         recipeName += "_fire_" + fireLevel;
 
         builder.save(output, ResourceLocation.fromNamespaceAndPath(CentralHeater.MODID, recipeName));
+    }
+
+    protected void createCleaningRecipe(RecipeOutput output, Block inputBlock, Block outputBlock, Item dyeItem, int count, float dyeDropChance) {
+        String safeName = getConversionRecipeName(inputBlock, outputBlock) + "_cleaning";
+
+        BlockCleaningRecipeBuilder.cleaning(inputBlock, outputBlock, dyeItem, count, dyeDropChance)
+                .unlockedBy("has_input", has(inputBlock))
+                .save(output, safeName);
+    }
+
+    protected void createCleaningRecipe(RecipeOutput output, Block inputBlock, Block outputBlock, Item dyeItem, float dyeDropChance) {
+        this.createCleaningRecipe(output, inputBlock, outputBlock, dyeItem, 1, dyeDropChance);
+    }
+
+    protected void createCleaningRecipe(RecipeOutput output, String customId, Block inputBlock, Block outputBlock, Item dyeItem, int count, float dyeDropChance) {
+        BlockCleaningRecipeBuilder.cleaning(inputBlock, outputBlock, dyeItem, count, dyeDropChance)
+                .unlockedBy("has_input", has(inputBlock))
+                .save(output, customId);
     }
 
     protected static String getFluidName(Fluid fluid) {

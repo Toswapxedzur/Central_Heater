@@ -27,6 +27,8 @@ public class Alltags {
         public static TagKey<Item> OVERBURNT = create("overburnt");
         public static TagKey<Item> SOULISTIC = create("soulistic");
         public static TagKey<Item> SHOULD_DISPLAY_ITEM = create("should_display_item");
+        public static TagKey<Item> BURNT_LOG = create("burnt_log");
+        public static TagKey<Item> SIMILAR_STACKABLE = create("similar_stackable");
 
         private static TagKey<Item> create(String name){
             return TagKey.create(Registries.ITEM, CentralHeater.modLoc(name));

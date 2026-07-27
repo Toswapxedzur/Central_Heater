@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "central_heater:block/scorched_brick_slab"
+    },
+    "type=double": {
+      "model": "central_heater:block/scorched_bricks"
+    },
+    "type=top": {
+      "model": "central_heater:block/scorched_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:oak_door",
+    "Properties": {
+      "facing": "north",
+      "half": "lower",
+      "hinge": "left",
+      "open": "false",
+      "powered": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_door",
+    "Properties": {
+      "facing": "north",
+      "half": "lower",
+      "hinge": "left",
+      "open": "false",
+      "powered": "false"
+    }
+  },
+  "time": 50
+}

@@ -1,0 +1,25 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:acacia_fence",
+    "Properties": {
+      "east": "false",
+      "north": "false",
+      "south": "false",
+      "waterlogged": "false",
+      "west": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_acacia_fence",
+    "Properties": {
+      "east": "false",
+      "north": "false",
+      "south": "false",
+      "waterlogged": "false",
+      "west": "false"
+    }
+  },
+  "time": 50
+}

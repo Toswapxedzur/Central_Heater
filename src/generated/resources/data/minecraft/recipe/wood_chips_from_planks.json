@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "minecraft:planks"
+  },
+  "result": {
+    "count": 4,
+    "id": "central_heater:wood_chips"
+  }
+}

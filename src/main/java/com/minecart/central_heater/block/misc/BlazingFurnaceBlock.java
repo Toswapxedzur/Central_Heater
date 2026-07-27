@@ -2,6 +2,9 @@ package com.minecart.central_heater.block.misc;
 
 import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.block_entity.misc.BlazingFurnaceBlockEntity;
+import com.minecart.central_heater.heat.api.ThermalMaterial;
+import com.minecart.central_heater.heat.api.ThermalMaterialBehavior;
+import com.minecart.central_heater.heat.api.ThermalOverrideProvider;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -22,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class BlazingFurnaceBlock extends AbstractFurnaceBlock {
+public class BlazingFurnaceBlock extends AbstractFurnaceBlock implements ThermalOverrideProvider {
     public static final MapCodec<BlazingFurnaceBlock> CODEC = simpleCodec(BlazingFurnaceBlock::new);
 
     public MapCodec<BlazingFurnaceBlock> codec() {
@@ -33,13 +36,23 @@ public class BlazingFurnaceBlock extends AbstractFurnaceBlock {
         super(properties.lightLevel(state -> state.getValue(AbstractFurnaceBlock.LIT) ? 15 : 0));
     }
 
+    @Override
+    public @Nullable ThermalMaterial getThermalMaterialOverride(BlockState state) {
+        return state.getValue(LIT) ? ThermalMaterial.SCORCHED : ThermalMaterial.METAL;
+    }
+
+    @Override
+    public @Nullable ThermalMaterialBehavior getThermalBehaviorOverride(BlockState state) {
+        return null;
+    }
+
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BlazingFurnaceBlockEntity(pos, state);
     }
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createFurnaceTicker(level, blockEntityType, AllBlockEntity.blazing_furnace.get());
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, AllBlockEntity.BLAZING_FURNACE.get(), BlazingFurnaceBlockEntity::serverHeatTick);
     }
 
     protected void openContainer(Level level, BlockPos pos, Player player) {

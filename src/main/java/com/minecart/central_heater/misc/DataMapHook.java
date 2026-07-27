@@ -2,12 +2,16 @@ package com.minecart.central_heater.misc;
 
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.CentralHeater;
+import com.minecart.central_heater.heat.api.ThermalMaterial;
+import com.minecart.central_heater.heat.registry.ThermalMaterialRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;
@@ -33,11 +37,18 @@ public class DataMapHook {
             Codec.FLOAT
     ).build();
 
+    public static final DataMapType<Block, ThermalMaterial> THERMAL_MATERIAL = DataMapType.builder(
+            CentralHeater.modLoc("thermal_material"),
+            Registries.BLOCK,
+            ThermalMaterial.CODEC
+    ).build();
+
     @SubscribeEvent
     public static void registerDataMapTypes(RegisterDataMapTypesEvent event){
         event.register(NETHER_FUEL_MAPS);
         event.register(FIRE_ASH_DROP_CHANCE);
         event.register(SCORCHED_DUST_DROP_CHANCE);
+        event.register(THERMAL_MATERIAL);
     }
 
     public static <R> R getOrDefault(DataMapType<Item, R> data, ItemStack key, R defaultValue){
@@ -62,5 +73,13 @@ public class DataMapHook {
         if(getNetherFuelBurnTime(stack) == 0)
             return 0f;
         return getOrDefault(SCORCHED_DUST_DROP_CHANCE, stack, AllBlockItem.DEFAULT_SCORCHED_DUST_DROP_CHANCE);
+    }
+
+    public static ThermalMaterial getThermalMaterial(BlockState state) {
+        return ThermalMaterialRegistry.resolve(state);
+    }
+
+    public static ThermalMaterial getMappedThermalMaterial(BlockState state) {
+        return state.getBlockHolder().getData(THERMAL_MATERIAL);
     }
 }

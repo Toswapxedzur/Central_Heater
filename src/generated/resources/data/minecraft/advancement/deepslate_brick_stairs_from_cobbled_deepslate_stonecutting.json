@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:false"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "empty": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "empty"
+    ]
+  ]
+}

@@ -4,6 +4,7 @@ import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.library.plugins.vanilla.cooking.AbstractCookingCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Blocks;

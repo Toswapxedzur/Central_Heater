@@ -1,0 +1,13 @@
+{
+  "values": {
+    "central_heater:copper_stove": {
+      "next_oxidation_stage": "central_heater:exposed_copper_stove"
+    },
+    "central_heater:exposed_copper_stove": {
+      "next_oxidation_stage": "central_heater:weathered_copper_stove"
+    },
+    "central_heater:weathered_copper_stove": {
+      "next_oxidation_stage": "central_heater:oxidized_copper_stove"
+    }
+  }
+}

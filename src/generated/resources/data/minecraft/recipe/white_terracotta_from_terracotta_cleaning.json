@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.12,
+  "input": "minecraft:white_terracotta",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:white_dye"
+  },
+  "output": "minecraft:terracotta"
+}

@@ -1,6 +1,7 @@
 package com.minecart.central_heater.data_generation.client;
 
 import com.minecart.central_heater.CentralHeater;
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
@@ -45,12 +46,95 @@ public class GeneratorBlockModel extends BlockModelProvider {
                 modLoc("block/golden_cauldron_bottom"), modLoc("block/golden_cauldron_inner"));
 
         BlockModelBuilder blazingFurnace = furnaceModel("blazing_furnace", modLoc("block/blazing_furnace_top"), modLoc("block/blazing_furnace_front"),
-                modLoc("block/blazing_furnace_side"), modLoc("block/blackstone_brick_tile"));
+                modLoc("block/blazing_furnace_side"), modLoc("block/golden_brick_tile"));
 
         potModel("mud_brick_pot", CentralHeater.modLoc("block/mud_brick_tile"), CentralHeater.modLoc("block/mud_brick_pot_support"));
 
         BlockModelBuilder blazingFurnaceOn = furnaceModel("blazing_furnace_on", modLoc("block/blazing_furnace_top"), modLoc("block/blazing_furnace_front_on"),
                 modLoc("block/blazing_furnace_side"), modLoc("block/blackstone_brick_tile"));
+
+        anvilModel("sturdy_anvil", "anvil",
+                modLoc("block/sturdy_anvil"), modLoc("block/sturdy_anvil_top"));
+
+        anvilModel("chipped_sturdy_anvil", "chipped_anvil",
+                modLoc("block/sturdy_anvil"), modLoc("block/chipped_sturdy_anvil_top"));
+
+        anvilModel("damaged_sturdy_anvil", "damaged_anvil",
+                modLoc("block/sturdy_anvil"), modLoc("block/damaged_sturdy_anvil_top"));
+
+        cauldronModel("ashtray", modLoc("block/sturdy_cauldron_side"), modLoc("block/sturdy_cauldron_top"),
+                modLoc("block/sturdy_cauldron_bottom"), modLoc("block/sturdy_cauldron_inner"));
+
+        for (int i = 1; i <= 6; i++) {
+            ashtrayAshModel("ashtray_" + i + "_normal", modLoc("block/campfire_dust"), i);
+            ashtrayAshModel("ashtray_" + i + "_scorched", mcLoc("block/soul_sand"), i);
+        }
+
+// --- 1. Unaffected Copper Models ---
+        stoveModel("copper_stove", modLoc("block/sturdy_brick_tile"), "block/sturdy_stove_side", "block/sturdy_stove_front", "block/copper_grid");
+        stoveModelBurn("copper_stove_lit", modLoc("block/sturdy_brick_tile"), "block/sturdy_stove_side", "block/sturdy_stove_front", "block/copper_grid");
+        stoveModel("copper_stove_on", modLoc("block/sturdy_brick_tile"), "block/sturdy_stove_side_on", "block/sturdy_stove_front_on", "block/copper_grid_on");
+        stoveModelBurn("copper_stove_on_lit", modLoc("block/sturdy_brick_tile"), "block/sturdy_stove_side_on", "block/sturdy_stove_front_on", "block/copper_grid_on");
+
+// --- 2. Exposed Copper Models ---
+        stoveModel("exposed_copper_stove", modLoc("block/sturdy_brick_tile"), "block/exposed_sturdy_stove_side", "block/exposed_sturdy_stove_front", "block/exposed_copper_grid");
+        stoveModelBurn("exposed_copper_stove_lit", modLoc("block/sturdy_brick_tile"), "block/exposed_sturdy_stove_side", "block/exposed_sturdy_stove_front", "block/exposed_copper_grid");
+        stoveModel("exposed_copper_stove_on", modLoc("block/sturdy_brick_tile"), "block/exposed_sturdy_stove_side_on", "block/exposed_sturdy_stove_front_on", "block/exposed_copper_grid_on");
+        stoveModelBurn("exposed_copper_stove_on_lit", modLoc("block/sturdy_brick_tile"), "block/exposed_sturdy_stove_side_on", "block/exposed_sturdy_stove_front_on", "block/exposed_copper_grid_on");
+
+// --- 3. Weathered Copper Models ---
+        stoveModel("weathered_copper_stove", modLoc("block/sturdy_brick_tile"), "block/weathered_sturdy_stove_side", "block/weathered_sturdy_stove_front", "block/weathered_copper_grid");
+        stoveModelBurn("weathered_copper_stove_lit", modLoc("block/sturdy_brick_tile"), "block/weathered_sturdy_stove_side", "block/weathered_sturdy_stove_front", "block/weathered_copper_grid");
+        stoveModel("weathered_copper_stove_on", modLoc("block/sturdy_brick_tile"), "block/weathered_sturdy_stove_side_on", "block/weathered_sturdy_stove_front_on", "block/weathered_copper_grid_on");
+        stoveModelBurn("weathered_copper_stove_on_lit", modLoc("block/sturdy_brick_tile"), "block/weathered_sturdy_stove_side_on", "block/weathered_sturdy_stove_front_on", "block/weathered_copper_grid_on");
+
+// --- 4. Oxidized Copper Models ---
+        stoveModel("oxidized_copper_stove", modLoc("block/sturdy_brick_tile"), "block/oxidized_sturdy_stove_side", "block/oxidized_sturdy_stove_front", "block/oxidized_copper_grid");
+        stoveModelBurn("oxidized_copper_stove_lit", modLoc("block/sturdy_brick_tile"), "block/oxidized_sturdy_stove_side", "block/oxidized_sturdy_stove_front", "block/oxidized_copper_grid");
+        stoveModel("oxidized_copper_stove_on", modLoc("block/sturdy_brick_tile"), "block/oxidized_sturdy_stove_side_on", "block/oxidized_sturdy_stove_front_on", "block/oxidized_copper_grid_on");
+        stoveModelBurn("oxidized_copper_stove_on_lit", modLoc("block/sturdy_brick_tile"), "block/oxidized_sturdy_stove_side_on", "block/oxidized_sturdy_stove_front_on", "block/oxidized_copper_grid_on");
+
+        String[] burntWoods = {"burnt", "burnt_spruce", "burnt_birch", "burnt_jungle", "burnt_acacia", "burnt_dark_oak", "burnt_mangrove", "burnt_cherry"};
+
+        for (String type : burntWoods) {
+            ResourceLocation sideTex = logTexture(type, false);
+            ResourceLocation topTex = logTexture(type, true);
+
+            for (int layer = 1; layer <= 4; layer++) {
+                burntLogLayerModel(type + "_log_layer" + layer, layer, sideTex, topTex);
+            }
+        }
+    }
+
+    private ResourceLocation logTexture(String type, boolean top) {
+        String texture = top ? "_log_top" : "_log";
+        return switch (type) {
+            case "burnt_birch", "burnt_jungle", "burnt_cherry", "burnt_mangrove" -> modLoc("block/" + type + texture);
+            default -> modLoc("block/burnt" + texture);
+        };
+    }
+
+    // --- Custom Burnt Log Helpers ---
+    public void burntLogLayerModel(String name, int layer, ResourceLocation side, ResourceLocation top) {
+        withExistingParent(name, modLoc("block/burnt_layer" + layer))
+                .texture("top", top)
+                .texture("bottom", top)
+                .texture("side", side)
+                .texture("particle", side);
+    }
+
+    public void burntLogFullModel(String name, ResourceLocation side, ResourceLocation top) {
+        withExistingParent(name, mcLoc("block/cube_bottom_top"))
+                .texture("top", top)
+                .texture("bottom", top)
+                .texture("side", side)
+                .texture("particle", side);
+    }
+
+    public void burntWoodModel(String name, ResourceLocation texture) {
+        withExistingParent(name, mcLoc("block/cube_column"))
+                .texture("end", texture)
+                .texture("side", texture);
     }
 
     public void stoveModel(String name, String bricks, String side, String front, String grid){
@@ -134,5 +218,24 @@ public class GeneratorBlockModel extends BlockModelProvider {
                 .texture("south", side)
                 .texture("west", side)
                 .texture("east", side);
+    }
+
+    public void anvilModel(String name, String parentModel, ResourceLocation body, ResourceLocation top) {
+        withExistingParent(name, mcLoc("block/" + parentModel))
+                .texture("particle", body)
+                .texture("body", body)
+                .texture("top", top);
+    }
+
+    public void ashtrayAshModel(String name, ResourceLocation texture, int level) {
+        int height = 4 + (level * 2);
+        getBuilder(name)
+                .ao(false)
+                .texture("particle", texture)
+                .texture("ash", texture)
+                .element()
+                .from(2, 2, 2).to(14, height, 14)
+                .allFaces((dir, face) -> face.texture("#ash"))
+                .end();
     }
 }

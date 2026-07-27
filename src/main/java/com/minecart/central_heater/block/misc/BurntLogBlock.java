@@ -1,5 +1,6 @@
 package com.minecart.central_heater.block.misc;
 
+import com.minecart.central_heater.AllBlockItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -124,9 +125,7 @@ public class BurntLogBlock extends DirectionalBlock implements SimpleWaterlogged
                 level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 heldItem.hurtAndBreak(1, player, Player.getSlotForHand(InteractionHand.MAIN_HAND));
 
-                if (level.random.nextFloat() < 0.25F) {
-                    popResource(level, pos, new ItemStack(Items.CHARCOAL));
-                }
+                popResource(level, pos, new ItemStack(AllBlockItem.CHARCOAL_BIT.asItem()));
 
                 int currentLayers = state.getValue(LAYERS);
                 if (currentLayers > 1) {

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "T": {
+      "item": "central_heater:netherite_brick_tile"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TTT"
+  ],
+  "result": {
+    "count": 6,
+    "id": "central_heater:netherite_brick_tile_wall"
+  }
+}

@@ -2,6 +2,14 @@ package com.minecart.central_heater.block_entity.misc;
 
 import com.google.common.collect.Maps;
 import com.minecart.central_heater.AllBlockItem;
+import com.minecart.central_heater.heat.api.HeatApi;
+import com.minecart.central_heater.heat.api.HeatBlockEntityBehavior;
+import com.minecart.central_heater.heat.api.HeatEmission;
+import com.minecart.central_heater.heat.api.HeatSink;
+import com.minecart.central_heater.heat.api.HeatType;
+import com.minecart.central_heater.heat.context.HeatNodeAccess;
+import com.minecart.central_heater.heat.context.HeatNodeContext;
+import com.minecart.central_heater.heat.storage.HeatNode;
 import com.minecart.central_heater.recipe.AllRecipe;
 import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.user_interface.menu.BlazingFurnaceMenu;
@@ -16,12 +24,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.Map;
 
-public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
+public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity implements HeatBlockEntityBehavior {
     private static volatile Map<Item, Integer> hauntFuelCache;
 
     public static void invalidateCache() {
@@ -60,7 +71,14 @@ public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     }
 
     public BlazingFurnaceBlockEntity(BlockPos pos, BlockState blockState) {
-        super(AllBlockEntity.blazing_furnace.get(), pos, blockState, AllRecipe.HAUNTING.get());
+        super(AllBlockEntity.BLAZING_FURNACE.get(), pos, blockState, AllRecipe.HAUNTING.get());
+    }
+
+    public static void serverHeatTick(Level level, BlockPos pos, BlockState state, BlazingFurnaceBlockEntity entity) {
+        AbstractFurnaceBlockEntity.serverTick(level, pos, state, entity);
+        if (level instanceof ServerLevel serverLevel && entity.isLitForHeat()) {
+            HeatApi.touch(serverLevel, pos);
+        }
     }
 
     protected Component getDefaultName() {
@@ -74,6 +92,32 @@ public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     @Override
     protected int getBurnDuration(ItemStack fuel) {
         return fuel.isEmpty() ? 0 : DataMapHook.getNetherFuelBurnTime(fuel);
+    }
+
+    @Override
+    public HeatNode createHeatNode() {
+        return new HeatNode(getBlockPos(), isLitForHeat() ? 260 : 0, 1300, HeatType.SCORCHING);
+    }
+
+    @Override
+    public HeatEmission getEmission(HeatNodeContext ctx) {
+        return isLitForHeat() ? new HeatEmission(28, 520, 760, HeatType.SCORCHING) : HeatEmission.NONE;
+    }
+
+    @Override
+    public HeatSink getSink(HeatNodeContext ctx) {
+        return isLitForHeat() ? HeatSink.NONE : new HeatSink(6, 0, 6, false);
+    }
+
+    @Override
+    public void tickHeatNode(HeatNodeContext ctx, HeatNodeAccess heat) {
+        if (!isLitForHeat() && heat.getHeat() > 0) {
+            heat.setHeat(Math.max(0, heat.getHeat() - 6));
+        }
+    }
+
+    private boolean isLitForHeat() {
+        return getBlockState().hasProperty(BlockStateProperties.LIT) && getBlockState().getValue(BlockStateProperties.LIT);
     }
 
     @Override

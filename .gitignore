@@ -1,0 +1,20 @@
+# Local Minecraft development and test-game output
+/.gradle/
+/build/
+/run/
+/run-data/
+/runs/
+/logs/
+/crash-reports/
+/saves/
+*.log
+*.log.gz
+/usercache.json
+/options.txt
+
+# Editor and operating-system files
+/.idea/
+/.vscode/
+/.cursor/
+*.iml
+.DS_Store

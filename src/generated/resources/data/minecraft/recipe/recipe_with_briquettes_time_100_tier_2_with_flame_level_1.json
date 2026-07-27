@@ -1,0 +1,28 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 250,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    [
+      {
+        "item": "minecraft:charcoal"
+      },
+      {
+        "item": "minecraft:coal"
+      }
+    ],
+    {
+      "item": "minecraft:clay_ball"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "id": "central_heater:briquettes"
+    }
+  ],
+  "tier": 2,
+  "time": 100
+}

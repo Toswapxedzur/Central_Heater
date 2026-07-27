@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "item": "central_heater:sturdy_brick"
+    }
+  },
+  "pattern": [
+    " I",
+    "I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "central_heater:sturdy_shears"
+  }
+}

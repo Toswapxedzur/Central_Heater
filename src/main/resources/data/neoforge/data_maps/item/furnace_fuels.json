@@ -14,6 +14,93 @@
     },
     "central_heater:burnt_wood": {
       "burn_time": 800
+    },
+    "central_heater:briquettes": {
+      "burn_time": 2400
+    },
+    "central_heater:coal_bricks": {
+      "burn_time": 6400
+    },
+    "central_heater:coal_brick_tile": {
+      "burn_time": 6400
+    },
+    "central_heater:coal_brick_stair": {
+      "burn_time": 4800
+    },
+    "central_heater:coal_brick_tile_stair": {
+      "burn_time": 4800
+    },
+    "central_heater:coal_brick_slab": {
+      "burn_time": 3200
+    },
+    "central_heater:coal_brick_tile_slab": {
+      "burn_time": 3200
+    },
+    "central_heater:coal_brick_tile_wall": {
+      "burn_time": 6400
+    },
+    "central_heater:coal_bit": {
+      "burn_time": 400
+    },
+    "central_heater:charcoal_bit": {
+      "burn_time": 400
+    },
+    "central_heater:burnt_birch_log": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_birch_wood": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_jungle_log": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_jungle_wood": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_cherry_log": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_cherry_wood": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_mangrove_log": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_mangrove_wood": {
+      "burn_time": 1200
+    },
+    "central_heater:burnt_planks": {
+      "burn_time": 300
+    },
+    "central_heater:burnt_stairs": {
+      "burn_time": 450
+    },
+    "central_heater:burnt_slab": {
+      "burn_time": 150
+    },
+    "central_heater:burnt_fence": {
+      "burn_time": 466
+    },
+    "central_heater:burnt_fence_gate": {
+      "burn_time": 1000
+    },
+    "central_heater:burnt_trapdoor": {
+      "burn_time": 900
+    },
+    "central_heater:burnt_button": {
+      "burn_time": 300
+    },
+    "central_heater:burnt_pressure_plate": {
+      "burn_time": 600
+    },
+    "central_heater:burnt_door": {
+      "burn_time": 600
+    },
+    "central_heater:burnt_boat": {
+      "burn_time": 1500
+    },
+    "central_heater:burnt_chest_boat": {
+      "burn_time": 1800
     }
   }
 }

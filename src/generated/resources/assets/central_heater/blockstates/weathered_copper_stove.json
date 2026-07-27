@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,lit=false,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove",
+      "y": 90
+    },
+    "facing=east,lit=false,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on",
+      "y": 90
+    },
+    "facing=east,lit=true,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove_lit",
+      "y": 90
+    },
+    "facing=east,lit=true,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on_lit",
+      "y": 90
+    },
+    "facing=north,lit=false,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove"
+    },
+    "facing=north,lit=false,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on"
+    },
+    "facing=north,lit=true,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove_lit"
+    },
+    "facing=north,lit=true,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on_lit"
+    },
+    "facing=south,lit=false,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove",
+      "y": 180
+    },
+    "facing=south,lit=false,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on",
+      "y": 180
+    },
+    "facing=south,lit=true,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove_lit",
+      "y": 180
+    },
+    "facing=south,lit=true,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on_lit",
+      "y": 180
+    },
+    "facing=west,lit=false,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove",
+      "y": 270
+    },
+    "facing=west,lit=false,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on",
+      "y": 270
+    },
+    "facing=west,lit=true,powered=false": {
+      "model": "central_heater:block/weathered_copper_stove_lit",
+      "y": 270
+    },
+    "facing=west,lit=true,powered=true": {
+      "model": "central_heater:block/weathered_copper_stove_on_lit",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "placed_any_nether_stove": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:any_of",
+            "terms": [
+              {
+                "block": "central_heater:nether_brick_stove",
+                "condition": "minecraft:block_state_property"
+              },
+              {
+                "block": "central_heater:red_nether_brick_stove",
+                "condition": "minecraft:block_state_property"
+              },
+              {
+                "block": "central_heater:blackstone_stove",
+                "condition": "minecraft:block_state_property"
+              }
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.nether_stove.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:red_nether_brick_stove"
+    },
+    "title": {
+      "translate": "advancements.central_heater.nether_stove.title"
+    }
+  },
+  "requirements": [
+    [
+      "placed_any_nether_stove"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

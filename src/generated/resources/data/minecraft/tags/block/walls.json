@@ -1,0 +1,13 @@
+{
+  "values": [
+    "central_heater:stone_brick_tile_wall",
+    "central_heater:deepslate_brick_tile_wall",
+    "central_heater:mud_brick_tile_wall",
+    "central_heater:blackstone_brick_tile_wall",
+    "central_heater:sturdy_brick_tile_wall",
+    "central_heater:coal_brick_tile_wall",
+    "central_heater:golden_brick_tile_wall",
+    "central_heater:netherite_brick_tile_wall",
+    "central_heater:scorched_brick_tile_wall"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "multipart": [
+    {
+      "apply": { "model": "central_heater:block/ashtray" }
+    },
+    {
+      "when": { "ash_level": "1", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_1_normal" }
+    },
+    {
+      "when": { "ash_level": "2", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_2_normal" }
+    },
+    {
+      "when": { "ash_level": "3", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_3_normal" }
+    },
+    {
+      "when": { "ash_level": "4", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_4_normal" }
+    },
+    {
+      "when": { "ash_level": "5", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_5_normal" }
+    },
+    {
+      "when": { "ash_level": "6", "ash_type": "normal" },
+      "apply": { "model": "central_heater:block/ashtray_6_normal" }
+    },
+    {
+      "when": { "ash_level": "1", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_1_scorched" }
+    },
+    {
+      "when": { "ash_level": "2", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_2_scorched" }
+    },
+    {
+      "when": { "ash_level": "3", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_3_scorched" }
+    },
+    {
+      "when": { "ash_level": "4", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_4_scorched" }
+    },
+    {
+      "when": { "ash_level": "5", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_5_scorched" }
+    },
+    {
+      "when": { "ash_level": "6", "ash_type": "scorched" },
+      "apply": { "model": "central_heater:block/ashtray_6_scorched" }
+    }
+  ]
+}

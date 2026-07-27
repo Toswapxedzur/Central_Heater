@@ -63,6 +63,40 @@
     "central_heater:fire_ash": { "value": 0.5 },
     "central_heater:wood_chips": {"value": 0.25},
     "central_heater:burnt_log": {"value": 0.8},
-    "central_heater:burnt_wood": {"value": 0.8}
+    "central_heater:burnt_wood": {"value": 0.8},
+
+    "central_heater:briquettes": {"value": 0.9},
+    "central_heater:coal_bricks": { "value": 1.0 },
+    "central_heater:coal_brick_tile": { "value": 1.0 },
+    "central_heater:coal_brick_tile_wall": { "value": 1.0 },
+    "central_heater:coal_brick_stair": { "value": 0.75 },
+    "central_heater:coal_brick_tile_stair": { "value": 0.75 },
+    "central_heater:coal_brick_slab": { "value": 0.5 },
+    "central_heater:coal_brick_tile_slab": { "value": 0.5 },
+
+    "central_heater:coal_bit": { "value": 0.2 },
+    "central_heater:charcoal_bit": { "value": 0.2 },
+
+    "central_heater:burnt_birch_log": { "value": 0.8 },
+    "central_heater:burnt_birch_wood": { "value": 0.8 },
+    "central_heater:burnt_jungle_log": { "value": 0.8 },
+    "central_heater:burnt_jungle_wood": { "value": 0.8 },
+    "central_heater:burnt_cherry_log": { "value": 0.8 },
+    "central_heater:burnt_cherry_wood": { "value": 0.8 },
+    "central_heater:burnt_mangrove_log": { "value": 0.8 },
+    "central_heater:burnt_mangrove_wood": { "value": 0.8 },
+
+    "central_heater:burnt_planks": { "value": 0.2 },
+    "central_heater:burnt_stairs": { "value": 0.3 },
+    "central_heater:burnt_slab": { "value": 0.1 },
+    "central_heater:burnt_fence": { "value": 0.3 },
+    "central_heater:burnt_fence_gate": { "value": 0.7 },
+    "central_heater:burnt_trapdoor": { "value": 0.6 },
+    "central_heater:burnt_button": { "value": 0.2 },
+    "central_heater:burnt_pressure_plate": { "value": 0.4 },
+    "central_heater:burnt_door": { "value": 0.4 },
+
+    "central_heater:burnt_boat": { "value": 0.9 },
+    "central_heater:burnt_chest_boat": { "value": 1.0 }
   }
 }
