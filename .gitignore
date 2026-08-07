@@ -19,3 +19,12 @@
 /.cursor/
 *.iml
 .DS_Store
+
+# build & run artifacts
+run/
+build/
+.gradle/
+run-data/
+logs/
+.idea/
+.DS_Store
