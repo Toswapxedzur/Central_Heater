@@ -51,6 +51,49 @@ public class ServerGameEvents {
             event.setBurnTime(800);
         } else if (stack.is(AllBlockItem.BURNT_WOOD.get().asItem())) {
             event.setBurnTime(800);
+        } else if (stack.is(AllBlockItem.BRIQUETTES.get())) {
+            event.setBurnTime(2400);
+        } else if (stack.is(AllBlockItem.COAL_BRICKS.get().asItem())
+                || stack.is(AllBlockItem.COAL_BRICK_TILE.get().asItem())
+                || stack.is(AllBlockItem.COAL_BRICK_TILE_WALL.get().asItem())) {
+            event.setBurnTime(6400);
+        } else if (stack.is(AllBlockItem.COAL_BRICK_STAIR.get().asItem())
+                || stack.is(AllBlockItem.COAL_BRICK_TILE_STAIR.get().asItem())) {
+            event.setBurnTime(4800);
+        } else if (stack.is(AllBlockItem.COAL_BRICK_SLAB.get().asItem())
+                || stack.is(AllBlockItem.COAL_BRICK_TILE_SLAB.get().asItem())) {
+            event.setBurnTime(3200);
+        } else if (stack.is(AllBlockItem.COAL_BIT.get()) || stack.is(AllBlockItem.CHARCOAL_BIT.get())) {
+            event.setBurnTime(400);
+        } else if (stack.is(AllBlockItem.BURNT_BIRCH_LOG.get().asItem())
+                || stack.is(AllBlockItem.BURNT_BIRCH_WOOD.get().asItem())
+                || stack.is(AllBlockItem.BURNT_JUNGLE_LOG.get().asItem())
+                || stack.is(AllBlockItem.BURNT_JUNGLE_WOOD.get().asItem())
+                || stack.is(AllBlockItem.BURNT_CHERRY_LOG.get().asItem())
+                || stack.is(AllBlockItem.BURNT_CHERRY_WOOD.get().asItem())
+                || stack.is(AllBlockItem.BURNT_MANGROVE_LOG.get().asItem())
+                || stack.is(AllBlockItem.BURNT_MANGROVE_WOOD.get().asItem())) {
+            event.setBurnTime(1200);
+        } else if (stack.is(AllBlockItem.BURNT_PLANKS.get().asItem())
+                || stack.is(AllBlockItem.BURNT_BUTTON.get().asItem())) {
+            event.setBurnTime(300);
+        } else if (stack.is(AllBlockItem.BURNT_STAIRS.get().asItem())) {
+            event.setBurnTime(450);
+        } else if (stack.is(AllBlockItem.BURNT_SLAB.get().asItem())) {
+            event.setBurnTime(150);
+        } else if (stack.is(AllBlockItem.BURNT_FENCE.get().asItem())) {
+            event.setBurnTime(466);
+        } else if (stack.is(AllBlockItem.BURNT_FENCE_GATE.get().asItem())) {
+            event.setBurnTime(1000);
+        } else if (stack.is(AllBlockItem.BURNT_TRAPDOOR.get().asItem())) {
+            event.setBurnTime(900);
+        } else if (stack.is(AllBlockItem.BURNT_PRESSURE_PLATE.get().asItem())
+                || stack.is(AllBlockItem.BURNT_DOOR.get().asItem())) {
+            event.setBurnTime(600);
+        } else if (stack.is(AllBlockItem.BURNT_BOAT.get())) {
+            event.setBurnTime(1500);
+        } else if (stack.is(AllBlockItem.BURNT_CHEST_BOAT.get())) {
+            event.setBurnTime(1800);
         }
     }
 

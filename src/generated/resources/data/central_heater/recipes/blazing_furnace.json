@@ -3,15 +3,18 @@
   "category": "misc",
   "key": {
     "B": {
-      "item": "central_heater:blackstone_brick_tile"
+      "item": "central_heater:golden_bricks"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
     },
     "N": {
-      "item": "minecraft:nether_brick"
+      "item": "minecraft:netherrack"
     }
   },
   "pattern": [
     "NNN",
-    "N N",
+    "NFN",
     "BBB"
   ],
   "result": {

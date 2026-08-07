@@ -1,5 +1,6 @@
 package com.minecart.central_heater.block_entity.misc;
 
+import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.capability.QueueItemStackHandler;
 import com.minecart.central_heater.misc.DataMapHook;
@@ -11,6 +12,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -27,24 +29,38 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
     public int litTime;
     public int campfireLitTime;
     public int ashCount;
+    public int tier;
 
-    public final QueueItemStackHandler fuels = new QueueItemStackHandler(fuel_slots, 1){
-        @Override
-        public boolean isItemValid(ItemStack stack) {
-            return ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0;
-        }
-
-        @Override
-        protected void onContentsChanged() {
-            updateBlockEntity();
-        }
-    };
+    public final QueueItemStackHandler fuels;
 
     public BurnableCampfireBlockEntity(BlockPos pos, BlockState blockState) {
+        this(pos, blockState, 0);
+    }
+
+    public BurnableCampfireBlockEntity(BlockPos pos, BlockState blockState, int tier) {
         super(pos, blockState);
+        this.tier = tier;
         litTime = 0;
         campfireLitTime = 200;
         ashCount = 0;
+        this.fuels = new QueueItemStackHandler(fuel_slots, 1) {
+            @Override
+            public boolean isItemValid(ItemStack stack) {
+                return BurnableCampfireBlockEntity.this.tier == 0
+                        ? ForgeHooks.getBurnTime(stack, RecipeType.SMELTING) > 0
+                        : DataMapHook.getNetherFuelBurnTime(stack) > 0;
+            }
+
+            @Override
+            protected void onContentsChanged() {
+                updateBlockEntity();
+            }
+        };
+    }
+
+    @Override
+    public Item getAshType() {
+        return tier == 0 ? AllBlockItem.FIRE_ASH.get() : AllBlockItem.SCORCHED_DUST.get();
     }
 
     // Critical for custom BEs extending vanilla BEs:
@@ -61,6 +77,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
         this.litTime = tag.getInt("litTime");
         this.ashCount = tag.getInt("ashCount");
+        this.tier = tag.contains("tier") ? tag.getInt("tier") : this.tier;
 
         if (tag.contains("campfireLitTime")) {
             this.campfireLitTime = tag.getInt("campfireLitTime");
@@ -78,6 +95,7 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
         tag.putInt("campfireLitTime", campfireLitTime);
         tag.put("fuels", fuels.serializeNBT());
         tag.putInt("ashCount", ashCount);
+        tag.putInt("tier", tier);
     }
 
     public int getLitTime() {
@@ -145,19 +163,20 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
 
             if (stack.isEmpty()) continue;
 
-            int burnTime = ForgeHooks.getBurnTime(stack, RecipeType.SMELTING);
+            int burnTime = tier == 0
+                    ? ForgeHooks.getBurnTime(stack, RecipeType.SMELTING)
+                    : DataMapHook.getNetherFuelBurnTime(stack);
             if (burnTime <= 0) continue;
 
-            // 1. Add Burn Time
             this.litTime += burnTime;
 
-            // 2. Ash Drop Logic
-            float chance = DataMapHook.getFireAshDropChance(stack);
+            float chance = tier == 0
+                    ? DataMapHook.getFireAshDropChance(stack)
+                    : DataMapHook.getScorchedDustDropChance(stack);
             if (chance > 0 && this.level.random.nextFloat() < chance) {
                 this.ashCount++;
             }
 
-            // 3. Consume Fuel
             if (stack.hasCraftingRemainingItem()) {
                 setFuel(i, stack.getCraftingRemainingItem().copy());
             } else {
@@ -167,13 +186,12 @@ public class BurnableCampfireBlockEntity extends CampfireBlockEntity implements 
                 }
             }
 
-            // Fuel found and processed, exit loop
             return;
         }
     }
 
     public static void cookTick(Level level, BlockPos pos, BlockState state, BurnableCampfireBlockEntity blockEntity) {
-        blockEntity.litTime -= 1;
+        blockEntity.litTime -= (blockEntity.tier == 0 ? 1 : 2);
         if (blockEntity.litTime <= 0) {
             blockEntity.burnFuel();
         }

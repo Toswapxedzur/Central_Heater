@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_netherite": {
+    "has_golden_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "central_heater:blackstone_brick_tile"
+              "central_heater:golden_bricks"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_netherite",
+      "has_golden_bricks",
       "has_the_recipe"
     ]
   ],

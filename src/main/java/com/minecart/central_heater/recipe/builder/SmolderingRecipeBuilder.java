@@ -80,7 +80,8 @@ public class SmolderingRecipeBuilder implements RecipeBuilder {
 
         this.criteria.forEach(advancementBuilder::addCriterion);
 
-        consumer.accept(new Result(id, ingredients, fluidIngredient, result, fluidResult, time, tier, fireLevel, advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/" + id.getPath())));
+        // Match 1.21.1: advancement id is id.withPrefix("recipes") -> "recipes" + path (no slash)
+        consumer.accept(new Result(id, ingredients, fluidIngredient, result, fluidResult, time, tier, fireLevel, advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes" + id.getPath())));
     }
 
     private void ensureValid(ResourceLocation id) {

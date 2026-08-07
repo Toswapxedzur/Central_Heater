@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "central_heater:golden_bricks"
+  },
+  "result": "central_heater:golden_brick_slab"
+}

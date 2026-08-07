@@ -1,6 +1,25 @@
 {
   "values": [
     "central_heater:burnt_log",
-    "central_heater:burnt_wood"
+    "central_heater:burnt_wood",
+    "central_heater:burnt_birch_log",
+    "central_heater:burnt_birch_wood",
+    "central_heater:burnt_jungle_log",
+    "central_heater:burnt_jungle_wood",
+    "central_heater:burnt_cherry_log",
+    "central_heater:burnt_cherry_wood",
+    "central_heater:burnt_mangrove_log",
+    "central_heater:burnt_mangrove_wood",
+    "central_heater:burnt_planks",
+    "central_heater:burnt_stairs",
+    "central_heater:burnt_slab",
+    "central_heater:burnt_fence",
+    "central_heater:burnt_fence_gate",
+    "central_heater:burnt_trapdoor",
+    "central_heater:burnt_button",
+    "central_heater:burnt_pressure_plate",
+    "central_heater:burnt_door",
+    "central_heater:burnable_campfire",
+    "central_heater:burnable_soul_campfire"
   ]
 }

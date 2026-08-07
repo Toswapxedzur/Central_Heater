@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "central_heater:sturdy_bricks"
+    },
+    "i": {
+      "item": "central_heater:sturdy_brick"
+    }
+  },
+  "pattern": [
+    "BBB",
+    " i ",
+    "iii"
+  ],
+  "result": {
+    "item": "central_heater:sturdy_anvil"
+  },
+  "show_notification": true
+}

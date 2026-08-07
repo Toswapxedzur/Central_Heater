@@ -1,5 +1,6 @@
 package com.minecart.central_heater.recipe.recipe_types;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.minecart.central_heater.recipe.AllRecipe;
 import net.minecraft.core.RegistryAccess;
@@ -110,10 +111,29 @@ public class EmptyRecipe implements Recipe<Container> {
 
         @Nullable
         @Override
-        public JsonObject serializeAdvancement() { return null; }
+        public JsonObject serializeAdvancement() {
+            // Mirror 1.21.1's empty conditional advancement: parent=minecraft:recipes/root,
+            // single impossible criterion "empty", requirements [["empty"]].
+            JsonObject json = new JsonObject();
+            json.addProperty("parent", "minecraft:recipes/root");
+
+            JsonObject criteria = new JsonObject();
+            JsonObject empty = new JsonObject();
+            empty.addProperty("trigger", "minecraft:impossible");
+            criteria.add("empty", empty);
+            json.add("criteria", criteria);
+
+            JsonArray requirements = new JsonArray();
+            JsonArray inner = new JsonArray();
+            inner.add("empty");
+            requirements.add(inner);
+            json.add("requirements", requirements);
+
+            return json;
+        }
 
         @Nullable
         @Override
-        public ResourceLocation getAdvancementId() { return null; }
+        public ResourceLocation getAdvancementId() { return id; }
     }
 }

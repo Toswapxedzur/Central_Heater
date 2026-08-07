@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.6,
+  "input": "minecraft:brown_carpet",
+  "itemOutput": {
+    "item": "minecraft:brown_dye"
+  },
+  "output": "minecraft:white_carpet"
+}

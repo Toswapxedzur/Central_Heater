@@ -1,0 +1,7 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:mangrove_slab",
+  "output": "central_heater:burnt_slab",
+  "time": 25
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "central_heater:nether/nether_stove",
+  "criteria": {
+    "crafted_diamond_shard": {
+      "conditions": {
+        "recipe_id": "central_heater:diamond_shard_from_block_smoldering"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.diamond_shard.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:diamond_shard"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.diamond_shard.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_diamond_shard"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

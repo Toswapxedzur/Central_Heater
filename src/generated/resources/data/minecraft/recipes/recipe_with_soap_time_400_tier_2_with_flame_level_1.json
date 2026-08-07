@@ -1,0 +1,25 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 250,
+    "fluid": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:fire_ash"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:pink_dye"
+    }
+  ],
+  "result": [
+    {
+      "item": "central_heater:soap",
+      "nbt": "{Damage:0}"
+    }
+  ],
+  "tier": 2
+}

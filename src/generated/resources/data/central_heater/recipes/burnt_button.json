@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "central_heater:burnt_planks"
+    }
+  ],
+  "result": {
+    "item": "central_heater:burnt_button"
+  }
+}

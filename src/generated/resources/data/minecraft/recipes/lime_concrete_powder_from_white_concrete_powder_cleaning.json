@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.12,
+  "input": "minecraft:lime_concrete_powder",
+  "itemOutput": {
+    "item": "minecraft:lime_dye"
+  },
+  "output": "minecraft:white_concrete_powder"
+}

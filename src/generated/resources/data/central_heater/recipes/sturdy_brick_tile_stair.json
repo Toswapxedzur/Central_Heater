@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
+    "T": {
       "item": "central_heater:sturdy_brick_tile"
     }
   },
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "T  ",
+    "TT ",
+    "TTT"
   ],
   "result": {
     "count": 4,

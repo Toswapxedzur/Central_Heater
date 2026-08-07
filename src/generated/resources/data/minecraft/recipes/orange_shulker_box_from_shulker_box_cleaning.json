@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 1.0,
+  "input": "minecraft:orange_shulker_box",
+  "itemOutput": {
+    "item": "minecraft:orange_dye"
+  },
+  "output": "minecraft:shulker_box"
+}

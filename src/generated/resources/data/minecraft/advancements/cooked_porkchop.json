@@ -1,0 +1,24 @@
+{
+  "advancements": [
+    {
+      "advancement": {
+        "parent": "minecraft:recipes/root",
+        "criteria": {
+          "empty": {
+            "trigger": "minecraft:impossible"
+          }
+        },
+        "requirements": [
+          [
+            "empty"
+          ]
+        ]
+      },
+      "conditions": [
+        {
+          "type": "forge:false"
+        }
+      ]
+    }
+  ]
+}

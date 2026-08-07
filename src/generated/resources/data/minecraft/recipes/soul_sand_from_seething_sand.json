@@ -1,0 +1,11 @@
+{
+  "type": "central_heater:haunting",
+  "category": "blocks",
+  "cookingtime": 400,
+  "experience": 1.0,
+  "group": "misc",
+  "ingredient": {
+    "item": "minecraft:sand"
+  },
+  "result": "minecraft:soul_sand"
+}

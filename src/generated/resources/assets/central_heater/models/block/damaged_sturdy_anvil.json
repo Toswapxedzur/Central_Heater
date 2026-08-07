@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/damaged_anvil",
+  "textures": {
+    "body": "central_heater:block/sturdy_anvil",
+    "particle": "central_heater:block/sturdy_anvil",
+    "top": "central_heater:block/damaged_sturdy_anvil_top"
+  }
+}

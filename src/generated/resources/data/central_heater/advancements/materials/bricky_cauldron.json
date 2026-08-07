@@ -1,0 +1,37 @@
+{
+  "parent": "central_heater:materials/bricky",
+  "criteria": {
+    "placed_brick_cauldron": {
+      "conditions": {
+        "location": [
+          {
+            "block": "central_heater:brick_cauldron",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.bricky_cauldron.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:brick_cauldron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.bricky_cauldron.title"
+    }
+  },
+  "requirements": [
+    [
+      "placed_brick_cauldron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

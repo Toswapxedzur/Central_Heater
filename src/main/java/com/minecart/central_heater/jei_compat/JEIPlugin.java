@@ -6,6 +6,7 @@ import com.minecart.central_heater.jei_compat.category.*;
 import com.minecart.central_heater.jei_compat.misc.JEIUtil;
 import com.minecart.central_heater.misc.VirtualLevel;
 import com.minecart.central_heater.recipe.AllRecipe;
+import com.minecart.central_heater.recipe.recipe_types.BlockCleaningRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.SmolderingRecipe;
 import mezz.jei.api.IModPlugin;
@@ -37,6 +38,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new NetherFuelCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new FireAshDropChanceCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new ScorchedDustDropChanceCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new BlockCleaningRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -52,6 +54,9 @@ public class JEIPlugin implements IModPlugin {
 
         registration.addRecipes(SmolderingRecipeCategory.RECIPE_TYPE, JEIUtil.fireBrewingSmolderingRecipe());
         registration.addRecipes(BlockSmolderingRecipeCategory.RECIPE_TYPE, JEIUtil.getBlocksSmolderingRecipes());
+
+        List<BlockCleaningRecipe> cleaning = VirtualLevel.getRecipeManager().getAllRecipesFor(AllRecipe.BLOCK_CLEANING.get());
+        registration.addRecipes(BlockCleaningRecipeCategory.RECIPE_TYPE, cleaning);
 
         registration.addRecipes(NetherFuelCategory.RECIPE_TYPE, JEIUtil.getNetherFuelRecipes(ingredientManager));
         registration.addRecipes(FireAshDropChanceCategory.RECIPE_TYPE, JEIUtil.getFireAshDropChanceRecipes(ingredientManager));
@@ -102,5 +107,9 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(AllBlockItem.SCORCHED_DUST.get()), ScorchedDustDropChanceCategory.RECIPE_TYPE);
 
         registration.addRecipeCatalyst(new ItemStack(AllBlockItem.BLAZING_FURNACE.get()), HauntingRecipeCategory.RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(AllBlockItem.SOAP.get()), BlockCleaningRecipeCategory.RECIPE_TYPE);
+
+        registration.addRecipeCatalyst(new ItemStack(AllBlockItem.STURDY_ANVIL.get()), RecipeTypes.ANVIL);
     }
 }

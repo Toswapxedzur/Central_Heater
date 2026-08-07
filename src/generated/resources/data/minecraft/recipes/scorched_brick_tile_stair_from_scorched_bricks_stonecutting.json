@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "central_heater:scorched_bricks"
+  },
+  "result": "central_heater:scorched_brick_tile_stair"
+}

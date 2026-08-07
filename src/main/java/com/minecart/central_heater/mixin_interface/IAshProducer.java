@@ -12,10 +12,14 @@ public interface IAshProducer {
 
     void setAshCount(int count);
 
+    default Item getAshType() {
+        return AllBlockItem.FIRE_ASH.get();
+    }
+
     default void dropAsh(Level level, BlockPos pos){
         if (this.getAshCount() <= 0) return;
 
-        Item ashItem = AllBlockItem.FIRE_ASH.get();
+        Item ashItem = getAshType();
         int maxStackSize = ashItem.getMaxStackSize();
 
         while (this.getAshCount() > 0) {

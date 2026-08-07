@@ -1,0 +1,7 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:spruce_fence",
+  "output": "central_heater:burnt_fence",
+  "time": 50
+}

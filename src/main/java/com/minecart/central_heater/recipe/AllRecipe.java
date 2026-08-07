@@ -51,6 +51,13 @@ public class AllRecipe {
     public static final RegistryObject<RecipeSerializer<FireBrewingRecipe>> FIRE_BREWING_SERIALIZER = RECIPE_SERIALIZERS.register("smoldering_fire_brewing",
             () -> new SimpleSmolderingRecipeSerializer<>(FireBrewingRecipe::new));
 
+    // Block Cleaning Recipe
+    public static final RegistryObject<RecipeSerializer<BlockCleaningRecipe>> BLOCK_CLEANING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("block_cleaning", BlockCleaningRecipe.Serializer::new);
+    public static final RegistryObject<RecipeType<BlockCleaningRecipe>> BLOCK_CLEANING = RECIPE_TYPES.register("block_cleaning", () -> new RecipeType<BlockCleaningRecipe>() {
+        @Override
+        public String toString() { return "block_cleaning"; }
+    });
+
     public static void register(IEventBus modEventbus){
         RECIPE_TYPES.register(modEventbus);
         RECIPE_SERIALIZERS.register(modEventbus);

@@ -1,0 +1,41 @@
+{
+  "ambientocclusion": false,
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#ash"
+        },
+        "east": {
+          "texture": "#ash"
+        },
+        "north": {
+          "texture": "#ash"
+        },
+        "south": {
+          "texture": "#ash"
+        },
+        "up": {
+          "texture": "#ash"
+        },
+        "west": {
+          "texture": "#ash"
+        }
+      },
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        10,
+        14
+      ]
+    }
+  ],
+  "textures": {
+    "ash": "central_heater:block/campfire_dust",
+    "particle": "central_heater:block/campfire_dust"
+  }
+}

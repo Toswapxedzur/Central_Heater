@@ -1,0 +1,11 @@
+{
+  "type": "central_heater:haunting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 0.1,
+  "group": "leather_curing",
+  "ingredient": {
+    "item": "minecraft:rotten_flesh"
+  },
+  "result": "minecraft:leather"
+}

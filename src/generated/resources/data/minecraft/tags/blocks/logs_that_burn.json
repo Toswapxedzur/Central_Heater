@@ -1,6 +1,14 @@
 {
   "values": [
     "central_heater:burnt_log",
-    "central_heater:burnt_wood"
+    "central_heater:burnt_wood",
+    "central_heater:burnt_birch_log",
+    "central_heater:burnt_birch_wood",
+    "central_heater:burnt_jungle_log",
+    "central_heater:burnt_jungle_wood",
+    "central_heater:burnt_cherry_log",
+    "central_heater:burnt_cherry_wood",
+    "central_heater:burnt_mangrove_log",
+    "central_heater:burnt_mangrove_wood"
   ]
 }

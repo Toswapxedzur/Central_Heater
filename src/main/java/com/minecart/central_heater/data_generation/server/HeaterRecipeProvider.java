@@ -3,6 +3,7 @@ package com.minecart.central_heater.data_generation.server;
 import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.recipe.AllRecipe;
+import com.minecart.central_heater.recipe.builder.BlockCleaningRecipeBuilder;
 import com.minecart.central_heater.recipe.builder.BlockSmolderingRecipeBuilder;
 import com.minecart.central_heater.recipe.builder.SmolderingRecipeBuilder;
 import com.minecart.central_heater.recipe.recipe_types.EmptyRecipe;
@@ -150,11 +151,14 @@ public abstract class HeaterRecipeProvider extends RecipeProvider {
     }
 
     protected static void emptyRecipe(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+        // Mirrors 1.21.1: emit both a conditional recipe AND a conditional advancement at <id>
+        // so that vanilla counterparts get overridden by an always-false entry.
         ConditionalRecipe.builder()
                 .addCondition(FalseCondition.INSTANCE)
                 .addRecipe(finishedRecipeConsumer ->
                         EmptyRecipe.Builder.empty().build(finishedRecipeConsumer, id)
                 )
+                .generateAdvancement(id)
                 .build(consumer, id);
     }
 
@@ -163,10 +167,11 @@ public abstract class HeaterRecipeProvider extends RecipeProvider {
     }
 
     protected static void oreCooking(Consumer<FinishedRecipe> consumer, RecipeSerializer<? extends AbstractCookingRecipe> serializer, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float xp, int time, String group, String suffix) {
+        // Match 1.21.1 vanilla behavior: save with bare id -> resolves to minecraft:<name>
         for(ItemLike itemlike : ingredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), category, result, xp, time, serializer)
                     .group(group).unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(consumer, CentralHeater.MODID + ":" + getItemName(result.asItem()) + suffix + "_" + getItemName(itemlike.asItem()));
+                    .save(consumer, getItemName(result.asItem()) + suffix + "_" + getItemName(itemlike.asItem()));
         }
     }
 
@@ -193,7 +198,8 @@ public abstract class HeaterRecipeProvider extends RecipeProvider {
         if(!fluidResult.isEmpty()) name.append(getFluidName(fluidResult.getFluid())).append("_");
         name.append("time_").append(time).append("_tier_").append(tier).append("_with_flame_level_").append(fireLevel);
 
-        builder.save(consumer, new ResourceLocation(CentralHeater.MODID, name.toString()));
+        // Match 1.21.1: save with bare id (no namespace) -> resolves to minecraft:<name>
+        builder.save(consumer, new ResourceLocation(name.toString()));
     }
 
     protected static void blockSmoldering(Consumer<FinishedRecipe> consumer, Block input, Block result, int time, int fireLevel, boolean surround) {
@@ -213,5 +219,84 @@ public abstract class HeaterRecipeProvider extends RecipeProvider {
 
     protected static String getFluidName(Fluid fluid) {
         return BuiltInRegistries.FLUID.getKey(fluid).getPath();
+    }
+
+    /**
+     * Interchangeable brick family: produces brick, tile, and stair/slab/wall
+     * variants for both bricks and tiles, plus stonecutter recipes between every
+     * pair. Mirrors 1.21.1's helper exactly.
+     */
+    protected void registerInterchangeableBrickFamily(Consumer<FinishedRecipe> consumer, String name, ItemLike baseItem, ItemLike brick, ItemLike brickSlab, ItemLike brickStair, ItemLike tile, ItemLike tileSlab, ItemLike tileStair, ItemLike tileWall) {
+
+        // 4 Base Blocks -> 1 Bricks (the 1.21.1 version saves 1 brick despite 2x2 pattern; preserve parity)
+        // Match 1.21.1: save with bare String id -> resolves to minecraft:<name>
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brick, 1)
+                .pattern("BB").pattern("BB").define('B', baseItem)
+                .unlockedBy(getHasName(baseItem), has(baseItem))
+                .save(consumer, name + "_bricks_from_base");
+
+        // 4 Bricks -> 4 Tiles
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tile, 4)
+                .pattern("BB").pattern("BB").define('B', brick)
+                .unlockedBy(getHasName(brick), has(brick))
+                .save(consumer, name + "_tiles_from_bricks");
+
+        // Brick variants
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brickSlab, 6)
+                .pattern("BBB").define('B', brick)
+                .unlockedBy(getHasName(brick), has(brick)).save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, brickStair, 4)
+                .pattern("B  ").pattern("BB ").pattern("BBB").define('B', brick)
+                .unlockedBy(getHasName(brick), has(brick)).save(consumer);
+
+        // Tile variants
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileSlab, 6)
+                .pattern("TTT").define('T', tile)
+                .unlockedBy(getHasName(tile), has(tile)).save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileStair, 4)
+                .pattern("T  ").pattern("TT ").pattern("TTT").define('T', tile)
+                .unlockedBy(getHasName(tile), has(tile)).save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tileWall, 6)
+                .pattern("TTT").pattern("TTT").define('T', tile)
+                .unlockedBy(getHasName(tile), has(tile)).save(consumer);
+
+        // Stonecutter interchange between brick and tile
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tile, brick, 1);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, brick, tile, 1);
+
+        // Stonecutter from Bricks
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, brickSlab, brick, 2);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, brickStair, brick, 1);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileSlab, brick, 2);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileStair, brick, 1);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileWall, brick, 1);
+
+        // Stonecutter from Tiles
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileSlab, tile, 2);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileStair, tile, 1);
+        stonecutterResultFromBase(consumer, RecipeCategory.BUILDING_BLOCKS, tileWall, tile, 1);
+    }
+
+    /**
+     * Mirrors 1.21.1's naming exactly: the recipe file is named
+     * {@code <inputBlock>_from_<outputBlock>_cleaning} and lives in the
+     * {@code minecraft} namespace (because 1.21.1 passed a bare String to
+     * RecipeOutput#save, which parses to {@code minecraft:<id>}).
+     */
+    protected void createCleaningRecipe(Consumer<FinishedRecipe> consumer, Block inputBlock, Block outputBlock, Item dyeItem, int count, float dyeDropChance) {
+        String safeName = getConversionRecipeName(inputBlock, outputBlock) + "_cleaning";
+        BlockCleaningRecipeBuilder.cleaning(inputBlock, outputBlock, dyeItem, count, dyeDropChance)
+                .unlockedBy("has_input", has(inputBlock))
+                .save(consumer, new ResourceLocation(safeName));
+    }
+
+    protected void createCleaningRecipe(Consumer<FinishedRecipe> consumer, Block inputBlock, Block outputBlock, Item dyeItem, float dyeDropChance) {
+        this.createCleaningRecipe(consumer, inputBlock, outputBlock, dyeItem, 1, dyeDropChance);
+    }
+
+    protected void createCleaningRecipe(Consumer<FinishedRecipe> consumer, String customId, Block inputBlock, Block outputBlock, Item dyeItem, int count, float dyeDropChance) {
+        BlockCleaningRecipeBuilder.cleaning(inputBlock, outputBlock, dyeItem, count, dyeDropChance)
+                .unlockedBy("has_input", has(inputBlock))
+                .save(consumer, new ResourceLocation(customId));
     }
 }

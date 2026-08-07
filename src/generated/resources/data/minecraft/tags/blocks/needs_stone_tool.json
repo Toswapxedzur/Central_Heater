@@ -13,6 +13,14 @@
     "central_heater:blackstone_brick_tile",
     "central_heater:blackstone_brick_tile_stair",
     "central_heater:blackstone_brick_tile_slab",
-    "central_heater:blackstone_brick_tile_wall"
+    "central_heater:blackstone_brick_tile_wall",
+    "central_heater:copper_stove",
+    "central_heater:exposed_copper_stove",
+    "central_heater:weathered_copper_stove",
+    "central_heater:oxidized_copper_stove",
+    "central_heater:waxed_copper_stove",
+    "central_heater:waxed_exposed_copper_stove",
+    "central_heater:waxed_weathered_copper_stove",
+    "central_heater:waxed_oxidized_copper_stove"
   ]
 }

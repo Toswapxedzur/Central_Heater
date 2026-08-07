@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 1.0,
+  "input": "minecraft:red_candle",
+  "itemOutput": {
+    "item": "minecraft:red_dye"
+  },
+  "output": "minecraft:candle"
+}

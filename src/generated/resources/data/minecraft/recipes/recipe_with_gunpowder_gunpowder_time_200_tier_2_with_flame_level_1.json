@@ -1,0 +1,24 @@
+{
+  "type": "central_heater:smoldering",
+  "ingredients": [
+    {
+      "item": "central_heater:fire_ash"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "tier": 2,
+  "time": 200
+}

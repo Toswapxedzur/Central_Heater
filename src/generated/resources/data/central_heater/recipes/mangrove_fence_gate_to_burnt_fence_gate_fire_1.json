@@ -1,0 +1,7 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:mangrove_fence_gate",
+  "output": "central_heater:burnt_fence_gate",
+  "time": 50
+}

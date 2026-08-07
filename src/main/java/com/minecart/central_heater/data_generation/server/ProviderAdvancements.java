@@ -4,6 +4,7 @@ import com.minecart.central_heater.AllBlockItem;
 import com.minecart.central_heater.CentralHeater;
 import com.minecart.central_heater.advancement.BurntObjectTrigger;
 import com.minecart.central_heater.advancement.MinecartSpeedTrigger;
+import com.minecart.central_heater.misc.Alltags;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
@@ -11,6 +12,7 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.ItemUsedOnLocationTrigger;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.advancements.critereon.RecipeCraftedTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
@@ -79,6 +81,14 @@ public class ProviderAdvancements extends ForgeAdvancementProvider {
                     .addCriterion("placed_mud_stove", placedBlock(AllBlockItem.MUD_BRICK_STOVE.get()))
                     .save(consumer, CentralHeater.MODID + ":materials/muddy_stove");
 
+            Advancement muddyPot = Advancement.Builder.advancement().parent(muddy)
+                    .display(AllBlockItem.MUD_BRICK_POT.get(),
+                            Component.translatable("advancements.central_heater.muddy_pot.title"),
+                            Component.translatable("advancements.central_heater.muddy_pot.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("placed_mud_pot", placedBlock(AllBlockItem.MUD_BRICK_POT.get()))
+                    .save(consumer, CentralHeater.MODID + ":materials/muddy_pot");
+
             Advancement bricky = Advancement.Builder.advancement().parent(muddy)
                     .display(Items.BRICK,
                             Component.translatable("advancements.central_heater.bricky.title"),
@@ -95,6 +105,30 @@ public class ProviderAdvancements extends ForgeAdvancementProvider {
                     .addCriterion("placed_brick_stove", placedBlock(AllBlockItem.BRICK_STOVE.get()))
                     .save(consumer, CentralHeater.MODID + ":materials/bricky_stove");
 
+            Advancement brickyCauldron = Advancement.Builder.advancement().parent(bricky)
+                    .display(AllBlockItem.BRICK_CAULDRON.get(),
+                            Component.translatable("advancements.central_heater.bricky_cauldron.title"),
+                            Component.translatable("advancements.central_heater.bricky_cauldron.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("placed_brick_cauldron", placedBlock(AllBlockItem.BRICK_CAULDRON.get()))
+                    .save(consumer, CentralHeater.MODID + ":materials/bricky_cauldron");
+
+            Advancement stoney = Advancement.Builder.advancement().parent(bricky)
+                    .display(AllBlockItem.STONE_BRICK.get(),
+                            Component.translatable("advancements.central_heater.stoney.title"),
+                            Component.translatable("advancements.central_heater.stoney.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("has_stone_brick", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.STONE_BRICK.get()))
+                    .save(consumer, CentralHeater.MODID + ":materials/stoney");
+
+            Advancement stoneyAppliances = Advancement.Builder.advancement().parent(stoney)
+                    .display(AllBlockItem.STONE_STOVE.get(),
+                            Component.translatable("advancements.central_heater.stoney_appliances.title"),
+                            Component.translatable("advancements.central_heater.stoney_appliances.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("placed_stone_stove", placedBlock(AllBlockItem.STONE_STOVE.get()))
+                    .save(consumer, CentralHeater.MODID + ":materials/stoney_appliances");
+
             // --- CAULDRONS ---
             Advancement ironCauldron = Advancement.Builder.advancement().parent(root)
                     .display(AllBlockItem.IRON_CAULDRON.get(),
@@ -104,7 +138,14 @@ public class ProviderAdvancements extends ForgeAdvancementProvider {
                     .addCriterion("has_iron_cauldron", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.IRON_CAULDRON.get()))
                     .save(consumer, CentralHeater.MODID + ":cauldron/iron");
 
-            // --- STURDY GEAR ---
+            Advancement goldenCauldron = Advancement.Builder.advancement().parent(ironCauldron)
+                    .display(AllBlockItem.GOLDEN_CAULDRON.get(),
+                            Component.translatable("advancements.central_heater.golden_cauldron.title"),
+                            Component.translatable("advancements.central_heater.golden_cauldron.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("has_golden_cauldron", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.GOLDEN_CAULDRON.get()))
+                    .save(consumer, CentralHeater.MODID + ":cauldron/golden");
+
             Advancement sturdyBrick = Advancement.Builder.advancement().parent(ironCauldron)
                     .display(AllBlockItem.STURDY_BRICK.get(),
                             Component.translatable("advancements.central_heater.sturdy_brick.title"),
@@ -112,6 +153,14 @@ public class ProviderAdvancements extends ForgeAdvancementProvider {
                             null, FrameType.TASK, true, true, false)
                     .addCriterion("has_sturdy_brick", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.STURDY_BRICK.get()))
                     .save(consumer, CentralHeater.MODID + ":cauldron/sturdy_brick");
+
+            Advancement sturdyTank = Advancement.Builder.advancement().parent(sturdyBrick)
+                    .display(AllBlockItem.STURDY_TANK_ITEM.get(),
+                            Component.translatable("advancements.central_heater.sturdy_tank.title"),
+                            Component.translatable("advancements.central_heater.sturdy_tank.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("has_sturdy_tank", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.STURDY_TANK_ITEM.get()))
+                    .save(consumer, CentralHeater.MODID + ":cauldron/sturdy_tank");
 
             Advancement sturdyArmor = Advancement.Builder.advancement().parent(sturdyBrick)
                     .display(AllBlockItem.STURDY_CHESTPLATE.get(),
@@ -147,8 +196,44 @@ public class ProviderAdvancements extends ForgeAdvancementProvider {
                     .addCriterion("has_scorched_coal", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.SCORCHED_COAL.get()))
                     .save(consumer, CentralHeater.MODID + ":nether/scorched_coal");
 
+            Advancement haunting = Advancement.Builder.advancement().parent(scorchedCoal)
+                    .display(AllBlockItem.BLAZING_FURNACE.get(),
+                            Component.translatable("advancements.central_heater.haunting.title"),
+                            Component.translatable("advancements.central_heater.haunting.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("has_blazing_furnace", InventoryChangeTrigger.TriggerInstance.hasItems(AllBlockItem.BLAZING_FURNACE.get()))
+                    .save(consumer, CentralHeater.MODID + ":main/processing_haunting");
+
+            Advancement diamondShard = Advancement.Builder.advancement().parent(netherStove)
+                    .display(AllBlockItem.DIAMOND_SHARD.get(),
+                            Component.translatable("advancements.central_heater.diamond_shard.title"),
+                            Component.translatable("advancements.central_heater.diamond_shard.description"),
+                            null, FrameType.TASK, true, true, false)
+                    .addCriterion("crafted_diamond_shard", RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                            new ResourceLocation(CentralHeater.MODID, "diamond_shard_from_block_smoldering")))
+                    .save(consumer, CentralHeater.MODID + ":nether/diamond_shard");
+
+            Advancement ancientDebris = Advancement.Builder.advancement().parent(netherStove)
+                    .display(Items.ANCIENT_DEBRIS,
+                            Component.translatable("advancements.central_heater.synthetic_debris.title"),
+                            Component.translatable("advancements.central_heater.synthetic_debris.description"),
+                            null, FrameType.CHALLENGE, true, true, false)
+                    .addCriterion("crafted_ancient_debris", RecipeCraftedTrigger.TriggerInstance.craftedItem(
+                            new ResourceLocation(CentralHeater.MODID, "ancient_debris_from_block_smoldering")))
+                    .save(consumer, CentralHeater.MODID + ":nether/synthetic_debris");
+
+            // --- MISC ---
+            Advancement extraCrispy = Advancement.Builder.advancement().parent(root)
+                    .display(AllBlockItem.BURNT_BEEF.get(),
+                            Component.translatable("advancements.central_heater.extra_crispy.title"),
+                            Component.translatable("advancements.central_heater.extra_crispy.description"),
+                            null, FrameType.TASK, true, true, true)
+                    .addCriterion("has_overburnt", InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(Alltags.Items.OVERBURNT).build()))
+                    .save(consumer, CentralHeater.MODID + ":misc/extra_crispy");
+
             // --- CHALLENGES ---
-            Advancement speedDemon = Advancement.Builder.advancement().parent(root)
+            Advancement speedDemon = Advancement.Builder.advancement().parent(haunting)
                     .display(AllBlockItem.BLAZING_FURNACE_MINECART.get(),
                             Component.translatable("advancements.central_heater.speed_demon.title"),
                             Component.translatable("advancements.central_heater.speed_demon.description"),

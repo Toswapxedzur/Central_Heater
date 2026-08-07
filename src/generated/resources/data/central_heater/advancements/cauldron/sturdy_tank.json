@@ -1,0 +1,38 @@
+{
+  "parent": "central_heater:cauldron/sturdy_brick",
+  "criteria": {
+    "has_sturdy_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "central_heater:sturdy_tank"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.sturdy_tank.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "central_heater:sturdy_tank"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.sturdy_tank.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sturdy_tank"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

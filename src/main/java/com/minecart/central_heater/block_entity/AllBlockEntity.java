@@ -6,10 +6,12 @@ import com.minecart.central_heater.block_entity.cauldron.BrickCauldronBlockEntit
 import com.minecart.central_heater.block_entity.cauldron.CauldronBlockEntity;
 import com.minecart.central_heater.block_entity.cauldron.GoldenCauldronBlockEntity;
 import com.minecart.central_heater.block_entity.cauldron.MudBrickPotBlockEntity;
+import com.minecart.central_heater.block_entity.misc.AshtrayBlockEntity;
 import com.minecart.central_heater.block_entity.misc.BlazingFurnaceBlockEntity;
 import com.minecart.central_heater.block_entity.misc.BurnableCampfireBlockEntity;
 import com.minecart.central_heater.block_entity.misc.SturdyTankBlockEntity;
 import com.minecart.central_heater.block_entity.stove.BrickStoveBlockEntity;
+import com.minecart.central_heater.block_entity.stove.CopperStoveBlockEntity;
 import com.minecart.central_heater.block_entity.stove.GoldenStoveBlockEntity;
 import com.minecart.central_heater.block_entity.stove.StoneStoveBlockEntity;
 import net.minecraft.world.level.block.Blocks;
@@ -67,7 +69,11 @@ public class AllBlockEntity {
                     .build(null));
 
     public static final RegistryObject<BlockEntityType<BurnableCampfireBlockEntity>> burnable_campfire = BLOCK_ENTITIES.register("burnable_campfire_be",
-            () -> BlockEntityType.Builder.of(BurnableCampfireBlockEntity::new,
+            () -> BlockEntityType.Builder.of(
+                            (pos, state) -> new BurnableCampfireBlockEntity(pos, state,
+                                    state.getBlock() == AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get() ? 1 : 0),
+                            AllBlockItem.BURNABLE_CAMPFIRE.get(),
+                            AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get(),
                             Blocks.CAMPFIRE,
                             Blocks.SOUL_CAMPFIRE)
                     .build(null));
@@ -75,6 +81,23 @@ public class AllBlockEntity {
     public static final RegistryObject<BlockEntityType<BlazingFurnaceBlockEntity>> blazing_furnace = BLOCK_ENTITIES.register("blazing_furnace",
             () -> BlockEntityType.Builder.of(BlazingFurnaceBlockEntity::new,
                             AllBlockItem.BLAZING_FURNACE.get())
+                    .build(null));
+
+    public static final RegistryObject<BlockEntityType<AshtrayBlockEntity>> ashtray = BLOCK_ENTITIES.register("ashtray",
+            () -> BlockEntityType.Builder.of(AshtrayBlockEntity::new,
+                            AllBlockItem.ASHTRAY.get())
+                    .build(null));
+
+    public static final RegistryObject<BlockEntityType<CopperStoveBlockEntity>> copper_stove = BLOCK_ENTITIES.register("copper_stove",
+            () -> BlockEntityType.Builder.of(CopperStoveBlockEntity::new,
+                            AllBlockItem.COPPER_STOVE.get(),
+                            AllBlockItem.EXPOSED_COPPER_STOVE.get(),
+                            AllBlockItem.WEATHERED_COPPER_STOVE.get(),
+                            AllBlockItem.OXIDIZED_COPPER_STOVE.get(),
+                            AllBlockItem.WAXED_COPPER_STOVE.get(),
+                            AllBlockItem.WAXED_EXPOSED_COPPER_STOVE.get(),
+                            AllBlockItem.WAXED_WEATHERED_COPPER_STOVE.get(),
+                            AllBlockItem.WAXED_OXIDIZED_COPPER_STOVE.get())
                     .build(null));
 
     public static void register(IEventBus modEventbus){

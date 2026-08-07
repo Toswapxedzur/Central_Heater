@@ -18,7 +18,6 @@ import java.util.concurrent.CompletableFuture;
 public class GeneratorItemTag extends ItemTagsProvider {
     public GeneratorItemTag(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
                             CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
-        // Forge 1.20.1 requires the ModID and ExistingFileHelper in the constructor
         super(output, lookupProvider, blockTags, CentralHeater.MODID, existingFileHelper);
     }
 
@@ -66,7 +65,86 @@ public class GeneratorItemTag extends ItemTagsProvider {
 
         tag(Alltags.Items.DOUGH).add(AllBlockItem.WHEAT_DOUGH.get());
         tag(Alltags.Items.FLOUR).add(AllBlockItem.WHEAT_FLOUR.get());
-
         tag(Alltags.Items.SHOULD_DISPLAY_ITEM).add(Items.REDSTONE);
+
+        // --- Anvil items ---
+        tag(ItemTags.ANVIL).add(
+                AllBlockItem.STURDY_ANVIL.get().asItem(),
+                AllBlockItem.CHIPPED_STURDY_ANVIL.get().asItem(),
+                AllBlockItem.DAMAGED_STURDY_ANVIL.get().asItem()
+        );
+
+        // --- Sturdy shears / Soap ---
+        // 1.20.1 has no MINING/DURABILITY/VANISHING_ENCHANTABLE tags; use the
+        // closest equivalents that exist (Forge tools/shears + Tags.Items).
+        tag(Tags.Items.SHEARS).add(AllBlockItem.STURDY_SHEARS.get());
+
+        // --- Piglin Loved items ---
+        tag(ItemTags.PIGLIN_LOVED).add(
+                AllBlockItem.GOLDEN_CAULDRON.get().asItem(),
+                AllBlockItem.GOLD_BARS.get().asItem(),
+                AllBlockItem.GOLDEN_BRICKS.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_STAIR.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_SLAB.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_TILE.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_TILE_STAIR.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_TILE_SLAB.get().asItem(),
+                AllBlockItem.GOLDEN_BRICK_TILE_WALL.get().asItem()
+        );
+
+        // --- Boats ---
+        tag(ItemTags.BOATS).add(AllBlockItem.BURNT_BOAT.get().asItem());
+        tag(ItemTags.CHEST_BOATS).add(AllBlockItem.BURNT_CHEST_BOAT.get().asItem());
+
+        // --- Burnt Wood Items (item form of the corresponding block tags) ---
+        tag(ItemTags.LOGS_THAT_BURN).add(
+                AllBlockItem.BURNT_LOG.get().asItem(),
+                AllBlockItem.BURNT_WOOD.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_LOG.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_LOG.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get().asItem()
+        );
+
+        tag(ItemTags.PIGLIN_REPELLENTS).add(AllBlockItem.BURNABLE_SOUL_CAMPFIRE.get().asItem());
+
+        tag(Alltags.Items.BURNT_LOG).add(
+                AllBlockItem.BURNT_LOG.get().asItem(),
+                AllBlockItem.BURNT_WOOD.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_LOG.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_LOG.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get().asItem()
+        );
+
+        tag(ItemTags.LOGS).add(
+                AllBlockItem.BURNT_LOG.get().asItem(),
+                AllBlockItem.BURNT_WOOD.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_LOG.get().asItem(),
+                AllBlockItem.BURNT_BIRCH_WOOD.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_LOG.get().asItem(),
+                AllBlockItem.BURNT_JUNGLE_WOOD.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_LOG.get().asItem(),
+                AllBlockItem.BURNT_CHERRY_WOOD.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_LOG.get().asItem(),
+                AllBlockItem.BURNT_MANGROVE_WOOD.get().asItem()
+        );
+
+        tag(ItemTags.PLANKS).add(AllBlockItem.BURNT_PLANKS.get().asItem());
+        tag(ItemTags.WOODEN_STAIRS).add(AllBlockItem.BURNT_STAIRS.get().asItem());
+        tag(ItemTags.WOODEN_SLABS).add(AllBlockItem.BURNT_SLAB.get().asItem());
+        tag(ItemTags.WOODEN_FENCES).add(AllBlockItem.BURNT_FENCE.get().asItem());
+        tag(ItemTags.WOODEN_DOORS).add(AllBlockItem.BURNT_DOOR.get().asItem());
+        tag(ItemTags.WOODEN_TRAPDOORS).add(AllBlockItem.BURNT_TRAPDOOR.get().asItem());
+        tag(ItemTags.WOODEN_BUTTONS).add(AllBlockItem.BURNT_BUTTON.get().asItem());
+        tag(ItemTags.WOODEN_PRESSURE_PLATES).add(AllBlockItem.BURNT_PRESSURE_PLATE.get().asItem());
     }
 }

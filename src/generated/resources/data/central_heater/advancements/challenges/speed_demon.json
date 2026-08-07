@@ -1,5 +1,5 @@
 {
-  "parent": "central_heater:main/root",
+  "parent": "central_heater:main/processing_haunting",
   "criteria": {
     "fast_minecart": {
       "conditions": {

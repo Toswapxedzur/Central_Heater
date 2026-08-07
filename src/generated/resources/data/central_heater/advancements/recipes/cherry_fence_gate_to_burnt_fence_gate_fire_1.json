@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cherry_fence_gate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cherry_fence_gate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:cherry_fence_gate_to_burnt_fence_gate_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cherry_fence_gate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:cherry_fence_gate_to_burnt_fence_gate_fire_1"
+    ]
+  },
+  "sends_telemetry_event": true
+}

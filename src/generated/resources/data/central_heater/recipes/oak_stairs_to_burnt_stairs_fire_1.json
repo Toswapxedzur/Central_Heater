@@ -1,0 +1,7 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": "minecraft:oak_stairs",
+  "output": "central_heater:burnt_stairs",
+  "time": 38
+}

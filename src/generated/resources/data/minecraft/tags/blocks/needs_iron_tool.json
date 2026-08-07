@@ -6,6 +6,16 @@
     "central_heater:sturdy_brick_tile",
     "central_heater:sturdy_brick_tile_stair",
     "central_heater:sturdy_brick_tile_slab",
-    "central_heater:sturdy_brick_tile_wall"
+    "central_heater:sturdy_brick_tile_wall",
+    "central_heater:sturdy_anvil",
+    "central_heater:chipped_sturdy_anvil",
+    "central_heater:damaged_sturdy_anvil",
+    "central_heater:golden_bricks",
+    "central_heater:golden_brick_stair",
+    "central_heater:golden_brick_slab",
+    "central_heater:golden_brick_tile",
+    "central_heater:golden_brick_tile_stair",
+    "central_heater:golden_brick_tile_slab",
+    "central_heater:golden_brick_tile_wall"
   ]
 }

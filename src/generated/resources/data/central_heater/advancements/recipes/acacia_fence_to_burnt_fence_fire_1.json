@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_fence": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:acacia_fence"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:acacia_fence_to_burnt_fence_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_fence"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:acacia_fence_to_burnt_fence_fire_1"
+    ]
+  },
+  "sends_telemetry_event": true
+}

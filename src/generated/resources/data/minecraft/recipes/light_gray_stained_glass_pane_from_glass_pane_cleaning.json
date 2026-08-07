@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 0.045,
+  "input": "minecraft:light_gray_stained_glass_pane",
+  "itemOutput": {
+    "item": "minecraft:light_gray_dye"
+  },
+  "output": "minecraft:glass_pane"
+}

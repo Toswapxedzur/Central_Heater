@@ -14,7 +14,9 @@
     "AbstractFurnaceBlockEntityAccessor",
     "AbstractFurnaceBlockEntityMixin",
     "AbstractFurnaceBlockMixin",
-    "FireBlockMixin"
+    "FireBlockMixin",
+    "AnvilBlockMixin",
+    "SmeltItemFunctionMixin"
   ],
   "client": [
   ],

@@ -1,0 +1,9 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 1.0,
+  "input": "minecraft:pink_bed",
+  "itemOutput": {
+    "item": "minecraft:pink_dye"
+  },
+  "output": "minecraft:white_bed"
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_overburnt": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "central_heater:overburnt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.central_heater.extra_crispy.description"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "central_heater:burnt_beef"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.central_heater.extra_crispy.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_overburnt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

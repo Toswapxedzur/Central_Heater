@@ -10,6 +10,8 @@ import com.minecart.central_heater.recipe.recipe_input.BlockSmolderingRecipeInpu
 import com.minecart.central_heater.recipe.recipe_types.BlockSmolderingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.HauntingRecipe;
 import com.minecart.central_heater.recipe.recipe_types.SmolderingRecipe;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.logging.LogUtils;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -19,6 +21,10 @@ import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -30,20 +36,63 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class JEIUtil {
+    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final Set<Block> FAILED_RENDER_BLOCKS = new HashSet<>();
+
     private JEIUtil() {}
+
+    /**
+     * Renders the standard block model plus, when applicable, its BlockEntity
+     * renderer (e.g. banner patterns, shulker box, chest). Soft-fails any BE
+     * renderer that throws so a broken BER never crashes the JEI screen.
+     */
+    public static void render3DBlock(BlockState state, PoseStack poseStack, MultiBufferSource buffer) {
+        Minecraft mc = Minecraft.getInstance();
+
+        mc.getBlockRenderer().renderSingleBlock(state, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY);
+
+        Block block = state.getBlock();
+
+        if (block instanceof EntityBlock entityBlock && !FAILED_RENDER_BLOCKS.contains(block)) {
+            BlockEntity be = entityBlock.newBlockEntity(BlockPos.ZERO, state);
+            if (be != null && mc.level != null) {
+                be.setLevel(mc.level);
+
+                @SuppressWarnings("unchecked")
+                BlockEntityRenderer<BlockEntity> renderer =
+                        (BlockEntityRenderer<BlockEntity>) (BlockEntityRenderer<?>) mc.getBlockEntityRenderDispatcher().getRenderer(be);
+
+                if (renderer != null) {
+                    try {
+                        renderer.render(be, 0.0f, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY);
+                    } catch (Throwable throwable) {
+                        LOGGER.error("Failed to render BlockEntity for {} in JEI. Hiding it to prevent crashes.",
+                                ForgeRegistries.BLOCKS.getKey(block), throwable);
+                        FAILED_RENDER_BLOCKS.add(block);
+                    }
+                }
+            }
+        }
+    }
 
     public static List<IJeiFuelingRecipe> getNetherFuelRecipes(IIngredientManager manager) {
         return manager.getAllItemStacks().stream()

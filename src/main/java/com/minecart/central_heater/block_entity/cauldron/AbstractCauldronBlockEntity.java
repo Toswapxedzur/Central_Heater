@@ -171,7 +171,9 @@ public abstract class AbstractCauldronBlockEntity extends BlockEntity implements
         tag.putIntArray("brewingProgress", progress[0]);
         tag.putIntArray("cookingProgress", progress[1]);
         tag.putIntArray("seethingProgress", progress[2]);
-        ContainerHelper.saveAllItems(tag.getCompound("prevContainer"), prevContainer);
+        CompoundTag prevContainerTag = new CompoundTag();
+        ContainerHelper.saveAllItems(prevContainerTag, prevContainer);
+        tag.put("prevContainer", prevContainerTag);
         if (this.placer != null) {
             tag.putUUID("placer", this.placer);
         }
