@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "central_heater:block/blackstone_brick_tile"
+    }
+  }
+}

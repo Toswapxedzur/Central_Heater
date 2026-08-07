@@ -14,6 +14,30 @@
     },
     "central_heater:scorched_coal": {
       "value": 600
+    },
+    "central_heater:scorched_briquettes": {
+      "value": 800
+    },
+    "central_heater:scorched_bricks": {
+      "value": 2400
+    },
+    "central_heater:scorched_brick_tile": {
+      "value": 2400
+    },
+    "central_heater:scorched_brick_stair": {
+      "value": 1800
+    },
+    "central_heater:scorched_brick_tile_stair": {
+      "value": 1800
+    },
+    "central_heater:scorched_brick_slab": {
+      "value": 1200
+    },
+    "central_heater:scorched_brick_tile_slab": {
+      "value": 1200
+    },
+    "central_heater:scorched_brick_tile_wall": {
+      "value": 2400
     }
   }
 }

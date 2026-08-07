@@ -1,0 +1,17 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:acacia_pressure_plate",
+    "Properties": {
+      "powered": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_acacia_pressure_plate",
+    "Properties": {
+      "powered": "false"
+    }
+  },
+  "time": 25
+}

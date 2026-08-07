@@ -4,6 +4,14 @@
     "minecraft:soul_soil": { "value": 0.1 },
     "central_heater:scorched_dust": { "value": 0.2 },
     "central_heater:soul_mixture": { "value": 0.2 },
-    "central_heater:scorched_coal": { "value": 0.5 }
+    "central_heater:scorched_coal": { "value": 0.5 },
+    "central_heater:scorched_briquettes": { "value": 0.6 },
+    "central_heater:scorched_bricks": { "value": 0.8 },
+    "central_heater:scorched_brick_tile": { "value": 0.8 },
+    "central_heater:scorched_brick_stair": { "value": 0.6 },
+    "central_heater:scorched_brick_tile_stair": { "value": 0.6 },
+    "central_heater:scorched_brick_slab": { "value": 0.4 },
+    "central_heater:scorched_brick_tile_slab": { "value": 0.4 },
+    "central_heater:scorched_brick_tile_wall": { "value": 0.8 }
   }
 }

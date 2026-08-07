@@ -1,0 +1,268 @@
+{
+  "block.central_heater.stone_stove": "Каменная печь",
+  "block.central_heater.deepslate_stove": "Глубинносланцевая печь",
+  "block.central_heater.brick_stove": "Кирпичная печь",
+  "block.central_heater.mud_brick_stove": "Саманная печь",
+  "block.central_heater.nether_brick_stove": "Печь из незерских кирпичей",
+  "block.central_heater.red_nether_brick_stove": "Печь из красных незерских кирпичей",
+  "block.central_heater.blackstone_stove": "Чернитная печь",
+
+  "block.central_heater.mud_brick_pot": "Саманный горшок",
+  "block.central_heater.clay_cauldron": "Глиняный котел",
+  "block.central_heater.brick_cauldron": "Кирпичный котел",
+  "block.central_heater.iron_cauldron": "Железный котел",
+  "block.central_heater.golden_cauldron": "Золотой котел",
+
+  "block.central_heater.stone_brick_tile": "Плитка из каменного кирпича",
+  "block.central_heater.stone_brick_tile_stair": "Ступени из каменной плитки",
+  "block.central_heater.stone_brick_tile_slab": "Плита из каменной плитки",
+  "block.central_heater.stone_brick_tile_wall": "Ограда из каменной плитки",
+  "block.central_heater.deepslate_brick_tile": "Плитка из глубинносланцевого кирпича",
+  "block.central_heater.deepslate_brick_tile_stair": "Ступени из глубинносланцевой плитки",
+  "block.central_heater.deepslate_brick_tile_slab": "Плита из глубинносланцевой плитки",
+  "block.central_heater.deepslate_brick_tile_wall": "Ограда из глубинносланцевой плитки",
+  "block.central_heater.mud_brick_tile": "Плитка из саманного кирпича",
+  "block.central_heater.mud_brick_tile_stair": "Ступени из саманной плитки",
+  "block.central_heater.mud_brick_tile_slab": "Плита из саманной плитки",
+  "block.central_heater.mud_brick_tile_wall": "Ограда из саманной плитки",
+  "block.central_heater.blackstone_brick_tile": "Плитка из чернитного кирпича",
+  "block.central_heater.blackstone_brick_tile_stair": "Ступени из чернитной плитки",
+  "block.central_heater.blackstone_brick_tile_slab": "Плита из чернитной плитки",
+  "block.central_heater.blackstone_brick_tile_wall": "Ограда из чернитной плитки",
+  "block.central_heater.sturdy_brick_tile": "Плитка из прочного кирпича",
+  "block.central_heater.sturdy_brick_tile_stair": "Ступени из прочной плитки",
+  "block.central_heater.sturdy_brick_tile_slab": "Плита из прочной плитки",
+  "block.central_heater.sturdy_brick_tile_wall": "Ограда из прочной плитки",
+
+  "block.central_heater.gold_bars": "Золотая решетка",
+  "block.central_heater.sturdy_tank": "Прочный резервуар",
+  "block.central_heater.blazing_furnace": "Полыхающая печь",
+
+  "item.central_heater.cobble": "Кусочек булыжника",
+  "item.central_heater.deepslate_cobble": "Кусочек глубинного сланца",
+  "item.central_heater.stone_brick": "Каменный кирпич",
+  "item.central_heater.mud_brick": "Саманный кирпич",
+  "item.central_heater.red_nether_brick": "Красный незерский кирпич",
+  "item.central_heater.deepslate_brick": "Глубинносланцевый кирпич",
+  "item.central_heater.diamond_shard": "Осколок алмаза",
+  "item.central_heater.blackstone_brick": "Чернитный кирпич",
+  "item.central_heater.sturdy_brick": "Прочный кирпич",
+  "item.central_heater.sturdy_nugget": "Прочный кусочек",
+  "item.central_heater.scorched_dust": "Выжженная пыль",
+  "item.central_heater.fire_ash": "Пепел",
+  "item.central_heater.scorched_coal": "Выжженный уголь",
+  "item.central_heater.clay_bit": "Кусочек глины",
+  "item.central_heater.clay_brick": "Глиняный кирпич",
+  "item.central_heater.soul_mixture": "Смесь душ",
+  "item.central_heater.wheat_dough": "Пшеничное тесто",
+  "item.central_heater.wheat_flour": "Пшеничная мука",
+  "item.central_heater.wood_chips": "Древесная щепа",
+
+  "item.central_heater.burnt_beef": "Подгоревшая говядина",
+  "item.central_heater.burnt_chicken": "Подгоревшая курятина",
+  "item.central_heater.burnt_cod": "Подгоревшая треска",
+  "item.central_heater.burnt_mutton": "Подгоревшая баранина",
+  "item.central_heater.burnt_porkchop": "Подгоревшая свинина",
+  "item.central_heater.burnt_rabbit": "Подгоревшая крольчатина",
+  "item.central_heater.burnt_salmon": "Подгоревший лосось",
+
+  "item.central_heater.sturdy_pickaxe": "Прочная кирка",
+  "item.central_heater.sturdy_axe": "Прочный топор",
+  "item.central_heater.sturdy_shovel": "Прочная лопата",
+  "item.central_heater.sturdy_hoe": "Прочная мотыга",
+  "item.central_heater.sturdy_sword": "Прочный меч",
+  "item.central_heater.sturdy_helmet": "Прочный шлем",
+  "item.central_heater.sturdy_chestplate": "Прочный нагрудник",
+  "item.central_heater.sturdy_leggings": "Прочные поножи",
+  "item.central_heater.sturdy_boots": "Прочные ботинки",
+
+  "central_heater.creativeTabs.central_heater": "Нагреватели",
+
+  "jei.central_heater.category.haunting": "Призрачный обжиг",
+  "jei.central_heater.category.smoldering": "Тление",
+  "jei.central_heater.category.netherFuel": "Топливо Незера",
+  "jei.central_heater.category.ash_drop": "Переработка пепла",
+  "jei.central_heater.ash_drop_chance": "Шанс выпадения: %s",
+  "jei.central_heater.category.scorched_dust_drop": "Переработка выжженной пыли",
+  "jei.central_heater.scorched_dust_drop_chance": "Шанс: %s",
+
+  "jei.central_heater.burnt_woods.description": "Древесина, обугленная от сильного жара. Её часто можно найти после сильного лесного пожара или создать искусственно в печах. Вы можете очистить её топором, чтобы снять обугленный слой и получить древесный уголь.",
+  "jei.central_heater.blazing_furnace.description": "Мистическая печь, которая сжигает песок душ или почву душ вместо стандартного топлива. Она выполняет 'Призрачный обжиг', превращая предметы в их магические или незерские аналоги (например, сладкие ягоды в светящиеся).",
+  "jei.central_heater.blazing_furnace_minecart.description": "Вариант вагонетки с печью, работающий исключительно на топливе душ. Она горит жарче и обеспечивает более сильную тягу, чем её аналог на угле.",
+  "jei.central_heater.sturdy_brick.description": "Плотный, термостойкий композит. Хотя их трудно зачаровать, инструменты и броня из прочного кирпича могут сравниться по прочности с алмазными, что делает их отличным выбором для ранней и средней стадии выживания.",
+  "jei.central_heater.sturdy_tank.description": "Укрепленный контейнер, способный выдерживать экстремальные температуры. В отличие от обычных пузырьков, прочный резервуар может безопасно хранить и транспортировать лаву.",
+  "jei.central_heater.fire_ash.description": "Порошкообразный осадок, остающийся после полного сгорания твердого топлива. Может использоваться как связующее вещество или ингредиент для крафта.",
+  "jei.central_heater.scorched_dust.description": "Незерский аналог пепла. Эта зернистая пыль остается после сжигания предметов из Незера в огне душ.",
+
+  "container.sturdy_tank": "Прочный резервуар",
+  "container.blazing_furnace": "Полыхающая печь",
+  "gui.recipebook.toggleRecipes.hauntable": "Показывать призрачный обжиг",
+
+  "container.sturdy_tank.tooltip.content_title": "Содержимое:",
+  "container.sturdy_tank.tooltip.content": "%s мБ %s ",
+  "container.sturdy_tank.tooltip.potion_title": "Эффекты зелья: ",
+
+  "item.central_heater.blazing_furnace_minecart": "Вагонетка с полыхающей печью",
+
+  "block.central_heater.burnt_wood": "Обугленное дерево",
+  "block.central_heater.burnt_log": "Обугленное бревно",
+
+  "jei.central_heater.category.block_smoldering": "Тление блоков",
+
+  "advancements.central_heater.root.title": "Отопление",
+  "advancements.central_heater.root.description": "Создайте печь и приготовьте что-нибудь.",
+
+  "advancements.central_heater.blasting.title": "Жарче печи",
+  "advancements.central_heater.blasting.description": "Создайте плавильную печь.",
+
+  "advancements.central_heater.campfire.title": "Уютный костер",
+  "advancements.central_heater.campfire.description": "Создайте костер.",
+
+  "advancements.central_heater.haunting.title": "Призрачная печь",
+  "advancements.central_heater.haunting.description": "Создайте полыхающую печь.",
+
+  "advancements.central_heater.muddy.title": "Грязно",
+  "advancements.central_heater.muddy.description": "Добудьте саманный кирпич.",
+
+  "advancements.central_heater.muddy_stove.title": "Саманное отопление",
+  "advancements.central_heater.muddy_stove.description": "Создайте саманную печь.",
+
+  "advancements.central_heater.muddy_pot.title": "Саманная готовка",
+  "advancements.central_heater.muddy_pot.description": "Создайте саманный горшок.",
+
+  "advancements.central_heater.bricky.title": "Кирпич за кирпичом",
+  "advancements.central_heater.bricky.description": "Добудьте кирпич.",
+
+  "advancements.central_heater.bricky_stove.title": "Кирпичное отопление",
+  "advancements.central_heater.bricky_stove.description": "Создайте кирпичную печь.",
+
+  "advancements.central_heater.bricky_cauldron.title": "Кирпичная готовка",
+  "advancements.central_heater.bricky_cauldron.description": "Создайте кирпичный котел.",
+
+  "advancements.central_heater.stoney.title": "Гладкий камень",
+  "advancements.central_heater.stoney.description": "Добудьте каменный кирпич.",
+
+  "advancements.central_heater.stoney_appliances.title": "Каменное отопление",
+  "advancements.central_heater.stoney_appliances.description": "Создайте каменную печь.",
+
+  "advancements.central_heater.iron_cauldron.title": "Железный шеф-повар",
+  "advancements.central_heater.iron_cauldron.description": "Создайте железный котел.",
+
+  "advancements.central_heater.golden_cauldron.title": "Золотой стандарт",
+  "advancements.central_heater.golden_cauldron.description": "Создайте золотой котел.",
+
+  "advancements.central_heater.sturdy_brick.title": "Прочный фундамент",
+  "advancements.central_heater.sturdy_brick.description": "Добудьте прочный кирпич.",
+
+  "advancements.central_heater.sturdy_tank.title": "Военный стандарт",
+  "advancements.central_heater.sturdy_tank.description": "Создайте прочный резервуар для хранения жидкостей.",
+
+  "advancements.central_heater.sturdy_armor.title": "Прочный парень",
+  "advancements.central_heater.sturdy_armor.description": "Получите полный комплект прочной брони.",
+
+  "advancements.central_heater.nether_stove.title": "Незерская кухня",
+  "advancements.central_heater.nether_stove.description": "Создайте печь из материалов Незера.",
+
+  "advancements.central_heater.scorched_coal.title": "Перегрев",
+  "advancements.central_heater.scorched_coal.description": "Добудьте выжженный уголь.",
+
+  "advancements.central_heater.diamond_shard.title": "Искусственный алмаз",
+  "advancements.central_heater.diamond_shard.description": "Получите осколок алмаза, нагрев уголь.",
+
+  "advancements.central_heater.synthetic_debris.title": "Древняя алхимия",
+  "advancements.central_heater.synthetic_debris.description": "Синтезируйте древние обломки из костного блока.",
+
+  "advancements.central_heater.extra_crispy.title": "С хрустящей корочкой",
+  "advancements.central_heater.extra_crispy.description": "Добудьте любую подгоревшую еду.",
+
+  "advancements.central_heater.speed_demon.title": "Демон скорости",
+  "advancements.central_heater.speed_demon.description": "Достигните высокой скорости на вагонетке.",
+
+  "advancements.central_heater.wasteful_burning.title": "Деньги на ветер",
+  "advancements.central_heater.wasteful_burning.description": "Сожгите целый угольный блок ради пепла.",
+
+  "item.central_heater.briquettes": "Брикеты",
+  "item.central_heater.scorched_briquettes": "Выжженные брикеты",
+  "item.central_heater.soap": "Мыло",
+  "item.central_heater.sturdy_shears": "Прочные ножницы",
+
+  "block.central_heater.coal_bricks": "Угольные кирпичи",
+  "block.central_heater.coal_brick_tile": "Плитка из угольного кирпича",
+  "block.central_heater.coal_brick_tile_stair": "Ступени из угольной плитки",
+  "block.central_heater.coal_brick_tile_slab": "Плита из угольной плитки",
+  "block.central_heater.coal_brick_tile_wall": "Ограда из угольной плитки",
+  "block.central_heater.coal_brick_stair": "Ступени из угольного кирпича",
+  "block.central_heater.coal_brick_slab": "Плита из угольного кирпича",
+
+  "block.central_heater.golden_bricks": "Золотые кирпичи",
+  "block.central_heater.golden_brick_tile": "Плитка из золотого кирпича",
+  "block.central_heater.golden_brick_tile_stair": "Ступени из золотой плитки",
+  "block.central_heater.golden_brick_tile_slab": "Плита из золотой плитки",
+  "block.central_heater.golden_brick_tile_wall": "Ограда из золотой плитки",
+  "block.central_heater.golden_brick_stair": "Ступени из золотого кирпича",
+  "block.central_heater.golden_brick_slab": "Плита из золотого кирпича",
+
+  "block.central_heater.netherite_bricks": "Незеритовые кирпичи",
+  "block.central_heater.netherite_brick_tile": "Плитка из незеритового кирпича",
+  "block.central_heater.netherite_brick_tile_stair": "Ступени из незеритовой плитки",
+  "block.central_heater.netherite_brick_tile_slab": "Плита из незеритовой плитки",
+  "block.central_heater.netherite_brick_tile_wall": "Ограда из незеритовой плитки",
+  "block.central_heater.netherite_brick_stair": "Ступени из незеритового кирпича",
+  "block.central_heater.netherite_brick_slab": "Плита из незеритового кирпича",
+
+  "block.central_heater.scorched_bricks": "Выжженные кирпичи",
+  "block.central_heater.scorched_brick_tile": "Плитка из выжженного кирпича",
+  "block.central_heater.scorched_brick_tile_stair": "Ступени из выжженной плитки",
+  "block.central_heater.scorched_brick_tile_slab": "Плита из выжженной плитки",
+  "block.central_heater.scorched_brick_tile_wall": "Ограда из выжженной плитки",
+  "block.central_heater.scorched_brick_stair": "Ступени из выжженного кирпича",
+  "block.central_heater.scorched_brick_slab": "Плита из выжженного кирпича",
+
+  "block.central_heater.sturdy_anvil": "Прочная наковальня",
+  "block.central_heater.chipped_sturdy_anvil": "Поврежденная прочная наковальня",
+  "block.central_heater.damaged_sturdy_anvil": "Сильно поврежденная прочная наковальня",
+
+  "block.central_heater.sturdy_bricks": "Прочные кирпичи",
+  "block.central_heater.sturdy_brick_stair": "Ступени из прочного кирпича",
+  "block.central_heater.sturdy_brick_slab": "Плита из прочного кирпича",
+
+  "jei.central_heater.category.block_cleaning": "Очистка блоков",
+
+  "block.central_heater.ashtray": "Пепельница",
+  "block.central_heater.burnable_campfire": "костер",
+  "block.central_heater.burnable_soul_campfire": "костер душ",
+
+  "item.central_heater.coal_bit": "Кусочек угля",
+  "item.central_heater.charcoal_bit": "Кусочек древесного угля",
+
+  "block.central_heater.burnt_birch_log": "Обугленное березовое бревно",
+  "block.central_heater.burnt_birch_wood": "Обугленное березовое дерево",
+  "block.central_heater.burnt_jungle_log": "Обугленное тропическое бревно",
+  "block.central_heater.burnt_jungle_wood": "Обугленное тропическое дерево",
+  "block.central_heater.burnt_cherry_log": "Обугленное вишневое бревно",
+  "block.central_heater.burnt_cherry_wood": "Обугленное вишневое дерево",
+  "block.central_heater.burnt_mangrove_log": "Обугленное мангровое бревно",
+  "block.central_heater.burnt_mangrove_wood": "Обугленное мангровое дерево",
+
+  "block.central_heater.burnt_planks": "Обугленные доски",
+  "block.central_heater.burnt_stairs": "Обугленные ступени",
+  "block.central_heater.burnt_slab": "Обугленная плита",
+  "block.central_heater.burnt_fence": "Обугленный забор",
+  "block.central_heater.burnt_fence_gate": "Обугленная калитка",
+  "block.central_heater.burnt_trapdoor": "Обугленный люк",
+  "block.central_heater.burnt_button": "Обугленная кнопка",
+  "block.central_heater.burnt_pressure_plate": "Обугленная нажимная плита",
+  "block.central_heater.burnt_door": "Обугленная дверь",
+
+  "item.central_heater.burnt_boat": "Обугленная лодка",
+  "item.central_heater.burnt_chest_boat": "Обугленная грузовая лодка",
+
+  "block.central_heater.copper_stove": "Медная печь",
+  "block.central_heater.exposed_copper_stove": "Потемневшая медная печь",
+  "block.central_heater.weathered_copper_stove": "Состаренная медная печь",
+  "block.central_heater.oxidized_copper_stove": "Окисленная медная печь",
+  "block.central_heater.waxed_copper_stove": "Вощёная медная печь",
+  "block.central_heater.waxed_exposed_copper_stove": "Вощёная потемневшая медная печь",
+  "block.central_heater.waxed_weathered_copper_stove": "Вощёная состаренная медная печь",
+  "block.central_heater.waxed_oxidized_copper_stove": "Вощёная окисленная медная печь"
+}

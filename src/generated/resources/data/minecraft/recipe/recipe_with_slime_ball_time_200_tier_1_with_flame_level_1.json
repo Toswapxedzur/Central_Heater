@@ -1,0 +1,29 @@
+{
+  "type": "central_heater:smoldering",
+  "fluidIngredient": {
+    "amount": 250,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "item": "central_heater:wheat_dough"
+    },
+    {
+      "item": "minecraft:lime_dye"
+    }
+  ],
+  "result": [
+    {
+      "count": 2,
+      "id": "minecraft:slime_ball"
+    }
+  ],
+  "tier": 1,
+  "time": 200
+}

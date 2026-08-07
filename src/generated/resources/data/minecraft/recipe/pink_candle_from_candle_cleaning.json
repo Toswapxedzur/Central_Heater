@@ -1,0 +1,10 @@
+{
+  "type": "central_heater:block_cleaning",
+  "dropChance": 1.0,
+  "input": "minecraft:pink_candle",
+  "itemOutput": {
+    "count": 1,
+    "id": "minecraft:pink_dye"
+  },
+  "output": "minecraft:candle"
+}

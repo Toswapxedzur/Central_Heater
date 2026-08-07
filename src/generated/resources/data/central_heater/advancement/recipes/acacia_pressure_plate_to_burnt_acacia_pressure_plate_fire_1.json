@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_pressure_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_pressure_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:acacia_pressure_plate_to_burnt_acacia_pressure_plate_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_pressure_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:acacia_pressure_plate_to_burnt_acacia_pressure_plate_fire_1"
+    ]
+  }
+}

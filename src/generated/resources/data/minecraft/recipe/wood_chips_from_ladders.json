@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:ladder"
+  },
+  "result": {
+    "count": 4,
+    "id": "central_heater:wood_chips"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_iron_cauldron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:iron_cauldron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.iron_cauldron.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:iron_cauldron"
+    },
+    "title": {
+      "translate": "advancements.central_heater.iron_cauldron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_cauldron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

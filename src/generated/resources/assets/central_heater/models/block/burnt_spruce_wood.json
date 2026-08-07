@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "central_heater:block/burnt_log",
+    "side": "central_heater:block/burnt_log"
+  }
+}

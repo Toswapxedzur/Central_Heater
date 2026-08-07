@@ -1,0 +1,51 @@
+{
+  "parent": "central_heater:cauldron/sturdy_brick",
+  "criteria": {
+    "wearing_sturdy_armor": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "equipment": {
+                "chest": {
+                  "items": "central_heater:sturdy_chestplate"
+                },
+                "feet": {
+                  "items": "central_heater:sturdy_boots"
+                },
+                "head": {
+                  "items": "central_heater:sturdy_helmet"
+                },
+                "legs": {
+                  "items": "central_heater:sturdy_leggings"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.sturdy_armor.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "central_heater:sturdy_chestplate"
+    },
+    "title": {
+      "translate": "advancements.central_heater.sturdy_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "wearing_sturdy_armor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "central_heater:coal_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "central_heater:coal_brick_stair"
+  }
+}

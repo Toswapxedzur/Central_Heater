@@ -3,10 +3,12 @@ package com.minecart.central_heater;
 import com.minecart.central_heater.advancement.AllTrigger;
 import com.minecart.central_heater.block_entity.AllBlockEntity;
 import com.minecart.central_heater.entity.AllEntity;
+import com.minecart.central_heater.heat.HeatAttachments;
 import com.minecart.central_heater.item.AllDataComponents;
 import com.minecart.central_heater.misc.Config;
 import com.minecart.central_heater.misc.CreativeTab;
 import com.minecart.central_heater.misc.NewCauldronInteraction;
+import com.minecart.central_heater.network.AllNetwork;
 import com.minecart.central_heater.recipe.AllRecipe;
 import com.minecart.central_heater.user_interface.AllMenu;
 import com.mojang.logging.LogUtils;
@@ -33,8 +35,6 @@ public class CentralHeater {
 
         modEventBus.addListener(this::commonSetup);
 
-        NeoForge.EVENT_BUS.register(this);
-
         CreativeTab.register(modEventBus);
 
         AllBlockItem.register(modEventBus);
@@ -51,17 +51,16 @@ public class CentralHeater {
 
         AllTrigger.register(modEventBus);
 
+        HeatAttachments.register(modEventBus);
+
         modEventBus.addListener(CreativeTab::addCreative);
+        modEventBus.addListener(AllNetwork::register);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         NewCauldronInteraction.bootStrap();
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
     }
 
     public static ResourceLocation modLoc(String path){

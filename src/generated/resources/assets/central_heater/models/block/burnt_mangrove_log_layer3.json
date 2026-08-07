@@ -1,0 +1,9 @@
+{
+  "parent": "central_heater:block/burnt_layer3",
+  "textures": {
+    "bottom": "central_heater:block/burnt_mangrove_log_top",
+    "particle": "central_heater:block/burnt_mangrove_log",
+    "side": "central_heater:block/burnt_mangrove_log",
+    "top": "central_heater:block/burnt_mangrove_log_top"
+  }
+}

@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Debug(export = true)
 @Mixin(WorldGenRegion.class)
 public class WorldGenRegionMixin {
     @ModifyVariable(method = "setBlock", at = @At(value = "HEAD", ordinal = 0), argsOnly = true)

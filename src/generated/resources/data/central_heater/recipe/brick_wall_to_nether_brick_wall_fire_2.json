@@ -1,0 +1,26 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireLevel": 2,
+  "input": {
+    "Name": "minecraft:brick_wall",
+    "Properties": {
+      "east": "none",
+      "north": "none",
+      "south": "none",
+      "up": "true",
+      "waterlogged": "false",
+      "west": "none"
+    }
+  },
+  "output": {
+    "Name": "minecraft:nether_brick_wall",
+    "Properties": {
+      "east": "none",
+      "north": "none",
+      "south": "none",
+      "up": "true",
+      "waterlogged": "false",
+      "west": "none"
+    }
+  }
+}

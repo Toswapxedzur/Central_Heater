@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_campfire": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:campfire"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.campfire.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:campfire"
+    },
+    "title": {
+      "translate": "advancements.central_heater.campfire.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_campfire"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

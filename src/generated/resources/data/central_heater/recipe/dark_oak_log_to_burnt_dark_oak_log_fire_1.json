@@ -1,0 +1,18 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:dark_oak_log",
+    "Properties": {
+      "axis": "y"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_dark_oak_log",
+    "Properties": {
+      "facing": "up",
+      "layers": "4",
+      "waterlogged": "false"
+    }
+  }
+}

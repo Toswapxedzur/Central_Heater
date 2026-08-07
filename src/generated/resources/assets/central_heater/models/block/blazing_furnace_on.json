@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "central_heater:block/blackstone_brick_tile",
+    "east": "central_heater:block/blazing_furnace_side",
+    "north": "central_heater:block/blazing_furnace_front_on",
+    "particle": "central_heater:block/blazing_furnace_top",
+    "south": "central_heater:block/blazing_furnace_side",
+    "up": "central_heater:block/blazing_furnace_top",
+    "west": "central_heater:block/blazing_furnace_side"
+  }
+}

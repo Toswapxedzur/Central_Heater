@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "central_heater:scorched_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "central_heater:scorched_brick_tile_slab"
+  }
+}

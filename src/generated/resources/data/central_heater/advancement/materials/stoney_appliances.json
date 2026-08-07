@@ -1,0 +1,34 @@
+{
+  "parent": "central_heater:materials/stoney",
+  "criteria": {
+    "placed_stone_stove": {
+      "conditions": {
+        "location": [
+          {
+            "block": "central_heater:stone_stove",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.stoney_appliances.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:stone_stove"
+    },
+    "title": {
+      "translate": "advancements.central_heater.stoney_appliances.title"
+    }
+  },
+  "requirements": [
+    [
+      "placed_stone_stove"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

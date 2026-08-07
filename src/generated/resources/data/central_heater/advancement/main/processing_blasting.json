@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:main/root",
+  "criteria": {
+    "has_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.blasting.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:blast_furnace"
+    },
+    "title": {
+      "translate": "advancements.central_heater.blasting.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_blast_furnace"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

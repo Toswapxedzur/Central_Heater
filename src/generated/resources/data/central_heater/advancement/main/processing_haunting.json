@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:nether/scorched_coal",
+  "criteria": {
+    "has_blazing_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:blazing_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.haunting.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:blazing_furnace"
+    },
+    "title": {
+      "translate": "advancements.central_heater.haunting.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_blazing_furnace"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

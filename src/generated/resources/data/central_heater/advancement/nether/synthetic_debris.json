@@ -1,0 +1,30 @@
+{
+  "parent": "central_heater:nether/nether_stove",
+  "criteria": {
+    "crafted_ancient_debris": {
+      "conditions": {
+        "recipe_id": "central_heater:ancient_debris_from_block_smoldering"
+      },
+      "trigger": "minecraft:recipe_crafted"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.synthetic_debris.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:ancient_debris"
+    },
+    "title": {
+      "translate": "advancements.central_heater.synthetic_debris.title"
+    }
+  },
+  "requirements": [
+    [
+      "crafted_ancient_debris"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

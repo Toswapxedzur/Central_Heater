@@ -66,13 +66,19 @@ public class QueueItemStackHandler implements IItemHandler, IItemHandlerModifiab
      *
      * @return The number of itemstacks
      */
-    public long getNonEmptyItems(){
-        return stacks.stream().filter(itemstack -> !itemstack.isEmpty()).count();
+    public int getQueueSize(){
+        return (int) stacks.stream().filter(itemstack -> !itemstack.isEmpty()).count();
     }
 
     public ItemStack getStackInSlot(int slot) {
         validateSlotIndex(slot);
         return stacks.get(slot);
+    }
+
+    public ItemStack getLastStack() {
+        if(getQueueSize() > 0)
+            return getStackInSlot(getQueueSize() - 1);
+        return ItemStack.EMPTY;
     }
 
     public void setStackInSlot(int slot, ItemStack stack){

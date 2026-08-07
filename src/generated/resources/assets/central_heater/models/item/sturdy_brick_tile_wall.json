@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "central_heater:block/sturdy_brick_tile"
+  }
+}

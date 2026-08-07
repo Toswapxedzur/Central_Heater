@@ -31,14 +31,19 @@ public class BurnableCampfireBlockEntityRenderer implements BlockEntityRenderer<
 
         this.parentRenderer.render(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
 
+        boolean lower = false;
         for (int j = 0; j < nonnulllist.size(); j++) {
             ItemStack itemstack = nonnulllist.get(j);
             if (itemstack != ItemStack.EMPTY) {
                 poseStack.pushPose();
                 poseStack.translate(0.5f , (0.28f + j * 0.25f), 0.5f);
+                if(lower)
+                    poseStack.translate(0f, -0.225f, 0f);
                 poseStack.mulPose(Axis.YP.rotationDegrees(direction.toYRot()));
                 if(ItemUtil.isFlatItem(itemstack)){
-                    poseStack.translate(0, -0.2f, 0f);
+                    if(j == 0)
+                        lower = true;
+                    poseStack.translate(0, -0.1125f, 0f);
                     poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
                     poseStack.scale(0.8f, 0.8f, 0.8f);
                 }

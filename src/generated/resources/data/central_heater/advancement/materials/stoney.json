@@ -1,0 +1,33 @@
+{
+  "parent": "central_heater:materials/bricky",
+  "criteria": {
+    "has_stone_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "central_heater:stone_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.central_heater.stoney.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "central_heater:stone_brick"
+    },
+    "title": {
+      "translate": "advancements.central_heater.stoney.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_stone_brick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

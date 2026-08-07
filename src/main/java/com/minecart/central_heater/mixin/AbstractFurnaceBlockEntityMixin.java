@@ -28,7 +28,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Debug(export = true)
 @Mixin(AbstractFurnaceBlockEntity.class)
 public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible, IAshProducer {
     private AbstractFurnaceBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -47,23 +46,6 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BaseContainerBlock
     @Override
     public void setAshCount(int count) {
         this.ashCount = count;
-    }
-
-    @Override
-    public void dropAsh(Level level, BlockPos pos) {
-        if (this.ashCount <= 0) return;
-
-        Item ashItem = AllBlockItem.FIRE_ASH.get();
-        int maxStackSize = ashItem.getDefaultMaxStackSize();
-
-        while (this.ashCount > 0) {
-            int dropAmount = Math.min(this.ashCount, maxStackSize);
-
-            ItemStack ashStack = new ItemStack(ashItem, dropAmount);
-            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), ashStack);
-
-            this.ashCount -= dropAmount;
-        }
     }
 
     @Inject(method = "saveAdditional", at = @At("TAIL"))

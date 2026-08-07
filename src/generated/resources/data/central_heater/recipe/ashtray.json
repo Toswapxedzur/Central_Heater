@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "central_heater:sturdy_brick"
+    },
+    "$": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "# #",
+    "#$#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "central_heater:ashtray"
+  }
+}

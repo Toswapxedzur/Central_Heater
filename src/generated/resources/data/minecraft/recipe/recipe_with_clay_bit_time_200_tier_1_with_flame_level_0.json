@@ -1,0 +1,24 @@
+{
+  "type": "central_heater:smoldering",
+  "fireLevel": 0,
+  "fluidIngredient": {
+    "amount": 250,
+    "id": "minecraft:water"
+  },
+  "ingredients": [
+    {
+      "item": "central_heater:fire_ash"
+    },
+    {
+      "item": "minecraft:sand"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "id": "central_heater:clay_bit"
+    }
+  ],
+  "tier": 1,
+  "time": 200
+}

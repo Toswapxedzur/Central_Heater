@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "central_heater:netherite_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "central_heater:netherite_brick_tile_wall"
+  }
+}

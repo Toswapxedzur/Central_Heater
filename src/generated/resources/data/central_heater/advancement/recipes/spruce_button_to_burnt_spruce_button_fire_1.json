@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spruce_button": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:spruce_button"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:spruce_button_to_burnt_spruce_button_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_spruce_button"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:spruce_button_to_burnt_spruce_button_fire_1"
+    ]
+  }
+}

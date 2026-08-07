@@ -1,0 +1,129 @@
+package com.minecart.central_heater.block_entity_renderer.cauldron;
+
+import com.minecart.central_heater.block_entity.cauldron.ModCauldronBlockEntity;
+import com.minecart.central_heater.misc.ItemUtil;
+import com.minecart.central_heater.misc.VirtualLevel;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+@OnlyIn(Dist.CLIENT)
+public class CauldronBlockEntityRenderer implements BlockEntityRenderer<ModCauldronBlockEntity> {
+    public final BlockEntityRendererProvider.Context context;
+
+    public CauldronBlockEntityRenderer(BlockEntityRendererProvider.Context context){
+        this.context = context;
+    }
+
+    @Override
+    public void render(ModCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        int smoothAmount = (int) Mth.lerp(partialTick, blockEntity.prevClientFluid, blockEntity.clientFluid);
+        float percentage = (float) (smoothAmount * 1.0 / blockEntity.getFluidTank().getTankCapacity(0));
+        float renderHeight = 0.249375f + percentage * 0.688125f;
+        renderInv(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay, renderHeight);
+        renderFluid(blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay, renderHeight);
+    }
+
+    public void renderFluid(ModCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight){
+        FluidStack fluidStack = blockEntity.clientFluidType.copy();
+        if (fluidStack.isEmpty()) return;
+        PotionContents potion = fluidStack.getOrDefault(DataComponents.POTION_CONTENTS, new PotionContents(Potions.WATER));
+        IClientFluidTypeExtensions attributes = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+        ResourceLocation stillTexture = attributes.getStillTexture();
+        if(stillTexture == null)
+            return;
+        int tintColor = attributes.getTintColor();
+        if(fluidStack.getFluidType().getLightLevel() > 0)
+            packedLight = LightTexture.pack(fluidStack.getFluidType().getLightLevel(), LightTexture.sky(packedLight));
+        if(!potion.is(Potions.WATER))
+            tintColor = potion.getColor();
+        TextureAtlasSprite sprite = VirtualLevel.getMinecraft().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
+        VertexConsumer buffer = bufferSource.getBuffer(ItemBlockRenderTypes.getRenderLayer(fluidStack.getFluid().defaultFluidState()));
+        renderQuad(poseStack.last(), buffer, tintColor, packedLight, fluidHeight, fluidHeight, 0f, 0f, 1f, 1f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1());
+    }
+
+    public void renderInv(ModCauldronBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, float fluidHeight) {
+        NonNullList<ItemStack> stacks = blockEntity.getContainer().get();
+        Direction direction = blockEntity.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
+        int i = (int) blockEntity.getBlockPos().asLong();
+
+        float spin = Mth.lerp(partialTick, blockEntity.prevClientSpin, blockEntity.clientSpin);
+        float setIn = Mth.lerp(partialTick, blockEntity.prevSpinVelocity, blockEntity.spinVelocity);
+
+        for(int j=0;j<4;j++){
+            ItemStack stack = stacks.get(j);
+            if(stack.isEmpty())
+                continue;
+            Direction direction1 = Direction.from2DDataValue((j + direction.get2DDataValue()) % 4);
+            float f = -direction1.toYRot() + spin;
+            poseStack.pushPose();
+            poseStack.translate(0.5f, 0f, 0.5f);
+            poseStack.mulPose(Axis.YP.rotationDegrees(f));
+            poseStack.translate(-0.1875f + setIn * 0.05f, 0f, -0.1875f + setIn * 0.05f);
+
+            if(ItemUtil.isFlatItem(stack)) {
+                poseStack.translate(0f, Math.max(fluidHeight, 0.2625f), 0f);
+                poseStack.mulPose(Axis.XP.rotationDegrees(90));
+                poseStack.scale(0.4f, 0.4f, 0.4f);
+            }else {
+                poseStack.translate(0, Math.max(fluidHeight, 0.375f), 0f);
+                poseStack.scale(0.5f, 0.5f, 0.5f);
+            }
+
+            poseStack.mulPose(Axis.XP.rotationDegrees(10));
+            VirtualLevel.getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, bufferSource, blockEntity.getLevel(), i + j);
+            poseStack.popPose();
+
+            if(bufferSource instanceof MultiBufferSource.BufferSource source){
+                source.endBatch();
+            }
+        }
+    }
+
+    private static void renderQuad(
+            PoseStack.Pose pose,
+            VertexConsumer consumer,
+            int color,
+            int packed,
+            float minY,
+            float maxY,
+            float minX,
+            float minZ,
+            float maxX,
+            float maxZ,
+            float u0,
+            float v0,
+            float u1,
+            float v1
+    ) {
+        consumer.addVertex(pose, minX, minY, minZ).setColor(color).setUv(u0, v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packed).setNormal(pose, 0f, 1f, 0f);
+        consumer.addVertex(pose, minX, maxY, maxZ).setColor(color).setUv(u0, v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packed).setNormal(pose, 0f, 1f, 0f);
+        consumer.addVertex(pose, maxX, maxY, maxZ).setColor(color).setUv(u1, v1).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packed).setNormal(pose, 0f, 1f, 0f);
+        consumer.addVertex(pose, maxX, minY, minZ).setColor(color).setUv(u1, v0).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packed).setNormal(pose, 0f, 1f, 0f);
+    }
+
+    public ItemRenderer getRenderer(){
+        return context.getItemRenderer();
+    }
+}

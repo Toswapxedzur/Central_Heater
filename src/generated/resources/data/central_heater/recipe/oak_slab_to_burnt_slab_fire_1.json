@@ -1,0 +1,19 @@
+{
+  "type": "central_heater:block_smoldering",
+  "fireBurn": true,
+  "input": {
+    "Name": "minecraft:oak_slab",
+    "Properties": {
+      "type": "bottom",
+      "waterlogged": "false"
+    }
+  },
+  "output": {
+    "Name": "central_heater:burnt_slab",
+    "Properties": {
+      "type": "bottom",
+      "waterlogged": "false"
+    }
+  },
+  "time": 25
+}

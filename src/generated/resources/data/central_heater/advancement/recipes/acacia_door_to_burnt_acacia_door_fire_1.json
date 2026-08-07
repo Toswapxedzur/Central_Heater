@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_door": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_door"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "central_heater:acacia_door_to_burnt_acacia_door_fire_1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_door"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "central_heater:acacia_door_to_burnt_acacia_door_fire_1"
+    ]
+  }
+}
